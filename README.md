@@ -2,7 +2,7 @@
 
 ## Description
 Improvement of my personal site including my portfolio (WordPress → PHP 8 / Symfony 7).\
-Development of an admin panel to manage site content and a CRM to manage projects and clients.
+Development of an admin panel to manage site content and a CRM to manage projects and customers.
 
 ## Setting up
 
