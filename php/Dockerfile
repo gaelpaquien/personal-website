@@ -1,0 +1,26 @@
+FROM php:8.3-apache
+
+# Global configuration/installation
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzip-dev \
+    && pecl install apcu \
+    && docker-php-ext-install intl opcache pdo pdo_mysql \
+    && docker-php-ext-enable apcu \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip \
+    && a2enmod rewrite \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Composer and Symfony installation
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl https://get.symfony.com/cli/installer | bash \
+    && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+
+# Working directory
+WORKDIR /var/www
+
+# Copy and execute the start.sh script
+COPY scripts/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+CMD ["/usr/local/bin/start.sh"]
