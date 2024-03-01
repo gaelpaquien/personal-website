@@ -18,6 +18,9 @@ services:
     build:
       context: .
       dockerfile: php/Dockerfile
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
     ports:
       - 8080:80
     volumes:

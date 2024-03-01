@@ -1,5 +1,11 @@
 FROM php:8.3-apache
 
+# User and group configuration
+ARG USER_ID
+ARG GROUP_ID
+RUN groupadd -g $GROUP_ID appuser \
+    && useradd -m -u $USER_ID -g appuser appuser
+
 # Global configuration/installation
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzip-dev \
@@ -20,7 +26,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Working directory
 WORKDIR /var/www
 
-# Copy and execute the start.sh script
+# Copy and give permissions to execute the script start.sh
 COPY scripts/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
+
+# Change to non-root user (appuser)
+USER appuser
+
+# Execute the script start.sh
 CMD ["/usr/local/bin/start.sh"]
