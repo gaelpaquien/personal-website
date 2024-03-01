@@ -7,9 +7,7 @@ V2 (in development) → PHP 8 / Symfony 7 / Sass / Docker
 
 ## Features
 ### V1
-- WordPress single page presentation website (portfolio)
-- Responsive and SEO friendly
-- Contact form
+- Single page presentation WordPress site with a contact form
 
 ### V2
 - SOON
