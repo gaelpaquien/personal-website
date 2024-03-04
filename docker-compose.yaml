@@ -4,48 +4,45 @@ services:
   database:
     container_name: database
     image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: personal_website
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
     ports:
       - 3310:3306
     volumes:
-      - ./mysql:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
+    env_file:
+      - ./app/.env.local
+
   php:
     container_name: php
+    ports:
+      - 8080:80
     build:
       context: .
-      dockerfile: php/Dockerfile
+      dockerfile: php/Dockerfile.dev
       args:
         USER_ID: 1000
         GROUP_ID: 1000
-    ports:
-      - 8080:80
     volumes:
       - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./app:/var/www
     depends_on:
       - database
+
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
-    environment:
-      PMA_ARBITRARY: 1
-      PMA_HOST: database
-      PMA_USER: root
-      PMA_PASSWORD: password
-      UPLOAD_LIMIT: 20M
+    image: phpmyadmin/phpmyadmin
     ports:
       - 8899:80
+    env_file:
+      - ./app/.env.local
     depends_on:
-      - php
+      - database
+
   mailhog:
-    image: mailhog/mailhog
     container_name: mailhog
+    image: mailhog/mailhog
     ports:
       - 8025:8025
       - 1025:1025
-    depends_on:
-      - php
+
+volumes:
+  mysql-data:
