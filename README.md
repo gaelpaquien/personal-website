@@ -15,16 +15,19 @@ V2 (in development) → PHP 8 / Symfony 7 / Sass / Docker
 ## Setting up
 
 ### Required
-1. [PHP ⩾8.2](https://www.php.net/downloads.php)
-2. [Composer](https://getcomposer.org/download/)
-3. [MySQL](https://www.mysql.com/fr/downloads/)
-4. [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+1. [Docker](https://www.docker.com/)
+2. [OpenSSL](https://www.openssl.org/)
 
 ### Optional
-1. [Docker](https://www.docker.com/)
-2. [Symfony CLI](https://symfony.com/download)
-3. [New Relic API KEY](https://newrelic.com/)
-4. SMTP (already included if you are using docker)
+1. [New Relic API Key](https://newrelic.com/)
+
+### Included in the environment
+1. PHP 8 (+ Apache)
+2. Symfony 7 (+ CLI)
+3. Composer
+4. MySQL 8 (+ phpMyAdmin)
+5. SMTP (Mailhog)
+6. Self-signed SSL certificate (HTTPS)
 
 ### Installation
 SOON
