@@ -13,16 +13,19 @@ services:
 
   php:
     container_name: php
-    ports:
-      - 8080:80
     build:
       context: .
       dockerfile: php/Dockerfile.dev
       args:
         USER_ID: 1000
         GROUP_ID: 1000
+    ports:
+      - 8080:80
+      - 8443:443
     volumes:
       - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache/default-ssl.conf:/etc/apache2/sites-enabled/000-default-ssl.conf
+      - ./etc/ssl-certs:/etc/ssl-certs
       - ./app:/var/www
     depends_on:
       - database

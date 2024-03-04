@@ -8,15 +8,18 @@ RUN groupadd -g $GROUP_ID appuser \
 
 # Global configuration/installation
 RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzip-dev netcat-openbsd curl \
+    && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzip-dev netcat-openbsd \
     && pecl install apcu \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
     && docker-php-ext-enable apcu \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
-    && a2enmod rewrite \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Apache configuration
+RUN a2enmod rewrite && a2enmod ssl && a2enmod socache_shmcb
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Composer and Symfony installation
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -34,4 +37,4 @@ RUN chmod +x /usr/local/bin/*.sh
 USER appuser
 
 # Execute the script start.sh
-CMD ["/usr/local/bin/start.sh"]
+CMD ["/usr/local/bin/build-docker.sh"]
