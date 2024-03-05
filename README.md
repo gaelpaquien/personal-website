@@ -1,12 +1,16 @@
 # Personal Website
+Evolution of my personal website.
+
+## Links
+*SOON*
 
 ## V1 (2023)
 ### Description
-Single page presentation WordPress site with a contact form.
+Single page WordPress website (presentation, portfolio and contact form).
 
 ## V2 (2024) (in development)
 ### Description
-Evolution of my personal website with new features.
+Evolution of the site for a PHP/Symfony web application with new features.
 ### Features
 - *SOON*
 ### Environment
@@ -17,10 +21,10 @@ Evolution of my personal website with new features.
 - MySQL 8 (+ phpMyAdmin)
 - Dart Sass
 
-## Links
+## Preview (V2)
 *SOON*
 
-## Setting up
+## Setting up (V2)
 ### Required
 1. [Docker](https://www.docker.com/)
 2. [OpenSSL](https://www.openssl.org/)
