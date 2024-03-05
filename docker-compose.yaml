@@ -7,7 +7,7 @@ services:
     ports:
       - 3310:3306
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     env_file:
       - ./app/.env.local
 
@@ -46,6 +46,3 @@ services:
     ports:
       - 8025:8025
       - 1025:1025
-
-volumes:
-  mysql-data:
