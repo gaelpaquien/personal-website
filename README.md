@@ -1,19 +1,26 @@
 # Personal Website
 
-## Description
-Improvement of my personal website.\
-V1 → WordPress\
-V2 (in development) → PHP 8 / Symfony 7 / Sass / Docker
+## V1 (2023)
+### Description
+Single page presentation WordPress site with a contact form.
 
-## Features
-### V1
-- Single page presentation WordPress site with a contact form
+## V2 (2024) (in development)
+### Description
+Evolution of my personal website with new features.
+### Features
+- *SOON*
+### Environment
+- Docker
+- PHP 8 (+ Apache)
+- Symfony 7 (+ CLI)
+- Composer
+- MySQL 8 (+ phpMyAdmin)
+- Dart Sass
 
-### V2
-- SOON
+## Links
+*SOON*
 
 ## Setting up
-
 ### Required
 1. [Docker](https://www.docker.com/)
 2. [OpenSSL](https://www.openssl.org/)
@@ -21,18 +28,5 @@ V2 (in development) → PHP 8 / Symfony 7 / Sass / Docker
 ### Optional
 1. [New Relic API Key](https://newrelic.com/)
 
-### Included in the environment
-1. PHP 8 (+ Apache)
-2. Symfony 7 (+ CLI)
-3. Composer
-4. MySQL 8 (+ phpMyAdmin)
-5. SMTP (Mailhog)
-6. Self-signed SSL certificate (HTTPS)
-
 ### Installation
-SOON
-
---- --- ---
-
-### Links
-SOON
+*SOON*
