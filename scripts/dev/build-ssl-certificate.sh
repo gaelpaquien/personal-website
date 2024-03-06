@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROOT_PATH=$(dirname $(dirname $(dirname $(realpath $0))))
+ROOT_PATH="$(dirname "$(dirname "$(dirname "$(realpath "$0")")")")"
 CONFIG_PATH="$ROOT_PATH/ssl-config.conf"
 CERT_PATH="$ROOT_PATH/etc/ssl-certs/certs/mycert.crt"
 KEY_PATH="$ROOT_PATH/etc/ssl-certs/private/mycert.key"
