@@ -1,27 +1,41 @@
-# Personal Website (V2)
+# Personal Website
+Evolution of my personal website.
 
-## Description
-Improvement of my personal site including my portfolio (WordPress → PHP 8 / Symfony 7).\
-Development of an admin panel to manage site content and a CRM to manage projects and customers.
+## Links
+[Codacy Dashboard](https://app.codacy.com/gh/Galuss1/personal-website/dashboard)
 
-## Setting up
+## V1 (2023)
+
+### Description
+Single page WordPress website (presentation, portfolio and contact form).
+
+## V2 (2024) (in development)
+
+### Description
+Evolution of the WordPress website for a PHP/Symfony web application with new features.
+
+### Features
+*SOON*
+
+### Development environment
+- Docker
+- PHP 8 (+ Apache)
+- Symfony 7 (+ CLI)
+- Composer
+- MySQL 8 (+ phpMyAdmin)
+- Dart Sass
+
+## Preview (V2)
+*SOON*
+
+## Setting up (V2)
 
 ### Required
-1. [PHP ⩾8.3](https://www.php.net/downloads.php)
-2. [Composer](https://getcomposer.org/download/)
-3. [MySQL](https://www.mysql.com/fr/downloads/)
-4. [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+1. [Docker](https://www.docker.com/)
+2. [OpenSSL](https://www.openssl.org/)
 
 ### Optional
-1. [Docker](https://www.docker.com/)
-2. [Symfony CLI](https://symfony.com/download)
-3. [New Relic API KEY](https://newrelic.com/)
-4. SMTP (SMTP is already included if you are using docker)
+1. [New Relic API Key](https://newrelic.com/)
 
 ### Installation
-SOON
-
---- --- ---
-
-### Links
-SOON
+*SOON*
