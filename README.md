@@ -10,10 +10,10 @@ Single page WordPress website (presentation, portfolio and contact form).
 
 ## V2 (2024) (in development)
 ### Description
-Evolution of the site for a PHP/Symfony web application with new features.
+Evolution of the WordPress website for a PHP/Symfony web application with new features.
 ### Features
 - *SOON*
-### Environment
+### Development environment
 - Docker
 - PHP 8 (+ Apache)
 - Symfony 7 (+ CLI)
