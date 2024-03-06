@@ -8,7 +8,7 @@ chmod +x "$ROOT_PATH/scripts/dev/build-ssl-certificate.sh"
 
 echo "start.sh: Building Docker..."
 if ! command -v docker-compose &> /dev/null; then
-    echo "start.sh: docker-compose is not installed, aborting."
+    echo "start.sh: docker-compose is not installed, aborting"
     exit 1
 fi
 
