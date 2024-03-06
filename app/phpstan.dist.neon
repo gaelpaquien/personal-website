@@ -1,0 +1,16 @@
+parameters:
+    level: 6
+    paths:
+        - bin/
+        - config/
+        - public/
+        - src/
+        - tests/
+    excludePaths:
+        - var/*
+        - vendor/*
+    checkMissingIterableValueType: false
+    reportUnmatchedIgnoredErrors: false
+    phpVersion: 80300
+    checkGenericClassInNonGenericObjectType: true
+    treatPhpDocTypesAsCertain: true
