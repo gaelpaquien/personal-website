@@ -1,86 +1,106 @@
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
-    -webkit-text-size-adjust: none;
-    /*─ Debug font size on iphone when landscape orientation ─*/
-    -webkit-font-smoothing: subpixel-antialiased;
-    /*─ Debug safari font weight when fixed element on the page ─*/
-    -webkit-font-smoothing: antialiased;
-    /*─ idem : Debug safari font weight when fixed element on the page ─*/
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html,
 body,
-nav,
-header,
-footer,
-div,
-span,
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p,
+blockquote,
+pre,
 a,
+abbr,
+address,
+em,
 img,
+strong,
+sub,
+sup,
+small,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
 ul,
 li,
-table,
+fieldset,
 form,
 label,
-input,
-textarea,
-select,
-button {
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
     margin: 0;
     padding: 0;
     border: 0;
-    font: inherit;
-    //font-family: inherit;
     font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
-ul {
-    list-style: none;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 
-li {
+ul,
+ol {
     list-style: none;
 }
 
 input,
+button,
 textarea,
-select,
-button {
-    display: block;
-    box-sizing: border-box;
-    border-radius: 0;
-    outline: none;
-    border: none;
-    background: none;
+select {
+    font: inherit;
     color: inherit;
 }
 
 input:focus,
 textarea:focus,
+select:focus,
 button:focus {
     outline: none;
-}
-
-input[type='submit']:hover,
-button:hover {
-    cursor: pointer;
-}
-
-input::-ms-clear {
-    display: none;
-    /*─ IE11 → remove cross to close ─*/
-}
-
-textarea {
-    overflow: auto;
-    /*─ Hide scroll bar on IE ─*/
 }
 
 a {
@@ -89,27 +109,11 @@ a {
 }
 
 img,
-video,
-svg,
-picture {
-    display: block;
-}
-
-img,
 video {
-    width: 100%;
     height: auto;
-}
-
-svg {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
 }
 
 iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    border: none;
 }

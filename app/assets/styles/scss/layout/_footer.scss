@@ -1,0 +1,112 @@
+.footer__about  {
+    @include flex-container(column, center, center);
+    background-color: $color-tertiary;
+    padding: 2.5rem 0;
+
+    h2 {
+        font-size: calc(1.2 * $font-size-h2);
+    }
+
+    p,
+    li,
+    a {
+        font-size: calc(1.1 * $font-size-text);
+    }
+
+    > div:not(:last-child) {
+        margin-bottom: 2.5rem;
+    }
+
+    &-contact-title,
+    &-social-title,
+    &-company-title,
+    &-links-title {
+        @extend %flex-row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.4rem;
+
+        svg {
+            height: 2.3rem;
+            width: auto;
+            margin-right: 0.7rem;
+        }
+    }
+
+    &-social-list {
+        ul {
+            @extend %flex-row;
+            justify-content: center;
+        }
+
+        &-item {
+            padding: 0 0.4rem;
+            padding-top: 0.2rem;
+
+            svg {
+                height: 2rem;
+                width: auto;
+            }
+        }
+    }
+}
+
+.footer__copyright {
+    background-color: $color-primary;
+    padding: 0.5rem 0;
+}
+
+.footer__about-company-text,
+.footer__about-links-list-item,
+.footer__copyright-text {
+    text-align: center;
+}
+
+@media (min-width: 1400px) {
+    .footer__about {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 2.5rem;
+        padding-top: 3rem;
+
+        h2 {
+            font-size: calc(1.35 * $font-size-h2);
+        }
+
+        p,
+        li,
+        a {
+            font-size: calc(1.3 * $font-size-text);
+        }
+
+        > div:not(:last-child) {
+            margin-bottom: 0;
+        }
+
+        &-contact-text,
+        &-social-list,
+        &-company-text,
+        &-links-list {
+            min-height: 9.2rem;
+        }
+
+        &-contact-title,
+        &-social-title,
+        &-company-title,
+        &-links-title {
+            margin-bottom: 1rem;
+
+            svg {
+                height: 2.8rem;
+            }
+        }
+
+        &-social-list {
+            &-item {
+                svg {
+                    height: 2.5rem;
+                }
+            }
+        }
+    }
+}
