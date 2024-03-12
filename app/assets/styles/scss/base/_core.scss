@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    background-color: salmon;
+}
+
+a:hover,
+a:focus,
+button:hover,
+button:focus {
+    opacity: 0.8;
+}
+
+svg {
+    vertical-align: middle;
+    fill: $color-text;
+    height: 1.2rem;
+    width: 1.2rem;
+}
