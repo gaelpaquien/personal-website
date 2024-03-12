@@ -1,0 +1,21 @@
+// @use Utils
+@use './utils/variables' as *;
+@use './utils/mixins' as *;
+@use './utils/functions' as *;
+@use './utils/placeholders' as *;
+
+// @import Base
+@import './base/reset';
+@import './base/core';
+@import './base/fonts';
+@import './base/typography';
+
+// @import Layout
+@import './layout/header';
+@import './layout/navigation';
+@import './layout/footer';
+
+// @import Components
+@import './components/buttons';
+@import './components/carousel';
+@import './components/forms';
