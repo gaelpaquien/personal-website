@@ -1,20 +1,14 @@
 #!/bin/bash
 
-echo "check-code.sh: Running PHP CS Fixer..."
-(cd /var/www && composer run-script cs-check) || {
-    EXIT_CODE=$?
-    if [ $EXIT_CODE -ne 8 ]; then
-        echo "check-code.sh: launch of cs-check failed" ; exit 1;
-    fi
-}
+source functions.sh
 
-echo "check-code.sh: Running PHP Code Sniffer..."
-(cd /var/www && composer run-script phpcs) || { echo "check-code.sh: launch of phpcs failed" ; exit 1; }
+SCRIPT_LABEL="check-code.sh"
 
-echo "check-code.sh: Running PHPStan..."
-(cd /var/www && composer run-script phpstan) || { echo "check-code.sh: launch of phpstan failed" ; exit 1; }
-
-echo "check-code.sh: Running Rector..."
-(cd /var/www && composer run-script rector-dry) || { echo "check-code.sh: launch of rector-dry failed" ; exit 1; }
-
-echo "check-code.sh: All checks completed"
+echo "$SCRIPT_LABEL: Starting checking code..."
+execute_command "$SCRIPT_LABEL" "Running PHP CS Fixer" 8 "/var/www" composer run-script cs-check
+execute_command "$SCRIPT_LABEL" "Running PHP Code Sniffer" 0 "/var/www" composer run-script phpcs
+execute_command "$SCRIPT_LABEL" "Running PHPStan" 0 "/var/www" composer run-script phpstan
+execute_command "$SCRIPT_LABEL" "Running Rector" 0 "/var/www" composer run-script rector-dry
+execute_command "$SCRIPT_LABEL" "Linting Twig files" 0 "/var/www" symfony console lint:twig templates
+execute_command "$SCRIPT_LABEL" "Linting YAML files" 0 "/var/www" symfony console lint:yaml config translations
+echo "$SCRIPT_LABEL: Checking code completed"
