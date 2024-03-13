@@ -61,10 +61,19 @@
                 <div class="footer__about-links-list">
                     <ul>
                         <li class="footer__about-links-list-item">
-                            <a href="#" aria-label="Visiter la page des mentions légales">Mentions légales</a>
+                            <a href="{{ path('app_main_legal_notice') }}" aria-label="Visiter la page des mentions légales">
+                                Mentions légales
+                            </a>
                         </li>
                         <li class="footer__about-links-list-item">
-                            <a href="#" aria-label="Visiter la page des conditions générales d'utilisation">Conditions générales d'utilisation</a>
+                            <a href="{{ path('app_main_privacy_policy') }}" aria-label="Visiter la page de la politique de confidentialité">
+                                Politique de confidentialité
+                            </a>
+                        </li>
+                        <li class="footer__about-links-list-item">
+                            <a href="{{ path('app_main_terms_of_use') }}" aria-label="Visiter la page des conditions générales d'utilisation">
+                                Conditions générales d'utilisation
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +83,7 @@
         <div class="footer__copyright">
             <p class="footer__copyright-text">
                 Copyright {{ 'now' | date('Y') }} &copy; 
-                <a href="#" aria-label="Retour à l'accueil">Gaël Paquien</a>
+                <a href="{{ path('app_main_index') }}" aria-label="Retour à l'accueil">Gaël Paquien</a>
             </p>
         </div>
     </footer>

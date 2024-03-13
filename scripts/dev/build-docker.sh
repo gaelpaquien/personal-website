@@ -1,16 +1,17 @@
 #!/bin/bash
 
-echo "build-docker.sh: Checking MySQL..."
-/usr/local/bin/check-mysql.sh || { echo "build-docker.sh: launch of check-mysql.sh failed" ; exit 1; }
+source functions.sh
 
-echo "build-docker.sh : Building App..."
-/usr/local/bin/build-app.sh || { echo "build-docker.sh: launch of build-app.sh failed" ; exit 1; }
+SCRIPT_LABEL="build-docker.sh"
 
-# echo "build-docker.sh : Building Database..."
-# /usr/local/bin/build-database.sh || { echo "build-docker.sh: launch of build-database.sh failed" ; exit 1; }
+echo "$SCRIPT_LABEL: Starting building docker..."
+execute_command "$SCRIPT_LABEL" "Start the script to checking MySQL" 0 "/usr/local/bin" ./check-mysql.sh
+execute_command "$SCRIPT_LABEL" "Start the script to building app" 0 "/usr/local/bin" ./build-app.sh
+# execute_command "$SCRIPT_LABEL" "Start the script to building database" 0 "/usr/local/bin" ./build-database.sh
+echo "$SCRIPT_LABEL: Building docker completed"
 
 echo "start-sass.sh: Starting Sass in the foreground..."
-/usr/local/bin/start-sass.sh || { echo "start-sass.sh: launch of start-sass.sh failed" ; exit 1; }
+(cd /var/www && sass --watch assets/styles/scss:assets/styles/css --style=compressed &)
 
 echo "build-docker.sh: Starting Apache in the foreground..."
-apachectl -DFOREGROUND || { echo "build-docker.sh: apachectl -DFOREGROUND failed" ; exit 1; }
+apachectl -DFOREGROUND || { echo "$SCRIPT_LABEL: apachectl -DFOREGROUND failed" ; exit 1; }
