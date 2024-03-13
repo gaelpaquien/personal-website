@@ -1,12 +1,11 @@
 #!/bin/bash
 
-echo "fix-code.sh: Fixing code style with PHP-CS-Fixer..."
-(cd /var/www && composer run-script cs-fix) || { echo "fix-code.sh: launch of cs-fix failed" ; exit 1; }
+source functions.sh
 
-echo "fix-code.sh: Applying code refactorings with PHPCBF..."
-(cd /var/www && composer run-script phpcbf) || { echo "fix-code.sh: launch of phpcbf failed" ; exit 1; }
+SCRIPT_LABEL="fix-code.sh"
 
-echo "fix-code.sh: Applying code refactorings with Rector..."
-(cd /var/www && composer run-script rector) || { echo "fix-code.sh: launch of rector failed" ; exit 1; }
-
-echo "fix-code.sh: All fixes completed"
+echo "$SCRIPT_LABEL: Starting fixing code..."
+execute_command "$SCRIPT_LABEL" "Fixing code style with PHP-CS-Fixer" 0 "/var/www" composer run-script cs-fix
+execute_command "$SCRIPT_LABEL" "Applying code refactorings with PHPCBF" 0 "/var/www" composer run-script phpcbf
+execute_command "$SCRIPT_LABEL" "Applying code refactorings with Rector" 0 "/var/www" composer run-script rector
+echo "$SCRIPT_LABEL: Fixing code completed"
