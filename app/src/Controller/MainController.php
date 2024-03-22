@@ -35,10 +35,10 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/cgu', name: 'terms_of_use', options: ['sitemap' => ['priority' => 0.7, 'changefreq' => 'monthly']])]
-    public function termsOfUse(): Response
+    #[Route ('/plan-du-site', name: 'sitemap', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
+    public function sitemap(): Response
     {
-        return $this->render('main/terms_of_use.html.twig', [
+        return $this->render('main/sitemap.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
