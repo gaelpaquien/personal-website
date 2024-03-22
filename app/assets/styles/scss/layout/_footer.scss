@@ -1,111 +1,179 @@
-.footer__about  {
-    @include flex-container(column, center, center);
-    background-color: $color-tertiary;
-    padding: 2.5rem 0;
+.footer__container {
+    display: none;
+}
 
-    h2 {
-        font-size: calc(1.2 * $font-size-h2);
+.footer__container,
+.footer-mobile__container {
+    background-color: $color-primary;
+}
+
+.footer-mobile__container {
+    font-size: calc(0.9 * $font-size-text);
+
+    hr {
+        border: 0.1rem solid $color-tertiary;
+        margin: 0 1.5rem;
     }
 
-    p,
-    li,
-    a {
-        font-size: calc(1.1 * $font-size-text);
+    &-contact {
+        padding-top: 2rem;
     }
 
-    > div:not(:last-child) {
-        margin-bottom: 2.5rem;
+    &-company {
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+    }
+
+    &-about,
+    &-links {
+        padding: 2rem 0;
     }
 
     &-contact-title,
-    &-social-title,
     &-company-title,
-    &-links-title {
-        @extend %flex-row;
+    &-about-title {
+        display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.3rem;
 
-        svg {
-            height: 2.3rem;
-            width: auto;
-            margin-right: 0.7rem;
+        h2 {
+            font-size: calc(0.75 * $font-size-h2);
+            padding: 0 0.3rem;
         }
     }
 
-    &-social-list {
+    &-contact-list,
+    &-links-social {
         ul {
             @extend %flex-row;
             justify-content: center;
+            align-items: center;
         }
 
         &-item {
             padding: 0 0.4rem;
-            padding-top: 0.2rem;
+        }
+    }
 
-            svg {
-                height: 2rem;
-                width: auto;
-            }
+    &-links-social {
+        ul > li:nth-child(1) {
+            padding-left: 0;
+        }
+    }
+
+    &-company-text,
+    &-about-text {
+        text-align: center;
+    }
+
+    &-about-text {
+        opacity: 0.6;
+    }
+
+    &-links {
+        @extend %flex-row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        opacity: 0.6;
+
+        &-list-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
     }
 }
 
-.footer__copyright {
-    background-color: $color-primary;
-    padding: 0.5rem 0;
-}
+@media (min-width: 768px) {
+    .footer-mobile__container {
+        font-size: calc(1 * $font-size-text);
 
-.footer__about-company-text,
-.footer__about-links-list-item,
-.footer__copyright-text {
-    text-align: center;
+        hr {
+            margin: 0 2.5rem;
+        }
+
+        &-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+        }
+
+        &-contact,
+        &-company {
+            padding: 2rem 0;
+        }
+
+        &-links {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+    }
 }
 
 @media (min-width: 1400px) {
-    .footer__about {
+    .footer-mobile__container {
+        display: none;
+    }
+
+    .footer__container {
+        padding: 2.5rem;
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 0 2.5rem;
-        padding-top: 3rem;
 
-        h2 {
-            font-size: calc(1.35 * $font-size-h2);
-        }
-
-        p,
-        li,
-        a {
-            font-size: calc(1.3 * $font-size-text);
-        }
-
-        > div:not(:last-child) {
-            margin-bottom: 0;
-        }
-
-        &-contact-text,
-        &-social-list,
-        &-company-text,
-        &-links-list {
-            min-height: 9.2rem;
-        }
-
+        &-about-title,
         &-contact-title,
-        &-social-title,
-        &-company-title,
-        &-links-title {
-            margin-bottom: 1rem;
+        &-company-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+
+            h2 {
+                font-size: calc(0.9 * $font-size-h2);
+            }
 
             svg {
-                height: 2.8rem;
+                height: calc(0.9 * $font-size-h2);
+                width: auto;
+                margin-right: 0.5rem;
             }
         }
 
-        &-social-list {
+        &-about-text {
+            opacity: 0.6;
+        }
+
+        &-links-list {
             &-item {
-                svg {
-                    height: 2.5rem;
-                }
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                opacity: 0.6;
+            }
+        }
+
+        &-links-social {
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-top: 0.35rem;
+            }
+
+            svg {
+                height: calc(0.9 * $font-size-h2);
+                width: auto;
+                opacity: 0.6;
             }
         }
     }

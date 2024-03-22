@@ -3,19 +3,21 @@
     @include flex-container(row, space-between, center);
 }
 
+.header__container {
+    min-height: 5.5rem;
+}
+
 .header__headband {
     background-color: $color-primary;
     padding: 0.5rem 2.5rem;
 
-    &-mail {
-        display: none;
-    }
-
-    &-social {
+    &-social,
+    &-contact,
+    &-contact-mobile {
         ul {
             @extend %flex-row;
             :not(:last-child) {
-                margin-right: 0.5rem;
+                margin-right: 0.65rem;
             }
         }
     }
@@ -55,11 +57,11 @@
 
 @media (min-width: 768px) {
     .header__headband {
-        &-mail {
+        &-contact {
             display: block;
         }
 
-        &-mail-mobile {
+        &-contact-mobile {
             display: none;
         }
     }
