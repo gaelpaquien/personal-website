@@ -8,7 +8,7 @@ execute_command() {
     shift 4
     command="$@"
 
-    echo "$script_name: Executing: $command_label in $working_dir..."
+    echo "$script_name: $command_label in $working_dir..."
     (cd "$working_dir" && $command)
     EXIT_CODE=$?
     if [ $EXIT_CODE -ne 0 ] && [ $EXIT_CODE -ne $acceptable_exit_code ]; then
