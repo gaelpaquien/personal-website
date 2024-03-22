@@ -18,7 +18,7 @@
         <title>{% block title %}gaelpaquien.com{% endblock %}</title>
 
         <!-- Description -->
-        <meta name="description" content="{% block description %}Gaël Paquien, Développeur Web PHP/Symfony{% endblock %}">
+        <meta name="description" content="{% block description %}{{ 'meta_description' | trans }}{% endblock %}">
 
         <!-- Favicons -->
         <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/favicons/favicon-48x48.png') }}">
@@ -34,14 +34,14 @@
         <!-- Twitter/X -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{% block twitter_title %}Gaël Paquien{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}Développeur Web PHP/Symfony{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{{ 'meta_twitter_description' | trans }}{% endblock %}">
         <meta name="twitter:image" content="{% block twitter_image %}#{% endblock %}">
 
         <!-- Open Graph (Facebook) -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ app.request.uri }}">
         <meta property="og:title" content="{% block og_title %}Gaël Paquien{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}Développeur Web PHP/Symfony{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{{ 'meta_og_description' | trans }}{% endblock %}">
         <meta property="og:image" content="{% block og_image %}#{% endblock %}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
