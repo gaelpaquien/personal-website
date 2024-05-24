@@ -1,9 +1,207 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mentions légales | gaelpaquien.com{% endblock %}
+{% block robots %}noindex, follow{% endblock %}
+{% block title %}{{ 'page_legal_notice_title' | trans }} | gaelpaquien.com{% endblock %}
+
+{% block assets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/legal_pages.css') }}">
+{% endblock %}
 
 {% block content %}
-    <div class="example-wrapper">
-        <h2>Mentions légales</h2>
-    </div>
+    <section id="legal-notice" class="legal-pages__container">
+        <div class="fade-in-effects-initial" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <div class="section-title link-effects" data-target="legal-notice" data-action="click->scroll-to-section#scrollToSection">
+                <svg role="img" aria-labelledby="legal-notice-title" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M318.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-120 120c-12.5 12.5-12.5 32.8 0 45.3l16 16c12.5 12.5 32.8 12.5 45.3 0l4-4L325.4 293.4l-4 4c-12.5 12.5-12.5 32.8 0 45.3l16 16c12.5 12.5 32.8 12.5 45.3 0l120-120c12.5-12.5 12.5-32.8 0-45.3l-16-16c-12.5-12.5-32.8-12.5-45.3 0l-4 4L330.6 74.6l4-4c12.5-12.5 12.5-32.8 0-45.3l-16-16zm-152 288c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l48 48c12.5 12.5 32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-1.4-1.4L272 285.3 226.7 240 168 298.7l-1.4-1.4z"/></svg>
+                <h2 id="legal-notice-title">Mentions légales</h2>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Mentions légales</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    En accédant et en utilisant ce site, vous acceptez pleinement et sans réserve les conditions d’utilisation.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Modification des conditions d'utilisation</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    L’éditeur se réserve le droit de modifier les conditions d’utilisation, à tout moment.
+                    Les utilisateurs sont encouragés à consulter régulièrement ce document pour se tenir informés des éventuelles modifications.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Éditeur du site</h3>
+            <div class="legal-pages__container-block-content">
+                <ul>
+                    <li>Éditeur : Gaël PAQUIEN</li>
+                    <li>Forme juridique : Entrepreneur individuel (EI)</li>
+                    <li>Numéro SIRET : 844 466 441 00020</li>
+                    <li>Numéro TVA : FR89844466441 </li>
+                    <li>Code APE : 62.01Z</li>
+                    <li>
+                        Email : 
+                        <a href="mailto:contact@gaelpaquien.com" aria-label="Envoyer un mail à Gaël Paquien">
+                            contact@gaelpaquien.com
+                        </a>
+                    </li>
+                    <li>
+                        Téléphone : 
+                        <a href="tel:0634068636" aria-label="Appeler Gaël Paquien">
+                            06 34 06 86 36
+                        </a>
+                    </li>
+                    <li>
+                        Site : 
+                        <a href="{{ path('app_main_index') }}" aria-label="Retour à l'accueil">
+                            https://www.gaelpaquien.com
+                        </a>
+                    </li>
+                    <li>Adresse : 71-73 Avenue de la Patinière, 38500 Voiron</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"  data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Hébergeur du site</h3>
+            <div class="legal-pages__container-block-content">
+                <ul>
+                    <li>Hébergeur : o2switch</li>
+                    <li>
+                        Site : 
+                        <a href="https://www.o2switch.fr" target="_blank" rel="noopener" aria-label="Consulter le site de o2switch">
+                            https://www.o2switch.fr
+                        </a>
+                    </li>
+                    <li>Adresse : Chem. des Pardiaux, 63000 Clermont-Ferrand</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Stockage et utilisation des médias</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Les images utilisées peuvent être stockées directement sur notre site ou intégrées par des sources tierces. 
+                    Nous prenons toutes les mesures nécessaires pour nous assurer que les images utilisées respectent les droits d’auteur 
+                    et sont utilisées conformément aux lois en vigueur.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Propriété intellectuelle</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Le code source de ce site web, y compris mais sans s’y limiter, les scripts, les styles, 
+                    et les fonctionnalités spécifiques, est fourni uniquement à des fins de visualisation et 
+                    d’interaction sur ce site. Toute utilisation, reproduction, modification, distribution ou 
+                    redistribution du code source, en tout ou en partie, à des fins commerciales ou non commerciales, 
+                    sans une autorisation écrite préalable de l’éditeur du site, est strictement interdite.
+                </p>
+                <br>
+                <p>Le logo/favicon "GP" utilise des éléments de sources tierces, telles que :</p>
+                <ul>
+                    <li>
+                        <a href="https://www.freepik.com/free-vector/round-brushes-6_35202634.htm#query=circle&position=2&from_view=search&track=sph&uuid=871e163e-a763-4c27-95e5-35e6c9e3ddce" target="_blank" rel="noopener" aria-label="Voir le profil Freepik de juicy_fish">
+                            Image de juicy_fish sur Freepik
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zetafonts.com/amazing-grotesk" target="_blank" rel="noopener" aria-label="Voir le site de la font Amazing Grotesk">
+                            Font « Amazing Grotesk » de zetafonts
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    D'autres ressources (icônes, images, illustrations, etc..) sont utilisées sur ce site. Ces ressources sont 
+                    utilisées conformément aux licences applicables. Toute utilisation non autorisée de ces éléments peut constituer
+                    une violation des droits d'auteur ou des licences correspondantes.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Liens externes</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Ce site peut contenir des liens vers des sites externes qui ne sont pas opérés par nous. Nous n’avons 
+                    aucun contrôle sur le contenu, les politiques de confidentialité ou les pratiques de ces sites tiers et déclinons 
+                    toute responsabilité à cet égard. L’utilisation de ces sites externes est soumise à leurs propres conditions 
+                    d’utilisation et politiques de confidentialité.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Utilisation du site</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Toute utilisation abusive ou frauduleuse du site est interdite.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Responsabilité de l'utilisateur</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Les utilisateurs du site sont responsables de l’exactitude des informations fournies pour 
+                    les formulaires (contact, ajout d'un avis).
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Limitation de responsabilité</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    L’éditeur du site ne peut garantir l’exactitude, la fiabilité ou la disponibilité continue du site.
+                    De plus, nous ne sommes pas responsables :
+                </p>
+                <ul>
+                    <li>
+                        Des dommages indirects tels que la perte de profit, de données ou d’opportunités d’affaires résultant 
+                        de l’utilisation de ce site.
+                    </li>
+                    <li>
+                        Des dysfonctionnements logiciels ou matériels de l’utilisateur ou de problèmes de connectivité Internet 
+                        qui pourraient survenir lors de l’utilisation du site.
+                    </li>
+                    <li>
+                        Des contenus publiés par des tiers sur le site ou des dommages résultant de leur utilisation ou de leur 
+                        confiance en ces contenus.
+                    </li>
+                </ul>
+                <p>Cette limitation de responsabilité s’applique dans la mesure permise par la loi.</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Loi applicable et juridiction compétente</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Ces termes et conditions d’utilisation sont soumis au droit français. En cas de litige, 
+                    la juridiction compétente est celle du lieu de résidence de l’éditeur.
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <h3 class="legal-pages__container-block-title">Politique de confidentialité</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    Consulter notre <a href="{{ path('app_main_privacy_policy') }}" aria-label="Consulter la politique de confidentialité">politique de confidentialité</a>.
+                </p>
+            </div>
+        </div>
+
+        {% include "_partials/_btn_return_to_home.html.twig" %}
+    </section>
 {% endblock %}
