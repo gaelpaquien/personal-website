@@ -1,6 +1,225 @@
+@use './variables' as *;
+
 @mixin flex-container($direction: row, $justify: center, $align: center) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Breakpoint `#{$breakpoint}` not recognized. The available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin animation-pulse($scale: 1.05, $duration: 0.75s) {
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale($scale);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    animation: pulse $duration ease-out 1;
+}
+
+@mixin animation-pulseWithBoxShadow($scale: 1.025, $duration: 0.75s) {
+    @keyframes pulseWithBoxShadow {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 4px 8px var(--color-text);
+        }
+
+        50% {
+            transform: scale($scale);
+            box-shadow: 0 6px 20px var(--color-text);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 4px 8px var(--color-text);
+        }
+    }
+
+    animation: pulseWithBoxShadow $duration ease-out 1;
+}
+
+@mixin animation-pressed($scale: 0.95, $duration: 0.25s) {
+    @keyframes pressed {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale($scale);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    animation: pressed $duration ease forwards;
+}
+
+@mixin animation-bounce($duration: 2.5s, $repeat: 3) {
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-15px);
+        }
+
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+
+    animation: bounce $duration $repeat ease-in-out;
+}
+
+
+@mixin animation-disappears($duration: 0.25s) {
+    @keyframes disappears {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.5;
+            transform: scale(0.75);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+
+    animation: disappears $duration ease-in-out;
+}
+
+@mixin animation-appears($duration: 0.25s) {
+    @keyframes appears {
+        0% {
+            opacity: 0.7;
+            transform: scale(0.70);
+        }
+
+        50% {
+            opacity: 0.85;
+            transform: scale(0.85);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    animation: appears $duration ease-in-out;
+}
+
+@mixin animation-rotate($deg1: 0deg, $deg2: 180deg, $duration: 0.5s) {
+    @keyframes rotate {
+        from {
+            transform: rotate($deg1);
+        }
+        to {
+            transform: rotate($deg2);
+        }
+    }
+
+    animation: rotate $duration forwards;
+}
+
+@mixin animation-fadeInLeft($duration: 0.8s, $px: 50px) {
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0.5;
+            transform: translateX(-$px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    animation: fadeInLeft $duration ease-in-out forwards;
+}
+
+@mixin animation-fadeInRight($duration: 0.8s, $px: 50px) {
+    @keyframes fadeInRight {
+        from {
+            opacity: 0.5;
+            transform: translateX($px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    animation: fadeInRight $duration ease-in-out forwards;
+}
+
+@mixin animation-fadeInUp($duration: 0.8s, $px: 50px) {
+    @keyframes fadeInUp {
+        from {
+            opacity: 0.5;
+            transform: translateY($px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    animation: fadeInUp $duration ease-in-out forwards;
+}
+
+@mixin animation-slideDown($maxHeight: 500px, $duration: 0.5s) {
+    @keyframes slideDown {
+        from {
+            max-height: 0;
+            opacity: 0;
+        }
+        to {
+            max-height: $maxHeight;
+            opacity: 1;
+        }
+    }
+
+    animation: slideDown $duration forwards;
+}
+
+@mixin animation-slideUp($maxHeight: 500px, $duration: 0.5s) {
+    @keyframes slideUp {
+        from {
+            max-height: $maxHeight;
+            opacity: 1;
+        }
+        to {
+            max-height: 0;
+            opacity: 0;
+        }
+    }
+
+    animation: slideUp $duration forwards;
 }

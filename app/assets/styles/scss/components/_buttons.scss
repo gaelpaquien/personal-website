@@ -1,0 +1,110 @@
+.btn {
+    position: relative;
+    overflow: hidden;
+    border-color: var(--color-text);
+    border: solid 0.15rem var(--color-text);
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: $font-size-text;
+    padding: 0.5rem 0.75rem;
+    text-transform: uppercase;
+    transition: color 0.5s, background-color 0.5s, transform 0.5s;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(var(--color-tertiary-r), var(--color-tertiary-g), var(--color-tertiary-b), 0.25);
+        transition: left 0.5s;
+    }
+
+    &:hover::after {
+        left: 0;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        @include animation-pressed(0.9);
+    }
+
+    @include respond-to('breakpoint-576') {
+
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: calc(1.2 * $font-size-text);
+    }
+}
+
+#btn-scroll-to-top {
+    button {
+        position: fixed;
+        bottom: 0.05rem;
+        right: 0.05rem;
+        background-color: transparent;
+        padding: 0;
+        border: none;
+    }
+
+    svg {
+        height: 1.2rem;
+        width: auto;
+        @extend %flex-center;
+    }
+
+
+    @include respond-to('breakpoint-768') {
+        svg {
+            height: 2rem;
+        }
+    }
+}
+
+#btn-scroll-to-next-section {
+    @extend %flex-center;
+
+    button {
+        background-color: transparent;
+        border: none;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    svg {
+        height: 5rem;
+        width: auto;
+        @include animation-bounce(1.75s, infinite);
+        transition: transform 0.5s ease-in-out;
+
+        &:hover {
+            animation: none;
+        }
+
+        &:active {
+            @include animation-pressed(0.9);
+        }
+    }
+
+    @include respond-to('breakpoint-768') {
+        svg {
+            height: 6.5rem;
+        }
+    }
+}
+
+.btn-dark-mode,
+.btn-light-mode {
+    opacity: 1;
+}
+
+.btn-return-to-home {
+    .btn {
+        background-color: var(--color-primary);
+    }
+}

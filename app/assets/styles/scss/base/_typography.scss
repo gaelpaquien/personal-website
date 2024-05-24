@@ -3,7 +3,7 @@ body {
     font-weight: 500;
     line-height: 1.6;
     font-size: $font-size-text;
-    color: $color-text;
+    color: var(--color-text);
 }
 
 h1 {
@@ -45,7 +45,33 @@ h6 {
     font-size: $font-size-h6;
 }
 
-@media (min-width: 768px) {
+@include respond-to('breakpoint-576') {
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+    }
+
+    h6 {
+        font-size: 1.1rem;
+    }
+}
+
+@include respond-to('breakpoint-768') {
     h1 {
         font-size: 2.5rem;
     }
@@ -71,7 +97,7 @@ h6 {
     }
 }
 
-@media (min-width: 992px) {
+@include respond-to('breakpoint-992') {
     h1 {
         font-size: 3rem;
     }
@@ -97,7 +123,7 @@ h6 {
     }
 }
 
-@media (min-width: 1200px) {
+@include respond-to('breakpoint-1200') {
     h1 {
         font-size: 3.5rem;
     }

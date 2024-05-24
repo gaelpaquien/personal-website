@@ -1,22 +1,101 @@
-.footer__container {
-    display: none;
-}
-
 .footer__container,
 .footer-mobile__container {
-    background-color: $color-primary;
+    background-color: var(--color-tertiary);
+}
+
+.footer__container {
+    display: none;
+
+    @include respond-to('breakpoint-1400') {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2.5rem;
+
+        &-about-title,
+        &-contact-title,
+        &-company-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+
+            h2 {
+                font-size: $font-size-h2;
+            }
+
+            svg {
+                height: $font-size-h2;
+                width: auto;
+                margin-right: 0.5rem;
+            }
+        }
+
+        &-about-text,
+        &-company-text,
+        &-company-title h2,
+        &-company-title svg {
+            opacity: 0.6;
+        }
+
+        &-links-various {
+            &-item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                a {
+                    opacity: 0.6;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &-links-social {
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 0.35rem;
+
+            svg {
+                height: 1.7rem;
+                width: auto;
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
 .footer-mobile__container {
     font-size: calc(0.9 * $font-size-text);
 
     hr {
-        border: 0.1rem solid $color-tertiary;
+        border: 0.1rem solid var(--color-text);
         margin: 0 1.5rem;
     }
 
     &-contact {
         padding-top: 2rem;
+
+        &-meeting {
+            text-align: center;
+        }
+
+        &-list {
+            &-item {
+                padding: 0 0.75rem;
+            }
+        }
     }
 
     &-company {
@@ -32,40 +111,37 @@
     &-contact-title,
     &-company-title,
     &-about-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+        @include flex-container(row, center, center);
         margin-bottom: 0.3rem;
 
         h2 {
-            font-size: calc(0.75 * $font-size-h2);
+            font-size: $font-size-h2;
             padding: 0 0.3rem;
+        }
+
+        svg {
+            height: $font-size-h2;
+            width: auto;
         }
     }
 
     &-contact-list,
     &-links-social {
-        ul {
-            @extend %flex-row;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &-item {
-            padding: 0 0.4rem;
-        }
+        @extend %flex-row;
+        justify-content: center;
+        align-items: center;
     }
 
-    &-links-social {
-        ul > li:nth-child(1) {
-            padding-left: 0;
-        }
+    &-links-social>li:nth-child(1) {
+        padding-left: 0;
     }
 
     &-company-text,
+    &-company-title h2,
+    &-company-title svg,
     &-about-text {
         text-align: center;
+        opacity: 0.6;
     }
 
     &-about-text {
@@ -78,18 +154,37 @@
         align-items: center;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        opacity: 0.6;
 
-        &-list-item {
+        &-social-item {
+            padding: 0 0.4rem;
+
+            svg {
+                height: 1.25rem;
+                width: auto;
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &-various-item {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+
+            a {
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
-}
 
-@media (min-width: 768px) {
-    .footer-mobile__container {
+    @include respond-to('breakpoint-768') {
         font-size: calc(1 * $font-size-text);
 
         hr {
@@ -111,70 +206,18 @@
         &-links {
             padding-left: 2.5rem;
             padding-right: 2.5rem;
+
+            &-social-item {
+                padding: 0 0.75rem;
+
+                svg {
+                    height: 1.6rem;
+                }
+            }
         }
     }
-}
 
-@media (min-width: 1400px) {
-    .footer-mobile__container {
+    @include respond-to('breakpoint-1400') {
         display: none;
-    }
-
-    .footer__container {
-        padding: 2.5rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        &-about-title,
-        &-contact-title,
-        &-company-title {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            height: 2.5rem;
-
-            h2 {
-                font-size: calc(0.9 * $font-size-h2);
-            }
-
-            svg {
-                height: calc(0.9 * $font-size-h2);
-                width: auto;
-                margin-right: 0.5rem;
-            }
-        }
-
-        &-about-text {
-            opacity: 0.6;
-        }
-
-        &-links-list {
-            &-item {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                opacity: 0.6;
-            }
-        }
-
-        &-links-social {
-            margin-bottom: 0.5rem;
-            height: 2.5rem;
-
-            ul {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                padding-top: 0.35rem;
-            }
-
-            svg {
-                height: calc(0.9 * $font-size-h2);
-                width: auto;
-                opacity: 0.6;
-            }
-        }
     }
 }
