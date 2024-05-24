@@ -1,39 +1,60 @@
+.header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+}
+
 .header__headband,
 .header__container {
     @include flex-container(row, space-between, center);
 }
 
-.header__container {
-    min-height: 5.5rem;
-}
-
 .header__headband {
-    background-color: $color-primary;
-    padding: 0.5rem 2.5rem;
+    background-color: var(--color-primary);
+    padding: 0.5rem 1.5rem;
 
-    &-social,
-    &-contact,
-    &-contact-mobile {
-        ul {
-            @extend %flex-row;
-            :not(:last-child) {
-                margin-right: 0.65rem;
+    .language-icons {
+        border: 0.1rem solid var(--color-text);
+        border-radius: 100%;
+    }
+
+    &-left-list,
+    &-right-list {
+        @extend %flex-row;
+
+        :not(:last-child) {
+            margin-right: 0.5rem;
+        }
+
+        span {
+            display: none;
+        }
+    }
+
+    @include respond-to('breakpoint-768') {
+        padding: 0.5rem 2.5rem;
+
+        :not(:last-child) {
+            margin-right: 0.75rem;
+        }
+
+        &-left-list,
+        &-right-list {
+            span {
+                display: inline;
             }
         }
     }
 }
 
 .header__container {
-    background-color: $color-tertiary;
-    padding: 1rem 2.5rem;
-    padding-left: 2.25rem;
+    background-color: var(--color-tertiary);
+    min-height: 5.5rem;
+    padding: 1rem 1.5rem;
 
     &-title {
         display: none;
-
-        h1 {
-            font-size: calc(1.25 * $font-size-h1);
-        }
+        font-size: calc(1.25 * $font-size-h1);
     }
 
     &-title-mobile {
@@ -43,31 +64,42 @@
         }
     }
 
-    &-menu-btn {
+    &-menu-close {
+        display: none;
+    }
+
+    &-menu-open,
+    &-menu-close {
         background-color: transparent;
         border: none;
 
         svg {
             height: 3rem;
             width: auto;
-            fill: $color-text;
+        }
+
+        &.rotate-up {
+            @include animation-rotate(90deg, 0deg, 0.5s);
+        }
+
+        &.rotate-down {
+            @include animation-rotate(0deg, 90deg, 0.5s);
+        }
+
+        .icon-effects {
+            &:hover {
+                @include animation-pulse(1.15);
+                transform: scale(1);
+            }
+
+            &:active {
+                animation: none;
+            }
         }
     }
-}
 
-@media (min-width: 768px) {
-    .header__headband {
-        &-contact {
-            display: block;
-        }
-
-        &-contact-mobile {
-            display: none;
-        }
-    }
-
-    .header__container {
-        padding-left: 2.5rem;
+    @include respond-to('breakpoint-768') {
+        padding: 1rem 2.5rem;
 
         &-title {
             display: block;
@@ -77,7 +109,8 @@
             display: none;
         }
 
-        &-menu-btn {
+        &-menu-open,
+        &-menu-close {
             svg {
                 height: 3rem;
             }

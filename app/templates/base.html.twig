@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
 
@@ -31,20 +31,24 @@
         <link rel="preload" href="{{ asset('fonts/Chivo-SemiBold.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="{{ asset('fonts/Poppins-Medium.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
 
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:locale" content="{{ app.request.locale }}">
+        <meta property="og:site_name" content="Gaël Paquien">
+        <meta property="og:title" content="{% block og_title %}Gaël Paquien{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{{ 'meta_og_description' | trans }}{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{% endblock %}">
+        <meta property="og:image:alt" content="{% block og_image_alt %}{% endblock %}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
         <!-- Twitter/X -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{% block twitter_title %}Gaël Paquien{% endblock %}">
         <meta name="twitter:description" content="{% block twitter_description %}{{ 'meta_twitter_description' | trans }}{% endblock %}">
-        <meta name="twitter:image" content="{% block twitter_image %}#{% endblock %}">
-
-        <!-- Open Graph (Facebook) -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ app.request.uri }}">
-        <meta property="og:title" content="{% block og_title %}Gaël Paquien{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}{{ 'meta_og_description' | trans }}{% endblock %}">
-        <meta property="og:image" content="{% block og_image %}#{% endblock %}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
+        <meta name="twitter:image" content="{% block twitter_image %}{% endblock %}">
+        <meta name="twitter:image:alt" content="{% block twitter_image_alt %}{% endblock %}">
 
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -53,22 +57,23 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-PQM9LCTV');</script>
 
-        <!-- CSS -->
-        {% block stylesheets %}
+        <!-- Custom assets -->
+        {% block assets %}
         {% endblock %}
 
-        <!-- JavaScript -->
-        {% block javascripts %}
+        <!-- AssetMapper -->
+        {% block mapper %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
 
-    <body>
+    <body data-controller="navigation scroll-to-section">
         {% include "_partials/_header.html.twig" %}
         {% include "_partials/_navigation.html.twig" %}
         <main>
             {% block content %}{% endblock %}
         </main>
+        {% include "_partials/_btn_scroll_to_top.html.twig" %}
         {% include "_partials/_footer.html.twig" %}
     </body>
 
