@@ -1,0 +1,45 @@
+.home-contact__container {
+    background-color: var(--color-primary);
+    @include flex-container(column, space-between, center);
+
+    form {
+        background-color: var(--color-secondary);
+        margin-bottom: 2.5rem;
+        padding: 1.5rem;
+
+        input,
+        textarea {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            width: 100%;
+        }
+
+        .form-switch {
+            &-text {
+                font-size: calc(0.8 * $font-size-text);
+            }
+        }
+
+        button {
+            background-color: var(--color-primary);
+        }
+    }
+
+    @include respond-to('breakpoint-768') {
+        form {
+            margin-bottom: 4.5rem;
+
+            .form-switch {
+                &-text {
+                    font-size: $font-size-text;
+                }
+            }
+
+            .form-identity-group {
+                input {
+                    width: 47.5%;
+                }
+            }
+        }
+    }
+}

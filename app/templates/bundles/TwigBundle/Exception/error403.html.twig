@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block robots %}noindex, nofollow{% endblock %}
+{% block title %}{{ 'page_403_title' | trans }} | gaelpaquien.com{% endblock %}
+
+{% block assets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/errors_pages.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section id="error403-page" class="errors-pages__container">
+        <div class="fade-in-effects-initial" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <div class="section-title link-effects" data-target="error403-page" data-action="click->scroll-to-section#scrollToSection">
+                <svg role="img" aria-labelledby="error403-page-title" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                <h2 id="error403-page-title">Erreur 403 - Forbidden</h2>
+            </div>
+        </div>
+
+        <p class="errors-pages__container-content">
+            Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site.
+        </p>
+
+        {% include "_partials/_btn_return_to_home.html.twig" %}
+    </section>
+{% endblock %}
