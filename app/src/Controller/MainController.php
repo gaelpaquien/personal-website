@@ -29,10 +29,10 @@ class MainController extends AbstractController
         return $this->render('main/privacy_policy.html.twig');
     }
 
-    #[Route ('/plan-du-site', name: 'sitemap', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
+    #[Route('/plan-du-site', name: 'sitemap', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function sitemap(): Response
     {
-        $xml = simplexml_load_file($this->getParameter('kernel.project_dir') . '/public/sitemap.default.xml');
+        $xml = \simplexml_load_file($this->getParameter('kernel.project_dir') . '/public/sitemap.default.xml');
 
         $urls = [];
         foreach ($xml->url as $urlElement) {
@@ -40,7 +40,7 @@ class MainController extends AbstractController
         }
 
         return $this->render('main/sitemap.html.twig', [
-            'urls' => $urls
+            'urls' => $urls,
         ]);
     }
 }
