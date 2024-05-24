@@ -15,11 +15,11 @@ export default class extends Controller {
     }
 
     applyLanguage() {
-        // Retrieve the language from localStorage or default to 'fr'
-        const language = localStorage.getItem('language') || 'fr';
+        // // Retrieve the language from localStorage or default to 'fr'
+        // const language = localStorage.getItem('language') || 'fr';
 
-        // Update the state of the language toggle buttons
-        this.updateButtonState();
+        // // Update the state of the language toggle buttons
+        // this.updateButtonState();
     }
 
     updateButtonState() {

@@ -42,7 +42,6 @@ export default class extends Controller {
         const button = event.currentTarget;
         const marginPixels = 50;
         const isCloseToBottom = (window.innerHeight + window.scrollY + marginPixels) >= document.body.offsetHeight;
-        const lastButton = this.buttonTargets[this.buttonTargets.length - 1];
 
         if (isCloseToBottom) {
             // Scroll to top if close to bottom
