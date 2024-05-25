@@ -136,18 +136,32 @@
     animation: appears $duration ease-in-out;
 }
 
-@mixin animation-rotate($deg1: 0deg, $deg2: 180deg, $duration: 0.5s) {
-    @keyframes rotate {
+@mixin animation-rotateUp($duration: 0.5s) {
+    @keyframes rotateUp {
         from {
-            transform: rotate($deg1);
+            transform: rotate(0deg);
         }
 
         to {
-            transform: rotate($deg2);
+            transform: rotate(180deg);
         }
     }
 
-    animation: rotate $duration forwards;
+    animation: rotateUp $duration forwards;
+}
+
+@mixin animation-rotateDown($duration: 0.5s) {
+    @keyframes rotateDown {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(90deg);
+        }
+    }
+
+    animation: rotateDown $duration forwards;
 }
 
 @mixin animation-fadeInLeft($duration: 0.8s, $px: 50px) {
@@ -198,34 +212,34 @@
     animation: fadeInUp $duration ease-in-out forwards;
 }
 
-@mixin animation-slideDown($maxHeight: 500px, $duration: 0.5s) {
-    @keyframes slideDown {
-        from {
-            max-height: 0;
-            opacity: 0;
+@mixin animation-popupOpen($duration: 0.5s) {
+    @keyframes popupOpen {
+        0% {
+            opacity: 0.5;
+            transform: translate(-200%, 150%);
         }
 
-        to {
-            max-height: $maxHeight;
+        100% {
             opacity: 1;
+            transform: translate(-50%, -50%);
         }
     }
 
-    animation: slideDown $duration forwards;
+    animation: popupOpen $duration ease-out forwards;
 }
 
-@mixin animation-slideUp($maxHeight: 500px, $duration: 0.5s) {
-    @keyframes slideUp {
-        from {
-            max-height: $maxHeight;
+@mixin animation-popupClose($duration: 0.5s) {
+    @keyframes popupClose {
+        0% {
             opacity: 1;
+            transform: translate(-50%, -50%);
         }
 
-        to {
-            max-height: 0;
+        100% {
             opacity: 0;
+            transform: translate(-200%, 150%);
         }
     }
 
-    animation: slideUp $duration forwards;
+    animation: popupClose $duration ease-out forwards;
 }

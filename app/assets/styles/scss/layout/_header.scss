@@ -79,11 +79,11 @@
         }
 
         &.rotate-up {
-            @include animation-rotate(90deg, 0deg, 0.5s);
+            @include animation-rotateUp;
         }
 
         &.rotate-down {
-            @include animation-rotate(0deg, 90deg, 0.5s);
+            @include animation-rotateDown;
         }
 
         .icon-effects {

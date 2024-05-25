@@ -13,16 +13,20 @@ export default class extends Controller {
         // Select the HTML element corresponding to the target section ID
         const targetElement = document.querySelector(`#${targetId}`);
 
-        // Calculate the header height to offset the scroll position correctly
-        const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+        if (targetElement) {
+            // Calculate the header height to offset the scroll position correctly
+            const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
 
-        // Calculate the target scroll position based on the current position of the target section
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+            // Calculate the target scroll position based on the current position of the target section
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
 
-        // Smooth scrolling to the target section
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+            // Smooth scrolling to the target section
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        } else {
+            console.error(`Element with ID ${targetId} not found.`);
+        }
     }
 }

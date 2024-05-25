@@ -4,6 +4,7 @@ export default class extends Controller {
     static targets = ["overlay", "menu", "openButton", "closeButton", "dropdown", "arrow"];
 
     connect() {
+        // Cache header, footer, and main content elements
         this.headerHeadband = document.querySelector('.header__headband');
         this.footer = document.querySelector('footer');
         this.mainContent = document.querySelector('main');
@@ -14,6 +15,7 @@ export default class extends Controller {
         this.menuTarget.style.transition = 'width 0.5s';
         this.menuTarget.style.width = '0%';
 
+        // Event listeners for DOM content loaded, click, and window resize events
         document.addEventListener('DOMContentLoaded', this.handleScrollToAnchor);
         this.mainContent.addEventListener('click', this.handleOutsideClick);
         this.overlayTarget.addEventListener('click', this.handleOutsideClick);
@@ -21,7 +23,7 @@ export default class extends Controller {
     }
 
     disconnect() {
-        // Clean up the event listener when the controller is disconnected
+        // Clean up the event listeners when the controller is disconnected
         document.removeEventListener('DOMContentLoaded', this.handleScrollToAnchor);
         this.mainContent.removeEventListener('click', this.handleOutsideClick);
         this.overlayTarget.removeEventListener('click', this.handleOutsideClick);
@@ -29,15 +31,13 @@ export default class extends Controller {
     }
 
     open() {
+        // Open the menu and adjust styles based on breakpoints
         this.openButtonTarget.classList.add('rotate-up');
-
         document.body.style.overflow = 'hidden';
-
         this.headerHeadband.style.display = 'none';
         this.overlayTarget.style.display = 'block';
         this.menuTarget.style.borderLeft = 'solid 0.1rem var(--color-text)';
 
-        // Adjust styles based on breakpoints
         if (window.innerWidth >= 1200) {
             this.menuTarget.style.top = '6.2rem';
             this.menuTarget.style.width = '25%';
@@ -62,10 +62,9 @@ export default class extends Controller {
     }
 
     close() {
+        // Close the menu and reset styles
         this.closeButtonTarget.classList.add('rotate-down');
-
         document.body.style.overflow = 'auto';
-
         this.menuTarget.style.width = "0%";
         this.mainContent.style.width = '100%';
         this.overlayTarget.style.display = 'none';
@@ -82,6 +81,7 @@ export default class extends Controller {
     }
 
     toggleDropdown(event) {
+        // Toggle the visibility of the dropdown menu
         const listItem = event.currentTarget.closest('.navigation__container-list-item');
         const dropdown = listItem.querySelector('.navigation__container-list-item-about-dropdown');
         const arrow = listItem.querySelector('svg');
@@ -89,11 +89,7 @@ export default class extends Controller {
         dropdown.classList.toggle('active');
         arrow.classList.toggle('rotate-down-effects');
 
-        if (dropdown.classList.contains('active')) {
-            dropdown.style.display = 'block';
-        } else {
-            dropdown.style.display = 'none';
-        }
+        dropdown.style.display = dropdown.classList.contains('active') ? 'block' : 'none';
 
         // Close other dropdowns
         const otherDropdowns = this.element.querySelectorAll('.navigation__container-list-item-about-dropdown');
@@ -108,6 +104,7 @@ export default class extends Controller {
     }
 
     redirect(event) {
+        // Redirect to the URL specified in the data-url attribute
         const url = event.currentTarget.dataset.url;
         const anchor = event.currentTarget.dataset.urlAnchor;
 
@@ -126,6 +123,7 @@ export default class extends Controller {
     }
 
     handleScrollToAnchor = () => {
+        // Handle scrolling to the anchor specified in localStorage
         const anchor = localStorage.getItem('anchor');
         if (anchor) {
             localStorage.removeItem('anchor');
@@ -146,12 +144,14 @@ export default class extends Controller {
     }
 
     handleOutsideClick = (event) => {
+        // Close the menu if a click is detected outside of the main content or overlay
         if (this.mainContent.contains(event.target) || this.overlayTarget.contains(event.target)) {
             this.close();
         }
     }
 
     handleWindowResize = () => {
+        // Close the menu on window resize if it is open
         if (this.menuTarget.style.width !== "0%") {
             this.close();
         }

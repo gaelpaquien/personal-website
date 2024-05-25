@@ -10,6 +10,7 @@ export default class extends Controller {
         if (this.urlValue) {
             window.location.href = this.urlValue;
         } else {
+            // Log an error if the URL value is missing
             console.error('URL value is missing.');
         }
     }

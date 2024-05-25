@@ -44,16 +44,16 @@ export default class extends Controller {
 
     next() {
         this.stopAutoScroll(); // Stop auto scroll to prevent conflicts
-        let nextIndex = (this.currentIndex + 1) % this.itemTargets.length; // Calculate the next index
-        this.transitionItems(this.currentIndex, nextIndex, "next"); // Transition to the next item
+        const nextIndex = (this.currentIndex + 1) % this.itemTargets.length; // Calculate the next index
+        this.transitionItems(this.currentIndex, nextIndex); // Transition to the next item
         this.currentIndex = nextIndex; // Update current index
         this.startAutoScroll(); // Restart auto scroll
     }
 
     previous() {
         this.stopAutoScroll(); // Stop auto scroll to prevent conflicts
-        let prevIndex = (this.currentIndex - 1 + this.itemTargets.length) % this.itemTargets.length; // Calculate the previous index
-        this.transitionItems(this.currentIndex, prevIndex, "previous"); // Transition to the previous item
+        const prevIndex = (this.currentIndex - 1 + this.itemTargets.length) % this.itemTargets.length; // Calculate the previous index
+        this.transitionItems(this.currentIndex, prevIndex); // Transition to the previous item
         this.currentIndex = prevIndex; // Update current index
         this.startAutoScroll(); // Restart auto scroll
     }

@@ -14,7 +14,7 @@ export default class extends Controller {
             card.style.animation = "";
         }, 250);
 
-        // Navigate to..
+        // Navigate to the target location
         // window.location.href = "#";
     }
 }

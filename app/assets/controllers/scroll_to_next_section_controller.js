@@ -26,13 +26,10 @@ export default class extends Controller {
 
             if (isCloseToBottom) {
                 // Rotate button up if close to bottom
-                this.addRotateUpKeyframes();
-                lastButton.style.animation = 'rotateBtnUp 0.5s forwards';
-                lastButton.style.transform = 'rotate(180deg)';
+                lastButton.classList.add('rotate-up-effects');
             } else {
                 // Reset styles if not close to bottom
-                lastButton.style.animation = '';
-                lastButton.style.transform = 'rotate(0deg)';
+                lastButton.classList.remove('rotate-up-effects');
             }
         }
     }
@@ -59,33 +56,6 @@ export default class extends Controller {
                 top: targetPosition,
                 behavior: 'smooth'
             });
-        }
-    }
-
-    addRotateUpKeyframes() {
-        // Define and insert keyframes for the rotate up animation
-        const styleSheet = document.styleSheets[0];
-        const keyframes = `
-            @keyframes rotateBtnUp {
-                from {
-                    transform: rotate(0deg);
-                }
-                to {
-                    transform: rotate(180deg);
-                }
-            }
-        `;
-        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-    }
-
-    removeRotateUpKeyframes() {
-        // Remove the rotate up keyframes from the stylesheet
-        const styleSheet = document.styleSheets[0];
-        for (let i = 0; i < styleSheet.cssRules.length; i++) {
-            if (styleSheet.cssRules[i].name === 'rotateBtnUp') {
-                styleSheet.deleteRule(i);
-                break;
-            }
         }
     }
 }
