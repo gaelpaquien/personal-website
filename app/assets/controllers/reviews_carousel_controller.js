@@ -71,9 +71,14 @@ export default class extends Controller {
     getItem(index) {
         // Validate the index to prevent object injection
         if (Number.isInteger(index) && index >= 0 && index < this.itemTargets.length) {
-            return this.itemTargets[index];
+            return this.getItemByIndex(index);
         }
         return null;
+    }
+
+    getItemByIndex(index) {
+        // Encapsulate access to the itemTargets array
+        return this.itemTargets[index];
     }
 
     updateItemClasses(currentItem, newItem) {
