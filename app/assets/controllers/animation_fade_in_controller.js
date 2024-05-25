@@ -6,7 +6,8 @@ export default class extends Controller {
     }
 
     connect() {
-        const ROOT_MARGIN = this.marginValue || '0px 0px -20px 0px'; // Default margin if not provided
+        // Default margin if not provided
+        const ROOT_MARGIN = this.marginValue || '0px 0px -20px 0px';
 
         // Initialize the IntersectionObserver with custom settings
         this.observer = new IntersectionObserver(this.animateElement.bind(this), {
@@ -20,19 +21,22 @@ export default class extends Controller {
 
     disconnect() {
         // Disconnect the observer when the controller is disconnected
-        this.observer.disconnect();
+        if (this.observer) {
+            this.observer.disconnect();
+        }
     }
 
     animateElement(entries) {
         entries.forEach(entry => {
             // Check if the element is intersecting (visible in viewport)
             if (entry.isIntersecting) {
-                const animationClass = this.element.dataset.animation || 'fade-in-up-effects'; // Default animation class
+                // Default animation class if not specified in data attribute
+                const animationClass = this.element.dataset.animation || 'fade-in-up-effects';
 
                 // Add the animation class to the target element
                 entry.target.classList.add(animationClass);
 
-                // Remove the animation class and reset styles after animation ends
+                // Event listener to clean up after animation ends
                 entry.target.addEventListener('animationend', () => {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translate(0)';

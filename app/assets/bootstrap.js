@@ -4,9 +4,9 @@ import { startStimulusApp } from '@symfony/stimulus-bundle';
 const app = startStimulusApp();
 
 // Import controllers
+import ThemesController from './controllers/themes_controller.js';
 import AnimationFadeIn from './controllers/animation_fade_in_controller.js';
 import NavigationController from './controllers/navigation_controller.js';
-import ThemesController from './controllers/themes_controller.js';
 import LanguageController from './controllers/language_controller.js';
 import RedirectController from './controllers/redirect_controller.js';
 import ScrollToTopController from './controllers/scroll_to_top_controller.js';
@@ -17,9 +17,9 @@ import ReviewsCarouselController from './controllers/reviews_carousel_controller
 import ReviewsPopupController from './controllers/reviews_popup_controller.js';
 
 // Register controllers with Stimulus application
+app.register('themes', ThemesController);
 app.register('animation-fade-in-up', AnimationFadeIn);
 app.register('navigation', NavigationController);
-app.register('themes', ThemesController);
 app.register('language', LanguageController);
 app.register('redirect', RedirectController);
 app.register('scroll-to-top', ScrollToTopController);

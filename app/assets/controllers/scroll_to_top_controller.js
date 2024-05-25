@@ -4,14 +4,18 @@ export default class extends Controller {
     static targets = ['button'];
 
     connect() {
+        // Bind the toggleButton method to the current instance
         this.toggleButton = this.toggleButton.bind(this);
 
+        // Add scroll event listener to toggle button visibility
         window.addEventListener('scroll', this.toggleButton);
 
-        this.toggleButton(); // Initial call to toggle button visibility on page load
+        // Initial call to toggle button visibility on page load
+        this.toggleButton();
     }
 
     disconnect() {
+        // Remove scroll event listener when controller is disconnected
         window.removeEventListener('scroll', this.toggleButton);
     }
 
