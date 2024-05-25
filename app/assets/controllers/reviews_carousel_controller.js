@@ -70,7 +70,7 @@ export default class extends Controller {
 
     getItem(index) {
         // Validate the index to prevent object injection
-        if (index >= 0 && index < this.itemTargets.length) {
+        if (Number.isInteger(index) && index >= 0 && index < this.itemTargets.length) {
             return this.itemTargets[index];
         }
         return null;
@@ -91,6 +91,10 @@ export default class extends Controller {
 
     showItem(index) {
         // Show only the item at the specified index
+        if (!Number.isInteger(index) || index < 0 || index >= this.itemTargets.length) {
+            return;
+        }
+
         this.itemTargets.forEach((item, idx) => {
             item.classList.toggle("active", idx === index);
             if (idx !== index) {
