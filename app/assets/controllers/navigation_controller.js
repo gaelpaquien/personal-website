@@ -52,13 +52,15 @@ export default class extends Controller {
             this.mainContent.style.width = '100%';
         }
 
-        setTimeout(() => {
-            // Toggle button visibility after animation
-            this.openButtonTarget.style.display = 'none';
-            this.closeButtonTarget.style.display = 'block';
-            this.closeButtonTarget.classList.remove('rotate-down');
-            this.openButtonTarget.classList.remove('rotate-up');
-        }, 500);
+        setTimeout(this.handleOpenAnimationEnd.bind(this), 500);
+    }
+
+    handleOpenAnimationEnd() {
+        // Toggle button visibility after animation
+        this.openButtonTarget.style.display = 'none';
+        this.closeButtonTarget.style.display = 'block';
+        this.closeButtonTarget.classList.remove('rotate-down');
+        this.openButtonTarget.classList.remove('rotate-up');
     }
 
     close() {
@@ -70,14 +72,16 @@ export default class extends Controller {
         this.overlayTarget.style.display = 'none';
         this.menuTarget.style.borderLeft = 'none';
 
-        setTimeout(() => {
-            // Toggle button and header headband visibility after animation
-            this.headerHeadband.style.display = 'flex';
-            this.closeButtonTarget.style.display = 'none';
-            this.openButtonTarget.style.display = 'block';
-            this.closeButtonTarget.classList.remove('rotate-down');
-            this.openButtonTarget.classList.remove('rotate-up');
-        }, 500);
+        setTimeout(this.handleCloseAnimationEnd.bind(this), 500);
+    }
+
+    handleCloseAnimationEnd() {
+        // Toggle button and header headband visibility after animation
+        this.headerHeadband.style.display = 'flex';
+        this.closeButtonTarget.style.display = 'none';
+        this.openButtonTarget.style.display = 'block';
+        this.closeButtonTarget.classList.remove('rotate-down');
+        this.openButtonTarget.classList.remove('rotate-up');
     }
 
     toggleDropdown(event) {
@@ -110,16 +114,16 @@ export default class extends Controller {
 
         if (url) {
             this.close();
-
-            setTimeout(() => {
-                if (anchor) {
-                    localStorage.setItem('anchor', anchor);
-                    window.location.href = url;
-                } else {
-                    window.location.href = url;
-                }
-            }, 250); // Delay to allow the close animation to finish
+            this.handleRedirect = this.handleRedirect.bind(this, url, anchor);
+            setTimeout(this.handleRedirect, 250); // Delay to allow the close animation to finish
         }
+    }
+
+    handleRedirect(url, anchor) {
+        if (anchor) {
+            localStorage.setItem('anchor', anchor);
+        }
+        window.location.href = url;
     }
 
     handleScrollToAnchor = () => {
@@ -127,19 +131,21 @@ export default class extends Controller {
         const anchor = localStorage.getItem('anchor');
         if (anchor) {
             localStorage.removeItem('anchor');
-            setTimeout(() => {
-                const targetElement = document.querySelector(`#${anchor}`);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
-                    const extraOffset = 20;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight + extraOffset;
+            setTimeout(this.scrollToAnchor.bind(this, anchor), 100); // Delay to ensure the DOM is rendered
+        }
+    }
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100); // Delay to ensure the DOM is rendered
+    scrollToAnchor(anchor) {
+        const targetElement = document.querySelector(`#${anchor}`);
+        if (targetElement) {
+            const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+            const extraOffset = 20;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight + extraOffset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 
