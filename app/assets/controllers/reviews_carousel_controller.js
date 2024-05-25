@@ -59,10 +59,24 @@ export default class extends Controller {
     }
 
     transitionItems(currentIndex, newIndex) {
-        const currentItem = this.itemTargets[currentIndex];
-        const newItem = this.itemTargets[newIndex];
+        const currentItem = this.getItem(currentIndex);
+        const newItem = this.getItem(newIndex);
+
+        if (!currentItem || !newItem) return;
 
         // Update classes to transition items
+        this.updateItemClasses(currentItem, newItem);
+    }
+
+    getItem(index) {
+        // Validate the index to prevent object injection
+        if (index >= 0 && index < this.itemTargets.length) {
+            return this.itemTargets[index];
+        }
+        return null;
+    }
+
+    updateItemClasses(currentItem, newItem) {
         currentItem.classList.remove("active");
         currentItem.classList.add("previous");
         newItem.classList.add("next");
