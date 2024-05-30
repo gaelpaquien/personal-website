@@ -1,5 +1,5 @@
 {% set data_target = data_target|default('#') %}
-{% set aria_label = aria_label|default('Accéder à la section suivante') %}
+{% set aria_label = aria_label|default('scroll_to_next_default_aria' | trans) %}
 
 <div id="btn-scroll-to-next-section" data-controller="scroll-to-next-section" data-scroll-to-next-section-target="button">
     <button class="scale-effects" type="button" aria-label="{{ aria_label }}" 

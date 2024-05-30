@@ -22,26 +22,50 @@
     &-right-list {
         @extend %flex-row;
 
-        :not(:last-child) {
-            margin-right: 0.5rem;
+        svg {
+            height: 1.3rem;
+            width: auto;
+        }
+
+    }
+
+    &-left-list {
+        li {
+            margin-right: 0.75rem;
         }
 
         span {
-            display: none;
+            margin-right: 0.75rem;
+        }
+    }
+
+    &-right-list {
+        li {
+            margin-left: 0.75rem;
         }
     }
 
     @include respond-to('breakpoint-768') {
         padding: 0.5rem 2.5rem;
 
-        :not(:last-child) {
-            margin-right: 0.75rem;
-        }
-
         &-left-list,
         &-right-list {
+            svg {
+                height: 1.45rem;
+                width: auto;
+            }
+        }
+
+        &-left-list {
+            li,
             span {
-                display: inline;
+                margin-right: 1rem;
+            }
+        }
+
+        &-right-list {
+            li {
+                margin-left: 1rem;
             }
         }
     }
