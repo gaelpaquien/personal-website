@@ -22,6 +22,8 @@ export default class extends Controller {
         this.setRootTheme(theme);
         // Update the state of the theme toggle buttons
         this.updateButtonState();
+        // Update the theme color meta tag
+        this.updateThemeColor(theme);
     }
 
     setRootTheme(theme) {
@@ -29,7 +31,9 @@ export default class extends Controller {
 
         if (theme === 'dark') {
             root.classList.remove('theme-light');
+            root.classList.add('theme-dark');
         } else {
+            root.classList.remove('theme-dark');
             root.classList.add('theme-light');
         }
     }
@@ -43,6 +47,22 @@ export default class extends Controller {
         } else {
             this.lightButtonTarget.classList.add('inactive');
             this.darkButtonTarget.classList.remove('inactive');
+        }
+    }
+
+    updateThemeColor(theme) {
+        // Define the primary colors for each theme
+        const themeColors = {
+            dark: '#061128',
+            light: '#e4e5f1'
+        };
+
+        // Get the meta tag
+        const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+
+        // Update the content attribute with the appropriate color
+        if (themeColorMetaTag) {
+            themeColorMetaTag.setAttribute('content', themeColors[theme]);
         }
     }
 }
