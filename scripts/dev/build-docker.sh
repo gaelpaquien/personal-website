@@ -10,8 +10,10 @@ execute_command "$SCRIPT_LABEL" "Start the script to building app" 0 "/usr/local
 # execute_command "$SCRIPT_LABEL" "Start the script to building database" 0 "/usr/local/bin" ./build-database.sh
 echo "$SCRIPT_LABEL: Building docker completed"
 
-echo "start-sass.sh: Starting Sass in the foreground..."
-(cd /var/www && sass --watch assets/styles/scss:assets/styles/css --style=compressed &)
+execute_command "$SCRIPT_LABEL" "Starting Sass in the foreground" 0 "/var/www" sass --watch assets/styles/scss:assets/styles/css --style=compressed
+#echo "start-sass.sh: Starting Sass in the foreground..."
+#(cd /var/www && sass --watch assets/styles/scss:assets/styles/css --style=compressed &)
 
-echo "build-docker.sh: Starting Apache in the foreground..."
-apachectl -DFOREGROUND || { echo "$SCRIPT_LABEL: apachectl -DFOREGROUND failed" ; exit 1; }
+execute_command "$SCRIPT_LABEL" "Starting PHP-FPM" 0 "/var/www" php-fpm
+#echo "build-docker.sh: Starting PHP-FPM..."
+#php-fpm || { echo "$SCRIPT_LABEL: apachectl -DFOREGROUND failed" ; exit 1; }
