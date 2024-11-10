@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=traefik-public"
+        - "traefik.http.routers.app_principale.rule=Host(`gaelpaquien.com`)"
+        - "traefik.http.routers.app_principale.entrypoints=websecure"
+        - "traefik.http.routers.app_principale.tls.certresolver=myresolver"
+        - "traefik.http.services.app_principale.loadbalancer.server.port=80"
+    environment:
+      - APP_ENV=prod
+      - APP_SECRET_FILE=/run/secrets/app_secret
+    secrets:
+      - app_secret
+    networks:
+      - traefik-public
+
+  mysql:
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_root_password
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    secrets:
+      - mysql_root_password
+
+networks:
+  traefik-public:
+    external: true
+
+secrets:
+  app_secret:
+    external: true
+  mysql_root_password:
+    external: true

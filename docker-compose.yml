@@ -1,51 +1,17 @@
-version: '3.8'
-
 services:
-  database:
-    container_name: database
+  app:
+    depends_on:
+      - mysql
+
+  mysql:
     image: mysql:8.0
-    ports:
-      - 3310:3306
     volumes:
       - mysql-data:/var/lib/mysql
-    env_file:
-      - ./app/.env.local
-
-  php:
-    container_name: php
-    build:
-      context: .
-      dockerfile: php/Dockerfile.dev
-      args:
-        USER_ID: 1000
-        GROUP_ID: 1000
-    ports:
-      - 8080:80
-      - 8443:443
-    volumes:
-      - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
-      - ./apache/default-ssl.conf:/etc/apache2/sites-enabled/000-default-ssl.conf
-      - ./etc/ssl-certs:/etc/ssl-certs
-      - ./app:/var/www
-    depends_on:
-      - database
-
-  phpmyadmin:
-    container_name: phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 8899:80
-    env_file:
-      - ./app/.env.local
-    depends_on:
-      - database
-
-  mailhog:
-    container_name: mailhog
-    image: mailhog/mailhog
-    ports:
-      - 8025:8025
-      - 1025:1025
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mysql-data:

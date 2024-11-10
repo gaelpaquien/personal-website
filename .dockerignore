@@ -1,0 +1,16 @@
+###> global ###
+/etc/
+.DS_Store
+.idea
+.git
+.gitignore
+Dockerfile*
+docker-compose*
+###< global ###
+
+###> app ###
+app/node_modules/
+app/vendor/
+app/var/
+app/public/bundles/
+###< app ###

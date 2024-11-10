@@ -1,2 +1,3 @@
-/etc/ssl-certs/
-/mysql/
+/etc/
+.DS_Store
+.idea

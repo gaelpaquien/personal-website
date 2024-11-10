@@ -4,7 +4,7 @@ MAX_ATTEMPTS=50
 ATTEMPTS=0
 SCRIPT_LABEL="check-mysql.sh"
 
-until nc -z -v -w30 database 3306; do
+until nc -z -v -w30 mysql 3306; do
     echo "$SCRIPT_LABEL: Waiting MySQL to continue... (Attempt : $((ATTEMPTS + 1))/$MAX_ATTEMPTS)"
     sleep 10
     ((ATTEMPTS++))
