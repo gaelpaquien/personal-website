@@ -30,9 +30,16 @@ RUN curl -sSL -o symfony.tar.gz https://github.com/symfony-cli/symfony-cli/relea
 
 # Install Dart Sass
 ENV DART_SASS_VERSION=1.80.0
-RUN curl -sSL -o dart-sass.tar.gz https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz \
-    && tar -xzf dart-sass.tar.gz -C /usr/local/bin --strip-components=1 \
-    && rm dart-sass.tar.gz
+RUN ARCH=$(uname -m) && \
+    if [ "$ARCH" = "x86_64" ]; then \
+        curl -sSL -o dart-sass.tar.gz https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz; \
+    elif [ "$ARCH" = "aarch64" ]; then \
+        curl -sSL -o dart-sass.tar.gz https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-arm64.tar.gz; \
+    else \
+        echo "Unsupported architecture: $ARCH" && exit 1; \
+    fi && \
+    tar -xzf dart-sass.tar.gz -C /usr/local/bin --strip-components=1 && \
+    rm dart-sass.tar.gz
 
 # Set working directory
 WORKDIR /var/www
@@ -43,9 +50,6 @@ RUN chmod +x /usr/local/bin/*.sh
 
 # Switch to non-root user
 USER app
-
-# Expose port 9000 for PHP-FPM
-EXPOSE 9000
 
 # Start PHP-FPM
 CMD ["/usr/local/bin/build-docker.sh"]
