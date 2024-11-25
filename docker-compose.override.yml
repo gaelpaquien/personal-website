@@ -4,14 +4,22 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - "9000:9000"
-      - "8443:443"
+      - "9010:9000"
     volumes:
       - ./config/php.ini-development:/usr/local/etc/php/php.ini
-      - ./etc/ssl-certs:/etc/ssl-certs
       - ./app:/var/www
     environment:
       - APP_ENV=dev
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./app:/var/www
+    depends_on:
+      - app
 
   mysql:
     ports:
