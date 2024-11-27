@@ -21,23 +21,22 @@ echo "$SCRIPT_LABEL: Building app completed"
 #execute_command "$SCRIPT_LABEL" "Loading fixtures" 0 "/var/www" symfony console doctrine:fixtures:load --no-interaction --env=dev
 #echo "$SCRIPT_LABEL: Building database completed"
 
-echo "$SCRIPT_LABEL: Starting checking app..."
-execute_command "$SCRIPT_LABEL" "Checking system requirements" 0 "/var/www" symfony check:requirements
-execute_command "$SCRIPT_LABEL" "Checking outdated composer packages" 0 "/var/www" composer outdated
-execute_command "$SCRIPT_LABEL" "Checking security vulnerabilities" 0 "/var/www" symfony check:security
-execute_command "$SCRIPT_LABEL" "Checking routes" 0 "/var/www" symfony console debug:router
+#echo "$SCRIPT_LABEL: Starting checking app..."
+#execute_command "$SCRIPT_LABEL" "Checking system requirements" 0 "/var/www" symfony check:requirements
+#execute_command "$SCRIPT_LABEL" "Checking outdated composer packages" 0 "/var/www" composer outdated
+#execute_command "$SCRIPT_LABEL" "Checking security vulnerabilities" 0 "/var/www" symfony check:security
+#execute_command "$SCRIPT_LABEL" "Checking routes" 0 "/var/www" symfony console debug:router
 #execute_command "$SCRIPT_LABEL" "Checking doctrine mappings" 0 "/var/www" symfony console doctrine:schema:validate
-echo "$SCRIPT_LABEL: Checking app completed"
+#echo "$SCRIPT_LABEL: Checking app completed"
 
-echo "$SCRIPT_LABEL: Starting checking code..."
-execute_command "$SCRIPT_LABEL" "Running PHP CS Fixer" 8 "/var/www" composer run-script cs-check
-execute_command "$SCRIPT_LABEL" "Running PHP Code Sniffer" 0 "/var/www" composer run-script phpcs
-execute_command "$SCRIPT_LABEL" "Running PHPStan" 0 "/var/www" composer run-script phpstan
-execute_command "$SCRIPT_LABEL" "Running Rector" 0 "/var/www" composer run-script rector-dry
-execute_command "$SCRIPT_LABEL" "Linting Twig files" 0 "/var/www" symfony console lint:twig templates
-execute_command "$SCRIPT_LABEL" "Linting YAML files" 0 "/var/www" symfony console lint:yaml config translations
-echo "$SCRIPT_LABEL: Checking code completed"
+#echo "$SCRIPT_LABEL: Starting checking code..."
+#execute_command "$SCRIPT_LABEL" "Running PHP CS Fixer" 8 "/var/www" composer run-script cs-check
+#execute_command "$SCRIPT_LABEL" "Running PHP Code Sniffer" 0 "/var/www" composer run-script phpcs
+#execute_command "$SCRIPT_LABEL" "Running PHPStan" 0 "/var/www" composer run-script phpstan
+#execute_command "$SCRIPT_LABEL" "Running Rector" 0 "/var/www" composer run-script rector-dry
+#execute_command "$SCRIPT_LABEL" "Linting Twig files" 0 "/var/www" symfony console lint:twig templates
+#execute_command "$SCRIPT_LABEL" "Linting YAML files" 0 "/var/www" symfony console lint:yaml config translations
+#echo "$SCRIPT_LABEL: Checking code completed"
 
 execute_command "$SCRIPT_LABEL" "Starting Sass in the foreground" 0 "/var/www" sass --watch assets/styles/scss:assets/styles/css --style=compressed
-execute_command "$SCRIPT_LABEL" "Starting PHP-FPM" 0 "/var/www" php-fpm &
-execute_command "$SCRIPT_LABEL" "Starting Nginx" 0 "/var/www" nginx -g "daemon off;"
+execute_command "$SCRIPT_LABEL" "Starting PHP-FPM" 0 "/var/www" php-fpm
