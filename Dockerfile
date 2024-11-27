@@ -51,5 +51,5 @@ RUN chmod +x /usr/local/bin/*.sh
 # Switch to non-root user
 USER app
 
-# Start PHP-FPM
+# Start script to build and run the application
 CMD ["/usr/local/bin/start.sh"]

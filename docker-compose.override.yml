@@ -2,9 +2,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - "9010:9000"
+      dockerfile: Dockerfile
     volumes:
       - ./config/php.ini-development:/usr/local/etc/php/php.ini
       - ./app:/var/www
