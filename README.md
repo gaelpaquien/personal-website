@@ -15,9 +15,6 @@ My personal website.
 1. [Docker](https://www.docker.com/)
 2. [OpenSSL](https://www.openssl.org/)
 
-### Optional
-1. [New Relic API Key](https://newrelic.com/)
-
 ### Installation
 *SOON*
 
