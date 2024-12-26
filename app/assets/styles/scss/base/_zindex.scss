@@ -1,0 +1,23 @@
+header {
+    z-index: 1000;
+}
+
+nav {
+    z-index: 500;
+}
+
+.popup {
+    z-index: 500;
+}
+
+.overlay {
+    z-index: 499;
+}
+
+.home-reviews__container {
+    &-carousel {
+        &-item {
+            z-index: 20;
+        }
+    }
+}

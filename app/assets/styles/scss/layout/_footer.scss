@@ -1,112 +1,223 @@
-.footer__about  {
-    @include flex-container(column, center, center);
-    background-color: $color-tertiary;
-    padding: 2.5rem 0;
-
-    h2 {
-        font-size: calc(1.2 * $font-size-h2);
-    }
-
-    p,
-    li,
-    a {
-        font-size: calc(1.1 * $font-size-text);
-    }
-
-    > div:not(:last-child) {
-        margin-bottom: 2.5rem;
-    }
-
-    &-contact-title,
-    &-social-title,
-    &-company-title,
-    &-links-title {
-        @extend %flex-row;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.4rem;
-
-        svg {
-            height: 2.3rem;
-            width: auto;
-            margin-right: 0.7rem;
-        }
-    }
-
-    &-social-list {
-        ul {
-            @extend %flex-row;
-            justify-content: center;
-        }
-
-        &-item {
-            padding: 0 0.4rem;
-            padding-top: 0.2rem;
-
-            svg {
-                height: 2rem;
-                width: auto;
-            }
-        }
-    }
+.footer__container,
+.footer-mobile__container {
+    background-color: var(--color-tertiary);
 }
 
-.footer__copyright {
-    background-color: $color-primary;
-    padding: 0.5rem 0;
-}
+.footer__container {
+    display: none;
 
-.footer__about-company-text,
-.footer__about-links-list-item,
-.footer__copyright-text {
-    text-align: center;
-}
-
-@media (min-width: 1400px) {
-    .footer__about {
+    @include respond-to('breakpoint-1400') {
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 0 2.5rem;
-        padding-top: 3rem;
+        padding: 2.5rem;
 
-        h2 {
-            font-size: calc(1.35 * $font-size-h2);
-        }
-
-        p,
-        li,
-        a {
-            font-size: calc(1.3 * $font-size-text);
-        }
-
-        > div:not(:last-child) {
-            margin-bottom: 0;
-        }
-
-        &-contact-text,
-        &-social-list,
-        &-company-text,
-        &-links-list {
-            min-height: 9.2rem;
-        }
-
+        &-about-title,
         &-contact-title,
-        &-social-title,
-        &-company-title,
-        &-links-title {
-            margin-bottom: 1rem;
+        &-company-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+
+            h2 {
+                font-size: $font-size-h2;
+            }
 
             svg {
-                height: 2.8rem;
+                height: $font-size-h2;
+                width: auto;
+                margin-right: 0.5rem;
             }
         }
 
-        &-social-list {
+        &-about-text,
+        &-company-text,
+        &-company-title h2,
+        &-company-title svg {
+            opacity: 0.6;
+        }
+
+        &-links-various {
             &-item {
-                svg {
-                    height: 2.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                a {
+                    opacity: 0.6;
+
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
             }
         }
+
+        &-links-social {
+            margin-bottom: 0.5rem;
+            height: 2.5rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 0.35rem;
+
+            svg {
+                height: 1.7rem;
+                width: auto;
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.footer-mobile__container {
+    font-size: calc(0.9 * $font-size-text);
+
+    hr {
+        border: 0.1rem solid var(--color-text);
+        margin: 0 1.5rem;
+    }
+
+    &-contact {
+        padding-top: 2rem;
+
+        &-meeting {
+            text-align: center;
+        }
+
+        &-list {
+            &-item {
+                padding: 0 0.75rem;
+            }
+        }
+    }
+
+    &-company {
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+    }
+
+    &-about,
+    &-links {
+        padding: 2rem 0;
+    }
+
+    &-contact-title,
+    &-company-title,
+    &-about-title {
+        @include flex-container(row, center, center);
+        margin-bottom: 0.3rem;
+
+        h2 {
+            font-size: $font-size-h2;
+            padding: 0 0.3rem;
+        }
+
+        svg {
+            height: $font-size-h2;
+            width: auto;
+        }
+    }
+
+    &-contact-list,
+    &-links-social {
+        @extend %flex-row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-links-social>li:nth-child(1) {
+        padding-left: 0;
+    }
+
+    &-company-text,
+    &-company-title h2,
+    &-company-title svg,
+    &-about-text {
+        text-align: center;
+        opacity: 0.6;
+    }
+
+    &-about-text {
+        opacity: 0.6;
+    }
+
+    &-links {
+        @extend %flex-row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        &-social-item {
+            padding: 0 0.4rem;
+
+            svg {
+                height: 1.25rem;
+                width: auto;
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &-various-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            a {
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: calc(1 * $font-size-text);
+
+        hr {
+            margin: 0 2.5rem;
+        }
+
+        &-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+        }
+
+        &-contact,
+        &-company {
+            padding: 2rem 0;
+        }
+
+        &-links {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+
+            &-social-item {
+                padding: 0 0.75rem;
+
+                svg {
+                    height: 1.6rem;
+                }
+            }
+        }
+    }
+
+    @include respond-to('breakpoint-1400') {
+        display: none;
     }
 }

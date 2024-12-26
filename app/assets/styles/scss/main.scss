@@ -1,21 +1,23 @@
-// @use Utils
+// Utils
 @use './utils/variables' as *;
 @use './utils/mixins' as *;
-@use './utils/functions' as *;
 @use './utils/placeholders' as *;
 
-// @import Base
+// Base
+@import './base/fonts';
 @import './base/reset';
 @import './base/core';
-@import './base/fonts';
+@import './base/colors';
 @import './base/typography';
+@import './base/zindex';
+@import './base/effects';
 
-// @import Layout
+// Layout
 @import './layout/header';
 @import './layout/navigation';
 @import './layout/footer';
 
-// @import Components
+// Components
 @import './components/buttons';
-@import './components/carousel';
 @import './components/forms';
+@import './components/popups';
