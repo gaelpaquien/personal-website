@@ -1,17 +1,90 @@
 services:
   app:
+    build:
+      context: .
+      dockerfile: app/docker/Dockerfile
+    volumes:
+      - ./app:/var/www
+      - ./app/docker/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./app/docker/php/php.ini:/usr/local/etc/php/php.ini:ro
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "php-fpm", "-t"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./app/public:/var/www/public:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl/certs:/etc/nginx/ssl/certs:ro
+      - ./nginx/ssl/private:/etc/nginx/ssl/private:ro
     depends_on:
-      - mysql
+      - app
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "curl -f http://localhost:80 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
 
   mysql:
     image: mysql:8.0
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - database_network
+    env_file:
+      - ./app/.env.local
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-rootpassword}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-app}
+      - MYSQL_USER=${MYSQL_USER:-user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8899:80"
+    networks:
+      - database_network
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=${MYSQL_USER:-user}
+      - PMA_PASSWORD=${MYSQL_PASSWORD:-password}
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    networks:
+      - mail_network
+    restart: unless-stopped
+
+networks:
+  app_network:
+    driver: bridge
+  database_network:
+    driver: bridge
+  mail_network:
+    driver: bridge
 
 volumes:
   mysql-data:
