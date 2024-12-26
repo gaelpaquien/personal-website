@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block robots %}index, follow{% endblock %}
+{% block title %}{{ 'page_sitemap_title' | trans }}{% endblock %}
+
+{% block assets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/sitemap.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section id="sitemap-page" class="sitemap-page__container">
+        <div class="fade-in-effects-initial" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+            <div class="section-title link-effects" data-target="sitemap-page" data-action="click->scroll-to-section#scrollToSection">
+                <svg role="img" aria-labelledby="sitemap-page-title" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M208 80c0-26.5 21.5-48 48-48h64c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-8v40H464c30.9 0 56 25.1 56 56v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H464c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-4.4-3.6-8-8-8H312v40h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H256c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V280H112c-4.4 0-8 3.6-8 8v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-30.9 25.1-56 56-56H264V192h-8c-26.5 0-48-21.5-48-48V80z"/></svg>
+                <h2 id="sitemap-page-title">{{ 'sitemap' | trans }}</h2>
+            </div>
+        </div>
+
+        <div class="sitemap-page__container-urls-list">
+            {% for url in urls %}
+            <div class="fade-in-effects-initial sitemap-page__container-urls-list-item" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+                <button class="btn" aria-label="{{ 'page_sitemap_btn_aria' | trans }} {{ url }}" 
+                data-controller="redirect" data-action="click->redirect#redirectToUrl" data-redirect-url-value="{{ url }}">
+                    {{ url }}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% include "_partials/_btn_return_to_home.html.twig" %}
+    </section>
+{% endblock %}

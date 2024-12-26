@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ app.request.locale }}">
     <head>
+        {% set locale = app.request.locale %}
+
         <meta charset="UTF-8">
 
         <!-- Canonical -->
@@ -11,14 +13,15 @@
 
         <!-- Device -->
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="theme-color" content="#061128">
+        <meta name="format-detection" content="telephone=yes">
+        <meta name="theme-color" content="#0a111f"> <!-- theme-color is dynamically updated with themes_controller.js -->
 
         <!-- Title -->
-        <title>{% block title %}gaelpaquien.com{% endblock %}</title>
+        <title>{% block title %}{{ 'site_name' | trans }}{% endblock %}</title>
 
-        <!-- Description -->
-        <meta name="description" content="{% block description %}Gaël Paquien, Développeur Web PHP/Symfony{% endblock %}">
+        <!-- About this site -->
+        <meta name="author" content="{{ 'site_author' | trans }}">
+        <meta name="description" content="{% block description %}{{ 'site_description' | trans }}{% endblock %}">
 
         <!-- Favicons -->
         <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/favicons/favicon-48x48.png') }}">
@@ -31,20 +34,22 @@
         <link rel="preload" href="{{ asset('fonts/Chivo-SemiBold.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="{{ asset('fonts/Poppins-Medium.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
 
-        <!-- Twitter/X -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{% block twitter_title %}Gaël Paquien{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}Développeur Web PHP/Symfony{% endblock %}">
-        <meta name="twitter:image" content="{% block twitter_image %}#{% endblock %}">
-
-        <!-- Open Graph (Facebook) -->
+        <!-- Open Graph -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ app.request.uri }}">
-        <meta property="og:title" content="{% block og_title %}Gaël Paquien{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}Développeur Web PHP/Symfony{% endblock %}">
-        <meta property="og:image" content="{% block og_image %}#{% endblock %}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="{{ locale }}">
+        <meta property="og:title" content="{% block og_title %}{{ 'site_title' | trans }}{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{{ 'site_description' | trans }}{% endblock %}">
+        {% set og_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
+        <meta property="og:image" content="{% block og_image %}{{ asset(og_image) }}{% endblock %}">
+
+        <!-- Twitter/X -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@galuss_">
+        <meta name="twitter:title" content="{% block twitter_title %}{{ 'site_title' | trans }}{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{{ 'site_description' | trans }}{% endblock %}">
+        {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
+        <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -53,22 +58,23 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-PQM9LCTV');</script>
 
-        <!-- CSS -->
-        {% block stylesheets %}
+        <!-- Custom assets -->
+        {% block assets %}
         {% endblock %}
 
-        <!-- JavaScript -->
-        {% block javascripts %}
+        <!-- AssetMapper -->
+        {% block mapper %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
 
-    <body>
+    <body data-controller="navigation scroll-to-section">
         {% include "_partials/_header.html.twig" %}
         {% include "_partials/_navigation.html.twig" %}
         <main>
             {% block content %}{% endblock %}
         </main>
+        {% include "_partials/_btn_scroll_to_top.html.twig" %}
         {% include "_partials/_footer.html.twig" %}
     </body>
 

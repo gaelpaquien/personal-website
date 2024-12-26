@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/', name: 'app_main_')]
 class MainController extends AbstractController
@@ -14,32 +14,42 @@ class MainController extends AbstractController
     #[Route('/', name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']])]
     public function index(): Response
     {
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        return $this->render('main/index.html.twig');
     }
 
-    #[Route('/mentions-legales', name: 'legal_notice', options: ['sitemap' => ['priority' => 0.7, 'changefreq' => 'monthly']])]
+    #[Route([
+        'fr' => '/mentions-legales',
+        'en' => '/legal-notice',
+    ], name: 'legal_notice', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function legalNotice(): Response
     {
-        return $this->render('main/legal_notice.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        return $this->render('main/legal_notice.html.twig');
     }
 
-    #[Route('/politique-de-confidentialite', name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.7, 'changefreq' => 'monthly']])]
+    #[Route([
+        'fr' => '/politique-de-confidentialite',
+        'en' => '/privacy-policy',
+    ], name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function privacyPolicy(): Response
     {
-        return $this->render('main/privacy_policy.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+        return $this->render('main/privacy_policy.html.twig');
     }
 
-    #[Route('/cgu', name: 'terms_of_use', options: ['sitemap' => ['priority' => 0.7, 'changefreq' => 'monthly']])]
-    public function termsOfUse(): Response
+    #[Route([
+        'fr' => '/plan-du-site',
+        'en' => '/sitemap',
+    ], name: 'sitemap', options: ['sitemap' => ['priority' => 0.6, 'changefreq' => 'monthly']])]
+    public function sitemap(): Response
     {
-        return $this->render('main/terms_of_use.html.twig', [
-            'controller_name' => 'MainController',
+        $xml = \simplexml_load_file($this->getParameter('kernel.project_dir') . '/public/sitemap.default.xml');
+
+        $urls = [];
+        foreach ($xml->url as $urlElement) {
+            $urls[] = (string) $urlElement->loc;
+        }
+
+        return $this->render('main/sitemap.html.twig', [
+            'urls' => $urls,
         ]);
     }
 }
