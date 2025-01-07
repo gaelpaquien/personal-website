@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use 'variables' as *;
 
 @mixin flex-container($direction: row, $justify: center, $align: center) {
   display: flex;

@@ -4,7 +4,8 @@
 {% block title %}{{ 'page_home_title' | trans }}{% endblock %}
 
 {% block assets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/home.css') }}">
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/home.scss') }}">
 {% endblock %}
 
 {% block content %}
@@ -31,7 +32,6 @@
                 <br>
                 <p>
                     {{ 'page_home_hero_presentation_text3' | trans }}
-
                 </p>
             </div>
             {% include "components/button-scroll-to-next-section.html.twig" with {
