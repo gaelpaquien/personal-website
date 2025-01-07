@@ -34,7 +34,7 @@ export default class extends Controller {
         // Start the interval for automatic scrolling
         this.autoScrollIntervalId = setInterval(() => {
             this.next();
-        }, this.autoScrollIntervalValue || 15000); // Default to 15 seconds if no value provided
+        }, this.autoScrollIntervalValue || 8000); // Default to 15 seconds if no value provided
     }
 
     stopAutoScroll() {
