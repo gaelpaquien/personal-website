@@ -1,5 +1,4 @@
 .header {
-    position: sticky;
     width: 100%;
     top: 0;
 }
@@ -26,7 +25,6 @@
             height: 1.3rem;
             width: auto;
         }
-
     }
 
     &-left-list {
@@ -76,14 +74,15 @@
     min-height: 5.5rem;
     padding: 1rem 1.5rem;
 
-/*    &-title {
-        display: none;
-        font-size: calc(1.25 * $font-size-h1);
-    }*/
+    &-title {
+        a {
+            display: flex;
+            align-items: center;
+            height: fit-content;
+        }
 
-    &-title-mobile {
         svg {
-            height: 3.5rem;
+            height: 4rem;
             width: auto;
         }
     }
@@ -125,14 +124,6 @@
 
     @include respond-to('breakpoint-768') {
         padding: 1rem 2.5rem;
-
-/*        &-title {
-            display: block;
-        }
-
-        &-title-mobile {
-            display: none;
-        }*/
 
         &-menu-open,
         &-menu-close {

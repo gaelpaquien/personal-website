@@ -1,38 +1,38 @@
 /* Default dark theme */
 :root {
-    --color-primary: #070F2B;
-    --color-primary-r: 10;
-    --color-primary-g: 17;
-    --color-primary-b: 31;
-    --color-secondary: #2e2d7a;
-    --color-secondary-r: 15;
-    --color-secondary-g: 25;
-    --color-secondary-b: 46;
-    --color-tertiary: #535C91;
-    --color-tertiary-r: 28;
-    --color-tertiary-g: 38;
-    --color-tertiary-b: 60;
-    --color-text: #EEEEEE;
-    --color-text-r: 234;
-    --color-text-g: 234;
-    --color-text-b: 234;
+    --color-primary: #F9F7F7;
+    --color-primary-r: 249;
+    --color-primary-g: 247;
+    --color-primary-b: 247;
+    --color-secondary: #DBE2EF;
+    --color-secondary-r: 219;
+    --color-secondary-g: 226;
+    --color-secondary-b: 239;
+    --color-tertiary: #c5d3e8;
+    --color-tertiary-r: 197;
+    --color-tertiary-g: 211;
+    --color-tertiary-b: 232;
+    --color-text: #112D4E;
+    --color-text-r: 17;
+    --color-text-g: 45;
+    --color-text-b: 78;
 }
 
 /* Light theme overrides */
-.theme-light {
-    --color-primary: #F9F7F7;
+.theme-dark {
+    --color-primary: #070F2B;
     --color-primary-r: 228;
     --color-primary-g: 229;
     --color-primary-b: 241;
-    --color-secondary: #DBE2EF;
+    --color-secondary: #2e2d7a;
     --color-secondary-r: 210;
     --color-secondary-g: 211;
     --color-secondary-b: 219;
-    --color-tertiary: #c1d1ea;
+    --color-tertiary: #535C91;
     --color-tertiary-r: 147;
     --color-tertiary-g: 148;
     --color-tertiary-b: 165;
-    --color-text: #112D4E;
+    --color-text: #EEEEEE;
     --color-text-r: 28;
     --color-text-g: 38;
     --color-text-b: 60;
