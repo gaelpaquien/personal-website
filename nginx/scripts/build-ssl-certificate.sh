@@ -4,11 +4,10 @@ ROOT_PATH="$(dirname "$(dirname "$(realpath "$0")")")"
 CONFIG_PATH="$ROOT_PATH/ssl/ssl-config.conf"
 CERT_PATH="$ROOT_PATH/ssl/certs/mycert.crt"
 KEY_PATH="$ROOT_PATH/ssl/private/mycert.key"
-SCRIPT_LABEL="build-ssl-certificate.sh"
 
 # Check if the certificate and key files already exist
 if [ -f "$CERT_PATH" ] && [ -f "$KEY_PATH" ]; then
-    echo "$SCRIPT_LABEL: SSL certificate and key already exist"
+    echo "SSL certificate and key already exist"
     exit 0
 fi
 
@@ -34,17 +33,17 @@ subjectAltName = @alt_names
 DNS.1 = localhost" > "$CONFIG_PATH"
 
 # Generate the SSL certificate
-echo "$SCRIPT_LABEL: Generating SSL certificate..."
+echo "Generating SSL certificate..."
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout "$KEY_PATH" -out "$CERT_PATH" \
     -config "$CONFIG_PATH"
 
 # Check if the SSL certificate was generated successfully
 if [ $? -eq 0 ]; then
-    echo "$SCRIPT_LABEL: SSL certificate generated successfully"
+    echo "SSL certificate generated successfully"
     rm "$CONFIG_PATH"
 else
-    echo "$SCRIPT_LABEL: Failed to generate SSL certificate"
+    echo "Failed to generate SSL certificate"
     rm "$CONFIG_PATH"
     exit 1
 fi

@@ -4,25 +4,19 @@ export default class extends Controller {
     static targets = ["darkButton", "lightButton"]
 
     connect() {
-        // Apply the theme when the controller connects
         this.applyTheme();
     }
 
     toggleTheme(event) {
-        // Set the theme based on the clicked button's data-theme attribute
         const theme = event.currentTarget.dataset.theme;
         localStorage.setItem('theme', theme);
         this.applyTheme();
     }
 
     applyTheme() {
-        // Retrieve the theme from localStorage or default to 'dark'
-        const theme = localStorage.getItem('theme') || 'dark';
-        // Apply the theme class to the <html> element
+        const theme = localStorage.getItem('theme') || 'light';
         this.setRootTheme(theme);
-        // Update the state of the theme toggle buttons
         this.updateButtonState();
-        // Update the theme color meta tag
         this.updateThemeColor(theme);
     }
 
@@ -39,8 +33,7 @@ export default class extends Controller {
     }
 
     updateButtonState() {
-        // Update button states based on the current theme
-        const theme = localStorage.getItem('theme') || 'dark';
+        const theme = localStorage.getItem('theme') || 'light';
         if (theme === 'dark') {
             this.darkButtonTarget.classList.add('inactive');
             this.lightButtonTarget.classList.remove('inactive');
@@ -51,16 +44,13 @@ export default class extends Controller {
     }
 
     updateThemeColor(theme) {
-        // Define the primary colors for each theme
         const themeColors = {
             dark: '#061128',
             light: '#e4e5f1'
         };
 
-        // Get the meta tag
         const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
 
-        // Update the content attribute with the appropriate color
         if (themeColorMetaTag) {
             themeColorMetaTag.setAttribute('content', themeColors[theme]);
         }

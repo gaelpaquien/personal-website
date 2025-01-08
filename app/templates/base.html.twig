@@ -51,13 +51,6 @@
         {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
         <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PQM9LCTV');</script>
-
         <!-- Custom assets -->
         {% block assets %}
         {% endblock %}
@@ -69,17 +62,20 @@
     </head>
 
     <body data-controller="navigation scroll-to-section">
-        {% include "_partials/_header.html.twig" %}
+        <header>
+            {% include "_partials/_header.html.twig" %}
+        </header>
+
         {% include "_partials/_navigation.html.twig" %}
+
         <main>
             {% block content %}{% endblock %}
         </main>
-        {% include "_partials/_btn_scroll_to_top.html.twig" %}
-        {% include "_partials/_footer.html.twig" %}
-    </body>
 
-    <!-- Google Tag Manager  -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQM9LCTV" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
+        {% include "components/button-scroll-to-top.html.twig" %}
+
+        <footer>
+            {% include "_partials/_footer.html.twig" %}
+        </footer>
+    </body>
 </html>
