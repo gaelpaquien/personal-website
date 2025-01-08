@@ -1,18 +1,19 @@
 #!/bin/bash
 
-SCRIPT_LABEL="build-app.sh"
 APP_ENV="dev"
 cd /var/www
 
-echo "$SCRIPT_LABEL: Starting building app..."
+echo "Starting building app..."
 symfony console cache:clear --env=$APP_ENV || exit 1
 composer install || exit 1
 composer dump-autoload --optimize || exit 1
-symfony console importmap:install || exit 1
-symfony console asset-map:compile || exit 1
+#symfony console importmap:install || exit 1
+#symfony console asset-map:compile || exit 1
 symfony console cache:warmup --env=$APP_ENV || exit 1
-symfony console presta:sitemaps:dump public --env=$APP_ENV || exit 1
-echo "$SCRIPT_LABEL: Building app completed"
+#symfony console presta:sitemaps:dump public --env=$APP_ENV || exit 1
+#symfony console sass:build -v || exit 1
+echo "Building app completed"
+exec "$@" || exit 1
 
 #echo "$SCRIPT_LABEL: Starting building database..."
 #symfony console doctrine:database:create --if-not-exists --env=$APP_ENV || exit 1
@@ -36,10 +37,3 @@ echo "$SCRIPT_LABEL: Building app completed"
 #symfony console lint:twig templates || exit 1
 #symfony console lint:yaml config translations || exit 1
 #echo "$SCRIPT_LABEL: Checking code completed"
-
-# Sass en background
-echo "$SCRIPT_LABEL: Starting Sass..."
-sass --watch assets/styles/scss:assets/styles/css --style=compressed &
-echo "$SCRIPT_LABEL: Sass is started"
-
-echo "Build is completed. Let the container running..." && exec "$@"

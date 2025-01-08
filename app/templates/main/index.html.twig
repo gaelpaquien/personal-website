@@ -4,7 +4,8 @@
 {% block title %}{{ 'page_home_title' | trans }}{% endblock %}
 
 {% block assets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/home.css') }}">
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/home.scss') }}">
 {% endblock %}
 
 {% block content %}
@@ -31,10 +32,9 @@
                 <br>
                 <p>
                     {{ 'page_home_hero_presentation_text3' | trans }}
-
                 </p>
             </div>
-            {% include "_partials/_btn_scroll_to_next_section.html.twig" with {
+            {% include "components/button-scroll-to-next-section.html.twig" with {
                 'data_target': '#home-portfolio',
                 'aria_label':  'portfolio_aria' | trans
             } %}
@@ -52,48 +52,48 @@
         </div>
 
         <div class="home-portfolio__container-projects" data-controller="portfolio-card">
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'Site personnel (V2)',
                 'description': 'Évolution de mon site personnel WordPress vers une application PHP/Symfony avec de nouvelles fonctionnalités.',
                 'image': 'images/portfolio/portfolio-gaelpaquien-v2.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'Site personnel (V1)',
                 'description': 'Création de mon site personnel avec WordPress.',
                 'image': 'images/portfolio/portfolio-gaelpaquien-v1.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'RG Clean Car',
                 'description': 'Création d\'un site vitrine avec WordPress pour RG Clean Car, société de nettoyage à domicile.',
                 'image': 'images/portfolio/portfolio-rgcleancar.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'ToDo & Co',
                 'description': 'Audit (qualité et performance) d\'une application existante afin d\'identifier les tâches nécessaires à son amélioration, puis optimisation et réduction de la dette technique de cette application.',
                 'image': 'images/portfolio/portfolio-todoandco.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'BileMo API',
                 'description': 'Création d\'une API REST avec PHP/Symfony, permettant d\'exposer une liste de produits et d\'utilisateurs accessible aux clients authentifiés.',
                 'image': 'images/portfolio/portfolio-bilemoapi.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'SnowTricks',
                 'description': 'Création d\'un site web collaboratif avec PHP/Symfony, permettant aux utilisateurs de partager des figures de snowboard.',
                 'image': 'images/portfolio/portfolio-snowtricks.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'Blog PHP',
                 'description': 'Création d\'un blog avec PHP.',
                 'image': 'images/portfolio/portfolio-blogphp.webp'
             } %}
-            {% include "_partials/home/_portfolio_card.html.twig" with {
+            {% include "components/home/portfolio-card.html.twig" with {
                 'title': 'Archive OpenClassrooms',
                 'description': 'Une archive de tous mes projets réalisés pendant mes deux formations chez OpenClassrooms.',
                 'image': 'images/portfolio/portfolio-archive-openclassrooms.webp'
             } %}
         </div>
-        {% include "_partials/_btn_scroll_to_next_section.html.twig" with {
+        {% include "components/button-scroll-to-next-section.html.twig" with {
             'data_target': '#home-reviews',
             'aria_label': 'reviews_aria' | trans
         } %}
@@ -118,7 +118,7 @@
                 data-reviews-carousel-target="previousButton" data-action="click->reviews-carousel#previous" 
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g clip-path="url(#clip0_308_71)"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.94015 13.06C7.65924 12.7787 7.50146 12.3975 7.50146 12C7.50146 11.6025 7.65924 11.2212 7.94015 10.94L13.5961 5.28199C13.8775 5.00073 14.2591 4.84277 14.657 4.84287C14.854 4.84291 15.0491 4.88176 15.231 4.95719C15.413 5.03262 15.5784 5.14316 15.7176 5.28249C15.8569 5.42182 15.9674 5.58722 16.0427 5.76924C16.1181 5.95127 16.1568 6.14635 16.1568 6.34335C16.1567 6.54035 16.1179 6.73541 16.0424 6.91739C15.967 7.09938 15.8565 7.26472 15.7171 7.40399L11.1221 12L15.7181 16.596C15.8615 16.7343 15.9758 16.8998 16.0545 17.0827C16.1332 17.2657 16.1747 17.4625 16.1765 17.6617C16.1783 17.8608 16.1405 18.0584 16.0651 18.2428C15.9898 18.4271 15.8785 18.5947 15.7377 18.7356C15.597 18.8765 15.4295 18.9879 15.2452 19.0634C15.0609 19.1389 14.8634 19.177 14.6643 19.1754C14.4651 19.1737 14.2682 19.1324 14.0852 19.0539C13.9022 18.9754 13.7366 18.8612 13.5981 18.718L7.93815 13.06H7.94015Z"/></g><defs><clipPath id="clip0_308_71"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
             </button>
-            {% include "_partials/home/_reviews_carousel_item.html.twig" with {
+            {% include "components/home/reviews-carousel-item.html.twig" with {
                 'quote': 'Gaël a réalisé notre site web "www.rgcleancar.fr" exactement comme nous l\'avions souhaité, communication claire et professionnelle, 
                           je recommande !',
                 'author_firstname': 'Jérôme',
@@ -130,7 +130,7 @@
                 'quoteId': 'home-reviews-quote-' ~ random(1, 999),
                 'classActive': true
             } %}
-            {% include "_partials/home/_reviews_carousel_item.html.twig" with {
+            {% include "components/home/reviews-carousel-item.html.twig" with {
                 'quote': 'En reconversion professionnelle pour se spécialiser dans le développement web full stack, Gaël a suivi la formation d’openclassrooms.
                           Le point fort de Gaël est sa détermination : ne rien lâcher et aller toujours au bout des choses. 
                           Sérieux, appliqué et rigoureux, il a su monter en compétence rapidement et réussir ses projets avec brio. 
@@ -175,8 +175,8 @@
             </button>
         </div>
 
-        {% include "_partials/home/_reviews_popup.html.twig" %}
-        {% include "_partials/_btn_scroll_to_next_section.html.twig" with {
+        {% include "components/home/reviews-popup.html.twig" %}
+        {% include "components/button-scroll-to-next-section.html.twig" with {
             'data_target': '#home-contact',
             'aria_label': 'contact_aria' | trans
         } %}
@@ -239,7 +239,7 @@
                 </p>
             </div>
         </form>
-        {% include "_partials/_btn_scroll_to_next_section.html.twig" with {
+        {% include "components/button-scroll-to-next-section.html.twig" with {
             'data_target': '#footer',
             'aria_label': 'page_home_contact_scrollToNext_aria' | trans
         } %}
