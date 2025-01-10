@@ -1,94 +1,106 @@
+.animated {
+  @include animation-base;
+  opacity: 1;
+  transform: translate(0);
+}
+
+.pressed {
+  @include animation-pressed(0.95, 0.25s);
+}
+
 .link-effects {
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform, opacity;
 
-    &:hover {
-        opacity: 0.8;
-        transform: scale(1.05);
-    }
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
 
-    &:active {
-        @include animation-pressed(0.95);
-    }
+  &:active {
+    @include animation-pressed(0.95);
+  }
 }
 
 .icon-effects {
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform, opacity;
 
-    &:hover {
-        opacity: 0.8;
-        transform: scale(1.15);
-    }
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
 
-    &:active {
-        @include animation-pressed(0.9);
-    }
+  &:active {
+    @include animation-pressed(0.9);
+  }
 }
 
 .fade-in-left-effects {
-    @include animation-fadeInLeft(0.6s, 20px);
+  @include animation-fadeInLeft(0.6s, 20px);
 
-    &-initial {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
+  &-initial {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 
-    @include respond-to('breakpoint-1200') {
-        @include animation-fadeInLeft(0.6s, 35px);
-    }
+  @include respond-to('breakpoint-1200') {
+    @include animation-fadeInLeft(0.6s, 35px);
+  }
 }
 
 .fade-in-right-effects {
-    @include animation-fadeInRight(0.6s, 20px);
+  @include animation-fadeInRight(0.6s, 20px);
 
-    &-initial {
-        opacity: 0;
-        transform: translateX(20px);
-    }
+  &-initial {
+    opacity: 0;
+    transform: translateX(20px);
+  }
 
-    @include respond-to('breakpoint-1200') {
-        @include animation-fadeInRight(0.6s, 35px);
-    }
+  @include respond-to('breakpoint-1200') {
+    @include animation-fadeInRight(0.6s, 35px);
+  }
 }
 
 .fade-in-up-effects {
-    @include animation-fadeInUp(0.6s, 20px);
+  @include animation-fadeInUp(0.6s, 20px);
 
-    &-initial {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  &-initial {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    @include respond-to('breakpoint-768') {
-        @include animation-fadeInUp(0.6s, 35px);
-    }
+  @include respond-to('breakpoint-768') {
+    @include animation-fadeInUp(0.6s, 35px);
+  }
 
-    @include respond-to('breakpoint-1200') {
-        @include animation-fadeInUp(0.6s, 50px);
-    }
+  @include respond-to('breakpoint-1200') {
+    @include animation-fadeInUp(0.6s, 50px);
+  }
 }
 
 .scale-effects {
-    &:hover {
-        animation: none;
-        transform: scale(1.15);
-        opacity: 0.8;
-    }
+  &:hover {
+    animation: none;
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
 }
 
 .rotate-up-effects {
-    @include animation-rotateUp();
+  @include animation-rotateUp();
 }
 
 .rotate-down-effects {
-    @include animation-rotateDown();
+  @include animation-rotateDown();
 }
 
 .popup-open-effects {
-    @include animation-popupOpen();
+  @include animation-popupOpen();
 }
 
 .popup-close-effects {
-    @include animation-popupClose();
+  @include animation-popupClose();
 }

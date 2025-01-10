@@ -1,40 +1,58 @@
 <div class="overlay" data-navigation-target="overlay"></div>
-<nav id="navigation" class="navigation__container" data-navigation-target="menu">
+
+<nav id="navigation" class="navigation__container"
+     data-navigation-target="menu"
+>
     <div>
         <ul class="navigation__container-list">
             <li class="link-effects navigation__container-list-item" aria-label="{{ 'return_to_home' | trans }}"
-            data-action="click->navigation#redirect" data-url="{{ path('app_main_index') }}">
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+            >
                 {{ 'home' | trans }}
             </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'portfolio_aria' | trans }}" 
-            data-action="click->navigation#redirect" data-url="{{ path('app_main_index') }}" data-url-anchor="home-portfolio">
+            <li class="link-effects navigation__container-list-item" aria-label="{{ 'portfolio_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-portfolio"
+            >
                 {{ 'portfolio' | trans }}
             </li>
-            <li class="link-effects navigation__container-list-item" {{ 'reviews_aria' | trans }} 
-            data-action="click->navigation#redirect" data-url="{{ path('app_main_index') }}" data-url-anchor="home-reviews">
+            <li class="link-effects navigation__container-list-item" aria-label="{{ 'reviews_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-reviews"
+            >
                 {{ 'reviews' | trans }}
             </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'contact_aria' | trans }}" 
-            data-action="click->navigation#redirect" data-url="{{ path('app_main_index') }}" data-url-anchor="home-contact">
+            <li class="link-effects navigation__container-list-item" aria-label="{{ 'contact_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-contact"
+            >
                 {{ 'contact' | trans }}
             </li>
+
             <li class="navigation__container-list-item navigation__container-list-item-about">
-                <div class="link-effects navigation__container-list-item-about-title" data-action="click->navigation#toggleDropdown">
+                <div class="link-effects navigation__container-list-item-about-title"
+                     data-action="click->navigation#toggleDropdown"
+                >
                     <span>{{ 'about_me' | trans }}</span>
                     {% embed 'assets/svg/arrow-right.html.twig' %}
                         {% block attributes %}
                             aria-hidden="true"
-                            data-target="navigation.arrow"
+                            data-navigation-target="arrow"
                         {% endblock %}
                     {% endembed %}
                 </div>
-                <ul class="navigation__container-list-item-about-dropdown" data-target="navigation.dropdown">
+
+                <ul class="navigation__container-list-item-about-dropdown"
+                    data-navigation-target="dropdown"
+                >
                     <li>
                         <a href="https://www.linkedin.com/in/gaelpa/" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
                             {% embed 'assets/svg/linkedin.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'linkedin_profile' | trans }}
                         </a>
@@ -42,9 +60,7 @@
                     <li>
                         <a href="https://github.com/Galuss1" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
                             {% embed 'assets/svg/github.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'github_profile' | trans }}
                         </a>
@@ -52,9 +68,7 @@
                     <li>
                         <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
                             {% embed 'assets/svg/resume.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'resume' | trans }}
                         </a>
@@ -62,32 +76,34 @@
                     <li>
                         <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
                             {% embed 'assets/svg/mail.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'author_mail' | trans }}
                         </a>
                     </li>
                 </ul>
             </li>
+
             <li class="navigation__container-list-item navigation__container-list-item-about">
-                <div class="link-effects navigation__container-list-item-about-title" data-action="click->navigation#toggleDropdown">
+                <div class="link-effects navigation__container-list-item-about-title"
+                     data-action="click->navigation#toggleDropdown"
+                >
                     <span>{{ 'about_site' | trans }}</span>
                     {% embed 'assets/svg/arrow-right.html.twig' %}
                         {% block attributes %}
                             aria-hidden="true"
-                            data-target="navigation.arrow"
+                            data-navigation-target="arrow"
                         {% endblock %}
                     {% endembed %}
                 </div>
-                <ul class="navigation__container-list-item-about-dropdown" data-target="navigation.dropdown">
+
+                <ul class="navigation__container-list-item-about-dropdown"
+                    data-navigation-target="dropdown"
+                >
                     <li>
                         <a href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'legal_notice_aria' | trans }}">
                             {% embed 'assets/svg/arrow-right.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'legal_notice' | trans }}
                         </a>
@@ -95,9 +111,7 @@
                     <li>
                         <a href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'privacy_policy_aria' | trans }}">
                             {% embed 'assets/svg/arrow-right.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'privacy_policy' | trans }}
                         </a>
@@ -105,9 +119,7 @@
                     <li>
                         <a href="{{ path('app_main_sitemap') }}" aria-label="{{ 'sitemap_aria' | trans }}">
                             {% embed 'assets/svg/arrow-right.html.twig' %}
-                                {% block attributes %}
-                                    aria-hidden="true"
-                                {% endblock %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'sitemap' | trans }}
                         </a>
@@ -119,7 +131,9 @@
         <hr>
 
         <div class="navigation__container-settings">
-            <div class="navigation__container-settings-item" data-controller="themes">
+            <div class="navigation__container-settings-item"
+                 data-controller="themes"
+            >
                 <span>{{ 'theme' | trans }} :</span>
                 <div>
                     {% embed 'assets/svg/light.html.twig' %}
@@ -149,7 +163,9 @@
                 </div>
             </div>
 
-            <div class="navigation__container-settings-item" data-controller="language">
+            <div class="navigation__container-settings-item"
+                 data-controller="language"
+            >
                 <span>{{ 'language' | trans }} :</span>
                 <div>
                     <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
@@ -157,9 +173,9 @@
                             {% block attributes %}
                                 class="icon-effects language-icons"
                                 aria-hidden="true"
-                                data-language-target="englishButton"
+                                data-language-target="frenchButton"
                                 data-action="click->language#toggleLanguage"
-                                data-language="en"
+                                data-language="fr"
                             {% endblock %}
                         {% endembed %}
                     </a>
@@ -185,7 +201,9 @@
         </div>
     </div>
 
-    <button type="button" class="btn" data-action="click->navigation#close" aria-label="{{ 'close_menu' | trans }}">
+    <button type="button" class="btn" aria-label="{{ 'close_menu' | trans }}"
+        data-action="click->navigation#close"
+    >
         {{ 'close' | trans }}
     </button>
 </nav>

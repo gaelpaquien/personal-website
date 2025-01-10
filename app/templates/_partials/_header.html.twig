@@ -1,7 +1,10 @@
 <div class="header">
     <div class="header__headband">
-        <ul class="fade-in-effects-initial header__headband-left-list" 
-        data-controller="language themes animation-fade-in" data-animation="fade-in-left-effects">
+        <ul class="fade-in-effects-initial header__headband-left-list"
+            data-controller="language themes"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-left-effects"
+        >
             <li class="header__headband-left-list-item">
                 <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
                     {% embed 'assets/svg/flag-fr.html.twig' %}
@@ -30,9 +33,7 @@
             </li>
             <span>
                 {% embed 'assets/svg/separator.html.twig' %}
-                    {% block attributes %}
-                        aria-hidden="true"
-                    {% endblock %}
+                    {% block attributes %}aria-hidden="true"{% endblock %}
                 {% endembed %}
             </span>
             <li class="header__headband-left-list-item">
@@ -59,8 +60,10 @@
             </li>
         </ul>
 
-        <ul class="fade-in-effects-initial header__headband-right-list" 
-        data-controller="animation-fade-in" data-animation="fade-in-right-effects">
+        <ul class="fade-in-effects-initial header__headband-right-list"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-right-effects"
+        >
             <li class="header__headband-right-list-item">
                 <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
                     {% embed 'assets/svg/mail.html.twig' %}
@@ -106,7 +109,9 @@
 
     <div class="header__container">
         <div class="fade-in-effects-initial header__container-title"
-        data-controller="animation-fade-in" data-animation="fade-in-left-effects">
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-left-effects"
+        >
             <h1>
                 <a href="{{ path('app_main_index') }}" aria-label="{{ 'return_to_home_aria' | trans }}">
                     {% embed 'assets/svg/logo.html.twig' %}
@@ -120,7 +125,11 @@
         </div>
 
         <button class="fade-in-effects-initial header__container-menu-open" type="button" aria-label="{{ 'open_menu' | trans }}" aria-expanded="false"
-        data-controller="animation-fade-in" data-animation="fade-in-right-effects" data-navigation-target="openButton" data-action="click->navigation#open">
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-right-effects"
+            data-navigation-target="openButton"
+            data-action="click->navigation#open"
+        >
             {% embed 'assets/svg/menu.html.twig' %}
                 {% block attributes %}
                     class="icon-effects"
@@ -130,7 +139,9 @@
         </button>
 
         <button class="header__container-menu-close" type="button" aria-label="{{ 'close_menu' | trans }}" aria-expanded="true"
-        data-navigation-target="closeButton" data-action="click->navigation#close">
+            data-navigation-target="closeButton"
+            data-action="click->navigation#close"
+        >
             {% embed 'assets/svg/cross.html.twig' %}
                 {% block attributes %}
                     class="icon-effects"
