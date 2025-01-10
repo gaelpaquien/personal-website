@@ -1,35 +1,56 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['button'];
+    static targets = ['button']
+    static values = {
+        scrollThreshold: { type: Number, default: 100 },
+        showClass: { type: String, default: 'visible' }
+    }
+
+    initialize() {
+        this.handleScroll = this.handleScroll.bind(this);
+    }
 
     connect() {
-        // Bind the toggleButton method to the current instance
-        this.toggleButton = this.toggleButton.bind(this);
-
-        // Add scroll event listener to toggle button visibility
-        window.addEventListener('scroll', this.toggleButton);
-
-        // Initial call to toggle button visibility on page load
-        this.toggleButton();
+        this.setupEventListeners();
+        requestAnimationFrame(() => this.handleScroll());
     }
 
     disconnect() {
-        // Remove scroll event listener when controller is disconnected
-        window.removeEventListener('scroll', this.toggleButton);
+        this.removeEventListeners();
     }
 
-    toggleButton() {
-        // Show the button when the page is scrolled down, hide when at the top
-        if (window.scrollY > 0) {
-            this.buttonTarget.style.display = 'block';
+    setupEventListeners() {
+        window.addEventListener('scroll', this.debouncedScroll.bind(this));
+    }
+
+    removeEventListeners() {
+        window.removeEventListener('scroll', this.debouncedScroll.bind(this));
+    }
+
+    debouncedScroll() {
+        if (this.scrollTimeout) {
+            window.cancelAnimationFrame(this.scrollTimeout);
+        }
+        this.scrollTimeout = window.requestAnimationFrame(() => this.handleScroll());
+    }
+
+    handleScroll() {
+        if (!this.hasButtonTarget) return;
+
+        const shouldShow = window.scrollY > this.scrollThresholdValue;
+        this.toggleButtonVisibility(shouldShow);
+    }
+
+    toggleButtonVisibility(show) {
+        if (show) {
+            this.buttonTarget.classList.add(this.showClassValue);
         } else {
-            this.buttonTarget.style.display = 'none';
+            this.buttonTarget.classList.remove(this.showClassValue);
         }
     }
 
     scrollToTop() {
-        // Smooth scrolling to the top of the page
         window.scrollTo({
             top: 0,
             behavior: 'smooth'

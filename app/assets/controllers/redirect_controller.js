@@ -2,16 +2,33 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
-        url: String // URL value for redirection
+        url: String,
+        delay: { type: Number, default: 0 }
+    }
+
+    connect() {
+        if (!this.hasUrlValue) {
+            console.warn('No URL provided for redirect controller');
+        }
     }
 
     redirectToUrl() {
-        // Redirect to the specified URL if the value exists
-        if (this.urlValue) {
-            window.location.href = this.urlValue;
+        if (!this.hasUrlValue) return;
+
+        if (this.delayValue) {
+            setTimeout(() => {
+                this.performRedirect();
+            }, this.delayValue);
         } else {
-            // Log an error if the URL value is missing
-            console.error('URL value is missing.');
+            this.performRedirect();
+        }
+    }
+
+    performRedirect() {
+        try {
+            window.location.href = this.urlValue;
+        } catch (error) {
+            console.error('Failed to redirect:', error);
         }
     }
 }

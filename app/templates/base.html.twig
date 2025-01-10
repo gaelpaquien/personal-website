@@ -30,9 +30,9 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicons/apple-touch-icon-180x180.png') }}">
 
         <!-- Fonts -->
-        <link rel="preload" href="{{ asset('fonts/MadimiOne-Regular.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="{{ asset('fonts/Chivo-SemiBold.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="{{ asset('fonts/Poppins-Medium.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="{{ asset('fonts/MadimiOne-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="{{ asset('fonts/Chivo-SemiBold.woff2') }}" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="{{ asset('fonts/Poppins-Medium.woff2') }}" as="font" type="font/woff2" crossorigin>
 
         <!-- Open Graph -->
         <meta property="og:type" content="website">
@@ -52,21 +52,26 @@
         <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
         <!-- Custom assets -->
-        {% block assets %}
-        {% endblock %}
+        {% block assets %}{% endblock %}
 
         <!-- AssetMapper -->
-        {% block mapper %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% block mapper %}{{ importmap('app') }}{% endblock %}
     </head>
 
-    <body data-controller="navigation scroll-to-section">
-        <header>
-            {% include "_partials/_header.html.twig" %}
-        </header>
+    <body data-controller="animation-fade-in scroll"
+        data-animation-fade-in-margin-value="0px 0px -20px 0px"
+        data-scroll-margin-value="50"
+        data-scroll-header-selector-value=".header"
+        data-scroll-scroll-threshold-value="100"
+        data-scroll-show-class-value="visible"
+    >
+        <div data-controller="navigation">
+            <header class="header">
+                {% include "_partials/_header.html.twig" %}
+            </header>
 
-        {% include "_partials/_navigation.html.twig" %}
+            {% include "_partials/_navigation.html.twig" %}
+        </div>
 
         <main>
             {% block content %}{% endblock %}

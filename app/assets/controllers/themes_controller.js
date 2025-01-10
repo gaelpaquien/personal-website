@@ -45,8 +45,8 @@ export default class extends Controller {
 
     updateThemeColor(theme) {
         const themeColors = {
-            dark: '#061128',
-            light: '#e4e5f1'
+            dark: '#201d1e',
+            light: '#F9F7F7'
         };
 
         const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
