@@ -14,7 +14,7 @@
         <!-- Device -->
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
         <meta name="format-detection" content="telephone=yes">
-        <meta name="theme-color" content="#0a111f"> <!-- theme-color is dynamically updated with themes_controller.js -->
+        <meta name="theme-color" content="#F9F7F7"> <!-- theme-color is dynamically updated with themes_controller.js -->
 
         <!-- Title -->
         <title>{% block title %}{{ 'site_name' | trans }}{% endblock %}</title>
@@ -51,36 +51,31 @@
         {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
         <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
-        <!-- Custom assets -->
-        {% block assets %}{% endblock %}
-
         <!-- AssetMapper -->
         {% block mapper %}{{ importmap('app') }}{% endblock %}
     </head>
 
-    <body data-controller="animation-fade-in scroll"
+    <body data-controller="navigation language themes animation-fade-in scroll"
         data-animation-fade-in-margin-value="0px 0px -20px 0px"
         data-scroll-margin-value="50"
         data-scroll-header-selector-value=".header"
         data-scroll-scroll-threshold-value="100"
         data-scroll-show-class-value="visible"
     >
-        <div data-controller="navigation">
-            <header class="header">
-                {% include "_partials/_header.html.twig" %}
-            </header>
+        <header>
+            {% include "_partials/_header.html.twig" %}
+        </header>
 
-            {% include "_partials/_navigation.html.twig" %}
-        </div>
+        {% include "_partials/_navigation.html.twig" %}
 
         <main>
             {% block content %}{% endblock %}
         </main>
 
-        {% include "components/button-scroll-to-top.html.twig" %}
+        {% include "components/buttons/btn-scroll-to-top.html.twig" %}
 
         <footer>
-            {% include "_partials/_footer.html.twig" %}
+            {% include "_partials/_footer/_footer.html.twig" %}
         </footer>
     </body>
 </html>

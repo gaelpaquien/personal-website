@@ -1,7 +1,7 @@
 <div class="overlay" data-navigation-target="overlay"></div>
 
 <nav id="navigation" class="navigation__container"
-     data-navigation-target="menu"
+    data-navigation-target="menu"
 >
     <div>
         <ul class="navigation__container-list">
@@ -131,9 +131,7 @@
         <hr>
 
         <div class="navigation__container-settings">
-            <div class="navigation__container-settings-item"
-                 data-controller="themes"
-            >
+            <div class="navigation__container-settings-item">
                 <span>{{ 'theme' | trans }} :</span>
                 <div>
                     {% embed 'assets/svg/light.html.twig' %}
@@ -163,9 +161,7 @@
                 </div>
             </div>
 
-            <div class="navigation__container-settings-item"
-                 data-controller="language"
-            >
+            <div class="navigation__container-settings-item">
                 <span>{{ 'language' | trans }} :</span>
                 <div>
                     <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
