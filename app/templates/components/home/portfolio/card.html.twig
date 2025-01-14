@@ -2,8 +2,12 @@
 {% set description = description|default('Description du projet') %}
 {% set image = image|default('images/portfolio/portfolio-default.webp') %}
 
-<div class="fade-in-effects-initial home-portfolio__container-projects-card" 
-data-controller="animation-fade-in" data-animation="fade-in-up-effects" data-portfolio-card-target="card" data-action="click->portfolio-card#pressCard">
+<div class="fade-in-effects-initial home-portfolio__container-projects-card"
+     data-animation-fade-in-target="fadeIn"
+     data-animation="fade-in-up-effects"
+     data-portfolio-card-target="card"
+     data-action="click->portfolio-card#pressCard"
+>
     <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
     <div class="home-portfolio__container-projects-card-content">
         <h3 class="home-portfolio__container-projects-card-content-title">{{ title }}</h3>

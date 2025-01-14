@@ -3,10 +3,6 @@
 {% block robots %}noindex, nofollow{% endblock %}
 {% block title %}{{ 'page_error_title' | trans }} | gaelpaquien.com{% endblock %}
 
-{% block assets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/errors_pages.css') }}">
-{% endblock %}
-
 {% block content %}
     <section id="error-page" class="errors-pages__container">
         <div class="fade-in-effects-initial" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
@@ -20,6 +16,6 @@
             {{ 'page_error_text' | trans }}
         </p>
 
-        {% include "components/button-return-to-home.html.twig" %}
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
     </section>
 {% endblock %}

@@ -1,7 +1,16 @@
-<div id="home-reviews-popup" class="home-reviews__container-popup-add-review popup active" data-reviews-popup-target="reviewsPopup">
+<div id="home-reviews-popup" class="home-reviews__container-popup-add-review popup active"
+     data-reviews-popup-target="reviewsPopup"
+>
     <button class="btn-close-home-reviews-popup home-reviews__container-popup-add-review-btn-close" type="button" aria-label="Fermer la fenêtre"
-    data-reviews-popup-target="closeButton" data-action="click->reviews-popup#close">
-        <svg class="icon-effects" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        data-reviews-popup-target="closeButton"
+        data-action="click->reviews-popup#close"
+    >
+        {% embed 'assets/svg/cross.html.twig' %}
+            {% block attributes %}
+                class="icon-effects"
+                aria-hidden="true"
+            {% endblock %}
+        {% endembed %}
     </button>
     <h2 class="home-reviews__container-popup-add-review-title">Publier un avis</h2>
     <form class="home-reviews__container-popup-add-review-form" action="#" method="post">
@@ -35,17 +44,15 @@
                 Publier
             </button>
             <button class="btn-close-home-reviews-popup btn" type="button" aria-label="Fermer la fenêtre"
-            data-reviews-popup-target="closeButton" data-action="click->reviews-popup#close">
+                data-reviews-popup-target="closeButton"
+                data-action="click->reviews-popup#close"
+            >
                 Annuler
             </button>
         </div>
         <div class="form-infos">
-            <p>
-                *Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site.
-            </p>
-            <p>
-                *Votre email ne sera pas visible et votre identité sera affichée sous forme d'initial (exemple : John D.).
-            </p>
+            <p>*Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site.</p>
+            <p>*Votre email ne sera pas visible et votre identité sera affichée sous forme d'initial (exemple : John D.).</p>
         </div>
     </form>
 </div>

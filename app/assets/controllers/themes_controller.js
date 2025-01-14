@@ -34,12 +34,15 @@ export default class extends Controller {
 
     updateButtonState() {
         const theme = localStorage.getItem('theme') || 'light';
+        const darkButtons = document.querySelectorAll('[data-themes-target="darkButton"]');
+        const lightButtons = document.querySelectorAll('[data-themes-target="lightButton"]');
+
         if (theme === 'dark') {
-            this.darkButtonTarget.classList.add('inactive');
-            this.lightButtonTarget.classList.remove('inactive');
+            darkButtons.forEach(button => button.classList.add('inactive'));
+            lightButtons.forEach(button => button.classList.remove('inactive'));
         } else {
-            this.lightButtonTarget.classList.add('inactive');
-            this.darkButtonTarget.classList.remove('inactive');
+            lightButtons.forEach(button => button.classList.add('inactive'));
+            darkButtons.forEach(button => button.classList.remove('inactive'));
         }
     }
 

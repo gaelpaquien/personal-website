@@ -22,18 +22,15 @@ export default class extends Controller {
     }
 
     updateButtonState(language) {
-        const buttons = {
-            fr: {
-                active: this.frenchButtonTarget,
-                inactive: this.englishButtonTarget
-            },
-            en: {
-                active: this.englishButtonTarget,
-                inactive: this.frenchButtonTarget
-            }
-        };
+        const frenchButtons = document.querySelectorAll('[data-language-target="frenchButton"]');
+        const englishButtons = document.querySelectorAll('[data-language-target="englishButton"]');
 
-        buttons[language].active.classList.add('inactive');
-        buttons[language].inactive.classList.remove('inactive');
+        if (language === 'fr') {
+            frenchButtons.forEach(button => button.classList.add('inactive'));
+            englishButtons.forEach(button => button.classList.remove('inactive'));
+        } else {
+            englishButtons.forEach(button => button.classList.add('inactive'));
+            frenchButtons.forEach(button => button.classList.remove('inactive'));
+        }
     }
 }
