@@ -11,46 +11,52 @@ export default class extends Controller {
 
     initialize() {
         this.handleScroll = this.handleScroll.bind(this);
+        this.debouncedScroll = this.debounce(this.handleScroll.bind(this), 10);
     }
 
     connect() {
         this.header = document.querySelector(this.headerSelectorValue);
-        this.setupEventListeners();
-        requestAnimationFrame(() => this.handleScroll());
+        window.addEventListener('scroll', this.debouncedScroll);
+        this.handleScroll();
     }
 
     disconnect() {
-        this.removeEventListeners();
+        window.removeEventListener('scroll', this.debouncedScroll);
     }
 
-    setupEventListeners() {
-        window.addEventListener('scroll', this.debouncedScroll.bind(this));
-    }
-
-    removeEventListeners() {
-        window.removeEventListener('scroll', this.debouncedScroll.bind(this));
-    }
-
-    debouncedScroll() {
-        if (this.scrollTimeout) {
-            window.cancelAnimationFrame(this.scrollTimeout);
-        }
-        this.scrollTimeout = window.requestAnimationFrame(() => this.handleScroll());
+    debounce(func, wait) {
+        let timeout;
+        return () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(func, wait);
+        };
     }
 
     handleScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+
         if (this.hasScrollTopButtonTarget) {
-            const shouldShow = window.scrollY > this.scrollThresholdValue;
-            this.toggleScrollTopButton(shouldShow);
+            const shouldShow = scrollY > this.scrollThresholdValue;
+            this.scrollTopButtonTarget.classList.toggle(this.showClassValue, shouldShow);
         }
 
         if (this.hasSectionButtonTarget) {
-            const lastButton = this.sectionButtonTargets[this.sectionButtonTargets.length - 1];
-            lastButton.classList.toggle('rotate-up-effects', this.isCloseToBottom());
+            const isBottom = this.isCloseToBottom();
+            this.sectionButtonTargets.forEach(button => {
+                button.dataset.isBottom = isBottom.toString();
+                if (isBottom) {
+                    button.dataset.action = 'click->scroll#scrollToTop';
+                    button.classList.add('rotate-up-effects');
+                } else {
+                    button.dataset.action = 'click->scroll#scrollToSection';
+                    button.classList.remove('rotate-up-effects');
+                }
+            });
         }
     }
 
-    scrollToTop() {
+    scrollToTop(event) {
+        if (event) event.preventDefault();
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -59,8 +65,9 @@ export default class extends Controller {
 
     scrollToSection(event) {
         event.preventDefault();
+        const button = event.currentTarget;
 
-        if (this.isCloseToBottom() && event.currentTarget.hasAttribute('data-section-button')) {
+        if (button.dataset.isBottom === 'true') {
             this.scrollToTop();
             return;
         }
@@ -69,21 +76,16 @@ export default class extends Controller {
         if (!targetId) return;
 
         const targetElement = document.querySelector(`#${targetId}`);
-        if (!targetElement) {
-            console.warn(`Element with ID ${targetId} not found.`);
-            return;
-        }
+        if (!targetElement) return;
 
         this.smoothScrollTo(targetElement);
     }
 
     isCloseToBottom() {
-        return (window.innerHeight + window.scrollY + this.marginValue) >=
-            document.documentElement.scrollHeight;
-    }
-
-    toggleScrollTopButton(show) {
-        this.scrollTopButtonTarget.classList.toggle(this.showClassValue, show);
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollPosition = window.scrollY || window.pageYOffset;
+        return windowHeight + scrollPosition + this.marginValue >= documentHeight;
     }
 
     getTargetId(event) {
@@ -92,12 +94,11 @@ export default class extends Controller {
 
     smoothScrollTo(element) {
         const headerOffset = this.header?.offsetHeight || 0;
-        const targetPosition = element.getBoundingClientRect().top +
-            window.scrollY -
-            headerOffset;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
-            top: targetPosition,
+            top: offsetPosition,
             behavior: 'smooth'
         });
     }

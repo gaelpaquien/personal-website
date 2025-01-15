@@ -54,11 +54,11 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    }
 
-    &.visible {
-        opacity: 1;
-        visibility: visible;
+        &.visible {
+            opacity: 1;
+            visibility: visible;
+        }
     }
 
     svg {
@@ -89,12 +89,25 @@
         @include animation-bounce(1.75s, infinite);
         transition: transform 0.5s ease-in-out;
 
-        &:hover {
-            animation: none;
+        &.scale-effects {
+            &:hover {
+                animation: none;
+                opacity: 0.8;
+                transform: scale(1.15);
+            }
+
+            &:active {
+                @include animation-pressed(0.9);
+            }
         }
 
-        &:active {
-            @include animation-pressed(0.9);
+        &.rotate-up-effects {
+            animation: none;
+            transform: rotate(180deg);
+
+            &:hover {
+                transform: rotate(180deg) scale(1.15);
+            }
         }
     }
 

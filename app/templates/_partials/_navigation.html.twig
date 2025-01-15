@@ -136,7 +136,7 @@
                 <div>
                     {% embed 'assets/svg/light.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects btn-light-mode"
+                            class="scale-effects btn-light-mode"
                             aria-label="{{ 'theme_light' | trans }}"
                             data-theme="light"
                             data-themes-target="lightButton"
@@ -151,7 +151,7 @@
                     {% endembed %}
                     {% embed 'assets/svg/moon.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects btn-dark-mode"
+                            class="scale-effects btn-dark-mode"
                             aria-label="{{ 'theme_dark' | trans }}"
                             data-theme="dark"
                             data-themes-target="darkButton"
@@ -167,7 +167,7 @@
                     <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
                         {% embed 'assets/svg/flag-fr.html.twig' %}
                             {% block attributes %}
-                                class="icon-effects language-icons"
+                                class="scale-effects language-icons"
                                 aria-hidden="true"
                                 data-language-target="frenchButton"
                                 data-action="click->language#toggleLanguage"
@@ -184,7 +184,7 @@
                     <a href="{{ path('app_change_locale', { 'locale': 'en' }) }}" aria-label="{{ 'translate_en' | trans }}">
                         {% embed 'assets/svg/flag-en.html.twig' %}
                             {% block attributes %}
-                                class="icon-effects language-icons"
+                                class="scale-effects language-icons"
                                 aria-hidden="true"
                                 data-language-target="englishButton"
                                 data-action="click->language#toggleLanguage"

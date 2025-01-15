@@ -111,17 +111,6 @@ header {
         &.rotate-down {
             @include animation-rotateDown;
         }
-
-        .icon-effects {
-            &:hover {
-                @include animation-pulse(1.15);
-                transform: scale(1);
-            }
-
-            &:active {
-                animation: none;
-            }
-        }
     }
 
     @include respond-to('breakpoint-768') {
