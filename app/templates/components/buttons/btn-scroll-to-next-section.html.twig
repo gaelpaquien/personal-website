@@ -2,13 +2,14 @@
 {% set aria_label = aria_label|default('scroll_to_next_default_aria' | trans) %}
 
 <div id="btn-scroll-to-next-section">
-    <button class="scale-effects" type="button" aria-label="{{ aria_label }}"
+    <button type="button" aria-label="{{ aria_label }}"
         data-scroll-target="sectionButton"
         data-target="{{ data_target }}"
         data-action="click->scroll#scrollToSection"
     >
         {% embed 'assets/svg/arrow-down.html.twig' %}
             {% block attributes %}
+                class="scale-effects rotate-effects"
                 aria-hidden="true"
             {% endblock %}
         {% endembed %}

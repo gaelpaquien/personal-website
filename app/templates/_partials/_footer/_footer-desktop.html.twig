@@ -79,10 +79,20 @@
         <div class="footer__container-links">
             <ul class="footer__container-links-social">
                 <li class="footer__container-links-social-item">
+                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                        {% embed 'assets/svg/mail.html.twig' %}
+                            {% block attributes %}
+                                class="scale-effects"
+                                aria-hidden="true"
+                            {% endblock %}
+                        {% endembed %}
+                    </a>
+                </li>
+                <li class="footer__container-links-social-item">
                     <a href="https://www.linkedin.com/in/gaelpa/" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
                         {% embed 'assets/svg/linkedin.html.twig' %}
                             {% block attributes %}
-                                class="icon-effects"
+                                class="scale-effects"
                                 aria-hidden="true"
                             {% endblock %}
                         {% endembed %}
@@ -92,7 +102,7 @@
                     <a href="https://github.com/Galuss1" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
                         {% embed 'assets/svg/github.html.twig' %}
                             {% block attributes %}
-                                class="icon-effects"
+                                class="scale-effects"
                                 aria-hidden="true"
                             {% endblock %}
                         {% endembed %}
@@ -102,7 +112,7 @@
                     <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
                         {% embed 'assets/svg/resume.html.twig' %}
                             {% block attributes %}
-                                class="icon-effects"
+                                class="scale-effects"
                                 aria-hidden="true"
                             {% endblock %}
                         {% endembed %}

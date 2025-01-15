@@ -8,7 +8,7 @@
                 <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
                     {% embed 'assets/svg/flag-fr.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                             data-language-target="frenchButton"
                             data-action="click->language#toggleLanguage"
@@ -21,7 +21,7 @@
                 <a href="{{ path('app_change_locale', { 'locale': 'en' }) }}" aria-label="{{ 'translate_en' | trans }}">
                     {% embed 'assets/svg/flag-en.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                             data-language-target="englishButton"
                             data-action="click->language#toggleLanguage"
@@ -38,7 +38,7 @@
             <li class="header__headband-left-list-item">
                 {% embed 'assets/svg/light.html.twig' %}
                     {% block attributes %}
-                        class="icon-effects btn-light-mode"
+                        class="scale-effects btn-light-mode"
                         aria-label="{{ 'theme_light' | trans }}"
                         data-theme="light"
                         data-themes-target="lightButton"
@@ -49,7 +49,7 @@
             <li class="header__headband-left-list-item">
                 {% embed 'assets/svg/moon.html.twig' %}
                     {% block attributes %}
-                        class="icon-effects btn-dark-mode"
+                        class="scale-effects btn-dark-mode"
                         aria-label="{{ 'theme_dark' | trans }}"
                         data-theme="dark"
                         data-themes-target="darkButton"
@@ -67,7 +67,7 @@
                 <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
                     {% embed 'assets/svg/mail.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                         {% endblock %}
                     {% endembed %}
@@ -77,7 +77,7 @@
                 <a href="https://www.linkedin.com/in/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
                     {% embed 'assets/svg/linkedin.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                         {% endblock %}
                     {% endembed %}
@@ -87,7 +87,7 @@
                 <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
                     {% embed 'assets/svg/github.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                         {% endblock %}
                     {% endembed %}
@@ -97,7 +97,7 @@
                 <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
                     {% embed 'assets/svg/resume.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                         {% endblock %}
                     {% endembed %}
@@ -115,7 +115,7 @@
                 <a href="{{ path('app_main_index') }}" aria-label="{{ 'return_to_home_aria' | trans }}">
                     {% embed 'assets/svg/logo.html.twig' %}
                         {% block attributes %}
-                            class="icon-effects"
+                            class="scale-effects"
                             aria-hidden="true"
                         {% endblock %}
                     {% endembed %}
@@ -131,7 +131,7 @@
         >
             {% embed 'assets/svg/menu.html.twig' %}
                 {% block attributes %}
-                    class="icon-effects"
+                    class="scale-effects"
                     aria-hidden="true"
                 {% endblock %}
             {% endembed %}
@@ -143,7 +143,7 @@
         >
             {% embed 'assets/svg/cross.html.twig' %}
                 {% block attributes %}
-                    class="icon-effects"
+                    class="scale-effects"
                     aria-hidden="true"
                 {% endblock %}
             {% endembed %}
