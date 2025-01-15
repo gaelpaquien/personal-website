@@ -152,6 +152,3 @@ page_error404_title_section: 'Erreur 404 - Page Not Found'
 page_error403_title: 'Accès interdit - Erreur 403 - gaelpaquien.com'
 page_error403_title_section: 'Erreur 403 - Forbidden'
 page_error_text: "Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site."
-page_work_in_progress_title: 'Page en cours de construction - gaelpaquien.com'
-page_work_in_progress_title_section: 'Page en construction'
-page_work_in_progress_text: "Hey 👋 Cette page est en cours de construction, n'hésite pas à revenir un peu plus tard !"
