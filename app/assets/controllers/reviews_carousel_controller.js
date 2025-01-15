@@ -2,60 +2,74 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = [
-        "item", "nextButton", "previousButton", 
-        "mobileNextButton", "mobilePreviousButton", 
+        "item", "nextButton", "previousButton",
+        "mobileNextButton", "mobilePreviousButton",
         "reviewsCarousel"
-    ];
+    ]
+
     static values = {
-        autoScrollInterval: Number // Interval for automatic scrolling
+        autoScrollInterval: { type: Number, default: 8000 },
+        initialDelay: { type: Number, default: 1500 },
+        threshold: { type: Number, default: 0.1 }
+    }
+
+    initialize() {
+        this.currentIndex = 0;
+        this.boundHandleIntersection = this.handleIntersection.bind(this);
     }
 
     connect() {
-        this.currentIndex = 0;
-        this.showItem(this.currentIndex); // Display the initial item
-        this.startAutoScroll(); // Start automatic scrolling
-        this.next(); // Move to the next item immediately
-
-        // Create an observer for the reviews section
-        this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
-            threshold: 0.1
-        });
-
-        // Observe the reviews section
-        this.observer.observe(this.reviewsCarouselTarget);
+        this.initializeCarousel();
+        this.initializeObserver();
     }
 
     disconnect() {
-        this.stopAutoScroll(); // Stop automatic scrolling when controller disconnects
-        this.observer.disconnect(); // Disconnect the observer
+        this.stopAutoScroll();
+        this.observer?.disconnect();
+    }
+
+    initializeCarousel() {
+        this.showItem(this.currentIndex);
+        this.startAutoScroll();
+        requestAnimationFrame(() => this.next());
+    }
+
+    initializeObserver() {
+        this.observer = new IntersectionObserver(this.boundHandleIntersection, {
+            threshold: this.thresholdValue
+        });
+        this.observer.observe(this.reviewsCarouselTarget);
     }
 
     startAutoScroll() {
-        // Start the interval for automatic scrolling
+        this.stopAutoScroll();
         this.autoScrollIntervalId = setInterval(() => {
             this.next();
-        }, this.autoScrollIntervalValue || 8000); // Default to 15 seconds if no value provided
+        }, this.autoScrollIntervalValue);
     }
 
     stopAutoScroll() {
-        // Clear the automatic scrolling interval
-        clearInterval(this.autoScrollIntervalId);
+        if (this.autoScrollIntervalId) {
+            clearInterval(this.autoScrollIntervalId);
+            this.autoScrollIntervalId = null;
+        }
     }
 
     next() {
-        this.stopAutoScroll(); // Stop auto scroll to prevent conflicts
-        const nextIndex = (this.currentIndex + 1) % this.itemTargets.length; // Calculate the next index
-        this.transitionItems(this.currentIndex, nextIndex); // Transition to the next item
-        this.currentIndex = nextIndex; // Update current index
-        this.startAutoScroll(); // Restart auto scroll
+        this.moveToIndex((this.currentIndex + 1) % this.itemTargets.length);
     }
 
     previous() {
-        this.stopAutoScroll(); // Stop auto scroll to prevent conflicts
-        const prevIndex = (this.currentIndex - 1 + this.itemTargets.length) % this.itemTargets.length; // Calculate the previous index
-        this.transitionItems(this.currentIndex, prevIndex); // Transition to the previous item
-        this.currentIndex = prevIndex; // Update current index
-        this.startAutoScroll(); // Restart auto scroll
+        this.moveToIndex((this.currentIndex - 1 + this.itemTargets.length) % this.itemTargets.length);
+    }
+
+    moveToIndex(newIndex) {
+        if (!this.isValidIndex(newIndex)) return;
+
+        this.stopAutoScroll();
+        this.transitionItems(this.currentIndex, newIndex);
+        this.currentIndex = newIndex;
+        this.startAutoScroll();
     }
 
     transitionItems(currentIndex, newIndex) {
@@ -64,53 +78,53 @@ export default class extends Controller {
 
         if (!currentItem || !newItem) return;
 
-        // Update classes to transition items
-        this.updateItemClasses(currentItem, newItem);
+        requestAnimationFrame(() => {
+            this.updateItemClasses(currentItem, newItem);
+        });
     }
 
     getItem(index) {
-        // Validate the index to prevent object injection
-        if (Number.isInteger(index) && index >= 0 && index < this.itemTargets.length) {
-            return this.itemTargets[index];
-        }
-        return null;
+        return this.isValidIndex(index) ? this.itemTargets[index] : null;
+    }
+
+    isValidIndex(index) {
+        return Number.isInteger(index) &&
+            index >= 0 &&
+            index < this.itemTargets.length;
     }
 
     updateItemClasses(currentItem, newItem) {
         currentItem.classList.remove("active");
         currentItem.classList.add("previous");
+
+        // Force reflow with non-null operation
+        const reflow = newItem.offsetHeight;
+
         newItem.classList.add("next");
-
-        // Force a reflow to apply classes immediately
-        void newItem.offsetWidth;
-
-        // Finalize class changes for new item
-        newItem.classList.remove("next");
-        newItem.classList.add("active");
+        requestAnimationFrame(() => {
+            newItem.classList.remove("next");
+            newItem.classList.add("active");
+        });
     }
 
     showItem(index) {
-        // Show only the item at the specified index
-        if (!Number.isInteger(index) || index < 0 || index >= this.itemTargets.length) {
-            return;
-        }
+        if (!this.isValidIndex(index)) return;
 
         this.itemTargets.forEach((item, idx) => {
-            item.classList.toggle("active", idx === index);
-            if (idx !== index) {
+            const isActive = idx === index;
+            item.classList.toggle("active", isActive);
+            if (!isActive) {
                 item.classList.remove("previous", "next");
             }
         });
     }
 
-    handleIntersection(entries) {
-        // Handle intersection observer events
+    handleIntersection = (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Move to the next item shortly after intersection
                 setTimeout(() => {
-                    this.next();
-                }, 1500);
+                    requestAnimationFrame(() => this.next());
+                }, this.initialDelayValue);
             }
         });
     }

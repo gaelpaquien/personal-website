@@ -2,39 +2,35 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = ["frenchButton", "englishButton"]
+    static values = {
+        defaultLanguage: { type: String, default: 'fr' }
+    }
 
     connect() {
-        // Apply the language settings when the controller is connected
         this.applyLanguage();
     }
 
     toggleLanguage(event) {
-        // Set the language based on the clicked button's data-language attribute
         const language = event.currentTarget.dataset.language;
-
-        // Save the selected language in localStorage
         localStorage.setItem('language', language);
-
-        // Apply the language settings
-        this.applyLanguage();
+        this.updateButtonState(language);
     }
 
     applyLanguage() {
-        // Retrieve the language from localStorage or default to 'fr'
-        const language = localStorage.getItem('language') || 'fr';
-
-        // Update the state of the language toggle buttons
+        const language = localStorage.getItem('language') || this.defaultLanguageValue;
         this.updateButtonState(language);
     }
 
     updateButtonState(language) {
-        // Update button states based on the current language
+        const frenchButtons = document.querySelectorAll('[data-language-target="frenchButton"]');
+        const englishButtons = document.querySelectorAll('[data-language-target="englishButton"]');
+
         if (language === 'fr') {
-            this.frenchButtonTarget.classList.add('inactive');
-            this.englishButtonTarget.classList.remove('inactive');
+            frenchButtons.forEach(button => button.classList.add('inactive'));
+            englishButtons.forEach(button => button.classList.remove('inactive'));
         } else {
-            this.englishButtonTarget.classList.add('inactive');
-            this.frenchButtonTarget.classList.remove('inactive');
+            englishButtons.forEach(button => button.classList.add('inactive'));
+            frenchButtons.forEach(button => button.classList.remove('inactive'));
         }
     }
 }

@@ -17,7 +17,7 @@
             border-radius: 1rem;
 
             &:hover {
-                @include animation-pulseWithBoxShadow(1.01, 0.7s);
+                transform: scale(1.05);
                 box-shadow: 0 4px 6px var(--color-text);
                 opacity: 0.8;
             }

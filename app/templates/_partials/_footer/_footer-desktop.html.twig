@@ -1,0 +1,142 @@
+<div class="footer__container">
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-left-effects"
+    >
+        <div class="footer__container-about">
+            <div class="footer__container-about-title">
+                {% embed 'assets/svg/logo.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="footer__container-about-title-h2"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="footer__container-about-title-h2">{{ 'site_name' | trans }}</h2>
+            </div>
+            <p class="footer__container-about-text">
+                &copy 2024-{{ 'now' | date('Y') }} - {{ 'copyright' | trans }}.
+            </p>
+        </div>
+    </div>
+
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-left-effects"
+    >
+        <div class="footer__container-contact">
+            <div class="footer__container-contact-title">
+                {% embed 'assets/svg/discussion.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="footer__container-contact-title-h2"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="footer__container-contact-title-h2">{{ 'footer_contact_title' | trans }}</h2>
+            </div>
+            <ul class="footer__container-contact-list">
+                <li class="link-effects footer__container-contact-list-item">
+                    <a href="https://calendly.com/contact-s6as" target="_blank" rel="noopener" aria-label="{{ 'calendly_meeting' | trans }}">
+                        {{ 'calendly_meeting' | trans }}
+                    </a>
+                </li>
+                <li class="link-effects footer__container-contact-list-item">
+                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                        {{ 'author_mail' | trans }}
+                    </a>
+                </li>
+                <li class="link-effects footer__container-contact-list-item">
+                    <a href="tel:0634068636" aria-label=" {{ 'call' | trans }}">
+                        {{ 'author_phone' | trans }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-right-effects"
+    >
+        <div class="footer__container-company">
+            <div class="footer__container-company-title">
+                {% embed 'assets/svg/building.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="footer__container-company-title-h2"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="footer__container-company-title-h2">{{ 'footer_company_title' | trans }}</h2>
+            </div>
+            <p class="footer__container-company-text">
+                {{ 'footer_company_text1' | trans }}<br>
+                {{ 'footer_company_text2' | trans }}<br>
+                {{ 'footer_company_text3' | trans }}
+            </p>
+        </div>
+    </div>
+
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-right-effects"
+    >
+        <div class="footer__container-links">
+            <ul class="footer__container-links-social">
+                <li class="footer__container-links-social-item">
+                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                        {% embed 'assets/svg/mail.html.twig' %}
+                            {% block attributes %}
+                                class="scale-effects"
+                                aria-hidden="true"
+                            {% endblock %}
+                        {% endembed %}
+                    </a>
+                </li>
+                <li class="footer__container-links-social-item">
+                    <a href="https://www.linkedin.com/in/gaelpa/" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
+                        {% embed 'assets/svg/linkedin.html.twig' %}
+                            {% block attributes %}
+                                class="scale-effects"
+                                aria-hidden="true"
+                            {% endblock %}
+                        {% endembed %}
+                    </a>
+                </li>
+                <li class="footer__container-links-social-item">
+                    <a href="https://github.com/Galuss1" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
+                        {% embed 'assets/svg/github.html.twig' %}
+                            {% block attributes %}
+                                class="scale-effects"
+                                aria-hidden="true"
+                            {% endblock %}
+                        {% endembed %}
+                    </a>
+                </li>
+                <li class="footer__container-links-social-item">
+                    <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
+                        {% embed 'assets/svg/resume.html.twig' %}
+                            {% block attributes %}
+                                class="scale-effects"
+                                aria-hidden="true"
+                            {% endblock %}
+                        {% endembed %}
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="footer__container-links-various">
+                <li class="footer__container-links-various-item">
+                    <a class="link-effects" href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'legal_notice_aria' | trans }}">
+                        {{ 'legal_notice' | trans }}
+                    </a>
+                </li>
+                <li class="footer__container-links-various-item">
+                    <a class="link-effects" href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'privacy_policy_aria' | trans }}">
+                        {{ 'privacy_policy' | trans }}
+                    </a>
+                </li>
+                <li class="footer__container-links-various-item">
+                    <a class="link-effects" href="{{ path('app_main_sitemap') }}" aria-label="{{ 'sitemap_aria' | trans }}">
+                        {{ 'sitemap' | trans }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

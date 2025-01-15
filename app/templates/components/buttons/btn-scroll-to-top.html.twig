@@ -1,0 +1,12 @@
+<div id="btn-scroll-to-top">
+    <button class="scale-effects" type="button" aria-label="{{ 'scroll_to_top' | trans }}"
+        data-scroll-target="scrollTopButton"
+        data-action="click->scroll#scrollToTop"
+    >
+        {% embed 'assets/svg/arrow-up.html.twig' %}
+            {% block attributes %}
+                aria-hidden="true"
+            {% endblock %}
+        {% endembed %}
+    </button>
+</div>
