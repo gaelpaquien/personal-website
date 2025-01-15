@@ -89,9 +89,13 @@ svg {
 }
 
 .inactive {
-    pointer-events: none;
-    cursor: default;
+    cursor: not-allowed !important;
+    transition: none !important;
     opacity: 0.5 !important;
+
+    &:hover {
+        transform: none !important;
+    }
 }
 
 .sf-minitoolbar {

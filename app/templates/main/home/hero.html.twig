@@ -1,0 +1,35 @@
+<section id="home-hero" class="home-hero__container">
+    <div class="fade-in-effects-initial home-hero__container-image"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-left-effects"
+    >
+        <img src="{{ asset('images/home-hero-illustration.webp') }}" alt="{{ 'page_home_hero_image_alt' | trans }}">
+    </div>
+
+    <div class="fade-in-effects-initial home-hero__container-presentation"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <div class="home-hero__container-presentation-title">
+            <h2 class="home-hero__container-presentation-title-main">
+                {{ 'site_author' | trans }}
+            </h2>
+            <h3 class="home-hero__container-presentation-title-secondary">
+                {{ 'page_home_hero_title_secondary' | trans }}
+            </h3>
+        </div>
+
+        <div class="home-hero__container-presentation-description">
+            <p>{{ 'page_home_hero_presentation_text1' | trans }}</p>
+            <br>
+            <p>{{ 'page_home_hero_presentation_text2' | trans }}</p>
+            <br>
+            <p>{{ 'page_home_hero_presentation_text3' | trans }}</p>
+        </div>
+
+        {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
+            'data_target': '#home-portfolio',
+            'aria_label':  'portfolio_aria' | trans
+        } %}
+    </div>
+</section>

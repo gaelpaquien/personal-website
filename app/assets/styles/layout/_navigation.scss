@@ -114,14 +114,12 @@ nav {
         &-item {
             font-size: calc(0.75 * $font-size-h2);
             margin-bottom: 1rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+            @include flex-container(row, space-between, center);
 
-        svg {
-            height: 1.35rem;
-            width: auto;
+            svg {
+                height: 1.35rem;
+                width: 1.35rem;
+            }
         }
     }
 

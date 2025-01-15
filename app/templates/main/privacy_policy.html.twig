@@ -3,56 +3,64 @@
 {% block robots %}noindex, follow{% endblock %}
 {% block title %}{{ 'page_privacy_policy_title' | trans }}{% endblock %}
 
-{% block assets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/legal_pages.css') }}">
-{% endblock %}
-
 {% block content %}
     <section id="privacy-policy" class="legal-pages__container">
-        <div class="fade-in-effects-initial" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
-            <div class="section-title link-effects" data-target="privacy-policy" data-action="click->scroll-to-section#scrollToSection">
-                <svg role="img" aria-labelledby="privacy-policy-title" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/></svg>
+        <div class="fade-in-effects-initial"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
+            <div class="section-title link-effects"
+                data-target="privacy-policy"
+                data-action="click->scroll#scrollToSection"
+            >
+                {% embed 'assets/svg/shield.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="privacy-policy-title"
+                    {% endblock %}
+                {% endembed %}
                 <h2 id="privacy-policy-title">{{ 'privacy_policy' | trans }}</h2>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'privacy_policy' | trans }}</h3>
             <div class="legal-pages__container-block-content">
-                <p>
-                    {{ 'page_privacy_policy_section1_text1' | trans }}
-                </p>
+                <p>{{ 'page_privacy_policy_section1_text1' | trans }}</p>
                 <br>
+                <span>{{ 'page_privacy_policy_section1_list1_title' | trans }}</span>
                 <ul>
-                    <ul>
-                        {{ 'page_privacy_policy_section1_list1_title' | trans }}
-                        <li>{{ 'page_privacy_policy_section1_list1_item1' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item2' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item3' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item4' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item5' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item6' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item7' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item8' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list1_item9' | trans }}</li>
-                    </ul>
-                    <br>
-                    <ul>
-                        {{ 'page_privacy_policy_section1_list2_title' | trans }}
-                        <li>{{ 'page_privacy_policy_section1_list2_item1' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item2' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item3' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item4' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item5' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item6' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item7' | trans }}</li>
-                        <li>{{ 'page_privacy_policy_section1_list2_item8' | trans }}</li>
-                    </ul>
+                    <li>{{ 'page_privacy_policy_section1_list1_item1' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item2' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item3' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item4' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item5' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item6' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item7' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item8' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list1_item9' | trans }}</li>
+                </ul>
+                <br>
+                <span>{{ 'page_privacy_policy_section1_list2_title' | trans }}</span>
+                <ul>
+                    <li>{{ 'page_privacy_policy_section1_list2_item1' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item2' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item3' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item4' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item5' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item6' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item7' | trans }}</li>
+                    <li>{{ 'page_privacy_policy_section1_list2_item8' | trans }}</li>
                 </ul>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section2_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
                 <p>
@@ -65,56 +73,66 @@
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section3_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
-                <p>
-                    {{ 'page_privacy_policy_section3_text1' | trans }}
-                </p>
+                <p>{{ 'page_privacy_policy_section3_text1' | trans }}</p>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section4_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
-                <p>
-                    {{ 'page_privacy_policy_section4_text1' | trans }}
-                </p>
+                <p>{{ 'page_privacy_policy_section4_text1' | trans }}</p>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section5_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
-                <p>
-                    {{ 'page_privacy_policy_section5_text1' | trans }}
-                </p>
+                <p>{{ 'page_privacy_policy_section5_text1' | trans }}</p>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section6_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
                 <p>
                     {{ 'page_privacy_policy_section6_text1' | trans }} (
-                        <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
-                            {{ 'author_mail' | trans }}
-                        </a>
+                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                        {{ 'author_mail' | trans }}
+                    </a>
                     ).
                 </p>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'page_privacy_policy_section7_title' | trans }}</h3>
             <div class="legal-pages__container-block-content">
-                <p>
-                    {{ 'page_privacy_policy_section7_text1' | trans }}
-                </p>
+                <p>{{ 'page_privacy_policy_section7_text1' | trans }}</p>
             </div>
         </div>
 
-        <div class="fade-in-effects-initial legal-pages__container-block" data-controller="animation-fade-in" data-animation="fade-in-up-effects">
+        <div class="fade-in-effects-initial legal-pages__container-block"
+            data-animation-fade-in-target="fadeIn"
+            data-animation="fade-in-up-effects"
+        >
             <h3 class="legal-pages__container-block-title">{{ 'legal_notice' | trans }}</h3>
             <div class="legal-pages__container-block-content">
                 <p>
@@ -126,6 +144,6 @@
             </div>
         </div>
 
-        {% include "components/button-return-to-home.html.twig" %}
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
     </section>
 {% endblock %}

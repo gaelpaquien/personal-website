@@ -1,0 +1,68 @@
+<section id="home-portfolio" class="home-portfolio__container">
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <div class="section-title link-effects home-portfolio__container-title"
+             data-action="click->scroll#scrollToSection"
+             data-target="home-portfolio"
+        >
+            {% embed 'assets/svg/folder.html.twig' %}
+                {% block attributes %}
+                    aria-labelledby="home-portfolio__container-title-h2"
+                {% endblock %}
+            {% endembed %}
+            <h2 id="home-portfolio__container-title-h2">{{ 'page_home_portfolio_title' | trans }}</h2>
+        </div>
+    </div>
+
+    <div class="home-portfolio__container-projects"
+         data-controller="portfolio-card"
+    >
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'Site personnel (V2)',
+            'description': 'Évolution de mon site personnel WordPress vers une application PHP/Symfony avec de nouvelles fonctionnalités.',
+            'image': 'images/portfolio/portfolio-gaelpaquien-v2.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'Site personnel (V1)',
+            'description': 'Création de mon site personnel avec WordPress.',
+            'image': 'images/portfolio/portfolio-gaelpaquien-v1.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'RG Clean Car',
+            'description': 'Création d\'un site vitrine avec WordPress pour RG Clean Car, société de nettoyage à domicile.',
+            'image': 'images/portfolio/portfolio-rgcleancar.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'ToDo & Co',
+            'description': 'Audit (qualité et performance) d\'une application existante afin d\'identifier les tâches nécessaires à son amélioration, puis optimisation et réduction de la dette technique de cette application.',
+            'image': 'images/portfolio/portfolio-todoandco.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'BileMo API',
+            'description': 'Création d\'une API REST avec PHP/Symfony, permettant d\'exposer une liste de produits et d\'utilisateurs accessible aux clients authentifiés.',
+            'image': 'images/portfolio/portfolio-bilemoapi.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'SnowTricks',
+            'description': 'Création d\'un site web collaboratif avec PHP/Symfony, permettant aux utilisateurs de partager des figures de snowboard.',
+            'image': 'images/portfolio/portfolio-snowtricks.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'Blog PHP',
+            'description': 'Création d\'un blog avec PHP.',
+            'image': 'images/portfolio/portfolio-blogphp.webp'
+        } %}
+        {% include "components/home/portfolio/card.html.twig" with {
+            'title': 'Archive OpenClassrooms',
+            'description': 'Une archive de tous mes projets réalisés pendant mes deux formations chez OpenClassrooms.',
+            'image': 'images/portfolio/portfolio-archive-openclassrooms.webp'
+        } %}
+    </div>
+
+    {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
+        'data_target': '#home-reviews',
+        'aria_label': 'reviews_aria' | trans
+    } %}
+</section>
