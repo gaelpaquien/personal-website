@@ -2,7 +2,6 @@ site_name: gaelpaquien.com
 site_url: 'https://www.gaelpaquien.com'
 site_author: 'Gaël Paquien'
 author_mail: contact@gaelpaquien.com
-author_phone: '06 34 06 86 36'
 site_title: 'Gaël Paquien, Développeur Web PHP Symfony et WordPress'
 site_description: "Je m'appelle Gaël, passionné et spécialisé en développement PHP/Symfony, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore."
 language: Language
