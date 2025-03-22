@@ -1,6 +1,6 @@
 <section id="home-reviews" class="home-reviews__container"
-     data-controller="reviews-carousel reviews-popup"
-     data-reviews-carousel-auto-scroll-interval-value="15000"
+         data-controller="reviews-carousel reviews-popup"
+         data-reviews-carousel-auto-scroll-interval-value="8000"
 >
     <div class="overlay" data-reviews-popup-target="overlay"></div>
 
@@ -23,70 +23,141 @@
     </div>
 
     <div class="home-reviews__container-carousel" data-reviews-carousel-target="reviewsCarousel">
-        <button class="fade-in-effects-initial home-reviews__container-carousel-btn-previous-item" type="button" aria-label="{{ 'page_home_reviews_previous_aria' | trans }}"
-            data-animation-fade-in-target="fadeIn"
-            data-animation="fade-in-left-effects"
-        >
-            {% embed 'assets/svg/arrow-left.html.twig' %}
-                {% block attributes %}
-                    class="scale-effects"
-                    aria-hidden="true"
-                    data-reviews-carousel-target="previousButton"
-                    data-action="click->reviews-carousel#previous"
-                {% endblock %}
-            {% endembed %}
-        </button>
-
-        {% include "components/home/reviews/carousel-item.html.twig" with {
-            'quote': 'Gaël a réalisé notre site web "www.rgcleancar.fr" exactement comme nous l\'avions souhaité, communication claire et professionnelle, je recommande !',
-            'author_firstname': 'Jérôme',
-            'author_lastname': 'Gaviot',
-            'author_company': 'RG Clean Car',
-            'author_role': 'Cofondateur ',
-            'publication_date': '11/01/2024',
-            'publication_source': 'gaelpaquien.com',
-            'quoteId': 'home-reviews-quote-' ~ random(1, 999),
-            'classActive': true
-        } %}
-        {% include "components/home/reviews/carousel-item.html.twig" with {
-            'quote': 'En reconversion professionnelle pour se spécialiser dans le développement web full stack, Gaël a suivi la formation d\'openclassrooms. Le point fort de Gaël est sa détermination : ne rien lâcher et aller toujours au bout des choses. Sérieux, appliqué et rigoureux, il a su monter en compétence rapidement et réussir ses projets avec brio. Je te souhaite une très bonne continuation avec beaucoup de réussite.',
-            'author_firstname': 'Thomas',
-            'author_lastname': 'Gérault',
-            'author_company': 'OpenClassrooms',
-            'author_role': 'Mentor',
-            'publication_date': '28/06/2021',
-            'publication_source': 'LinkedIn',
-            'quoteId': 'home-reviews-quote-' ~ random(1, 999)
-        } %}
-
-        <button class="fade-in-effects-initial home-reviews__container-carousel-btn-next-item" type="button" aria-label="{{ 'page_home_reviews_next_aria' | trans }}"
-            data-animation-fade-in-target="fadeIn"
-            data-animation="fade-in-right-effects"
-        >
-            {% embed 'assets/svg/arrow-right.html.twig' %}
-                {% block attributes %}
-                    class="scale-effects"
-                    aria-hidden="true"
-                    data-reviews-carousel-target="nextButton"
-                    data-action="click->reviews-carousel#next"
-                {% endblock %}
-            {% endembed %}
-        </button>
-
-        <div class="home-reviews__container-carousel-btn-mobile">
-            <button class="btn home-reviews__container-carousel-btn-mobile-previous-item" type="button" aria-label="{{ 'page_home_reviews_previous_aria' | trans }}"
-                data-reviews-carousel-target="mobilePreviousButton"
-                data-action="click->reviews-carousel#previous"
+        <div class="home-reviews__container-carousel-track" data-reviews-carousel-target="wrapper">
+            <!-- Review 1 -->
+            <div class="home-reviews__container-carousel-item"
+                 data-reviews-carousel-target="item"
+                 data-index="0"
+                 data-action="click->reviews-carousel#clickSlide"
             >
-                {{ 'previous' | trans }}
-            </button>
+                <div class="home-reviews__container-carousel-item-content">
+                    <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
+                        {% embed 'assets/svg/quote.html.twig' %}
+                            {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+                        {% endembed %}
+                        Gaël a réalisé notre site web "www.rgcleancar.fr" exactement comme nous l'avions souhaité, communication claire et professionnelle, je recommande !
+                    </blockquote>
 
-            <button class="btn home-reviews__container-carousel-btn-mobile-next-item" type="button" aria-label="{{ 'page_home_reviews_next_aria' | trans }}"
-                data-reviews-carousel-target="mobileNextButton"
-                data-action="click->reviews-carousel#next"
+                    <hr>
+
+                    <div class="home-reviews__container-carousel-item-infos">
+                        <div class="home-reviews__container-carousel-item-infos-author">
+                            Jérôme Gaviot - Cofondateur RG Clean Car
+                        </div>
+                        <div class="home-reviews__container-carousel-item-infos-source">
+                            11/01/2024 - gaelpaquien.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="home-reviews__container-carousel-item"
+                 data-reviews-carousel-target="item"
+                 data-index="1"
+                 data-action="click->reviews-carousel#clickSlide"
             >
-                {{ 'next' | trans }}
-            </button>
+                <div class="home-reviews__container-carousel-item-content">
+                    <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
+                        {% embed 'assets/svg/quote.html.twig' %}
+                            {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+                        {% endembed %}
+                        En reconversion professionnelle pour se spécialiser dans le développement web full stack, Gaël a suivi la formation d'openclassrooms. Le point fort de Gaël est sa détermination : ne rien lâcher et aller toujours au bout des choses. Sérieux, appliqué et rigoureux, il a su monter en compétence rapidement et réussir ses projets avec brio.
+                    </blockquote>
+
+                    <hr>
+
+                    <div class="home-reviews__container-carousel-item-infos">
+                        <div class="home-reviews__container-carousel-item-infos-author">
+                            Thomas Gérault - Mentor OpenClassrooms
+                        </div>
+                        <div class="home-reviews__container-carousel-item-infos-source">
+                            28/06/2021 - LinkedIn
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="home-reviews__container-carousel-item"
+                 data-reviews-carousel-target="item"
+                 data-index="2"
+                 data-action="click->reviews-carousel#clickSlide"
+            >
+                <div class="home-reviews__container-carousel-item-content">
+                    <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
+                        {% embed 'assets/svg/quote.html.twig' %}
+                            {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+                        {% endembed %}
+                        Gaël est un développeur très compétent et passionné. Sa capacité à résoudre des problèmes complexes et à livrer un code propre en fait un atout précieux pour n'importe quelle équipe. J'ai eu la chance de travailler avec lui sur plusieurs projets et je recommande vivement ses services.
+                    </blockquote>
+
+                    <hr>
+
+                    <div class="home-reviews__container-carousel-item-infos">
+                        <div class="home-reviews__container-carousel-item-infos-author">
+                            Sophie Martin - Directrice technique XYZ Agency
+                        </div>
+                        <div class="home-reviews__container-carousel-item-infos-source">
+                            15/03/2023 - LinkedIn
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-reviews__container-carousel-item"
+                 data-reviews-carousel-target="item"
+                 data-index="3"
+                 data-action="click->reviews-carousel#clickSlide"
+            >
+                <div class="home-reviews__container-carousel-item-content">
+                    <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
+                        {% embed 'assets/svg/quote.html.twig' %}
+                            {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+                        {% endembed %}
+                        Gaël est un développeur très compétent et passionné. Sa capacité à résoudre des problèmes complexes et à livrer un code propre en fait un atout précieux pour n'importe quelle équipe. J'ai eu la chance de travailler avec lui sur plusieurs projets et je recommande vivement ses services.
+                    </blockquote>
+
+                    <hr>
+
+                    <div class="home-reviews__container-carousel-item-infos">
+                        <div class="home-reviews__container-carousel-item-infos-author">
+                            Sophie Martin - Directrice technique XYZ Agency
+                        </div>
+                        <div class="home-reviews__container-carousel-item-infos-source">
+                            15/03/2023 - LinkedIn
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-reviews__container-carousel-indicators" data-reviews-carousel-target="indicators">
+            <button class="home-reviews__container-carousel-indicator"
+                    data-reviews-carousel-target="indicator"
+                    data-action="click->reviews-carousel#goToSlide"
+                    data-index="0"
+                    aria-label="{{ 'go_to_slide' | trans }} 1"
+            ></button>
+            <button class="home-reviews__container-carousel-indicator"
+                    data-reviews-carousel-target="indicator"
+                    data-action="click->reviews-carousel#goToSlide"
+                    data-index="1"
+                    aria-label="{{ 'go_to_slide' | trans }} 2"
+            ></button>
+            <button class="home-reviews__container-carousel-indicator"
+                    data-reviews-carousel-target="indicator"
+                    data-action="click->reviews-carousel#goToSlide"
+                    data-index="2"
+                    aria-label="{{ 'go_to_slide' | trans }} 3"
+            ></button>
+
+            <button class="home-reviews__container-carousel-indicator"
+                    data-reviews-carousel-target="indicator"
+                    data-action="click->reviews-carousel#goToSlide"
+                    data-index="3"
+                    aria-label="{{ 'go_to_slide' | trans }} 4"
+            ></button>
         </div>
     </div>
 
@@ -95,8 +166,8 @@
          data-animation="fade-in-up-effects"
     >
         <button id="btn-open-home-reviews-popup" class="btn" type="button" aria-label="{{ 'page_home_reviews_publish' | trans }}" aria-expanded="false"
-            data-reviews-popup-target="openButton"
-            data-action="click->reviews-popup#open"
+                data-reviews-popup-target="openButton"
+                data-action="click->reviews-popup#open"
         >
             {{ 'page_home_reviews_publish' | trans }}
         </button>
