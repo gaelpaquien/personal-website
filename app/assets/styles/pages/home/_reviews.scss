@@ -5,13 +5,8 @@
     justify-content: space-between;
     overflow-x: hidden;
 
-    .section-title {
-        margin-bottom: 2rem;
-    }
-
     &-carousel {
         position: relative;
-        padding: 4rem 0;
         width: 100%;
 
         &-track {
@@ -27,10 +22,14 @@
             width: 70%;
             max-width: 600px;
             height: 100%;
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             transform-origin: center center;
             cursor: pointer;
             padding: 0 1rem;
+            opacity: 0;
+            pointer-events: none;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
 
             &-content {
                 background-color: var(--color-primary);
@@ -44,24 +43,18 @@
                 transition: all 0.4s ease;
             }
 
-            // Élément actif centré
             &.active {
                 z-index: 5;
-                transform: translateX(-50%);
-                left: 50%;
+                transform: translateX(-50%) scale(1);
                 opacity: 1;
-
-                .home-reviews__container-carousel-item-content {
-                    transform: scale(1);
-                }
+                pointer-events: auto;
             }
 
-            // Élément précédent (à gauche)
             &.prev {
                 z-index: 4;
                 transform: translateX(-110%) scale(0.85);
                 opacity: 0.6;
-                left: 50%;
+                pointer-events: auto;
 
                 &:hover {
                     opacity: 0.8;
@@ -69,12 +62,11 @@
                 }
             }
 
-            // Élément suivant (à droite)
             &.next {
                 z-index: 4;
                 transform: translateX(10%) scale(0.85);
                 opacity: 0.6;
-                left: 50%;
+                pointer-events: auto;
 
                 &:hover {
                     opacity: 0.8;
@@ -82,12 +74,8 @@
                 }
             }
 
-            // Éléments invisibles
-            &:not(.active):not(.prev):not(.next) {
-                opacity: 0;
-                z-index: 1;
-                transform: translateX(-50%) scale(0.5);
-                pointer-events: none;
+            &.transition-active {
+                transition-duration: 0.25s;
             }
 
             &-quote {
@@ -162,7 +150,6 @@
 
     &-btn-open-popup-add-review {
         @extend %flex-center;
-        margin-top: 1.5rem;
         margin-bottom: 2.5rem;
 
         .btn {
@@ -171,11 +158,8 @@
         }
     }
 
-    // Responsive adjustments
     @include respond-to('breakpoint-768') {
         &-carousel {
-            padding: 3rem 0;
-
             &-item {
                 &-quote {
                     font-size: $font-size-text;
@@ -195,18 +179,10 @@
                 height: 0.6rem;
             }
         }
-
-        &-btn-open-popup-add-review {
-            .btn {
-                font-size: calc(1.5 * $font-size-text);
-            }
-        }
     }
 
     @include respond-to('breakpoint-1200') {
         &-carousel {
-            padding: 4rem 0;
-
             &-track {
                 height: 26rem;
             }
@@ -233,12 +209,6 @@
             &-indicator {
                 width: 0.75rem;
                 height: 0.75rem;
-            }
-        }
-
-        &-btn-open-popup-add-review {
-            .btn {
-                font-size: calc(1.75 * $font-size-text);
             }
         }
     }

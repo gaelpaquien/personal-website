@@ -4,7 +4,6 @@
 
     form {
         background-color: var(--color-secondary);
-        margin-bottom: 2.5rem;
         padding: 1.5rem;
 
         input,
@@ -27,8 +26,6 @@
 
     @include respond-to('breakpoint-768') {
         form {
-            margin-bottom: 4.5rem;
-
             .form-switch {
                 &-text {
                     font-size: $font-size-text;
