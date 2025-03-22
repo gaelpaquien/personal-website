@@ -53,6 +53,11 @@
 
         <!-- AssetMapper -->
         {% block mapper %}{{ importmap('app') }}{% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+        {% endblock %}
+
     </head>
 
     <body data-controller="navigation language themes animation-fade-in scroll"
