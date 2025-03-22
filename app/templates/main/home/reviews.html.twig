@@ -105,6 +105,7 @@
                 </div>
             </div>
 
+            <!-- Review 4 -->
             <div class="home-reviews__container-carousel-item"
                  data-reviews-carousel-target="item"
                  data-index="3"
@@ -115,17 +116,44 @@
                         {% embed 'assets/svg/quote.html.twig' %}
                             {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
                         {% endembed %}
-                        Gaël est un développeur très compétent et passionné. Sa capacité à résoudre des problèmes complexes et à livrer un code propre en fait un atout précieux pour n'importe quelle équipe. J'ai eu la chance de travailler avec lui sur plusieurs projets et je recommande vivement ses services.
+                        Gaël a su transformer notre vision en une réalité digitale impressionnante. Son expertise technique et sa capacité à comprendre nos besoins ont permis de créer une plateforme qui dépasse nos attentes. Un vrai professionnel avec qui la collaboration a été un plaisir.
                     </blockquote>
 
                     <hr>
 
                     <div class="home-reviews__container-carousel-item-infos">
                         <div class="home-reviews__container-carousel-item-infos-author">
-                            Sophie Martin - Directrice technique XYZ Agency
+                            Alexandre Dupont - Directeur Marketing Acme Inc.
                         </div>
                         <div class="home-reviews__container-carousel-item-infos-source">
-                            15/03/2023 - LinkedIn
+                            05/09/2023 - LinkedIn
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="home-reviews__container-carousel-item"
+                 data-reviews-carousel-target="item"
+                 data-index="4"
+                 data-action="click->reviews-carousel#clickSlide"
+            >
+                <div class="home-reviews__container-carousel-item-content">
+                    <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
+                        {% embed 'assets/svg/quote.html.twig' %}
+                            {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+                        {% endembed %}
+                        La refonte de notre site e-commerce par Gaël a été un tournant décisif pour notre entreprise. Non seulement l'interface est magnifique et intuitive, mais les performances sont exceptionnelles. Le taux de conversion a augmenté de 35% dès le premier mois. Merci pour ce travail d'excellence !
+                    </blockquote>
+
+                    <hr>
+
+                    <div class="home-reviews__container-carousel-item-infos">
+                        <div class="home-reviews__container-carousel-item-infos-author">
+                            Marie Lefort - CEO BoutiquePlus
+                        </div>
+                        <div class="home-reviews__container-carousel-item-infos-source">
+                            22/11/2023 - gaelpaquien.com
                         </div>
                     </div>
                 </div>
@@ -133,35 +161,18 @@
         </div>
 
         <div class="home-reviews__container-carousel-indicators" data-reviews-carousel-target="indicators">
-            <button class="home-reviews__container-carousel-indicator"
-                    data-reviews-carousel-target="indicator"
-                    data-action="click->reviews-carousel#goToSlide"
-                    data-index="0"
-                    aria-label="{{ 'go_to_slide' | trans }} 1"
-            ></button>
-            <button class="home-reviews__container-carousel-indicator"
-                    data-reviews-carousel-target="indicator"
-                    data-action="click->reviews-carousel#goToSlide"
-                    data-index="1"
-                    aria-label="{{ 'go_to_slide' | trans }} 2"
-            ></button>
-            <button class="home-reviews__container-carousel-indicator"
-                    data-reviews-carousel-target="indicator"
-                    data-action="click->reviews-carousel#goToSlide"
-                    data-index="2"
-                    aria-label="{{ 'go_to_slide' | trans }} 3"
-            ></button>
-
-            <button class="home-reviews__container-carousel-indicator"
-                    data-reviews-carousel-target="indicator"
-                    data-action="click->reviews-carousel#goToSlide"
-                    data-index="3"
-                    aria-label="{{ 'go_to_slide' | trans }} 4"
-            ></button>
+            {% for i in 0..4 %}
+                <button class="home-reviews__container-carousel-indicator"
+                        data-reviews-carousel-target="indicator"
+                        data-action="click->reviews-carousel#goToSlide"
+                        data-index="{{ i }}"
+                        aria-label="{{ 'go_to_slide' | trans }} {{ i+1 }}"
+                ></button>
+            {% endfor %}
         </div>
     </div>
 
-    <div class="fade-in-effects-initial home-reviews__container-btn-open-popup-add-review"
+{#    <div class="fade-in-effects-initial home-reviews__container-btn-open-popup-add-review"
          data-animation-fade-in-target="fadeIn"
          data-animation="fade-in-up-effects"
     >
@@ -171,7 +182,7 @@
         >
             {{ 'page_home_reviews_publish' | trans }}
         </button>
-    </div>
+    </div>#}
 
     {% include "components/home/reviews/popup.html.twig" %}
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
