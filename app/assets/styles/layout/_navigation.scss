@@ -1,13 +1,15 @@
 nav {
-    height: calc(100vh - 5.5rem);
+    height: 100vh;
     width: 0;
     position: fixed;
     right: 0;
+    top: 0;
     background-color: var(--color-secondary);
     color: var(--color-text);
     overflow-x: hidden;
     transition: width 0.5s;
     display: block;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .navigation__container {
@@ -32,8 +34,9 @@ nav {
         margin-right: auto;
         left: 0;
         right: 0;
-        bottom: 1.5rem;
+        bottom: 2.5rem;
         background-color: var(--color-primary);
+        width: 30%;
     }
 
     &-list {
@@ -76,7 +79,12 @@ nav {
                 }
 
                 &-dropdown {
-                    display: none;
+                    display: block;
+                    max-height: 0;
+                    opacity: 0;
+                    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                    padding: 0;
+                    margin: 0;
                     list-style-type: none;
                     background-color: var(--color-primary);
                     border-left: solid 0.01rem var(--color-text);
@@ -84,10 +92,20 @@ nav {
                     text-transform: none;
                     overflow: hidden;
 
+                    &.active {
+                        max-height: 300px;
+                        opacity: 1;
+                    }
+
                     li {
                         border-bottom: solid 0.01rem var(--color-text);
                         padding: 0.5rem;
                         font-size: calc(0.55 * $font-size-h2);
+                        margin: 0;
+
+                        &:first-child {
+                            border-top: solid 0.01rem var(--color-text);
+                        }
 
                         &:hover {
                             background-color: var(--color-tertiary);
@@ -98,10 +116,6 @@ nav {
                             width: auto;
                             margin-right: 0.25rem;
                         }
-                    }
-
-                    .active {
-                        display: block;
                     }
                 }
             }
@@ -143,6 +157,5 @@ nav {
                 font-size: calc(0.8 * $font-size-h2);
             }
         }
-
     }
 }
