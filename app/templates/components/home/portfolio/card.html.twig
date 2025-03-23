@@ -1,6 +1,7 @@
 {% set title = title|default('Titre du projet') %}
 {% set description = description|default('Description du projet') %}
 {% set image = image|default('images/portfolio/portfolio-default.webp') %}
+{% set tags = tags|default([]) %}
 
 <div class="fade-in-effects-initial home-portfolio__container-projects-card scale-effects"
      data-animation-fade-in-target="fadeIn"
@@ -8,9 +9,21 @@
      data-portfolio-card-target="card"
      data-action="click->portfolio-card#pressCard"
 >
-    <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
+    <div class="home-portfolio__container-projects-card-image">
+        <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
+        <div class="home-portfolio__container-projects-card-image-title">
+            <h3 class="home-portfolio__container-projects-card-content-title">{{ title }}</h3>
+        </div>
+        <div class="home-portfolio__container-projects-card-image-tags">
+            {% for tag in tags|slice(0, 5) %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+            {% if tags|length > 5 %}
+                <span class="tag">+{{ tags|length - 5 }} autres</span>
+            {% endif %}
+        </div>
+    </div>
     <div class="home-portfolio__container-projects-card-content">
-        <h3 class="home-portfolio__container-projects-card-content-title">{{ title }}</h3>
         <p class="home-portfolio__container-projects-card-content-description">{{ description }}</p>
     </div>
 </div>

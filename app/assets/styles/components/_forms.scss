@@ -14,7 +14,7 @@ label {
 
 input,
 textarea {
-    border: solid 0.1rem var(--color-tertiary);
+    border: solid 0.2rem var(--color-tertiary);
     border-radius: 5px;
     padding: 0.5rem;
     font-size: $font-size-text;
@@ -23,6 +23,7 @@ textarea {
     &:focus {
         outline: none;
         border-color: var(--color-text);
+
     }
 }
 
