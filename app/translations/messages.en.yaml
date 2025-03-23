@@ -2,7 +2,6 @@ site_name: gaelpaquien.com
 site_url: 'https://www.gaelpaquien.com'
 site_author: 'Gaël Paquien'
 author_mail: contact@gaelpaquien.com
-author_phone: '06 34 06 86 36'
 site_title: 'Gaël Paquien, PHP Symfony and WordPress Web Developer'
 site_description: "My name is Gaël, passionate and specialized in PHP/Symfony development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
 language: Language
@@ -50,6 +49,10 @@ footer_company_title: 'My Company'
 footer_company_text1: 'EI - APE Code 62.01Z'
 footer_company_text2: 'Siret 844 466 441 00020'
 footer_company_text3: 'VAT Number FR89844466441'
+post_review: 'Post a review'
+post_review_aria: 'Post a review about Gaël Paquien'
+blog: Blog
+blog_aria: 'Visit Gaël Paquien blog'
 page_home_title: 'Home - Gaël Paquien, PHP Symfony and WordPress Developer - gaelpaquien.com'
 page_home_hero_title_secondary: 'PHP/Symfony Developer'
 page_home_hero_image_alt: 'Illustration and presentation of Gaël Paquien, PHP Symfony and WordPress Web Developer.'
