@@ -5,7 +5,7 @@
 }
 
 .pressed {
-  @include animation-pressed(0.95, 0.25s);
+  @include animation-pressed(0.9, 0.25s);
 }
 
 .link-effects {
@@ -19,7 +19,7 @@
   }
 
   &:active {
-    @include animation-pressed(0.95);
+    @include animation-pressed(0.9);
   }
 }
 
@@ -84,7 +84,7 @@
 .scale-effects {
   &:hover {
     animation: none;
-    transform: scale(1.15);
+    transform: scale(1.10);
     opacity: 0.8;
   }
 }

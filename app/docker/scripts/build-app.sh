@@ -4,9 +4,9 @@ APP_ENV="dev"
 cd /var/www
 
 echo "Starting building app..."
-symfony console cache:clear --env=$APP_ENV || exit 1
 composer install || exit 1
 composer dump-autoload --optimize || exit 1
+symfony console cache:clear --env=$APP_ENV || exit 1
 #symfony console importmap:install || exit 1
 #symfony console asset-map:compile || exit 1
 symfony console cache:warmup --env=$APP_ENV || exit 1

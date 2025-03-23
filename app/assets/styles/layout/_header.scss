@@ -46,7 +46,7 @@ header {
     }
 
     @include respond-to('breakpoint-768') {
-        padding: 0.5rem 2.5rem;
+        padding: 0.5rem 5rem;
 
         &-left-list,
         &-right-list {
@@ -114,7 +114,7 @@ header {
     }
 
     @include respond-to('breakpoint-768') {
-        padding: 1rem 2.5rem;
+        padding: 1rem 5rem;
 
         &-menu-open,
         &-menu-close {

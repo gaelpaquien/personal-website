@@ -32,7 +32,16 @@
             >
                 {{ 'contact' | trans }}
             </li>
-
+            <li class="link-effects navigation__container-list-item">
+                <a href="{{ path('app_review_create') }}" aria-label="{{ 'post_review_aria' | trans }}">
+                    {{ 'post_review' | trans }}
+                </a>
+            </li>
+            <li class="link-effects navigation__container-list-item">
+                <a href="#" target="_blank" rel="noopener" aria-label="{{ 'blog_aria' | trans }}">
+                    {{ 'blog' | trans }}
+                </a>
+            </li>
             <li class="navigation__container-list-item navigation__container-list-item-about">
                 <div class="link-effects navigation__container-list-item-about-title"
                      data-action="click->navigation#toggleDropdown"

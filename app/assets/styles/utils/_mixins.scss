@@ -67,8 +67,8 @@ $ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 @mixin animation-bounce($duration: 2.5s, $repeat: 3) {
     @keyframes bounce {
         0%, 25%, 55%, 85%, 100% { transform: translateY(0); }
-        45% { transform: translateY(-15px); }
-        70% { transform: translateY(-10px); }
+        45% { transform: translateY(-8px); }
+        70% { transform: translateY(-5px); }
     }
     will-change: transform;
     animation: bounce $duration $repeat $ease-out-back;

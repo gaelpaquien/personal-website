@@ -14,11 +14,17 @@ label {
 
 input,
 textarea {
-    border: solid 0.1rem var(--color-text);
+    border: solid 0.2rem var(--color-tertiary);
     border-radius: 5px;
     padding: 0.5rem;
     font-size: $font-size-text;
     color: var(--color-primary);
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-text);
+
+    }
 }
 
 textarea {
@@ -81,7 +87,7 @@ textarea {
         display: inline-block;
         width: 3.25rem;
         height: auto;
-        margin-top: 0.5rem;
+        margin-top: 0.35rem;
 
         &:hover {
             opacity: 0.8;
@@ -101,9 +107,9 @@ textarea {
             }
 
             &:checked + .form-switch-toggle-slider:before {
-                -webkit-transform: translateX(26px);
-                -ms-transform: translateX(26px);
-                transform: translateX(26px);
+                -webkit-transform: translateX(1.7rem);
+                -ms-transform: translateX(1.7rem);
+                transform: translateX(1.7rem);
             }
         }
 
