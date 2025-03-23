@@ -45,7 +45,7 @@ nav {
             }
 
             &:active {
-                @include animation-pressed(0.99);
+                @include animation-pressed(0.9);
             }
         }
 
