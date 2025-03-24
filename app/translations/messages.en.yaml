@@ -1,13 +1,13 @@
-site_name: gaelpaquien.com
+site_name: 'gaelpaquien.com'
 site_url: 'https://www.gaelpaquien.com'
 site_author: 'Gaël Paquien'
-author_mail: contact@gaelpaquien.com
+author_mail: 'contact@gaelpaquien.com'
 site_title: 'Gaël Paquien, PHP Symfony and WordPress Web Developer'
 site_description: "My name is Gaël, passionate and specialized in PHP/Symfony development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
-language: Language
+language: 'Language'
 translate_fr: 'Translate the site to French'
 translate_en: 'Translate the site to English'
-theme: Theme
+theme: 'Theme'
 theme_dark: 'Enable dark theme'
 theme_light: 'Enable light theme'
 send_mail: 'Send an email to Gaël Paquien'
@@ -22,7 +22,7 @@ return_to_home: 'Return to home'
 return_to_home_aria: 'Return to the homepage'
 open_menu: 'Open the menu'
 close_menu: 'Close the menu'
-close: Close
+close: 'Close'
 scroll_to_next_default_aria: 'Go to the next section'
 scroll_to_top: 'Scroll to the top of the page'
 calendly_meeting: 'Schedule a meeting on Calendly'
@@ -35,15 +35,15 @@ sitemap_aria: 'Visit the sitemap page'
 copyright: 'All rights reserved'
 about_me: 'About Me'
 about_site: 'About This Site'
-home: Home
-portfolio: Portfolio
+home: 'Home'
+portfolio: 'Portfolio'
 portfolio_aria: 'Discover Gaël Paquien portfolio'
-reviews: Reviews
+reviews: 'Reviews'
 reviews_aria: 'Read reviews about Gaël Paquien'
-contact: Contact
+contact: 'Contact'
 contact_aria: 'Get in touch with Gaël Paquien'
-next: Next
-previous: Previous
+next: 'Next'
+previous: 'Previous'
 footer_contact_title: 'Let talk'
 footer_company_title: 'My Company'
 footer_company_text1: 'EI - APE Code 62.01Z'
@@ -51,7 +51,7 @@ footer_company_text2: 'Siret 844 466 441 00020'
 footer_company_text3: 'VAT Number FR89844466441'
 post_review: 'Post a review'
 post_review_aria: 'Post a review about Gaël Paquien'
-blog: Blog
+blog: 'Blog'
 blog_aria: 'Visit Gaël Paquien blog'
 page_home_title: 'Home - Gaël Paquien, PHP Symfony and WordPress Developer - gaelpaquien.com'
 page_home_hero_title_secondary: 'PHP/Symfony Developer'
@@ -117,22 +117,22 @@ page_legal_notice_section12_text1: 'Consult our '
 page_privacy_policy_title: 'Privacy Policy - gaelpaquien.com'
 page_privacy_policy_section1_text1: 'The site collects personal data, including:'
 page_privacy_policy_section1_list1_title: 'Contact form:'
-page_privacy_policy_section1_list1_item1: Name
-page_privacy_policy_section1_list1_item2: First name
-page_privacy_policy_section1_list1_item3: Email
+page_privacy_policy_section1_list1_item1: 'Name'
+page_privacy_policy_section1_list1_item2: 'First name'
+page_privacy_policy_section1_list1_item3: 'Email'
 page_privacy_policy_section1_list1_item4: 'Phone (optional)'
 page_privacy_policy_section1_list1_item5: 'Subject of the message'
-page_privacy_policy_section1_list1_item6: Message
+page_privacy_policy_section1_list1_item6: 'Message'
 page_privacy_policy_section1_list1_item7: 'Files (optional)'
 page_privacy_policy_section1_list1_item8: 'The data entered in this form are not stored and are only used to respond to you'
 page_privacy_policy_section1_list1_item9: 'Only a copy of the content in the form of an automatic email is available to the site publisher to respond to you'
 page_privacy_policy_section1_list2_title: 'Review submission form:'
-page_privacy_policy_section1_list2_item1: Name
-page_privacy_policy_section1_list2_item2: First name
-page_privacy_policy_section1_list2_item3: Email
+page_privacy_policy_section1_list2_item1: 'Name'
+page_privacy_policy_section1_list2_item2: 'First name'
+page_privacy_policy_section1_list2_item3: 'Email'
 page_privacy_policy_section1_list2_item4: 'Company/Entity (optional)'
 page_privacy_policy_section1_list2_item5: 'Position/Role (optional)'
-page_privacy_policy_section1_list2_item6: Message/Quote
+page_privacy_policy_section1_list2_item6: 'Message/Quote'
 page_privacy_policy_section1_list2_item7: 'The data entered in this form are stored and used solely to display reviews on this site'
 page_privacy_policy_section1_list2_item8: 'The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D).'
 page_privacy_policy_section2_title: 'Data Processing Officer'

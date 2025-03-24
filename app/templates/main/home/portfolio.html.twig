@@ -19,48 +19,14 @@
     <div class="home-portfolio__container-projects"
          data-controller="portfolio-card"
     >
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'Plany',
-            'description': 'Participation à la maintenance et au développement du logiciel SaaS Plany, ainsi qu\'à la conception de nouvelles applications web.',
-            'image': 'images/portfolio/portfolio-plany.webp',
-            'tags': ['PHP', 'Symfony', 'Laravel', 'MySQL', 'OpenSearch', 'Architecture Hexagonale', 'Livewire', 'Alpine.js', 'Vue.js', 'Tailwind CSS']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'gaelpaquien.com',
-            'description': 'Conception et développement de mon site personnel incluant un portfolio, un blog, un système d\'avis utilisateurs et un formulaire de contact.',
-            'image': 'images/portfolio/portfolio-personal-website.webp',
-            'tags': ['PHP', 'Symfony', 'MySQL', 'Docker', 'Stimulus', 'Saas']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'RG Clean Car',
-            'description': 'Conception d\'un site vitrine sous WordPress pour RG Clean Car, société spécialisée dans le nettoyage automobile à domicile, intégrant un formulaire de contact.',
-            'image': 'images/portfolio/portfolio-rgcleancar.webp',
-            'tags': ['WordPress']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'ToDo & Co',
-            'description': 'Audit qualité et performance d\'une application existante afin d\'identifier les axes d\'amélioration, puis optimisation du code et réduction de la dette technique.',
-            'image': 'images/portfolio/portfolio-todoandco.webp',
-            'tags': ['PHP', 'Symfony', 'MySQL', 'Docker', 'JavaScript', 'Bootstrap']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'BileMo API',
-            'description': 'Conception et développement d\'une API REST permettant aux clients authentifiés d\'accéder à une liste de produits et d\'utilisateurs.',
-            'image': 'images/portfolio/portfolio-bilemoapi.webp',
-            'tags': ['PHP', 'Symfony', 'MySQL', 'Docker']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'SnowTricks',
-            'description': 'Conception et développement d\'un site communautaire permettant aux utilisateurs de partager et commenter des figures de snowboard.',
-            'image': 'images/portfolio/portfolio-snowtricks.webp',
-            'tags': ['PHP', 'Symfony', 'MySQL', 'Docker', 'JavaScript', 'Sass']
-        } %}
-        {% include "components/home/portfolio/card.html.twig" with {
-            'title': 'Blog PHP',
-            'description': 'Découverte du langage PHP à travers la conception et le développement d\'un blog complet basé sur une architecture MVC.',
-            'image': 'images/portfolio/portfolio-blogphp.webp',
-            'tags': ['PHP', 'MySQL', 'JavaScript', 'MVC']
-        } %}
+        {% for project in projects|sort((a, b) => a.order <=> b.order) %}
+            {% include "components/home/portfolio/card.html.twig" with {
+                'title': project.title,
+                'description': project.description,
+                'image': project.image,
+                'tags': project.tags
+            } %}
+        {% endfor %}
     </div>
 
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {

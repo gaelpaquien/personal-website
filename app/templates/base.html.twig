@@ -62,11 +62,12 @@
         data-scroll-scroll-threshold-value="100"
         data-scroll-show-class-value="visible"
     >
+        <div class="overlay" data-navigation-target="overlay"></div>
+        {% include "_partials/_navigation.html.twig" %}
+
         <header>
             {% include "_partials/_header.html.twig" %}
         </header>
-
-        {% include "_partials/_navigation.html.twig" %}
 
         <main>
             {% block content %}{% endblock %}

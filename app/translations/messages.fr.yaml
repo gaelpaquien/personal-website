@@ -1,13 +1,13 @@
-site_name: gaelpaquien.com
+site_name: 'gaelpaquien.com'
 site_url: 'https://www.gaelpaquien.com'
 site_author: 'Gaël Paquien'
-author_mail: contact@gaelpaquien.com
+author_mail: 'contact@gaelpaquien.com'
 site_title: 'Gaël Paquien, Développeur Web PHP Symfony et WordPress'
 site_description: "Je m'appelle Gaël, passionné et spécialisé en développement PHP/Symfony, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore."
-language: Language
+language: 'Language'
 translate_fr: 'Traduire le site en français'
 translate_en: 'Traduire le site en anglais'
-theme: Thème
+theme: 'Thème'
 theme_dark: 'Activer le thème sombre'
 theme_light: 'Activer le thème clair'
 send_mail: 'Envoyer un mail à Gaël Paquien'
@@ -22,7 +22,7 @@ return_to_home: "Retour à l'accueil"
 return_to_home_aria: "Retourner vers la page d'accueil"
 open_menu: 'Ouvrir le menu'
 close_menu: 'Fermer le menu'
-close: Fermer
+close: 'Fermer'
 scroll_to_next_default_aria: 'Accéder à la section suivante'
 scroll_to_top: 'Retourner en haut de la page'
 calendly_meeting: 'Planifier un rendez-vous sur Calendly'
@@ -35,15 +35,15 @@ sitemap_aria: 'Visiter le plan du site'
 copyright: 'Tous droits réservés'
 about_me: 'À propos de moi'
 about_site: 'À propos de ce site'
-home: Accueil
-portfolio: Portfolio
+home: 'Accueil'
+portfolio: 'Portfolio'
 portfolio_aria: 'Découvrir le portfolio de Gaël Paquien'
-reviews: Avis
+reviews: 'Avis'
 reviews_aria: 'Découvrir les avis de Gaël Paquien'
-contact: Contact
+contact: 'Contact'
 contact_aria: 'Contactez Gaël Paquien'
-next: Suivant
-previous: Précédent
+next: 'Suivant'
+previous: 'Précédent'
 footer_contact_title: 'Discutons ensemble'
 footer_company_title: 'Mon entreprise'
 footer_company_text1: 'EI - Code APE 62.01Z'
@@ -51,7 +51,7 @@ footer_company_text2: 'Siret 844 466 441 00020'
 footer_company_text3: 'Numéro TVA FR89844466441'
 post_review: 'Publier un avis'
 post_review_aria: 'Publier un avis sur Gaël Paquien'
-blog: Blog
+blog: 'Blog'
 blog_aria: 'Découvrir le blog de Gaël Paquien'
 page_home_title: 'Accueil - Gaël Paquien, Développeur Web PHP Symfony et WordPress - gaelpaquien.com'
 page_home_hero_title_secondary: 'Développeur PHP/Symfony'
@@ -117,22 +117,22 @@ page_legal_notice_section12_text1: 'Consulter notre '
 page_privacy_policy_title: 'Politique de confidentialité - gaelpaquien.com'
 page_privacy_policy_section1_text1: 'Le site collecte des données personnelles, y compris :'
 page_privacy_policy_section1_list1_title: 'Formulaire de contact :'
-page_privacy_policy_section1_list1_item1: Nom
-page_privacy_policy_section1_list1_item2: Prénom
-page_privacy_policy_section1_list1_item3: Email
+page_privacy_policy_section1_list1_item1: 'Nom'
+page_privacy_policy_section1_list1_item2: 'Prénom'
+page_privacy_policy_section1_list1_item3: 'Email'
 page_privacy_policy_section1_list1_item4: 'Téléphone (facultatif)'
 page_privacy_policy_section1_list1_item5: 'Sujet du message'
-page_privacy_policy_section1_list1_item6: Message
+page_privacy_policy_section1_list1_item6: 'Message'
 page_privacy_policy_section1_list1_item7: 'Fichiers (facultatif)'
 page_privacy_policy_section1_list1_item8: 'Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre'
 page_privacy_policy_section1_list1_item9: 'Seule une copie du contenu sous forme de mail automatique est à disposition de l’éditeur du site afin de vous répondre'
 page_privacy_policy_section1_list2_title: "Formulaire ajout d'avis :"
-page_privacy_policy_section1_list2_item1: Nom
-page_privacy_policy_section1_list2_item2: Prénom
-page_privacy_policy_section1_list2_item3: Email
+page_privacy_policy_section1_list2_item1: 'Nom'
+page_privacy_policy_section1_list2_item2: 'Prénom'
+page_privacy_policy_section1_list2_item3: 'Email'
 page_privacy_policy_section1_list2_item4: 'Société/Entité (facultatif)'
 page_privacy_policy_section1_list2_item5: 'Poste/Rôle (facultatif)'
-page_privacy_policy_section1_list2_item6: Message/Citation
+page_privacy_policy_section1_list2_item6: 'Message/Citation'
 page_privacy_policy_section1_list2_item7: 'Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site'
 page_privacy_policy_section1_list2_item8: "L'email saisie dans ce formulaire ne sera pas visible sur le site et l'identité sera affichée sous forme d'initial (John D)."
 page_privacy_policy_section2_title: 'Responsable du traitement des données'

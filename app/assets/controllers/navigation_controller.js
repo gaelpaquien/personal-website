@@ -16,8 +16,6 @@ export default class extends Controller {
     }
 
     initialize() {
-        this.headerHeadband = document.querySelector('.header__headband');
-        this.footer = document.querySelector('footer');
         this.mainContent = document.querySelector('main');
 
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
@@ -57,38 +55,40 @@ export default class extends Controller {
 
     open() {
         this.toggleMenu(true);
-        setTimeout(() => this.handleAnimationEnd(true), this.transitionDurationValue);
     }
 
     close() {
         this.toggleMenu(false);
-        setTimeout(() => this.handleAnimationEnd(false), this.transitionDurationValue);
     }
 
     toggleMenu(isOpen) {
         const breakpoint = this.getCurrentBreakpoint();
 
-        this.openButtonTarget.classList.toggle('rotate-up', isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-        this.headerHeadband.style.display = isOpen ? 'none' : 'flex';
         this.overlayTarget.style.display = isOpen ? 'block' : 'none';
-        this.menuTarget.style.borderLeft = isOpen ? 'solid 0.1rem var(--color-text)' : 'none';
+        this.overlayTarget.style.top = isOpen ? '0' : '';
+        this.overlayTarget.style.height = isOpen ? '100vh' : '';
 
         if (isOpen) {
-            this.menuTarget.style.top = `${breakpoint.menuTop}rem`;
+            this.menuTarget.style.top = '0';
+            this.menuTarget.style.paddingTop = '5rem';
+            this.menuTarget.style.borderLeft = 'solid 0.1rem var(--color-text)';
             this.menuTarget.style.width = `${breakpoint.menuWidth}%`;
-            this.mainContent.style.width = window.innerWidth >= 768 ? `${100 - breakpoint.menuWidth}%` : '100%';
-        } else {
-            this.menuTarget.style.width = '0%';
-            this.mainContent.style.width = '100%';
-        }
-    }
 
-    handleAnimationEnd(isOpen) {
-        this.openButtonTarget.style.display = isOpen ? 'none' : 'block';
-        this.closeButtonTarget.style.display = isOpen ? 'block' : 'none';
-        this.closeButtonTarget.classList.toggle('rotate-down', !isOpen);
-        this.openButtonTarget.classList.remove('rotate-up');
+            if (window.innerWidth >= 768) {
+                setTimeout(() => {
+                    this.mainContent.style.width = `${100 - breakpoint.menuWidth}%`;
+                }, 300);
+            }
+        } else {
+            this.menuTarget.style.borderLeft = 'none';
+
+            this.mainContent.style.width = '100%';
+
+            setTimeout(() => {
+                this.menuTarget.style.width = '0%';
+            }, 100);
+        }
     }
 
     getCurrentBreakpoint() {
@@ -108,12 +108,10 @@ export default class extends Controller {
 
         dropdown.classList.toggle('active', isActive);
         arrow.classList.toggle('rotate-down-effects', isActive);
-        dropdown.style.display = isActive ? 'block' : 'none';
     }
 
     closeAllDropdowns() {
         this.dropdownTargets.forEach(dropdown => {
-            dropdown.style.display = 'none';
             dropdown.classList.remove('active');
             dropdown.closest('.navigation__container-list-item')
                 .querySelector('svg')
