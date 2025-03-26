@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}noindex, follow{% endblock %}
+{% block title %}{{ 'privacy_policy.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+
+{% block content %}
+    <section id="privacy-policy" class="legal-pages__container">
+        <div class="fade-in-effects-initial"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <div class="section-title link-effects"
+                 data-target="privacy-policy"
+                 data-action="click->scroll#scrollToSection"
+            >
+                {% embed 'assets/svg/shield.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="privacy-policy-title"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="privacy-policy-title">{{ 'privacy_policy.title' | trans }}</h2>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'privacy_policy.content.intro' | trans }}</p>
+                <br>
+                <span>{{ 'privacy_policy.content.contact_form.title' | trans }}</span>
+                <ul>
+                    <li>{{ 'privacy_policy.content.contact_form.name' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.first_name' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.email' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.phone' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.subject' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.message' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.files' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.storage_notice' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.contact_form.copy_notice' | trans }}</li>
+                </ul>
+                <br>
+                <span>{{ 'privacy_policy.content.review_form.title' | trans }}</span>
+                <ul>
+                    <li>{{ 'privacy_policy.content.review_form.name' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.first_name' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.email' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.company' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.position' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.message' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.storage_notice' | trans }}</li>
+                    <li>{{ 'privacy_policy.content.review_form.display_notice' | trans }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_officer.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    {{ 'privacy_policy.content.data_officer.text' | trans }}
+                    <a class="link-effects" href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
+                        {{ 'navigation.legal_notice' | trans }}
+                    </a>
+                    ).
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_security.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'privacy_policy.content.data_security.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_use.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'privacy_policy.content.data_use.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.cookies.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'privacy_policy.content.cookies.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.privacy_contact.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    {{ 'privacy_policy.content.privacy_contact.text' | trans }} (
+                    <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {{ 'info.author.email' | trans }}
+                    </a>
+                    ).
+                </p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_breach.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'privacy_policy.content.data_breach.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'navigation.legal_notice' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    {{ 'privacy_policy.content.legal_notice.text' | trans }}
+                    <a href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
+                        {{ 'navigation.legal_notice' | trans }}
+                    </a>.
+                </p>
+            </div>
+        </div>
+
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
+    </section>
+{% endblock %}

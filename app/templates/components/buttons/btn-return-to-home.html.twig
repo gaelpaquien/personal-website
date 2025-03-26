@@ -1,11 +1,11 @@
 <div class="btn-return-to-home fade-in-effects-initial"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects">
-    <button class="btn" type="button" aria-label="{{ 'return_to_home_aria' | trans }}"
-        data-controller="redirect"
-        data-action="click->redirect#redirectToUrl"
-        data-redirect-url-value="{{ path('app_main_index') }}"
+    <button class="btn" type="button" aria-label="{{ 'navigation.return_home_aria' | trans }}"
+            data-controller="redirect"
+            data-action="click->redirect#redirectToUrl"
+            data-redirect-url-value="{{ path('app_main_index') }}"
     >
-        {{ 'return_to_home' | trans }}
+        {{ 'navigation.return_home' | trans }}
     </button>
 </div>
