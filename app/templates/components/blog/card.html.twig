@@ -1,0 +1,25 @@
+{% set title = title|default('Titre de l\'article') %}
+{% set content = content|default('Contenu de l\'article') %}
+{% set image = image|default('images/blog/blog-default.webp') %}
+{% set tags = tags|default([]) %}
+{% set updated_at = updated_at|default('01/01/2024') %}
+{% set slug = slug|default('') %}
+
+<div class="fade-in-effects-initial blog__container-posts-card scale-effects"
+     data-animation-fade-in-target="fadeIn"
+     data-animation="fade-in-up-effects"
+     data-blog-card-target="card"
+     data-action="click->blog-card#pressCard"
+     data-blog-card-url-value="{{ path('app_blog_show', {'slug': slug}) }}"
+>
+    <img src="{{ asset(image) }}" alt="{{ title }}">
+    <div class="blog__container-posts-card-content">
+        <h3 class="blog__container-posts-card-content-title">{{ title }}</h3>
+        <div class="blog__container-posts-card-content-excerpt">
+            <p>{{ content|striptags|slice(0, 200) ~ (content|striptags|length > 150 ? '...' : '') }}</p>
+        </div>
+        <div class="blog__container-posts-card-content-meta">
+            <p class="blog__container-posts-card-content-date">Dernière modification réalisée le {{ updated_at|split(' ')[0] }}</p>
+        </div>
+    </div>
+</div>
