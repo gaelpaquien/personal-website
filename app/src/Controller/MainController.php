@@ -18,7 +18,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']])]
     public function index(): Response
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('pages/index.html.twig', [
             'projects' => $this->staticData->getPortfolioProjects(),
             'reviews' => $this->staticData->getReviews(),
         ]);
@@ -30,7 +30,7 @@ class MainController extends AbstractController
     ], name: 'legal_notice', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function legalNotice(): Response
     {
-        return $this->render('main/legal_notice.html.twig');
+        return $this->render('pages/legal_notice.html.twig');
     }
 
     #[Route([
@@ -39,7 +39,7 @@ class MainController extends AbstractController
     ], name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function privacyPolicy(): Response
     {
-        return $this->render('main/privacy_policy.html.twig');
+        return $this->render('pages/privacy_policy.html.twig');
     }
 
     #[Route([
@@ -55,7 +55,7 @@ class MainController extends AbstractController
             $urls[] = (string) $urlElement->loc;
         }
 
-        return $this->render('main/sitemap.html.twig', [
+        return $this->render('pages/sitemap.html.twig', [
             'urls' => $urls,
         ]);
     }

@@ -10,10 +10,10 @@
                         aria-labelledby="footer__container-about-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="footer__container-about-title-h2">{{ 'site_name' | trans }}</h2>
+                <h2 id="footer__container-about-title-h2">{{ 'info.site.name' | trans }}</h2>
             </div>
             <p class="footer__container-about-text">
-                &copy 2024-{{ 'now' | date('Y') }} - {{ 'copyright' | trans }}.
+                &copy 2024-{{ 'now' | date('Y') }} - {{ 'footer.copyright' | trans }}.
             </p>
         </div>
     </div>
@@ -29,17 +29,17 @@
                         aria-labelledby="footer__container-contact-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="footer__container-contact-title-h2">{{ 'footer_contact_title' | trans }}</h2>
+                <h2 id="footer__container-contact-title-h2">{{ 'footer.contact_title' | trans }}</h2>
             </div>
             <ul class="footer__container-contact-list">
                 <li class="link-effects footer__container-contact-list-item">
-                    <a href="https://calendly.com/contact-s6as" target="_blank" rel="noopener" aria-label="{{ 'calendly_meeting' | trans }}">
-                        {{ 'calendly_meeting' | trans }}
+                    <a href="https://calendly.com/contact-s6as" target="_blank" rel="noopener" aria-label="{{ 'actions.schedule_meeting' | trans }}">
+                        {{ 'actions.schedule_meeting' | trans }}
                     </a>
                 </li>
                 <li class="link-effects footer__container-contact-list-item">
-                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
-                        {{ 'author_mail' | trans }}
+                    <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {{ 'info.author.email' | trans }}
                     </a>
                 </li>
             </ul>
@@ -57,12 +57,12 @@
                         aria-labelledby="footer__container-company-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="footer__container-company-title-h2">{{ 'footer_company_title' | trans }}</h2>
+                <h2 id="footer__container-company-title-h2">{{ 'footer.company_title' | trans }}</h2>
             </div>
             <p class="footer__container-company-text">
-                {{ 'footer_company_text1' | trans }}<br>
-                {{ 'footer_company_text2' | trans }}<br>
-                {{ 'footer_company_text3' | trans }}
+                {{ 'info.company.business_type' | trans }}<br>
+                {{ 'info.company.siret' | trans }}<br>
+                {{ 'info.company.vat' | trans }}
             </p>
         </div>
     </div>
@@ -74,7 +74,7 @@
         <div class="footer__container-links">
             <ul class="footer__container-links-social">
                 <li class="footer__container-links-social-item">
-                    <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                    <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {% embed 'assets/svg/mail.html.twig' %}
                             {% block attributes %}
                                 class="scale-effects"
@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li class="footer__container-links-social-item">
-                    <a href="https://www.linkedin.com/in/gaelpaquien/" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
+                    <a href="https://www.linkedin.com/in/gaelpaquien/" target="_blank" rel="noopener" aria-label="{{ 'navigation.linkedin_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {% embed 'assets/svg/linkedin.html.twig' %}
                             {% block attributes %}
                                 class="scale-effects"
@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="footer__container-links-social-item">
-                    <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
+                    <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'navigation.github_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {% embed 'assets/svg/github.html.twig' %}
                             {% block attributes %}
                                 class="scale-effects"
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li class="footer__container-links-social-item">
-                    <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
+                    <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {% embed 'assets/svg/resume.html.twig' %}
                             {% block attributes %}
                                 class="scale-effects"
@@ -117,18 +117,18 @@
 
             <ul class="footer__container-links-various">
                 <li class="footer__container-links-various-item">
-                    <a class="link-effects" href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'legal_notice_aria' | trans }}">
-                        {{ 'legal_notice' | trans }}
+                    <a class="link-effects" href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
+                        {{ 'navigation.legal_notice' | trans }}
                     </a>
                 </li>
                 <li class="footer__container-links-various-item">
-                    <a class="link-effects" href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'privacy_policy_aria' | trans }}">
-                        {{ 'privacy_policy' | trans }}
+                    <a class="link-effects" href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'navigation.privacy_policy_aria' | trans }}">
+                        {{ 'navigation.privacy_policy' | trans }}
                     </a>
                 </li>
                 <li class="footer__container-links-various-item">
-                    <a class="link-effects" href="{{ path('app_main_sitemap') }}" aria-label="{{ 'sitemap_aria' | trans }}">
-                        {{ 'sitemap' | trans }}
+                    <a class="link-effects" href="{{ path('app_main_sitemap') }}" aria-label="{{ 'navigation.sitemap_aria' | trans }}">
+                        {{ 'navigation.sitemap' | trans }}
                     </a>
                 </li>
             </ul>

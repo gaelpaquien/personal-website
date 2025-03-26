@@ -13,7 +13,7 @@ class BlogController extends AbstractController
     #[Route([
         'fr' => '/blog',
         'en' => '/blog',
-    ], name: 'index', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'weekly']])]
+    ], name: 'index', options: ['sitemap' => ['priority' => 0.9, 'changefreq' => 'daily']])]
     public function index(StaticData $staticData): Response
     {
         $posts = $staticData->getBlogPosts();
@@ -25,7 +25,7 @@ class BlogController extends AbstractController
             return strtotime($dateB) - strtotime($dateA);
         });
 
-        return $this->render('main/blog/index.html.twig', [
+        return $this->render('pages/blog/index.html.twig', [
             'posts' => $posts
         ]);
     }
@@ -33,7 +33,7 @@ class BlogController extends AbstractController
     #[Route([
         'fr' => '/blog/{slug}',
         'en' => '/blog/{slug}',
-    ], name: 'show', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'weekly']])]
+    ], name: 'show', options: ['sitemap' => false])]
     public function show(string $slug, StaticData $staticData): Response
     {
         return $this->render('main/blog/show.html.twig', [

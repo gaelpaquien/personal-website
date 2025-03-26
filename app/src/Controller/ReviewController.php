@@ -15,6 +15,6 @@ class ReviewController extends AbstractController
     ], name: 'create', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'monthly']])]
     public function create(): Response
     {
-        return $this->render('main/reviews/create.html.twig');
+        return $this->render('pages/reviews/create.html.twig');
     }
 }

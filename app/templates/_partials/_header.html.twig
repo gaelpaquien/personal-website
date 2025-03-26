@@ -5,7 +5,7 @@
             data-animation="fade-in-left-effects"
         >
             <li class="header__headband-left-list-item">
-                <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'translate_fr' | trans }}">
+                <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'language.to_french' | trans }}">
                     {% embed 'assets/svg/flag-fr.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="header__headband-left-list-item">
-                <a href="{{ path('app_change_locale', { 'locale': 'en' }) }}" aria-label="{{ 'translate_en' | trans }}">
+                <a href="{{ path('app_change_locale', { 'locale': 'en' }) }}" aria-label="{{ 'language.to_english' | trans }}">
                     {% embed 'assets/svg/flag-en.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -39,7 +39,7 @@
                 {% embed 'assets/svg/light.html.twig' %}
                     {% block attributes %}
                         class="scale-effects btn-light-mode"
-                        aria-label="{{ 'theme_light' | trans }}"
+                        aria-label="{{ 'theme.light' | trans }}"
                         data-theme="light"
                         data-themes-target="lightButton"
                         data-action="click->themes#toggleTheme"
@@ -50,7 +50,7 @@
                 {% embed 'assets/svg/moon.html.twig' %}
                     {% block attributes %}
                         class="scale-effects btn-dark-mode"
-                        aria-label="{{ 'theme_dark' | trans }}"
+                        aria-label="{{ 'theme.dark' | trans }}"
                         data-theme="dark"
                         data-themes-target="darkButton"
                         data-action="click->themes#toggleTheme"
@@ -64,7 +64,7 @@
             data-animation="fade-in-right-effects"
         >
             <li class="header__headband-right-list-item">
-                <a href="mailto:contact@gaelpaquien.com" aria-label="{{ 'send_mail' | trans }}">
+                <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                     {% embed 'assets/svg/mail.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -74,7 +74,7 @@
                 </a>
             </li>
             <li class="header__headband-right-list-item">
-                <a href="https://www.linkedin.com/in/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'linkedin_profile_aria' | trans }}">
+                <a href="https://www.linkedin.com/in/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'navigation.linkedin_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                     {% embed 'assets/svg/linkedin.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li class="header__headband-right-list-item">
-                <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'github_profile_aria' | trans }}">
+                <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'navigation.github_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                     {% embed 'assets/svg/github.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -94,7 +94,7 @@
                 </a>
             </li>
             <li class="header__headband-right-list-item">
-                <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'see_resume' | trans }}">
+                <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                     {% embed 'assets/svg/resume.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -112,7 +112,7 @@
              data-animation="fade-in-left-effects"
         >
             <h1>
-                <a href="{{ path('app_main_index') }}" aria-label="{{ 'return_to_home_aria' | trans }}">
+                <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.return_home_aria' | trans }}">
                     {% embed 'assets/svg/logo.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
@@ -123,11 +123,11 @@
             </h1>
         </div>
 
-        <button class="fade-in-effects-initial header__container-menu-open" type="button" aria-label="{{ 'open_menu' | trans }}" aria-expanded="false"
-            data-animation-fade-in-target="fadeIn"
-            data-animation="fade-in-right-effects"
-            data-navigation-target="openButton"
-            data-action="click->navigation#open"
+        <button class="fade-in-effects-initial header__container-menu-open" type="button" aria-label="{{ 'actions.open_menu' | trans }}" aria-expanded="false"
+                data-animation-fade-in-target="fadeIn"
+                data-animation="fade-in-right-effects"
+                data-navigation-target="openButton"
+                data-action="click->navigation#open"
         >
             {% embed 'assets/svg/menu.html.twig' %}
                 {% block attributes %}
@@ -137,9 +137,9 @@
             {% endembed %}
         </button>
 
-        <button class="header__container-menu-close" type="button" aria-label="{{ 'close_menu' | trans }}" aria-expanded="true"
-            data-navigation-target="closeButton"
-            data-action="click->navigation#close"
+        <button class="header__container-menu-close" type="button" aria-label="{{ 'actions.close_menu' | trans }}" aria-expanded="true"
+                data-navigation-target="closeButton"
+                data-action="click->navigation#close"
         >
             {% embed 'assets/svg/cross.html.twig' %}
                 {% block attributes %}
