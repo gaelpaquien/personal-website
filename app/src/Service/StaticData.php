@@ -44,7 +44,7 @@ class StaticData
             [
                 'title' => 'BileMo API',
                 'description' => 'Conception et développement d\'une API REST permettant aux clients authentifiés d\'accéder à une liste de produits et d\'utilisateurs.',
-                'image' => 'images/portfolio/portfolio-bilemoapi.webp',
+                'image' => 'images/portfolio/portfolio-bilemo-api.webp',
                 'tags' => ['PHP', 'Symfony', 'MySQL', 'Docker'],
                 'order' => 5,
                 'related_blog_post_slug' => 'conception-et-developpement-de-bilemo-une-api-rest-avec-php-et-symfony'
@@ -58,9 +58,9 @@ class StaticData
                 'related_blog_post_slug' => 'conception-et-developpement-d-un-site-communautaire-de-snowboard-avec-php-et-symfony'
             ],
             [
-                'title' => 'Blog PHP',
+                'title' => 'Blog PHP MVC',
                 'description' => 'Découverte du langage PHP à travers la conception et le développement d\'un blog complet basé sur une architecture MVC.',
-                'image' => 'images/portfolio/portfolio-blogphp.webp',
+                'image' => 'images/portfolio/portfolio-blog-php-mvc.webp',
                 'tags' => ['PHP', 'MySQL', 'JavaScript', 'MVC'],
                 'order' => 7,
                 'related_blog_post_slug' => 'decouverte-de-php-avec-la-creation-d-un-blog-et-une-architecture-mvc'
@@ -106,64 +106,64 @@ class StaticData
                 'title' => 'Développeur Backend chez Plany : logiciel SaaS dans le secteur de l\'événementiel',
                 'slug' => 'developpeur-backend-chez-plany-logiciel-saas-dans-le-secteur-de-l-evenementiel',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-developpeur-backend-plany.webp',
+                'image' => 'images/blog/blog-plany.webp',
                 'tags' => ['PHP', 'Symfony', 'Laravel', 'MySQL', 'OpenSearch', 'Architecture Hexagonale', 'Livewire', 'Alpine.js', 'Vue.js', 'Tailwind CSS'],
-                'created_at' => '28/06/2021',
-                'order' => 1
+                'created_at' => '25/03/2025 19:00',
+                'updated_at' => '25/03/2025 19:00',
             ],
             [
                 'title' => 'Conception et développement de mon site personnel avec PHP et Symfony',
                 'slug' => 'conception-et-developpement-de-mon-site-personnel-avec-php-et-symfony',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-conception-site-personnel.webp',
+                'image' => 'images/blog/blog-personal-website.webp',
                 'tags' => ['PHP', 'Symfony', 'MySQL', 'Docker', 'Stimulus', 'Saas'],
-                'created_at' => '11/01/2024',
-                'order' => 2
+                'created_at' => '25/03/2025 18:00',
+                'updated_at' => '25/03/2025 18:00',
             ],
             [
                 'title' => 'Création du site vitrine RG Clean Car avec WordPress',
                 'slug' => 'creation-du-site-vitrine-rgcleancar-avec-wordpress',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-creation-site-rgcleancar.webp',
+                'image' => 'images/blog/blog-rgcleancar.webp',
                 'tags' => ['WordPress'],
-                'created_at' => '01/01/2024',
-                'order' => 3
+                'created_at' => '25/03/2025 17:00',
+                'updated_at' => '25/03/2025 17:00',
             ],
             [
                 'title' => 'Audit et optimisation de ToDo&Co : application PHP et Symfony',
                 'slug' => 'audit-et-optimisation-de-todoandco-application-php-et-symfony',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-audit-optimisation-todoandco.webp',
+                'image' => 'images/blog/blog-todoandco.webp',
                 'tags' => ['PHP', 'Symfony', 'MySQL', 'Docker', 'JavaScript', 'Bootstrap'],
-                'created_at' => '01/01/2024',
-                'order' => 4
+                'created_at' => '25/03/2025 16:00',
+                'updated_at' => '25/03/2025 16:00',
             ],
             [
                 'title' => 'Conception et développement de BileMo : une API REST avec PHP et Symfony',
                 'slug' => 'conception-et-developpement-de-bilemo-une-api-rest-avec-php-et-symfony',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-conception-bilemo.webp',
+                'image' => 'images/blog/blog-bilemo-api.webp',
                 'tags' => ['PHP', 'Symfony', 'MySQL', 'Docker'],
-                'created_at' => '01/01/2024',
-                'order' => 5
+                'created_at' => '25/03/2025 15:00',
+                'updated_at' => '25/03/2025 15:00',
             ],
             [
                 'title' => 'Conception et développement d\'un site communautaire de snowboard avec PHP et Symfony',
                 'slug' => 'conception-et-developpement-d-un-site-communautaire-de-snowboard-avec-php-et-symfony',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-conception-snowtricks.webp',
+                'image' => 'images/blog/blog-snowtricks.webp',
                 'tags' => ['PHP', 'Symfony', 'MySQL', 'Docker', 'JavaScript', 'Sass'],
-                'created_at' => '01/01/2024',
-                'order' => 6
+                'created_at' => '25/03/2025 14:00',
+                'updated_at' => '25/03/2025 14:00',
             ],
             [
                 'title' => 'Découverte de PHP avec la création d\'un blog et une architecture MVC',
                 'slug' => 'decouverte-de-php-avec-la-creation-d-un-blog-et-une-architecture-mvc',
                 'content' => $this->getLoremIpsum(),
-                'image' => 'images/blog/blog-decouverte-php.webp',
+                'image' => 'images/blog/blog-blog-php-mvc.webp',
                 'tags' => ['PHP', 'MySQL', 'JavaScript', 'MVC'],
-                'created_at' => '01/01/2024',
-                'order' => 7
+                'created_at' => '25/03/2025 13:00',
+                'updated_at' => '25/03/2025 13:00',
             ]
         ];
     }

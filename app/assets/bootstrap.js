@@ -11,6 +11,7 @@ import ScrollController from './controllers/scroll_controller.js';
 import PortfolioCardController from './controllers/portfolio_card_controller.js';
 import ReviewsCarouselController from './controllers/reviews_carousel_controller.js';
 import ReviewsPopupController from './controllers/reviews_popup_controller.js';
+import BlogCardController from './controllers/blog_card_controller.js';
 
 app.register('themes', ThemesController);
 app.register('animation-fade-in-up', AnimationFadeIn);
@@ -21,3 +22,4 @@ app.register('scroll', ScrollController);
 app.register('portfolio-card', PortfolioCardController);
 app.register('reviews-carousel', ReviewsCarouselController);
 app.register('reviews-popup', ReviewsPopupController);
+app.register('blog-card', BlogCardController);
