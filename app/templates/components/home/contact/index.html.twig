@@ -1,0 +1,72 @@
+<section id="home-contact" class="home-contact__container">
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <div class="section-title link-effects home-contact__container-title"
+             data-action="click->scroll#scrollToSection"
+             data-target="home-contact"
+        >
+            {% embed 'assets/svg/discussion.html.twig' %}
+                {% block attributes %}
+                    role="button"
+                    aria-labelledby="home-contact__container-title-h2"
+                {% endblock %}
+            {% endembed %}
+            <h2 id="home-contact__container-title-h2">{{ 'home.sections.contact.title' | trans }}</h2>
+        </div>
+    </div>
+
+    <form class="fade-in-effects-initial home-contact__container-form" action="#" method="post"
+          data-animation-fade-in-target="fadeIn"
+          data-animation="fade-in-up-effects"
+    >
+        <div class="form-identity-group">
+            <span>{{ 'privacy_policy.content.contact_form.name' | trans }}*</span>
+            <div>
+                <label for="form-contact-firstname" hidden>{{ 'privacy_policy.content.contact_form.first_name' | trans }}</label>
+                <input type="text" id="form-contact-firstname" name="form-contact-firstname" placeholder="{{ 'privacy_policy.content.contact_form.first_name' | trans }}" required>
+                <label for="form-contact-name" hidden>{{ 'privacy_policy.content.contact_form.name' | trans }}</label>
+                <input type="text" id="form-contact-name" name="form-contact-name" placeholder="{{ 'privacy_policy.content.contact_form.name' | trans }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="form-contact-email">{{ 'privacy_policy.content.contact_form.email' | trans }}*</label>
+            <input type="email" id="form-contact-email" name="form-contact-email" placeholder="{{ 'privacy_policy.content.contact_form.email' | trans }}" required>
+        </div>
+        <div class="form-group">
+            <label for="form-contact-phone">{{ 'privacy_policy.content.contact_form.phone' | trans }}</label>
+            <input type="tel" id="form-contact-phone" name="form-contact-phone" placeholder="{{ 'privacy_policy.content.contact_form.phone' | trans }}">
+        </div>
+        <div class="form-group">
+            <label for="form-contact-subject">{{ 'privacy_policy.content.contact_form.subject' | trans }}*</label>
+            <input type="text" id="form-contact-subject" name="form-contact-subject" placeholder="{{ 'privacy_policy.content.contact_form.subject' | trans }}" required>
+        </div>
+        <div class="form-group">
+            <label for="form-contact-message">{{ 'privacy_policy.content.contact_form.message' | trans }}*</label>
+            <textarea id="form-contact-message" name="form-contact-message" placeholder="{{ 'privacy_policy.content.contact_form.message' | trans }}" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="form-contact-attachment">{{ 'privacy_policy.content.contact_form.files' | trans }}</label>
+            <input type="file" id="form-contact-attachment" name="form-contact-attachment" aria-label="{{ 'privacy_policy.content.contact_form.files' | trans }}">
+        </div>
+        <div class="form-switch">
+            <span class="form-switch-text">{{ 'privacy_policy.content.contact_form.copy_notice' | trans }}</span>
+            <label for="form-switch-message" class="form-switch-toggle">
+                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'privacy_policy.content.contact_form.copy_notice' | trans }}">
+                <span class="form-switch-toggle-slider"></span>
+            </label>
+        </div>
+        <button class="btn" type="submit" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+            {{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}
+        </button>
+        <div class="form-infos">
+            <p>*{{ 'home.sections.contact.privacy_notice' | trans }}</p>
+        </div>
+    </form>
+
+    {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
+        'data_target': '#footer',
+        'aria_label': 'actions.scroll_to_bottom' | trans
+    } %}
+</section>

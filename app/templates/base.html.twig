@@ -17,11 +17,11 @@
         <meta name="theme-color" content="#F9F7F7"> <!-- theme-color is dynamically updated with themes_controller.js -->
 
         <!-- Title -->
-        <title>{% block title %}{{ 'site_name' | trans }}{% endblock %}</title>
+        <title>{% block title %}{{ 'info.site.name' | trans }}{% endblock %}</title>
 
         <!-- About this site -->
-        <meta name="author" content="{{ 'site_author' | trans }}">
-        <meta name="description" content="{% block description %}{{ 'site_description' | trans }}{% endblock %}">
+        <meta name="author" content="{{ 'info.author.name' | trans }}">
+        <meta name="description" content="{% block description %}{{ 'info.site.description' | trans }}{% endblock %}">
 
         <!-- Favicons -->
         <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/favicons/favicon-48x48.png') }}">
@@ -38,16 +38,16 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ app.request.uri }}">
         <meta property="og:locale" content="{{ locale }}">
-        <meta property="og:title" content="{% block og_title %}{{ 'site_title' | trans }}{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}{{ 'site_description' | trans }}{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}{{ 'info.site.title' | trans }}{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{{ 'info.site.description' | trans }}{% endblock %}">
         {% set og_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
         <meta property="og:image" content="{% block og_image %}{{ asset(og_image) }}{% endblock %}">
 
         <!-- Twitter/X -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@gaelpaquien">
-        <meta name="twitter:title" content="{% block twitter_title %}{{ 'site_title' | trans }}{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}{{ 'site_description' | trans }}{% endblock %}">
+        <meta name="twitter:title" content="{% block twitter_title %}{{ 'info.site.title' | trans }}{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{{ 'info.site.description' | trans }}{% endblock %}">
         {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
         <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
@@ -56,11 +56,11 @@
     </head>
 
     <body data-controller="navigation language themes animation-fade-in scroll"
-        data-animation-fade-in-margin-value="0px 0px -20px 0px"
-        data-scroll-margin-value="50"
-        data-scroll-header-selector-value=".header"
-        data-scroll-scroll-threshold-value="100"
-        data-scroll-show-class-value="visible"
+          data-animation-fade-in-margin-value="0px 0px -20px 0px"
+          data-scroll-margin-value="50"
+          data-scroll-header-selector-value=".header"
+          data-scroll-scroll-threshold-value="100"
+          data-scroll-show-class-value="visible"
     >
         <div class="overlay" data-navigation-target="overlay"></div>
         {% include "_partials/_navigation.html.twig" %}

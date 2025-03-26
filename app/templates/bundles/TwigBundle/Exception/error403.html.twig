@@ -1,29 +1,29 @@
 {% extends "base.html.twig" %}
 
 {% block robots %}noindex, nofollow{% endblock %}
-{% block title %}{{ 'page_error403_title' | trans }} | gaelpaquien.com{% endblock %}
+{% block title %}{{ 'errors.403' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
     <section id="error403-page" class="errors-pages__container">
         <div class="fade-in-effects-initial"
-            data-animation-fade-in-target="fadeIn"
-            data-animation="fade-in-up-effects"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
         >
             <div class="section-title link-effects"
-                data-target="error403-page"
-                data-action="click->scroll#scrollToSection"
+                 data-target="error403-page"
+                 data-action="click->scroll#scrollToSection"
             >
                 {% embed 'assets/svg/alert.html.twig' %}
                     {% block attributes %}
                         aria-labelledby="error403-page-title"
                     {% endblock %}
                 {%  endembed %}
-                <h2 id="error403-page-title">{{ 'page_error403_title_section' | trans }}</h2>
+                <h2 id="error403-page-title">{{ 'errors.403' | trans }}</h2>
             </div>
         </div>
 
         <p class="errors-pages__container-content">
-            {{ 'page_error_text' | trans }}
+            {{ 'errors.text' | trans }}
         </p>
 
         {% include "components/buttons/btn-return-to-home.html.twig" %}

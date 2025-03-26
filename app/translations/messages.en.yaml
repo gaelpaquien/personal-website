@@ -1,157 +1,211 @@
-site_name: 'gaelpaquien.com'
-site_url: 'https://www.gaelpaquien.com'
-site_author: 'Gaël Paquien'
-author_mail: 'contact@gaelpaquien.com'
-site_title: 'Gaël Paquien, PHP Symfony and WordPress Web Developer'
-site_description: "My name is Gaël, passionate and specialized in PHP/Symfony development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
-language: 'Language'
-translate_fr: 'Translate the site to French'
-translate_en: 'Translate the site to English'
-theme: 'Theme'
-theme_dark: 'Enable dark theme'
-theme_light: 'Enable light theme'
-send_mail: 'Send an email to Gaël Paquien'
-call: 'Call Gaël Paquien'
-linkedin_profile: 'My LinkedIn profile'
-linkedin_profile_aria: 'Visit Gaël Paquien LinkedIn profile'
-github_profile: 'My GitHub profile'
-github_profile_aria: 'Visit Gaël Paquien GitHub profile'
-resume: 'My Resume'
-see_resume: 'View Gaël Paquien Resume'
-return_to_home: 'Return to home'
-return_to_home_aria: 'Return to the homepage'
-open_menu: 'Open the menu'
-close_menu: 'Close the menu'
-close: 'Close'
-scroll_to_next_default_aria: 'Go to the next section'
-scroll_to_top: 'Scroll to the top of the page'
-calendly_meeting: 'Schedule a meeting on Calendly'
-legal_notice: 'Legal Notice'
-legal_notice_aria: 'Visit the legal notice page'
-privacy_policy: 'Privacy Policy'
-privacy_policy_aria: 'Visit the privacy policy page'
-sitemap: 'Sitemap'
-sitemap_aria: 'Visit the sitemap page'
-copyright: 'All rights reserved'
-about_me: 'About Me'
-about_site: 'About This Site'
-home: 'Home'
-portfolio: 'Portfolio'
-portfolio_aria: 'Discover Gaël Paquien portfolio'
-reviews: 'Reviews'
-reviews_aria: 'Read reviews about Gaël Paquien'
-contact: 'Contact'
-contact_aria: 'Get in touch with Gaël Paquien'
-next: 'Next'
-previous: 'Previous'
-footer_contact_title: 'Let talk'
-footer_company_title: 'My Company'
-footer_company_text1: 'EI - APE Code 62.01Z'
-footer_company_text2: 'Siret 844 466 441 00020'
-footer_company_text3: 'VAT Number FR89844466441'
-post_review: 'Post a review'
-post_review_aria: 'Post a review about Gaël Paquien'
-blog: 'Blog'
-blog_aria: 'Visit Gaël Paquien blog'
-page_home_title: 'Home - Gaël Paquien, PHP Symfony and WordPress Developer - gaelpaquien.com'
-page_home_hero_title_secondary: 'PHP/Symfony Developer'
-page_home_hero_image_alt: 'Illustration and presentation of Gaël Paquien, PHP Symfony and WordPress Web Developer.'
-page_home_hero_presentation_text1: 'I am passionate and specialized in PHP Symfony development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more.'
-page_home_hero_presentation_text2: 'As a PHP Symfony developer, I have strengthened my project management skills, paying particular attention to code quality, application performance optimization, and the implementation of automated tests.'
-page_home_hero_presentation_text3: 'I am excited to discuss how my skills can align with your needs and contribute to your future successes.'
-page_home_portfolio_title: 'My Portfolio'
-page_home_reviews_title: 'Your feedback matters'
-page_home_reviews_next_aria: 'See the next review'
-page_home_reviews_previous_aria: 'See the previous review'
-page_home_reviews_publish: 'Publish a review'
-page_home_contact_title: 'Let talk'
-page_home_contact_scrollToNext_aria: 'Scroll to the bottom of the page'
-page_sitemap_title: 'Sitemap - Gaël Paquien, PHP Symfony and WordPress Developer - gaelpaquien.com'
-page_sitemap_btn_aria: 'Go to the page'
-page_legal_notice_title: 'Legal Notice - gaelpaquien.com'
-page_legal_notice_section1_text1: 'By accessing and using this site, you fully and unreservedly accept the terms of use.'
-page_legal_notice_section2_title: 'Modification of the terms of use'
-page_legal_notice_section2_text1: 'The publisher reserves the right to modify the terms of use at any time. Users are encouraged to regularly review this document to stay informed of any changes.'
-page_legal_notice_section3_title: 'Site Publisher'
-page_legal_notice_section3_text1: 'Publisher: Gaël PAQUIEN'
-page_legal_notice_section3_text2: 'Legal form: Sole proprietorship (EI)'
-page_legal_notice_section3_text3: 'SIRET number: 844 466 441 00020'
-page_legal_notice_section3_text4: 'VAT number: FR89844466441'
-page_legal_notice_section3_text5: 'APE Code: 62.01Z'
-page_legal_notice_section3_text6: 'Email: '
-page_legal_notice_section3_text7: 'Phone: '
-page_legal_notice_section3_text8: 'Website: '
-page_legal_notice_section3_text9: 'Address: 71-73 Avenue de la Patinière, 38500 Voiron'
-page_legal_notice_section4_title: 'Site Host'
-page_legal_notice_section4_text1: 'Host: o2switch'
-page_legal_notice_section4_text2: 'Website:'
-page_legal_notice_section4_text3: 'https://www.o2switch.fr'
-page_legal_notice_section4_text3_aria: 'Visit o2switch website'
-page_legal_notice_section4_text4: 'Address: Chem. des Pardiaux, 63000 Clermont-Ferrand'
-page_legal_notice_section5_title: 'Media Storage and Use'
-page_legal_notice_section5_text1: 'The images used may be stored directly on our site or integrated by third-party sources. We take all necessary measures to ensure that the images used respect copyright and are used in accordance with applicable laws.'
-page_legal_notice_section6_title: 'Intellectual Property'
-page_legal_notice_section6_text1: 'The source code of this website, including but not limited to, scripts, styles, and specific functionalities, is provided solely for viewing and interacting on this site. Any use, reproduction, modification, distribution, or redistribution of the source code, in whole or in part, for commercial or non-commercial purposes, without prior written authorization from the site publisher, is strictly prohibited.'
-page_legal_notice_section6_text2: 'The "GP" logo/favicon uses elements from third-party sources, such as:'
-page_legal_notice_section6_text3: 'Image by juicy_fish on Freepik'
-page_legal_notice_section6_text3_aria: 'See juicy_fish Freepik profile'
-page_legal_notice_section6_text4: 'Font "Amazing Grotesk" by zetafonts'
-page_legal_notice_section6_text4_aria: 'See the Amazing Grotesk font site'
-page_legal_notice_section6_text5: 'Other resources (icons, images, illustrations, etc.) are used on this site. These resources are used in accordance with applicable licenses. Unauthorized use of these elements may constitute a violation of copyright or corresponding licenses.'
-page_legal_notice_section7_title: 'External Links'
-page_legal_notice_section7_text1: 'This site may contain links to external sites that are not operated by us. We have no control over the content, privacy policies, or practices of these third-party sites and assume no responsibility in this regard. The use of these external sites is subject to their own terms of use and privacy policies.'
-page_legal_notice_section8_title: 'Site Use'
-page_legal_notice_section8_text1: 'Any abusive or fraudulent use of the site is prohibited.'
-page_legal_notice_section9_title: 'User Responsibility'
-page_legal_notice_section9_text1: 'Users of the site are responsible for the accuracy of the information provided in the forms (contact, review submission).'
-page_legal_notice_section10_title: 'Limitation of Liability'
-page_legal_notice_section10_text1: 'The site publisher cannot guarantee the accuracy, reliability, or continuous availability of the site. Furthermore, we are not responsible for:'
-page_legal_notice_section10_list1_item1: 'Indirect damages such as loss of profit, data, or business opportunities resulting from the use of this site.'
-page_legal_notice_section10_list1_item2: 'Software or hardware malfunctions of the user or Internet connectivity issues that may occur while using the site.'
-page_legal_notice_section10_list1_item3: 'Content published by third parties on the site or damages resulting from their use or reliance on such content.'
-page_legal_notice_section10_text2: 'This limitation of liability applies to the extent permitted by law.'
-page_legal_notice_section11_title: 'Applicable Law and Jurisdiction'
-page_legal_notice_section11_text1: 'These terms and conditions of use are subject to French law. In the event of a dispute, the competent jurisdiction is that of the publisher place of residence.'
-page_legal_notice_section12_title: 'Privacy Policy'
-page_legal_notice_section12_text1: 'Consult our '
-page_privacy_policy_title: 'Privacy Policy - gaelpaquien.com'
-page_privacy_policy_section1_text1: 'The site collects personal data, including:'
-page_privacy_policy_section1_list1_title: 'Contact form:'
-page_privacy_policy_section1_list1_item1: 'Name'
-page_privacy_policy_section1_list1_item2: 'First name'
-page_privacy_policy_section1_list1_item3: 'Email'
-page_privacy_policy_section1_list1_item4: 'Phone (optional)'
-page_privacy_policy_section1_list1_item5: 'Subject of the message'
-page_privacy_policy_section1_list1_item6: 'Message'
-page_privacy_policy_section1_list1_item7: 'Files (optional)'
-page_privacy_policy_section1_list1_item8: 'The data entered in this form are not stored and are only used to respond to you'
-page_privacy_policy_section1_list1_item9: 'Only a copy of the content in the form of an automatic email is available to the site publisher to respond to you'
-page_privacy_policy_section1_list2_title: 'Review submission form:'
-page_privacy_policy_section1_list2_item1: 'Name'
-page_privacy_policy_section1_list2_item2: 'First name'
-page_privacy_policy_section1_list2_item3: 'Email'
-page_privacy_policy_section1_list2_item4: 'Company/Entity (optional)'
-page_privacy_policy_section1_list2_item5: 'Position/Role (optional)'
-page_privacy_policy_section1_list2_item6: 'Message/Quote'
-page_privacy_policy_section1_list2_item7: 'The data entered in this form are stored and used solely to display reviews on this site'
-page_privacy_policy_section1_list2_item8: 'The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D).'
-page_privacy_policy_section2_title: 'Data Processing Officer'
-page_privacy_policy_section2_text1: 'The data processing officer for data collected on the site is the site publisher (see '
-page_privacy_policy_section3_title: 'Data Security'
-page_privacy_policy_section3_text1: 'We implement security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction of your personal information. These measures include internal controls on data collection, storage, and processing.'
-page_privacy_policy_section4_title: 'Data Use'
-page_privacy_policy_section4_text1: 'No information collected is sold or used for commercial or non-commercial purposes. The data is used exclusively for the proper functioning of the site.'
-page_privacy_policy_section5_title: 'Cookies and Tracking'
-page_privacy_policy_section5_text1: 'This site does not use cookies and does not track users. We respect the privacy of our visitors and do not collect browsing or personal data for tracking or advertising purposes.'
-page_privacy_policy_section6_title: 'Privacy Questions Contact'
-page_privacy_policy_section6_text1: 'For any questions regarding privacy and data protection, or to exercise your rights regarding your personal data, please contact the publisher'
-page_privacy_policy_section7_title: 'Data Breach Procedures'
-page_privacy_policy_section7_text1: 'In the event of a personal data breach, we commit to notifying the affected users and the relevant authorities, in accordance with applicable regulations. We also take necessary measures to minimize the impact of such breaches.'
-page_privacy_policy_section8_text1: 'Consult our '
-page_error_title: 'An error occurred - gaelpaquien.com'
-page_error_title_section: 'Error - An error occurred'
-page_error404_title: 'Page not found - Error 404 - gaelpaquien.com'
-page_error404_title_section: 'Error 404 - Page Not Found'
-page_error403_title: 'Access denied - Error 403 - gaelpaquien.com'
-page_error403_title_section: 'Error 403 - Forbidden'
-page_error_text: 'Oops... It seems an error occurred. If the problem persists, please contact the site administrator.'
+info:
+  site:
+    name: "gaelpaquien.com"
+    url: "https://www.gaelpaquien.com"
+    title: "Gaël Paquien, PHP, Symfony, Laravel, and WordPress developer"
+    description: "My name is Gaël, passionate and specialized in PHP, Symfony, Laravel and WordPress development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
+  host:
+    name: "Infomaniak"
+    url: "https://www.infomaniak.com/"
+    address: "Rue Eugène-Marziano 25, 1227 Geneva, Switzerland"
+  author:
+    name: "Gaël Paquien"
+    email: "contact@gaelpaquien.com"
+  company:
+    business_type: "French entrepreneur individual (EI)"
+    ape_code: "APE Code 6201Z"
+    siret: "Siret 844 466 441 00020"
+    vat: "VAT Number FR89844466441"
+    address: "12 Rue de la Part-Dieu, 69003 Lyon, France"
+
+language:
+  label: "Language"
+  to_french: "Translate the site to French"
+  to_english: "Translate the site to English"
+
+theme:
+  label: "Theme"
+  dark: "Enable dark theme"
+  light: "Enable light theme"
+
+actions:
+  send_mail: "Send an email to %info.author.name%"
+  schedule_meeting: "Schedule a meeting on Calendly"
+  scroll_to_next: "Go to the next section"
+  scroll_to_top: "Scroll to the top of the page"
+  scroll_to_bottom: "Scroll to the bottom of the page"
+  open: "Open"
+  close: "Close"
+  open_menu: "Open the menu"
+  close_menu: "Close the menu"
+  next: "Next"
+  previous: "Previous"
+
+navigation:
+  return_home: "Return to home"
+  go_to_page: "Go to the page"
+  home: "Home"
+  home_aria: "Discover home page"
+  portfolio: "Portfolio"
+  portfolio_aria: "Discover %info.author.name%'s portfolio"
+  reviews: "Reviews"
+  reviews_aria: "Read reviews about %info.author.name%"
+  reviews_post: "Post a review"
+  reviews_post_aria: "Post a review about %info.author.name%"
+  contact: "Contact"
+  contact_aria: "Get in touch with %info.author.name%"
+  blog: "Blog"
+  blog_aria: "Visit %info.author.name%'s blog"
+  legal_notice: "Legal Notice"
+  legal_notice_aria: "Visit the legal notice page"
+  privacy_policy: "Privacy Policy"
+  privacy_policy_aria: "Visit the privacy policy page"
+  sitemap: "Sitemap"
+  sitemap_aria: "Visit the sitemap page"
+  linkedin: "My LinkedIn profile"
+  linkedin_aria: "Visit %info.author.name%'s LinkedIn profile"
+  github: "My GitHub profile"
+  github_aria: "Visit %info.author.name%'s GitHub profile"
+  resume: "My Resume"
+  resume_aria: "View %info.author.name%'s Resume"
+
+footer:
+  copyright: "All rights reserved"
+  contact_title: "Let's talk"
+  company_title: "My Company"
+  about:
+    me: "About Me"
+    site: "About This Site"
+
+home:
+  title: "Home"
+  hero:
+    title_secondary: "Backend Developer"
+    image_alt: "Illustration and presentation of %info.author.name%, %info.site.title%."
+    presentation:
+      text1: "I am passionate and specialized in PHP, Symfony and Laravel development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
+      text2: "As a developer, I have strengthened my project management skills, paying particular attention to code quality, application performance optimization, and the implementation of automated tests."
+      text3: "I am excited to discuss how my skills can align with your needs and contribute to your future successes."
+  sections:
+    portfolio:
+      title: "My Portfolio"
+    reviews:
+      title: "Your feedback matters"
+      publication_info: "Published on %date% on %source%"
+    contact:
+      title: "Let's talk"
+      privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
+
+blog:
+  title: "Blog"
+  last_update: "Last update made on"
+
+legal_notice:
+  title: "Legal Notice"
+  content:
+    acceptance: "By accessing and using this site, you fully and unreservedly accept the terms of use."
+    modifications:
+      title: "Modification of the terms of use"
+      text: "The publisher reserves the right to modify the terms of use at any time. Users are encouraged to regularly review this document to stay informed of any changes."
+    publisher:
+      title: "Site Publisher"
+      name: "Publisher: %info.author.name%"
+      legal_form: "Legal form: %info.company.business_type%"
+      siret: "%info.company.siret%"
+      vat: "%info.company.vat%"
+      ape: "%info.company.ape_code%"
+      email: "Email: %info.author.email%"
+      website: "Website: %info.site.url%"
+      address: "Company address: %info.company.address%"
+    host:
+      title: "Site Host"
+      name: "Host: %info.host.name%"
+      website: "Website: %info.host.url%"
+      website_aria: "Visit %info.host.name% website"
+      address: "Address: %info.host.address%"
+    media:
+      title: "Media Storage and Use"
+      text: "The images used may be stored directly on our site or integrated by third-party sources. We take all necessary measures to ensure that the images used respect copyright and are used in accordance with applicable laws."
+    intellectual_property:
+      title: "Intellectual Property"
+      source_code: "The source code of this website, including but not limited to, scripts, styles, and specific functionalities, is provided solely for viewing and interacting on this site. Any use, reproduction, modification, distribution, or redistribution of the source code, in whole or in part, for commercial or non-commercial purposes, without prior written authorization from the site publisher, is strictly prohibited."
+      logo_intro: "The \"GP\" logo/favicon uses elements from third-party sources, such as:"
+      image_attribution: "Image by juicy_fish on Freepik"
+      image_attribution_aria: "See juicy_fish Freepik profile"
+      font_attribution: "Font \"Amazing Grotesk\" by zetafonts"
+      font_attribution_aria: "See the Amazing Grotesk font site"
+      other_resources: "Other resources (icons, images, illustrations, etc.) are used on this site. These resources are used in accordance with applicable licenses. Unauthorized use of these elements may constitute a violation of copyright or corresponding licenses."
+    external_links:
+      title: "External Links"
+      text: "This site may contain links to external sites that are not operated by us. We have no control over the content, privacy policies, or practices of these third-party sites and assume no responsibility in this regard. The use of these external sites is subject to their own terms of use and privacy policies."
+    site_use:
+      title: "Site Use"
+      text: "Any abusive or fraudulent use of the site is prohibited."
+    user_responsibility:
+      title: "User Responsibility"
+      text: "Users of the site are responsible for the accuracy of the information provided in the forms (contact, review submission)."
+    liability_limitation:
+      title: "Limitation of Liability"
+      intro: "The site publisher cannot guarantee the accuracy, reliability, or continuous availability of the site. Furthermore, we are not responsible for:"
+      item1: "Indirect damages such as loss of profit, data, or business opportunities resulting from the use of this site."
+      item2: "Software or hardware malfunctions of the user or Internet connectivity issues that may occur while using the site."
+      item3: "Content published by third parties on the site or damages resulting from their use or reliance on such content."
+      conclusion: "This limitation of liability applies to the extent permitted by law."
+    applicable_law:
+      title: "Applicable Law and Jurisdiction"
+      text: "These terms and conditions of use are subject to French law. In the event of a dispute, the competent jurisdiction is that of the publisher place of residence."
+    privacy_policy:
+      title: "Privacy Policy"
+      text: "Consult our privacy policy."
+
+privacy_policy:
+  title: "Privacy Policy"
+  content:
+    intro: "The site collects personal data, including:"
+    contact_form:
+      title: "Contact form:"
+      name: "Name"
+      first_name: "First name"
+      email: "Email"
+      phone: "Phone (optional)"
+      subject: "Subject of the message"
+      message: "Message"
+      files: "Files (optional)"
+      storage_notice: "The data entered in this form are not stored and are only used to respond to you"
+      copy_notice: "Only a copy of the content in the form of an automatic email is available to the site publisher to respond to you"
+    review_form:
+      title: "Review submission form:"
+      name: "Name"
+      first_name: "First name"
+      email: "Email"
+      company: "Company/Entity (optional)"
+      position: "Position/Role (optional)"
+      message: "Message/Quote"
+      storage_notice: "The data entered in this form are stored and used solely to display reviews on this site"
+      display_notice: "The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D)."
+    data_officer:
+      title: "Data Processing Officer"
+      text: "The data processing officer for data collected on the site is the site publisher."
+    data_security:
+      title: "Data Security"
+      text: "We implement security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction of your personal information. These measures include internal controls on data collection, storage, and processing."
+    data_use:
+      title: "Data Use"
+      text: "No information collected is sold or used for commercial or non-commercial purposes. The data is used exclusively for the proper functioning of the site."
+    cookies:
+      title: "Cookies and Tracking"
+      text: "This site does not use cookies and does not track users. We respect the privacy of our visitors and do not collect browsing or personal data for tracking or advertising purposes."
+    privacy_contact:
+      title: "Privacy Questions Contact"
+      text: "For any questions regarding privacy and data protection, or to exercise your rights regarding your personal data, please contact the publisher"
+    data_breach:
+      title: "Data Breach Procedures"
+      text: "In the event of a personal data breach, we commit to notifying the affected users and the relevant authorities, in accordance with applicable regulations. We also take necessary measures to minimize the impact of such breaches."
+    legal_notice:
+      text: "Consult our legal notice page for more information on the terms of use of this site."
+
+errors:
+  general: "An error occurred"
+  404: "Error 404 - Page not found"
+  403: "Error 403 - Access denied"
+  text: "Oops... It seems an error occurred. If the problem persists, please contact the site administrator."

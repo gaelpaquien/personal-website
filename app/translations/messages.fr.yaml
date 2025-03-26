@@ -1,157 +1,211 @@
-site_name: 'gaelpaquien.com'
-site_url: 'https://www.gaelpaquien.com'
-site_author: 'Gaël Paquien'
-author_mail: 'contact@gaelpaquien.com'
-site_title: 'Gaël Paquien, Développeur Web PHP Symfony et WordPress'
-site_description: "Je m'appelle Gaël, passionné et spécialisé en développement PHP/Symfony, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore."
-language: 'Language'
-translate_fr: 'Traduire le site en français'
-translate_en: 'Traduire le site en anglais'
-theme: 'Thème'
-theme_dark: 'Activer le thème sombre'
-theme_light: 'Activer le thème clair'
-send_mail: 'Envoyer un mail à Gaël Paquien'
-call: 'Appeler Gaël Paquien'
-linkedin_profile: 'Mon profil LinkedIn'
-linkedin_profile_aria: 'Visiter le profil LinkedIn de Gaël Paquien'
-github_profile: 'Mon profil GitHub'
-github_profile_aria: 'Visiter le profil GitHub de Gaël Paquien'
-resume: 'Mon CV'
-see_resume: 'Voir le CV de Gaël Paquien'
-return_to_home: "Retour à l'accueil"
-return_to_home_aria: "Retourner vers la page d'accueil"
-open_menu: 'Ouvrir le menu'
-close_menu: 'Fermer le menu'
-close: 'Fermer'
-scroll_to_next_default_aria: 'Accéder à la section suivante'
-scroll_to_top: 'Retourner en haut de la page'
-calendly_meeting: 'Planifier un rendez-vous sur Calendly'
-legal_notice: 'Mentions légales'
-legal_notice_aria: 'Visiter la page des mentions légales'
-privacy_policy: 'Politique de confidentialité'
-privacy_policy_aria: 'Visiter la page de la politique de confidentialité'
-sitemap: 'Plan du site'
-sitemap_aria: 'Visiter le plan du site'
-copyright: 'Tous droits réservés'
-about_me: 'À propos de moi'
-about_site: 'À propos de ce site'
-home: 'Accueil'
-portfolio: 'Portfolio'
-portfolio_aria: 'Découvrir le portfolio de Gaël Paquien'
-reviews: 'Avis'
-reviews_aria: 'Découvrir les avis de Gaël Paquien'
-contact: 'Contact'
-contact_aria: 'Contactez Gaël Paquien'
-next: 'Suivant'
-previous: 'Précédent'
-footer_contact_title: 'Discutons ensemble'
-footer_company_title: 'Mon entreprise'
-footer_company_text1: 'EI - Code APE 62.01Z'
-footer_company_text2: 'Siret 844 466 441 00020'
-footer_company_text3: 'Numéro TVA FR89844466441'
-post_review: 'Publier un avis'
-post_review_aria: 'Publier un avis sur Gaël Paquien'
-blog: 'Blog'
-blog_aria: 'Découvrir le blog de Gaël Paquien'
-page_home_title: 'Accueil - Gaël Paquien, Développeur Web PHP Symfony et WordPress - gaelpaquien.com'
-page_home_hero_title_secondary: 'Développeur PHP/Symfony'
-page_home_hero_image_alt: 'Illustration et présentation de Gaël Paquien, Développeur Web PHP Symfony et WordPress.'
-page_home_hero_presentation_text1: 'Je suis passionné et spécialisé en développement PHP Symfony, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore.'
-page_home_hero_presentation_text2: "En tant que développeur PHP Symfony, j'ai renforcé mes aptitudes en gestion de projets, en veillant particulièrement à la qualité du code, à l'optimisation des performances des applications PHP, et à l'implémentation de tests automatisés."
-page_home_hero_presentation_text3: "Je suis enthousiaste à l'idée d'échanger avec vous pour découvrir comment mes compétences pourraient s'aligner sur vos besoins et contribuer à vos succès futurs."
-page_home_portfolio_title: 'Mon portfolio'
-page_home_reviews_title: 'Vos avis comptent'
-page_home_reviews_next_aria: "Voir l'avis suivant"
-page_home_reviews_previous_aria: "Voir l'avis précédent"
-page_home_reviews_publish: 'Publier un avis'
-page_home_contact_title: 'Discutons ensemble'
-page_home_contact_scrollToNext_aria: 'Découvrir le bas de page'
-page_sitemap_title: 'Plan du site - Gaël Paquien, Développeur Web PHP Symfony et WordPress - gaelpaquien.com'
-page_sitemap_btn_aria: 'Allez vers la page'
-page_legal_notice_title: 'Mentions légales - gaelpaquien.com'
-page_legal_notice_section1_text1: 'En accédant et en utilisant ce site, vous acceptez pleinement et sans réserve les conditions d’utilisation.'
-page_legal_notice_section2_title: "Modification des conditions d'utilisation"
-page_legal_notice_section2_text1: 'L’éditeur se réserve le droit de modifier les conditions d’utilisation, à tout moment. Les utilisateurs sont encouragés à consulter régulièrement ce document pour se tenir informés des éventuelles modifications.'
-page_legal_notice_section3_title: 'Éditeur du site'
-page_legal_notice_section3_text1: 'Éditeur : Gaël PAQUIEN'
-page_legal_notice_section3_text2: 'Forme juridique : Entrepreneur individuel (EI)'
-page_legal_notice_section3_text3: 'Numéro SIRET : 844 466 441 00020'
-page_legal_notice_section3_text4: 'Numéro TVA : FR89844466441'
-page_legal_notice_section3_text5: 'Code APE : 62.01Z'
-page_legal_notice_section3_text6: 'Email : '
-page_legal_notice_section3_text7: 'Téléphone : '
-page_legal_notice_section3_text8: 'Site : '
-page_legal_notice_section3_text9: 'Adresse : 71-73 Avenue de la Patinière, 38500 Voiron'
-page_legal_notice_section4_title: 'Hébergeur du site'
-page_legal_notice_section4_text1: 'Hébergeur : o2switch'
-page_legal_notice_section4_text2: 'Site :'
-page_legal_notice_section4_text3: 'https://www.o2switch.fr'
-page_legal_notice_section4_text3_aria: 'Consulter le site de o2switch'
-page_legal_notice_section4_text4: 'Adresse : Chem. des Pardiaux, 63000 Clermont-Ferrand'
-page_legal_notice_section5_title: 'Stockage et utilisation des médias'
-page_legal_notice_section5_text1: 'Les images utilisées peuvent être stockées directement sur notre site ou intégrées par des sources tierces. Nous prenons toutes les mesures nécessaires pour nous assurer que les images utilisées respectent les droits d’auteur et sont utilisées conformément aux lois en vigueur.'
-page_legal_notice_section6_title: 'Propriété intellectuelle'
-page_legal_notice_section6_text1: 'Le code source de ce site web, y compris mais sans s’y limiter, les scripts, les styles, et les fonctionnalités spécifiques, est fourni uniquement à des fins de visualisation et d’interaction sur ce site. Toute utilisation, reproduction, modification, distribution ou redistribution du code source, en tout ou en partie, à des fins commerciales ou non commerciales, sans une autorisation écrite préalable de l’éditeur du site, est strictement interdite.'
-page_legal_notice_section6_text2: "Le logo/favicon 'GP' utilise des éléments de sources tierces, telles que :"
-page_legal_notice_section6_text3: 'Image de juicy_fish sur Freepik'
-page_legal_notice_section6_text3_aria: 'Voir le profil Freepik de juicy_fish'
-page_legal_notice_section6_text4: 'Font « Amazing Grotesk » de zetafonts'
-page_legal_notice_section6_text4_aria: 'Voir le site de la font Amazing Grotesk'
-page_legal_notice_section6_text5: "D'autres ressources (icônes, images, illustrations, etc..) sont utilisées sur ce site. Ces ressources sont utilisées conformément aux licences applicables. Toute utilisation non autorisée de ces éléments peut constituer une violation des droits d'auteur ou des licences correspondantes."
-page_legal_notice_section7_title: 'Liens externes'
-page_legal_notice_section7_text1: 'Ce site peut contenir des liens vers des sites externes qui ne sont pas opérés par nous. Nous n’avons aucun contrôle sur le contenu, les politiques de confidentialité ou les pratiques de ces sites tiers et déclinons toute responsabilité à cet égard. L’utilisation de ces sites externes est soumise à leurs propres conditions d’utilisation et politiques de confidentialité.'
-page_legal_notice_section8_title: 'Utilisation du site'
-page_legal_notice_section8_text1: 'Toute utilisation abusive ou frauduleuse du site est interdite.'
-page_legal_notice_section9_title: "Responsabilité de l'utilisateur"
-page_legal_notice_section9_text1: "Les utilisateurs du site sont responsables de l’exactitude des informations fournies pour les formulaires (contact, ajout d'un avis)."
-page_legal_notice_section10_title: 'Limitation de responsabilité'
-page_legal_notice_section10_text1: 'L’éditeur du site ne peut garantir l’exactitude, la fiabilité ou la disponibilité continue du site. De plus, nous ne sommes pas responsables :'
-page_legal_notice_section10_list1_item1: 'Des dommages indirects tels que la perte de profit, de données ou d’opportunités d’affaires résultant de l’utilisation de ce site.'
-page_legal_notice_section10_list1_item2: 'Des dysfonctionnements logiciels ou matériels de l’utilisateur ou de problèmes de connectivité Internet qui pourraient survenir lors de l’utilisation du site.'
-page_legal_notice_section10_list1_item3: 'Des contenus publiés par des tiers sur le site ou des dommages résultant de leur utilisation ou de leur confiance en ces contenus.'
-page_legal_notice_section10_text2: 'Cette limitation de responsabilité s’applique dans la mesure permise par la loi.'
-page_legal_notice_section11_title: 'Loi applicable et juridiction compétente'
-page_legal_notice_section11_text1: 'Ces termes et conditions d’utilisation sont soumis au droit français. En cas de litige, la juridiction compétente est celle du lieu de résidence de l’éditeur.'
-page_legal_notice_section12_title: 'Politique de confidentialité'
-page_legal_notice_section12_text1: 'Consulter notre '
-page_privacy_policy_title: 'Politique de confidentialité - gaelpaquien.com'
-page_privacy_policy_section1_text1: 'Le site collecte des données personnelles, y compris :'
-page_privacy_policy_section1_list1_title: 'Formulaire de contact :'
-page_privacy_policy_section1_list1_item1: 'Nom'
-page_privacy_policy_section1_list1_item2: 'Prénom'
-page_privacy_policy_section1_list1_item3: 'Email'
-page_privacy_policy_section1_list1_item4: 'Téléphone (facultatif)'
-page_privacy_policy_section1_list1_item5: 'Sujet du message'
-page_privacy_policy_section1_list1_item6: 'Message'
-page_privacy_policy_section1_list1_item7: 'Fichiers (facultatif)'
-page_privacy_policy_section1_list1_item8: 'Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre'
-page_privacy_policy_section1_list1_item9: 'Seule une copie du contenu sous forme de mail automatique est à disposition de l’éditeur du site afin de vous répondre'
-page_privacy_policy_section1_list2_title: "Formulaire ajout d'avis :"
-page_privacy_policy_section1_list2_item1: 'Nom'
-page_privacy_policy_section1_list2_item2: 'Prénom'
-page_privacy_policy_section1_list2_item3: 'Email'
-page_privacy_policy_section1_list2_item4: 'Société/Entité (facultatif)'
-page_privacy_policy_section1_list2_item5: 'Poste/Rôle (facultatif)'
-page_privacy_policy_section1_list2_item6: 'Message/Citation'
-page_privacy_policy_section1_list2_item7: 'Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site'
-page_privacy_policy_section1_list2_item8: "L'email saisie dans ce formulaire ne sera pas visible sur le site et l'identité sera affichée sous forme d'initial (John D)."
-page_privacy_policy_section2_title: 'Responsable du traitement des données'
-page_privacy_policy_section2_text1: "Le responsable du traitement des données collectées sur le site est l'éditeur du site (voir "
-page_privacy_policy_section3_title: 'Sécurité des données'
-page_privacy_policy_section3_text1: "Nous mettons en œuvre des mesures de sécurité pour protéger vos données personnelles contre l'accès non autorisé, l'altération, la divulgation ou la destruction de vos informations personnelles. Ces mesures comprennent des contrôles internes de la collecte, du stockage et du traitement des données."
-page_privacy_policy_section4_title: 'Utilisation des données'
-page_privacy_policy_section4_text1: 'Aucune information collectée n’est revendue ni utilisée à des fins commerciales ou non commerciales. Les données sont exclusivement utilisées pour le bon fonctionnement du site.'
-page_privacy_policy_section5_title: 'Cookies et traçage'
-page_privacy_policy_section5_text1: 'Ce site ne fait usage d’aucun cookie et ne procède à aucun traçage des utilisateurs. Nous respectons la confidentialité de nos visiteurs et ne recueillons pas de données de navigation ou personnelles à des fins de suivi ou de publicité.'
-page_privacy_policy_section6_title: 'Contact pour les questions de confidentialité'
-page_privacy_policy_section6_text1: 'Pour toute question concernant la confidentialité et la protection de vos données, ou pour exercer vos droits relatifs à vos données personnelles, veuillez contacter l’éditeur'
-page_privacy_policy_section7_title: 'Procédures en cas de violation de données'
-page_privacy_policy_section7_text1: 'En cas de violation de données personnelles, nous nous engageons à notifier les utilisateurs concernés et les autorités compétentes, conformément à la réglementation en vigueur. Nous prenons également les mesures nécessaires pour minimiser l’impact de telles violations.'
-page_privacy_policy_section8_text1: 'Consulter nos '
-page_error_title: 'Une erreur est survenue - gaelpaquien.com'
-page_error_title_section: 'Erreur - Une erreur est survenue'
-page_error404_title: 'Page non trouvée - Erreur 404 - gaelpaquien.com'
-page_error404_title_section: 'Erreur 404 - Page Not Found'
-page_error403_title: 'Accès interdit - Erreur 403 - gaelpaquien.com'
-page_error403_title_section: 'Erreur 403 - Forbidden'
-page_error_text: "Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site."
+info:
+  site:
+    name: "gaelpaquien.com"
+    url: "https://www.gaelpaquien.com"
+    title: "Gaël Paquien, Développeur PHP, Symfony, Laravel et WordPress"
+    description: "Je m'appelle Gaël, passionné et spécialisé en développement PHP, Symfony, Laravel et WordPress, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, et bien plus encore."
+  host:
+    name: "Infomaniak"
+    url: "https://www.infomaniak.com/"
+    address: "Rue Eugène-Marziano 25, 1227 Genève, Suisse"
+  author:
+    name: "Gaël Paquien"
+    email: "contact@gaelpaquien.com"
+  company:
+    business_type: "Entrepreneur individuel (EI)"
+    ape_code: "Code APE 6201Z"
+    siret: "Siret 844 466 441 00020"
+    vat: "Numéro TVA FR89844466441"
+    address: "12 Rue de la Part-Dieu, 69003 Lyon, France"
+
+language:
+  label: "Language"
+  to_french: "Traduire le site en français"
+  to_english: "Traduire le site en anglais"
+
+theme:
+  label: "Thème"
+  dark: "Activer le thème sombre"
+  light: "Activer le thème clair"
+
+actions:
+  send_mail: "Envoyer un mail à %info.author.name%"
+  schedule_meeting: "Planifier un rendez-vous sur Calendly"
+  scroll_to_next: "Accéder à la section suivante"
+  scroll_to_top: "Retourner en haut de la page"
+  scroll_to_bottom: "Découvrir le bas de page"
+  open: "Ouvrir"
+  close: "Fermer"
+  open_menu: "Ouvrir le menu"
+  close_menu: "Fermer le menu"
+  next: "Suivant"
+  previous: "Précédent"
+
+navigation:
+  return_home: "Retour à l'accueil"
+  go_to_page: "Allez vers la page"
+  home: "Accueil"
+  home_aria: "Découvrir la page d'accueil"
+  portfolio: "Portfolio"
+  portfolio_aria: "Découvrir le portfolio de %info.author.name%"
+  reviews: "Avis"
+  reviews_aria: "Découvrir les avis de %info.author.name%"
+  reviews_post: "Publier un avis"
+  reviews_post_aria: "Publier un avis sur %info.author.name%"
+  contact: "Contact"
+  contact_aria: "Contactez %info.author.name%"
+  blog: "Blog"
+  blog_aria: "Découvrir le blog de %info.author.name%"
+  legal_notice: "Mentions légales"
+  legal_notice_aria: "Visiter la page des mentions légales"
+  privacy_policy: "Politique de confidentialité"
+  privacy_policy_aria: "Visiter la page de la politique de confidentialité"
+  sitemap: "Plan du site"
+  sitemap_aria: "Visiter le plan du site"
+  linkedin: "Mon profil LinkedIn"
+  linkedin_aria: "Visiter le profil LinkedIn de %info.author.name%"
+  github: "Mon profil GitHub"
+  github_aria: "Visiter le profil GitHub de %info.author.name%"
+  resume: "Mon CV"
+  resume_aria: "Voir le CV de %info.author.name%"
+
+footer:
+  copyright: "Tous droits réservés"
+  contact_title: "Discutons ensemble"
+  company_title: "Mon entreprise"
+  about:
+    me: "À propos de moi"
+    site: "À propos de ce site"
+
+home:
+  title: "Accueil"
+  hero:
+    title_secondary: "Développeur Backend"
+    image_alt: "Illustration et présentation de %info.author.name%, %info.site.title%."
+    presentation:
+      text1: "Je suis passionné et spécialisé en développement PHP, Symfony et Laravel, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore."
+      text2: "En tant que développeur, j'ai renforcé mes aptitudes en gestion de projets, en veillant particulièrement à la qualité du code, à l'optimisation des performances des applications, et à l'implémentation de tests automatisés."
+      text3: "Je suis enthousiaste à l'idée d'échanger avec vous pour découvrir comment mes compétences pourraient s'aligner sur vos besoins et contribuer à vos succès futurs."
+  sections:
+    portfolio:
+      title: "Mon portfolio"
+    reviews:
+      title: "Vos avis comptent"
+      publication_info: "Publié le %date% sur %source%"
+    contact:
+      title: "Discutons ensemble"
+      privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
+
+blog:
+  title: "Blog"
+  last_update: "Dernière modification réalisée le"
+
+legal_notice:
+  title: "Mentions légales"
+  content:
+    acceptance: "En accédant et en utilisant ce site, vous acceptez pleinement et sans réserve les conditions d'utilisation."
+    modifications:
+      title: "Modification des conditions d'utilisation"
+      text: "L'éditeur se réserve le droit de modifier les conditions d'utilisation, à tout moment. Les utilisateurs sont encouragés à consulter régulièrement ce document pour se tenir informés des éventuelles modifications."
+    publisher:
+      title: "Éditeur du site"
+      name: "Éditeur : %info.author.name%"
+      legal_form: "Forme juridique : %info.company.business_type%"
+      siret: "%info.company.siret%"
+      vat: "%info.company.vat%"
+      ape: "%info.company.ape_code%"
+      email: "Email :"
+      website: "Site :"
+      address: "Adresse de l'entreprise : %info.company.address%"
+    host:
+      title: "Hébergeur du site"
+      name: "Hébergeur : %info.host.name%"
+      website: "Site :"
+      website_aria: "Consulter le site de %info.host.name%"
+      address: "Adresse : %info.host.address%"
+    media:
+      title: "Stockage et utilisation des médias"
+      text: "Les images utilisées peuvent être stockées directement sur notre site ou intégrées par des sources tierces. Nous prenons toutes les mesures nécessaires pour nous assurer que les images utilisées respectent les droits d'auteur et sont utilisées conformément aux lois en vigueur."
+    intellectual_property:
+      title: "Propriété intellectuelle"
+      source_code: "Le code source de ce site web, y compris mais sans s'y limiter, les scripts, les styles, et les fonctionnalités spécifiques, est fourni uniquement à des fins de visualisation et d'interaction sur ce site. Toute utilisation, reproduction, modification, distribution ou redistribution du code source, en tout ou en partie, à des fins commerciales ou non commerciales, sans une autorisation écrite préalable de l'éditeur du site, est strictement interdite."
+      logo_intro: "Le logo/favicon 'GP' utilise des éléments de sources tierces, telles que :"
+      image_attribution: "Image de juicy_fish sur Freepik"
+      image_attribution_aria: "Voir le profil Freepik de juicy_fish"
+      font_attribution: "Font « Amazing Grotesk » de zetafonts"
+      font_attribution_aria: "Voir le site de la font Amazing Grotesk"
+      other_resources: "D'autres ressources (icônes, images, illustrations, etc..) sont utilisées sur ce site. Ces ressources sont utilisées conformément aux licences applicables. Toute utilisation non autorisée de ces éléments peut constituer une violation des droits d'auteur ou des licences correspondantes."
+    external_links:
+      title: "Liens externes"
+      text: "Ce site peut contenir des liens vers des sites externes qui ne sont pas opérés par nous. Nous n'avons aucun contrôle sur le contenu, les politiques de confidentialité ou les pratiques de ces sites tiers et déclinons toute responsabilité à cet égard. L'utilisation de ces sites externes est soumise à leurs propres conditions d'utilisation et politiques de confidentialité."
+    site_use:
+      title: "Utilisation du site"
+      text: "Toute utilisation abusive ou frauduleuse du site est interdite."
+    user_responsibility:
+      title: "Responsabilité de l'utilisateur"
+      text: "Les utilisateurs du site sont responsables de l'exactitude des informations fournies pour les formulaires (contact, ajout d'un avis)."
+    liability_limitation:
+      title: "Limitation de responsabilité"
+      intro: "L'éditeur du site ne peut garantir l'exactitude, la fiabilité ou la disponibilité continue du site. De plus, nous ne sommes pas responsables :"
+      item1: "Des dommages indirects tels que la perte de profit, de données ou d'opportunités d'affaires résultant de l'utilisation de ce site."
+      item2: "Des dysfonctionnements logiciels ou matériels de l'utilisateur ou de problèmes de connectivité Internet qui pourraient survenir lors de l'utilisation du site."
+      item3: "Des contenus publiés par des tiers sur le site ou des dommages résultant de leur utilisation ou de leur confiance en ces contenus."
+      conclusion: "Cette limitation de responsabilité s'applique dans la mesure permise par la loi."
+    applicable_law:
+      title: "Loi applicable et juridiction compétente"
+      text: "Ces termes et conditions d'utilisation sont soumis au droit français. En cas de litige, la juridiction compétente est celle du lieu de résidence de l'éditeur."
+    privacy_policy:
+      title: "Politique de confidentialité"
+      text: "Consulter notre politique de confidentialité."
+
+privacy_policy:
+  title: "Politique de confidentialité"
+  content:
+    intro: "Le site collecte des données personnelles, y compris :"
+    contact_form:
+      title: "Formulaire de contact :"
+      name: "Nom"
+      first_name: "Prénom"
+      email: "Email"
+      phone: "Téléphone (facultatif)"
+      subject: "Sujet du message"
+      message: "Message"
+      files: "Fichiers (facultatif)"
+      storage_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre"
+      copy_notice: "Seule une copie du contenu sous forme de mail automatique est à disposition de l'éditeur du site afin de vous répondre"
+    review_form:
+      title: "Formulaire ajout d'avis :"
+      name: "Nom"
+      first_name: "Prénom"
+      email: "Email"
+      company: "Société/Entité (facultatif)"
+      position: "Poste/Rôle (facultatif)"
+      message: "Message/Citation"
+      storage_notice: "Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site"
+      display_notice: "L'email saisie dans ce formulaire ne sera pas visible sur le site et l'identité sera affichée sous forme d'initial (John D)."
+    data_officer:
+      title: "Responsable du traitement des données"
+      text: "Le responsable du traitement des données collectées sur le site est l'éditeur du site."
+    data_security:
+      title: "Sécurité des données"
+      text: "Nous mettons en œuvre des mesures de sécurité pour protéger vos données personnelles contre l'accès non autorisé, l'altération, la divulgation ou la destruction de vos informations personnelles. Ces mesures comprennent des contrôles internes de la collecte, du stockage et du traitement des données."
+    data_use:
+      title: "Utilisation des données"
+      text: "Aucune information collectée n'est revendue ni utilisée à des fins commerciales ou non commerciales. Les données sont exclusivement utilisées pour le bon fonctionnement du site."
+    cookies:
+      title: "Cookies et traçage"
+      text: "Ce site ne fait usage d'aucun cookie et ne procède à aucun traçage des utilisateurs. Nous respectons la confidentialité de nos visiteurs et ne recueillons pas de données de navigation ou personnelles à des fins de suivi ou de publicité."
+    privacy_contact:
+      title: "Contact pour les questions de confidentialité"
+      text: "Pour toute question concernant la confidentialité et la protection de vos données, ou pour exercer vos droits relatifs à vos données personnelles, veuillez contacter l'éditeur"
+    data_breach:
+      title: "Procédures en cas de violation de données"
+      text: "En cas de violation de données personnelles, nous nous engageons à notifier les utilisateurs concernés et les autorités compétentes, conformément à la réglementation en vigueur. Nous prenons également les mesures nécessaires pour minimiser l'impact de telles violations."
+    legal_notice:
+      text: "Consulter nos mentions légales pour plus d'informations sur les conditions d'utilisation de ce site."
+
+errors:
+  general: "Une erreur est survenue"
+  404: "Erreur 404 - Page non trouvée"
+  403: "Erreur 403 - Accès interdit"
+  text: "Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site."

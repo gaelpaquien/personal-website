@@ -19,7 +19,7 @@
             <p>{{ content|striptags|slice(0, 200) ~ (content|striptags|length > 150 ? '...' : '') }}</p>
         </div>
         <div class="blog__container-posts-card-content-meta">
-            <p class="blog__container-posts-card-content-date">Dernière modification réalisée le {{ updated_at|split(' ')[0] }}</p>
+            <p class="blog__container-posts-card-content-date">{{ 'blog.last_update' | trans }} {{ updated_at|split(' ')[0] }}</p>
         </div>
     </div>
 </div>

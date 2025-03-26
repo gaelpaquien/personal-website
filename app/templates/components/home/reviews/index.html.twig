@@ -16,7 +16,7 @@
                     aria-labelledby="home-reviews__container-title-h2"
                 {% endblock %}
             {% endembed %}
-            <h2 id="home-reviews__container-title-h2">{{ 'page_home_reviews_title' | trans }}</h2>
+            <h2 id="home-reviews__container-title-h2">{{ 'home.sections.reviews.title' | trans }}</h2>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                                 {% endif %}
                             </div>
                             <div class="home-reviews__container-carousel-item-infos-source">
-                                {{ review.created_at }} - {{ review.source }}
+                                {{ 'home.reviews.publication_info'|trans({'%date%': review.created_at, '%source%': review.source}) }}
                             </div>
                         </div>
                     </div>
@@ -63,15 +63,14 @@
                         data-reviews-carousel-target="indicator"
                         data-action="click->reviews-carousel#goToSlide"
                         data-index="{{ i }}"
-                        aria-label="{{ 'go_to_slide' | trans }} {{ i+1 }}"
+                        aria-label="{{ 'actions.go_to_page' | trans }} {{ i+1 }}"
                 ></button>
             {% endfor %}
         </div>
     </div>
 
-    {% include "components/home/reviews/popup.html.twig" %}
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
         'data_target': '#home-contact',
-        'aria_label': 'contact_aria' | trans
+        'aria_label': 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans})
     } %}
 </section>

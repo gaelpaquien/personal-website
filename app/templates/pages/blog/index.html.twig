@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'blog' | trans }} - {{ 'site_title' | trans }}{% endblock %}
+{% block title %}{{ 'blog.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
     <section id="blog" class="blog__container">
@@ -14,7 +14,7 @@
                         aria-labelledby="blog__container-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h1 id="blog__container-title-h2">{{ 'blog' | trans }}</h1>
+                <h1 id="blog__container-title-h2">{{ 'blog.title' | trans }}</h1>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
              data-controller="blog-card"
         >
             {% for post in posts %}
-                {% include "components/blog/card.html.twig" with {
+                {% include "components/blog/index/card.html.twig" with {
                     'title': post.title,
                     'content': post.content,
                     'image': post.image,

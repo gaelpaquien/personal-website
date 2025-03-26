@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'home.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+
+{% block content %}
+    <!-- Hero -->
+    {% include "components/home/hero/index.html.twig" %}
+
+    <!-- Portfolio -->
+    {% include "components/home/portfolio/index.html.twig" %}
+
+    <!-- Reviews -->
+    {% include "components/home/reviews/index.html.twig" %}
+
+    <!-- Contact -->
+    {% include "components/home/contact/index.html.twig" %}
+{% endblock %}

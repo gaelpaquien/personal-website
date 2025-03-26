@@ -23,11 +23,8 @@ export default class extends Controller {
     connect() {
         this.itemCount = this.itemTargets.length;
         if (this.itemCount === 0) return;
-
-        // Ajouter les événements tactiles pour le swipe
         this.wrapperTarget.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
         this.wrapperTarget.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
-
         this.initializeObserver();
         this.setupInitialState();
         this.startAutoScroll();
@@ -36,26 +33,19 @@ export default class extends Controller {
     disconnect() {
         this.stopAutoScroll();
         this.observer?.disconnect();
-
-        // Supprimer les événements tactiles
         this.wrapperTarget.removeEventListener('touchstart', this.handleTouchStart.bind(this));
         this.wrapperTarget.removeEventListener('touchend', this.handleTouchEnd.bind(this));
     }
 
     setupInitialState() {
-        // Définir la position initiale de tous les slides
         this.updateSlidePositions();
-
-        // Mettre à jour les indicateurs
         this.updateIndicators();
     }
 
     updateSlidePositions() {
         this.itemTargets.forEach((item, idx) => {
-            // Réinitialiser toutes les classes
             item.classList.remove('active', 'prev', 'next', 'transition-active');
 
-            // Appliquer la classe appropriée
             const position = this.getItemPosition(idx);
             if (position) {
                 item.classList.add(position);
@@ -130,7 +120,6 @@ export default class extends Controller {
 
     goToSlide(index) {
         if (typeof index === 'object' && index.currentTarget) {
-            // Si c'est un événement, récupérer l'index depuis le dataset
             index = parseInt(index.currentTarget.dataset.index, 10);
         }
 
@@ -139,33 +128,23 @@ export default class extends Controller {
         this.isAnimating = true;
         this.stopAutoScroll();
 
-        // Ajouter la classe de transition à tous les éléments
         this.itemTargets.forEach(item => {
             item.classList.add('transition-active');
         });
 
-        // Stocker l'ancien index
         const oldIndex = this.currentIndex;
-
-        // Mettre à jour l'index courant
         this.currentIndex = index;
-
-        // Mettre à jour les positions des slides
         this.updateSlidePositions();
-
-        // Mettre à jour les indicateurs
         this.updateIndicators();
 
-        // Attendre la fin de l'animation
         setTimeout(() => {
-            // Enlever la classe de transition
             this.itemTargets.forEach(item => {
                 item.classList.remove('transition-active');
             });
 
             this.isAnimating = false;
             this.startAutoScroll();
-        }, 600);  // Correspond à la durée de transition dans le CSS
+        }, 600);
     }
 
     updateIndicators() {
@@ -186,7 +165,6 @@ export default class extends Controller {
         });
     }
 
-    // Gestion du swipe sur mobile
     handleTouchStart(event) {
         this.touchStartX = event.changedTouches[0].screenX;
     }
@@ -197,14 +175,12 @@ export default class extends Controller {
     }
 
     handleSwipe() {
-        const swipeThreshold = 50; // Seuil en pixels pour considérer qu'il y a un swipe
+        const swipeThreshold = 50;
         const swipeDistance = this.touchEndX - this.touchStartX;
 
         if (swipeDistance > swipeThreshold) {
-            // Swipe de gauche à droite -> slide précédent
             this.previous();
         } else if (swipeDistance < -swipeThreshold) {
-            // Swipe de droite à gauche -> slide suivant
             this.next();
         }
     }
