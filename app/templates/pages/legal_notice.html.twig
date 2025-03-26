@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}noindex, follow{% endblock %}
+{% block title %}{{ 'legal_notice.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+
+{% block content %}
+    <section id="legal-notice" class="legal-pages__container">
+        <div class="fade-in-effects-initial"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <div class="section-title link-effects"
+                 data-target="legal-notice"
+                 data-action="click->scroll#scrollToSection"
+            >
+                {% embed 'assets/svg/hammer.html.twig' %}
+                    {% block attributes %}
+                        aria-labelledby="legal-notice-title"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="legal-notice-title">{{ 'legal_notice.title' | trans }}</h2>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.acceptance' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.modifications.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.modifications.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.publisher.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <ul>
+                    <li>{{ 'legal_notice.content.publisher.name' | trans({'%info.author.name%': 'info.author.name' | trans}) }}</li>
+                    <li>{{ 'legal_notice.content.publisher.legal_form' | trans({'%info.company.business_type%': 'info.company.business_type' | trans}) }}</li>
+                    <li>{{ 'legal_notice.content.publisher.siret' | trans({'%info.company.siret%': 'info.company.siret' | trans}) }}</li>
+                    <li>{{ 'legal_notice.content.publisher.vat' | trans({'%info.company.vat%': 'info.company.vat' | trans}) }}</li>
+                    <li>{{ 'legal_notice.content.publisher.ape' | trans({'%info.company.ape_code%': 'info.company.ape_code' | trans}) }}</li>
+                    <li>
+                        {{ 'legal_notice.content.publisher.email' | trans({'%info.author.email%': 'info.author.email' | trans}) }}
+                        <a href="mailto:{{ 'info.author.email' | trans }}"
+                           aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                        >
+                            {{ 'info.author.email' | trans }}
+                        </a>
+                    </li>
+                    <li>
+                        {{ 'legal_notice.content.publisher.website' | trans({'%info.site.url%': 'info.site.url' | trans}) }}
+                        <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.return_home' | trans }}">
+                            {{ 'info.site.url' | trans }}
+                        </a>
+                    </li>
+                    <li>{{ 'legal_notice.content.publisher.address' | trans({'%info.company.address%': 'info.company.address' | trans}) }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.host.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <ul>
+                    <li>{{ 'legal_notice.content.host.name' | trans({'%info.host.name%': 'info.host.name' | trans}) }}</li>
+                    <li>
+                        {{ 'legal_notice.content.host.website' | trans({'%info.host.url%': 'info.host.url' | trans}) }}
+                        <a href="{{ 'info.host.url' | trans }}" target="_blank" rel="noopener" aria-label="{{ 'legal_notice.content.host.website_aria' | trans({'%info.host.name%': 'info.host.name' | trans}) }}">
+                            {{ 'info.host.url' | trans }}
+                        </a>
+                    </li>
+                    <li>{{ 'legal_notice.content.host.address' | trans({'%info.host.address%': 'info.host.address' | trans}) }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.media.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.media.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.intellectual_property.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.intellectual_property.source_code' | trans }}</p>
+                <br>
+                <p>{{ 'legal_notice.content.intellectual_property.logo_intro' | trans }}</p>
+                <ul>
+                    <li>
+                        <a href="https://www.freepik.com/free-vector/round-brushes-6_35202634.htm#query=circle&position=2&from_view=search&track=sph&uuid=871e163e-a763-4c27-95e5-35e6c9e3ddce" target="_blank" rel="noopener"
+                           aria-label="{{ 'legal_notice.content.intellectual_property.image_attribution_aria' | trans }}">
+                            {{ 'legal_notice.content.intellectual_property.image_attribution' | trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zetafonts.com/amazing-grotesk" target="_blank" rel="noopener"
+                           aria-label="{{ 'legal_notice.content.intellectual_property.font_attribution_aria' | trans }}">
+                            {{ 'legal_notice.content.intellectual_property.font_attribution' | trans }}
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <p>{{ 'legal_notice.content.intellectual_property.other_resources' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.external_links.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.external_links.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.site_use.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.site_use.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.user_responsibility.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.user_responsibility.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.liability_limitation.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.liability_limitation.intro' | trans }}</p>
+                <ul>
+                    <li>{{ 'legal_notice.content.liability_limitation.item1' | trans }}</li>
+                    <li>{{ 'legal_notice.content.liability_limitation.item2' | trans }}</li>
+                    <li>{{ 'legal_notice.content.liability_limitation.item3' | trans }}</li>
+                </ul>
+                <p>{{ 'legal_notice.content.liability_limitation.conclusion' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.applicable_law.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>{{ 'legal_notice.content.applicable_law.text' | trans }}</p>
+            </div>
+        </div>
+
+        <div class="fade-in-effects-initial legal-pages__container-block"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.privacy_policy.title' | trans }}</h3>
+            <div class="legal-pages__container-block-content">
+                <p>
+                    {{ 'legal_notice.content.privacy_policy.text' | trans }}
+                    <a href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'navigation.privacy_policy_aria' | trans }}">
+                        {{ 'navigation.privacy_policy' | trans }}
+                    </a>.
+                </p>
+            </div>
+        </div>
+
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
+    </section>
+{% endblock %}

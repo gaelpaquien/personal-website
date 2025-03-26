@@ -27,7 +27,7 @@
             {% if not author_role and author_company %}{{ author_company }}{% endif %}
         </p>
         <p class="home-reviews__container-carousel-item-infos-source">
-            Publié le {{ publication_date }} sur {{ publication_source}}
+            {{ 'home.reviews.publication_info'|trans({'%date%': publication_date, '%source%': publication_source}) }}
         </p>
     </div>
     <div class="home-reviews__container-carousel-item-infos-mobile">
