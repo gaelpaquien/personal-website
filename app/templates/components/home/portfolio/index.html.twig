@@ -17,7 +17,7 @@
     </div>
 
     <div class="home-portfolio__container-projects"
-         data-controller="portfolio-card"
+         data-controller="card"
     >
         {% for project in projects|sort((a, b) => a.order <=> b.order) %}
             {% include "components/home/portfolio/card.html.twig" with {
