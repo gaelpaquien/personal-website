@@ -36,8 +36,8 @@
 #btn-scroll-to-top {
     button {
         position: fixed;
-        bottom: 0.05rem;
-        right: 0.05rem;
+        bottom: 0.35rem;
+        right: 0.35rem;
         background-color: transparent;
         padding: 0;
         border: none;
@@ -52,14 +52,13 @@
     }
 
     svg {
-        height: 1.2rem;
+        height: 2.25rem;
         width: auto;
+        rotate: 270deg;
         @extend %flex-center;
-    }
 
-    @include respond-to('breakpoint-768') {
-        svg {
-            height: 2rem;
+        &:hover {
+            opacity: 0.8;
         }
     }
 }
