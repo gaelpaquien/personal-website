@@ -45,7 +45,7 @@ export default class extends Controller {
                 const viewportHeight = window.innerHeight;
                 const buttonHeight = this.scrollTopButtonTarget.offsetHeight;
                 const remUnit = parseFloat(getComputedStyle(document.documentElement).fontSize);
-                const margin = 0.75 * remUnit;
+                const margin = 0.25 * remUnit;
                 const normalBottom = margin;
 
                 if (footerTop < viewportHeight) {
