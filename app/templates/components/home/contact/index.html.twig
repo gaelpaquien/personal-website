@@ -51,14 +51,14 @@
             <input type="file" id="form-contact-attachment" name="form-contact-attachment" aria-label="{{ 'privacy_policy.content.contact_form.files' | trans }}">
         </div>
         <div class="form-switch">
-            <span class="form-switch-text">{{ 'privacy_policy.content.contact_form.copy_notice' | trans }}</span>
+            <span class="form-switch-text">{{ 'home.sections.contact.receive_copy' | trans }}</span>
             <label for="form-switch-message" class="form-switch-toggle">
-                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'privacy_policy.content.contact_form.copy_notice' | trans }}">
+                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'home.sections.contact.receive_copy' | trans }}">
                 <span class="form-switch-toggle-slider"></span>
             </label>
         </div>
         <button class="btn" type="submit" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-            {{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}
+            {{ 'home.sections.contact.send' | trans }}
         </button>
         <div class="form-infos">
             <p>*{{ 'home.sections.contact.privacy_notice' | trans }}</p>
