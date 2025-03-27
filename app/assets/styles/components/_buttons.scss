@@ -36,13 +36,13 @@
 #btn-scroll-to-top {
     button {
         position: fixed;
-        bottom: 0.35rem;
-        right: 0.35rem;
+        right: 0.75rem;
         background-color: transparent;
         padding: 0;
         border: none;
         opacity: 0;
         visibility: hidden;
+        z-index: 1000;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
         &.visible {
@@ -52,7 +52,7 @@
     }
 
     svg {
-        height: 2.25rem;
+        height: 2.7rem;
         width: auto;
         rotate: 270deg;
         @extend %flex-center;
