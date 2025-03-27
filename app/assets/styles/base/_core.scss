@@ -1,6 +1,8 @@
 html {
     height: 100%;
     width: 100%;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-text) var(--color-primary);
 }
 
 body {
@@ -95,8 +97,4 @@ svg {
 
 .sf-minitoolbar {
     display: none !important;
-}
-
-* {
-    scrollbar-color: var(--color-text) var(--color-primary);
 }
