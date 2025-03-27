@@ -63,14 +63,27 @@ export default class extends Controller {
 
         if (this.hasSectionButtonTarget) {
             const isBottom = this.isCloseToBottom();
+
             this.sectionButtonTargets.forEach(button => {
+                const wasBottom = button.dataset.isBottom === 'true';
                 button.dataset.isBottom = isBottom.toString();
+
                 if (isBottom) {
+                    if (!wasBottom) {
+                        button.classList.remove('rotate-down-effects');
+                        button.classList.add('rotate-up-effects');
+                    }
                     button.dataset.action = 'click->scroll#scrollToTop';
-                    button.classList.add('rotate-up-effects');
                 } else {
+                    if (wasBottom) {
+                        button.classList.remove('rotate-up-effects');
+                        button.classList.add('rotate-down-effects');
+
+                        setTimeout(() => {
+                            button.classList.remove('rotate-down-effects');
+                        }, 500);
+                    }
                     button.dataset.action = 'click->scroll#scrollToSection';
-                    button.classList.remove('rotate-up-effects');
                 }
             });
         }
