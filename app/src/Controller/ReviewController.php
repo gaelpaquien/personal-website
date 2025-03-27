@@ -10,8 +10,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class ReviewController extends AbstractController
 {
     #[Route([
-        'fr' => '/avis/creation',
-        'en' => '/reviews/create',
+        'fr' => '/fr/avis/creation',
+        'en' => '/en/reviews/create',
     ], name: 'create', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'monthly']])]
     public function create(): Response
     {

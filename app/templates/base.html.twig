@@ -5,6 +5,11 @@
 
         <meta charset="UTF-8">
 
+        <script>
+            // Fix the FOUC (Flash of Unstyled Content) by adding the theme class to the document element
+            document.documentElement.classList.add('theme-' + (localStorage.getItem('theme') || 'light'));
+        </script>
+
         <!-- Canonical -->
         <link rel="canonical" href="{{ app.request.uri }}">
 
