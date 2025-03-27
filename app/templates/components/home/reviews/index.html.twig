@@ -23,37 +23,14 @@
     <div class="home-reviews__container-carousel" data-reviews-carousel-target="reviewsCarousel">
         <div class="home-reviews__container-carousel-track" data-reviews-carousel-target="wrapper">
             {% for review in reviews|sort((a, b) => a.order <=> b.order) %}
-                <div class="home-reviews__container-carousel-item"
-                     data-reviews-carousel-target="item"
-                     data-index="{{ loop.index0 }}"
-                     data-action="click->reviews-carousel#clickSlide"
-                >
-                    <div class="home-reviews__container-carousel-item-content">
-                        <blockquote class="home-reviews__container-carousel-item-quote" id="home-reviews-quote-{{ random(1, 999) }}">
-                            {% embed 'assets/svg/quote.html.twig' %}
-                                {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
-                            {% endembed %}
-                            {{ review.content }}
-                        </blockquote>
-
-                        <hr>
-
-                        <div class="home-reviews__container-carousel-item-infos">
-                            <div class="home-reviews__container-carousel-item-infos-author">
-                                {{ review.author }}
-                                {% if review.author_job is defined and review.author_job %}
-                                    - {{ review.author_job }}
-                                {% endif %}
-                                {% if review.author_company is defined and review.author_company %}
-                                    {{ review.author_company }}
-                                {% endif %}
-                            </div>
-                            <div class="home-reviews__container-carousel-item-infos-source">
-                                {{ 'home.reviews.publication_info'|trans({'%date%': review.created_at, '%source%': review.source}) }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include "components/home/reviews/card.html.twig" with {
+                    'author': review.author,
+                    'author_job': review.author_job ?? null,
+                    'author_company': review.author_company ?? null,
+                    'content': review.content,
+                    'created_at': review.created_at,
+                    'source': review.source
+                } %}
             {% endfor %}
         </div>
 
