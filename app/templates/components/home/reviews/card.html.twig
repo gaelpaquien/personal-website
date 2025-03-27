@@ -1,0 +1,31 @@
+<div class="home-reviews__container-carousel-item"
+     data-reviews-carousel-target="item"
+     data-index="{{ loop.index0 }}"
+     data-action="click->reviews-carousel#clickSlide"
+>
+    <div class="home-reviews__container-carousel-item-content">
+        <blockquote class="home-reviews__container-carousel-item-quote">
+            {% embed 'assets/svg/quote.html.twig' %}
+                {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
+            {% endembed %}
+            {{ content }}
+        </blockquote>
+
+        <hr>
+
+        <div class="home-reviews__container-carousel-item-infos">
+            <div class="home-reviews__container-carousel-item-infos-author">
+                {{ author }}
+                {% if author_job is defined and author_job %}
+                    - {{ author_job }}
+                {% endif %}
+                {% if author_company is defined and author_company %}
+                    {{ author_company }}
+                {% endif %}
+            </div>
+            <div class="home-reviews__container-carousel-item-infos-source">
+                {{ created_at }} - {{ source}}
+            </div>
+        </div>
+    </div>
+</div>
