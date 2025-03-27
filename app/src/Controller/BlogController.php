@@ -11,8 +11,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class BlogController extends AbstractController
 {
     #[Route([
-        'fr' => '/blog',
-        'en' => '/blog',
+        'fr' => '/fr/blog',
+        'en' => '/en/blog',
     ], name: 'index', options: ['sitemap' => ['priority' => 0.9, 'changefreq' => 'daily']])]
     public function index(StaticData $staticData): Response
     {
@@ -31,8 +31,8 @@ class BlogController extends AbstractController
     }
 
     #[Route([
-        'fr' => '/blog/{slug}',
-        'en' => '/blog/{slug}',
+        'fr' => '/fr/blog/{slug}',
+        'en' => '/en/blog/{slug}',
     ], name: 'show', options: ['sitemap' => false])]
     public function show(string $slug, StaticData $staticData): Response
     {
