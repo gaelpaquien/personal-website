@@ -3,18 +3,20 @@
 {% block title %}{{ 'blog.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
+    {%  include "components/blog/index/breadcrumb.html.twig" %}
+
     <section id="blog" class="blog__container">
         <div class="fade-in-effects-initial"
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
             <div class="section-title link-effects blog__container-title">
-                {% embed 'assets/svg/star.html.twig' %}
+                {% embed 'assets/svg/blog-post.html.twig' %}
                     {% block attributes %}
                         aria-labelledby="blog__container-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h1 id="blog__container-title-h2">{{ 'blog.title' | trans }}</h1>
+                <h2 id="blog__container-title-h2">{{ 'blog.title' | trans }}</h2>
             </div>
         </div>
 
@@ -32,5 +34,7 @@
                 } %}
             {% endfor %}
         </div>
+
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
     </section>
 {% endblock %}

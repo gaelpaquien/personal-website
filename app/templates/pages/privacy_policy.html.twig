@@ -4,6 +4,8 @@
 {% block title %}{{ 'privacy_policy.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
+    {%  include "components/privacy-policy/breadcrumb.html.twig" %}
+
     <section id="privacy-policy" class="legal-pages__container">
         <div class="fade-in-effects-initial"
              data-animation-fade-in-target="fadeIn"

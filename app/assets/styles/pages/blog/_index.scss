@@ -1,5 +1,5 @@
 .blog__container {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,6 +8,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3.5rem 5rem;
+    margin-bottom: 2rem;
 
     @media (max-width: 1200px) {
       grid-template-columns: repeat(2, 1fr);
@@ -84,5 +85,10 @@
         }
       }
     }
+  }
+
+  .btn-return-to-home {
+    margin-top: 1.5rem;
+    align-self: center;
   }
 }
