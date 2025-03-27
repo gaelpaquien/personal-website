@@ -94,6 +94,7 @@ home:
       publication_info: "Published on %date% on %source%"
     contact:
       title: "Let's talk"
+      receive_copy: "Receive a copy of the message"
       send: "Send the message"
       privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
 

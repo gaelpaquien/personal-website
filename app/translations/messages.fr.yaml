@@ -94,6 +94,7 @@ home:
       publication_info: "Publié le %date% sur %source%"
     contact:
       title: "Discutons ensemble"
+      receive_copy: "Recevoir une copie du message"
       send: "Envoyer le message"
       privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
 
