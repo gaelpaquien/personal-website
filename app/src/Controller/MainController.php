@@ -25,8 +25,8 @@ class MainController extends AbstractController
     }
 
     #[Route([
-        'fr' => '/mentions-legales',
-        'en' => '/legal-notice',
+        'fr' => '/fr/mentions-legales',
+        'en' => '/en/legal-notice',
     ], name: 'legal_notice', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function legalNotice(): Response
     {
@@ -34,8 +34,8 @@ class MainController extends AbstractController
     }
 
     #[Route([
-        'fr' => '/politique-de-confidentialite',
-        'en' => '/privacy-policy',
+        'fr' => '/fr/politique-de-confidentialite',
+        'en' => '/en/privacy-policy',
     ], name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function privacyPolicy(): Response
     {
@@ -43,8 +43,8 @@ class MainController extends AbstractController
     }
 
     #[Route([
-        'fr' => '/plan-du-site',
-        'en' => '/sitemap',
+        'fr' => '/fr/plan-du-site',
+        'en' => '/en/sitemap',
     ], name: 'sitemap', options: ['sitemap' => ['priority' => 0.6, 'changefreq' => 'monthly']])]
     public function sitemap(): Response
     {
