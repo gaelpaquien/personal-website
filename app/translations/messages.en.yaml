@@ -99,7 +99,7 @@ home:
       privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
 
 blog:
-  title: "Blog"
+  title: "My blog"
   last_update: "Last update made on"
 
 legal_notice:
@@ -205,6 +205,9 @@ privacy_policy:
       text: "In the event of a personal data breach, we commit to notifying the affected users and the relevant authorities, in accordance with applicable regulations. We also take necessary measures to minimize the impact of such breaches."
     legal_notice:
       text: "Consult our legal notice page for more information on the terms of use of this site."
+
+sitemap:
+  title: "Sitemap"
 
 errors:
   general: "An error occurred"

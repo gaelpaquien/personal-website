@@ -1,0 +1,36 @@
+{% macro breadcrumb(elements) %}
+    {% if elements|length > 1 %}
+        <div class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list">
+                {% for element in elements %}
+                    <li class="breadcrumb__item">
+                        {% if element.url is defined and not loop.last %}
+                            <a href="{{ element.url }}" class="breadcrumb__link">
+                                {% if element.icon is defined %}
+                                    {% include 'assets/svg/' ~ element.icon ~ '.html.twig' with {class: 'breadcrumb__icon'} %}
+                                {% endif %}
+
+                                <span class="breadcrumb__label">
+                                    {{ element.label }}
+                                </span>
+                            </a>
+                        {% else %}
+                            <div class="breadcrumb__text {% if loop.last %}breadcrumb__text--last{% endif %}">
+                                {% if element.icon is defined %}
+                                    {% include 'assets/svg/' ~ element.icon ~ '.html.twig' with {class: 'breadcrumb__icon'} %}
+                                {% endif %}
+
+                                <span class="breadcrumb__label {% if loop.last %}breadcrumb__label--last{% endif %}">
+                                    {{ element.label }}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </li>
+                    {% if not loop.last %}
+                        {% include 'assets/svg/arrow-right.html.twig' with {class: 'breadcrumb__separator'} %}
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+    {% endif %}
+{% endmacro %}

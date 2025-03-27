@@ -3,6 +3,8 @@
 {% block title %}{{ 'navigation.sitemap' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
+    {%  include "components/sitemap/breadcrumb.html.twig" %}
+
     <section id="sitemap-page" class="sitemap-page__container">
         <div class="fade-in-effects-initial"
              data-animation-fade-in-target="fadeIn"
@@ -17,7 +19,7 @@
                         aria-labelledby="sitemap-page-title"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="sitemap-page-title">{{ 'navigation.sitemap' | trans }}</h2>
+                <h2 id="sitemap-page-title">{{ 'sitemap.title' | trans }}</h2>
             </div>
         </div>
 

@@ -4,6 +4,8 @@
 {% block title %}{{ 'legal_notice.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
 
 {% block content %}
+    {%  include "components/legal-notice/breadcrumb.html.twig" %}
+
     <section id="legal-notice" class="legal-pages__container">
         <div class="fade-in-effects-initial"
              data-animation-fade-in-target="fadeIn"
