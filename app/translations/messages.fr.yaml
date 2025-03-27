@@ -99,7 +99,7 @@ home:
       privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
 
 blog:
-  title: "Blog"
+  title: "Mon blog"
   last_update: "Dernière modification réalisée le"
 
 legal_notice:
@@ -205,6 +205,9 @@ privacy_policy:
       text: "En cas de violation de données personnelles, nous nous engageons à notifier les utilisateurs concernés et les autorités compétentes, conformément à la réglementation en vigueur. Nous prenons également les mesures nécessaires pour minimiser l'impact de telles violations."
     legal_notice:
       text: "Consulter nos mentions légales pour plus d'informations sur les conditions d'utilisation de ce site."
+
+sitemap:
+  title: "Plan du site"
 
 errors:
   general: "Une erreur est survenue"

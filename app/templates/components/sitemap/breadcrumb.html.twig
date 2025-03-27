@@ -1,0 +1,13 @@
+{% import 'components/breadcrumb.html.twig' as breadcrumb_macro %}
+
+{{ breadcrumb_macro.breadcrumb([
+    {
+        'label': 'home.title' | trans,
+        'url': path('app_main_index'),
+        'icon': 'home'
+    },
+    {
+        'label': 'sitemap.title' | trans,
+        'icon': 'sitemap'
+    }
+]) }}
