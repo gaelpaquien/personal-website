@@ -14,7 +14,7 @@ export default class extends Controller {
     }
 
     applyTheme() {
-        const theme = localStorage.getItem('theme') || 'light';
+        const theme = localStorage.getItem('theme') || 'dark';
         this.setRootTheme(theme);
         this.updateButtonState();
         this.updateThemeColor(theme);
