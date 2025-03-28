@@ -1,36 +1,36 @@
 .fade-in-left-effects-initial {
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateX(-40px);
 }
 
 .fade-in-right-effects-initial {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(40px);
 }
 
 .fade-in-up-effects-initial {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(40px);
 }
 
 .fade-in-left-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
   will-change: transform, opacity;
 }
 
 .fade-in-right-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
   will-change: transform, opacity;
 }
 
 .fade-in-up-effects {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
   will-change: transform, opacity;
 }
 
