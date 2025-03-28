@@ -1,7 +1,7 @@
 <nav id="navigation" class="navigation__container"
      data-navigation-target="menu"
 >
-    <div>
+    <div data-navigation-target="menuContent" class="navigation__content-wrapper">
         <ul class="navigation__container-list">
             <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.return_home' | trans }}"
                 data-action="click->navigation#redirect"
@@ -202,11 +202,11 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <button type="button" class="btn" aria-label="{{ 'actions.close_menu' | trans }}"
-            data-action="click->navigation#close"
-    >
-        {{ 'actions.close_menu' | trans }}
-    </button>
+        <button type="button" class="btn" aria-label="{{ 'actions.close_menu' | trans }}"
+                data-action="click->navigation#close"
+        >
+            {{ 'actions.close_menu' | trans }}
+        </button>
+    </div>
 </nav>
