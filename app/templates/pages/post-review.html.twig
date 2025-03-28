@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'post_review.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+
+{% block content %}
+    {%  include "components/post-review/breadcrumb.html.twig" %}
+
+    <section id="post-review" class="post-review__container">
+        <div class="fade-in-effects-initial"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <div class="section-title link-effects post-review__container-title"
+                 data-action="click->scroll#scrollToSection"
+                 data-target="post-review"
+            >
+                {% embed 'assets/svg/discussion.html.twig' %}
+                    {% block attributes %}
+                        role="button"
+                        aria-labelledby="post-review__container-title-h2"
+                    {% endblock %}
+                {% endembed %}
+                <h2 id="post-review__container-title-h2">{{ 'post_review.title' | trans }}</h2>
+            </div>
+        </div>
+
+        <form class="fade-in-effects-initial post-review__container-form" action="#" method="post"
+              data-animation-fade-in-target="fadeIn"
+              data-animation="fade-in-up-effects"
+        >
+            <div class="form-identity-group">
+                <span>{{ 'post_review.form.identity' | trans }}</span>
+                <div>
+                    <label for="form-review-firstname" hidden>{{ 'post_review.form.first_name' | trans }}</label>
+                    <input type="text" id="form-review-firstname" name="form-review-firstname" placeholder="{{ 'post_review.form.first_name' | trans }}" required>
+                    <label for="form-review-name" hidden>{{ 'post_review.form.last_name' | trans }}</label>
+                    <input type="text" id="form-review-name" name="form-review-name" placeholder="{{ 'post_review.form.last_name' | trans }}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="form-review-email">{{ 'post_review.form.email' | trans }}</label>
+                <input type="email" id="form-review-email" name="form-review-email" placeholder="{{ 'post_review.form.email' | trans }}" required>
+            </div>
+            <div class="form-group">
+                <label for="form-review-company">{{ 'post_review.form.company' | trans }}</label>
+                <input type="text" id="form-review-company" name="form-review-company" placeholder="{{ 'post_review.form.company' | trans }}">
+            </div>
+            <div class="form-group">
+                <label for="form-review-role">{{ 'post_review.form.role' | trans }}</label>
+                <input type="text" id="form-review-role" name="form-review-role" placeholder="{{ 'post_review.form.role' | trans }}">
+            </div>
+            <div class="form-group">
+                <label for="form-review-message">{{ 'post_review.form.message' | trans }}</label>
+                <textarea id="form-review-message" name="form-review-message" placeholder="{{ 'post_review.form.message' | trans }}" required></textarea>
+            </div>
+            <button class="btn" type="submit" aria-label="{{ 'navigation.reviews_post' | trans }}">
+                {{ 'actions.publish' | trans }}
+            </button>
+            <div class="form-infos">
+                <p>*{{ 'post_review.form.privacy_notice1' | trans }}</p>
+                <p>*{{ 'post_review.form.privacy_notice2' | trans }}</p>
+            </div>
+        </form>
+
+        {% include "components/buttons/btn-return-to-home.html.twig" %}
+    </section>
+{% endblock %}

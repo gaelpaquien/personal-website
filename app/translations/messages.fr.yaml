@@ -40,6 +40,7 @@ actions:
   close_menu: "Fermer le menu"
   next: "Suivant"
   previous: "Précédent"
+  publish: "Publier"
 
 navigation:
   return_home: "Retour à l'accueil"
@@ -101,6 +102,19 @@ home:
 blog:
   title: "Mon blog"
   last_update: "Dernière modification réalisée le"
+
+post_review:
+  title: "Publier un avis"
+  form:
+    identity: "Identité*"
+    first_name: "Prénom"
+    last_name: "Nom"
+    email: "Email*"
+    company: "Société/Entité (facultatif)"
+    role: "Poste/Rôle (facultatif)"
+    message: "Message/Citation*"
+    privacy_notice1: "Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site."
+    privacy_notice2: "Votre email ne sera pas visible et votre identité sera affichée sous forme d'initial (exemple : John D.)."
 
 legal_notice:
   title: "Mentions légales"

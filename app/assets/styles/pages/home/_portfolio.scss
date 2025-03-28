@@ -42,7 +42,6 @@
                     height: 100%;
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.05) 80%);
                     pointer-events: none;
-                    z-index: 1;
                 }
 
                 img {
@@ -58,12 +57,11 @@
                     left: 0;
                     right: 0;
                     padding: 0.5rem 0.5rem;
-                    z-index: 2;
 
                     h3 {
                         color: #fff;
                         margin: 0;
-                        font-size: calc(0.8 * $font-size-h3);
+                        font-size: calc(0.9 * $font-size-h3);
                         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
                         text-transform: none !important;
                     }
@@ -78,7 +76,6 @@
                     flex-wrap: wrap;
                     gap: 0.3rem;
                     justify-content: flex-end;
-                    z-index: 2;
 
                     .tag {
                         background-color: #353233;

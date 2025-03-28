@@ -1,9 +1,9 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ["overlay", "menu", "openButton", "closeButton", "dropdown", "arrow"]
+    static targets = ["overlay", "menu", "openButton", "closeButton", "dropdown", "arrow", "menuContent"]
     static values = {
-        transitionDuration: { type: Number, default: 500 },
+        transitionDuration: { type: Number, default: 250 },
         headerHeight: { type: Number, default: 20 },
         breakpoints: {
             type: Object,
@@ -37,6 +37,13 @@ export default class extends Controller {
         this.mainContent.style.width = '100%';
         this.menuTarget.style.transition = `width ${this.transitionDurationValue}ms`;
         this.menuTarget.style.width = '0%';
+
+        this.menuTarget.style.overflowX = 'hidden';
+
+        if (this.hasMenuContentTarget) {
+            this.menuContentTarget.style.transform = 'translateX(0)';
+            this.menuContentTarget.style.width = '100%';
+        }
     }
 
     initializeEventListeners() {
@@ -70,6 +77,11 @@ export default class extends Controller {
         this.overlayTarget.style.height = isOpen ? '100vh' : '';
 
         if (isOpen) {
+            if (this.hasMenuContentTarget) {
+                this.menuContentTarget.style.transition = 'none';
+                this.menuContentTarget.style.transform = 'translateX(0)';
+            }
+
             this.menuTarget.style.top = '0';
             this.menuTarget.style.paddingTop = '2.5rem';
             this.menuTarget.style.borderLeft = 'solid 0.1rem var(--color-text)';
@@ -82,12 +94,16 @@ export default class extends Controller {
             }
         } else {
             this.menuTarget.style.borderLeft = 'none';
-
             this.mainContent.style.width = '100%';
+
+            if (this.hasMenuContentTarget) {
+                this.menuContentTarget.style.transition = `transform ${this.transitionDurationValue}ms`;
+                this.menuContentTarget.style.transform = 'translateX(100%)';
+            }
 
             setTimeout(() => {
                 this.menuTarget.style.width = '0%';
-            }, 100);
+            }, 5);
         }
     }
 

@@ -6,18 +6,58 @@ nav {
     z-index: 1001;
 }
 
-.popup {
-    z-index: 500;
-}
-
 .overlay {
     z-index: 999;
+}
+
+.navigation__container {
+    .btn {
+        z-index: 10;
+    }
+}
+
+#btn-scroll-to-top {
+    button {
+        z-index: 1000;
+    }
+}
+
+.home-portfolio__container {
+    &-projects {
+        &-card {
+            &-image {
+                &::before {
+                    z-index: 1;
+                }
+
+                &-title {
+                    z-index: 2;
+                }
+
+                &-tags {
+                    z-index: 2;
+                }
+            }
+        }
+    }
 }
 
 .home-reviews__container {
     &-carousel {
         &-item {
             z-index: 20;
+
+            &.active {
+                z-index: 5;
+            }
+
+            &.prev {
+                z-index: 4;
+            }
+
+            &.next {
+                z-index: 4;
+            }
         }
     }
 }
