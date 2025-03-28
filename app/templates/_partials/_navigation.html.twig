@@ -57,6 +57,14 @@
                     data-navigation-target="dropdown"
                 >
                     <li>
+                        <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                            {% embed 'assets/svg/mail.html.twig' %}
+                                {% block attributes %}aria-hidden="true"{% endblock %}
+                            {% endembed %}
+                            {{ 'info.author.email' | trans }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://www.linkedin.com/in/gaelpaquien/" target="_blank" rel="noopener" aria-label="{{ 'navigation.linkedin_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                             {% embed 'assets/svg/linkedin.html.twig' %}
                                 {% block attributes %}aria-hidden="true"{% endblock %}
@@ -80,14 +88,6 @@
                             {{ 'navigation.resume' | trans }}
                         </a>
                     </li>
-                    <li>
-                        <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                            {% embed 'assets/svg/mail.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'info.author.email' | trans }}
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -109,7 +109,7 @@
                 >
                     <li>
                         <a href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
-                            {% embed 'assets/svg/arrow-right.html.twig' %}
+                            {% embed 'assets/svg/hammer.html.twig' %}
                                 {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'navigation.legal_notice' | trans }}
@@ -117,7 +117,7 @@
                     </li>
                     <li>
                         <a href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'navigation.privacy_policy_aria' | trans }}">
-                            {% embed 'assets/svg/arrow-right.html.twig' %}
+                            {% embed 'assets/svg/shield.html.twig' %}
                                 {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'navigation.privacy_policy' | trans }}
@@ -125,7 +125,7 @@
                     </li>
                     <li>
                         <a href="{{ path('app_main_sitemap') }}" aria-label="{{ 'navigation.sitemap_aria' | trans }}">
-                            {% embed 'assets/svg/arrow-right.html.twig' %}
+                            {% embed 'assets/svg/sitemap.html.twig' %}
                                 {% block attributes %}aria-hidden="true"{% endblock %}
                             {% endembed %}
                             {{ 'navigation.sitemap' | trans }}
