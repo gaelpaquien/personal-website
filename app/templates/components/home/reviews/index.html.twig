@@ -2,25 +2,24 @@
      data-controller="reviews-carousel"
      data-reviews-carousel-auto-scroll-interval-value="8000"
 >
-    <div class="fade-in-effects-initial"
+    <div class="section-title link-effects home-reviews__container-title"
+         data-action="click->scroll#scrollToSection"
+         data-target="home-reviews"
+    >
+        {% embed 'assets/svg/star.html.twig' %}
+            {% block attributes %}
+                role="button"
+                aria-labelledby="home-reviews__container-title-h2"
+            {% endblock %}
+        {% endembed %}
+        <h2 id="home-reviews__container-title-h2">{{ 'home.sections.reviews.title' | trans }}</h2>
+    </div>
+
+    <div class="home-reviews__container-carousel fade-in-effects-initial"
+         data-reviews-carousel-target="reviewsCarousel"
          data-animation-fade-in-target="fadeIn"
          data-animation="fade-in-up-effects"
     >
-        <div class="section-title link-effects home-reviews__container-title"
-             data-action="click->scroll#scrollToSection"
-             data-target="home-reviews"
-        >
-            {% embed 'assets/svg/star.html.twig' %}
-                {% block attributes %}
-                    role="button"
-                    aria-labelledby="home-reviews__container-title-h2"
-                {% endblock %}
-            {% endembed %}
-            <h2 id="home-reviews__container-title-h2">{{ 'home.sections.reviews.title' | trans }}</h2>
-        </div>
-    </div>
-
-    <div class="home-reviews__container-carousel" data-reviews-carousel-target="reviewsCarousel">
         <div class="home-reviews__container-carousel-track" data-reviews-carousel-target="wrapper">
             {% for review in reviews|sort((a, b) => a.order <=> b.order) %}
                 {% include "components/home/reviews/card.html.twig" with {
