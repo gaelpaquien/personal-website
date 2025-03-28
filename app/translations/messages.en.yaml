@@ -40,6 +40,7 @@ actions:
   close_menu: "Close the menu"
   next: "Next"
   previous: "Previous"
+  publish: "Publish"
 
 navigation:
   return_home: "Return to home"
@@ -101,6 +102,19 @@ home:
 blog:
   title: "My blog"
   last_update: "Last update made on"
+
+post_review:
+  title: "Post a review"
+  form:
+    identity: "Identity*"
+    first_name: "First Name*"
+    last_name: "Last Name*"
+    email: "Email*"
+    company: "Company/Entity (optional)"
+    role: "Role/Position (optional)"
+    message: "Message/Quote*"
+    privacy_notice1: "The data entered in this form is stored and used solely to display reviews on this site."
+    privacy_notice2: "The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D)."
 
 legal_notice:
   title: "Legal Notice"

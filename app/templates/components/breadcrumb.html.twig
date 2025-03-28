@@ -1,7 +1,10 @@
 {% macro breadcrumb(elements) %}
     {% if elements|length > 1 %}
         <div class="breadcrumb" aria-label="Breadcrumb">
-            <ol class="breadcrumb__list">
+            <ol class="breadcrumb__list"
+                data-animation-fade-in-target="fadeIn"
+                data-animation="fade-in-left-effects"
+            >
                 {% for element in elements %}
                     <li class="breadcrumb__item">
                         {% if element.url is defined and not loop.last %}
