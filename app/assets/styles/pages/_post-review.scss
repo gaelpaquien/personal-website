@@ -16,7 +16,7 @@
     }
 
     .form-identity-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       width: 100%;
 
       span {
@@ -37,7 +37,7 @@
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       width: 100%;
 
       label {
@@ -48,8 +48,8 @@
 
       input, textarea {
         width: 100%;
-        padding: 0.75rem;
-        border: none;
+        background-color: var(--color-secondary);
+        color: var(--color-text);
         border-radius: 0.25rem;
         font-size: $font-size-text;
       }
@@ -71,8 +71,7 @@
     }
 
     button {
-      background-color: var(--color-primary);
-      margin-top: 1rem;
+      background-color: var(--color-secondary);
     }
   }
 
