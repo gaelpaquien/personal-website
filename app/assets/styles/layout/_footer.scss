@@ -96,6 +96,8 @@
         }
 
         &-list {
+            @include flex-container(column, center, center);
+            
             &-item {
                 padding: 0 0.75rem;
             }

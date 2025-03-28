@@ -10,7 +10,10 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <div class="section-title link-effects blog__container-title">
+            <div class="section-title link-effects blog__container-title"
+                 data-target="blog"
+                 data-action="click->scroll#scrollToSection"
+            >
                 {% embed 'assets/svg/blog-post.html.twig' %}
                     {% block attributes %}
                         aria-labelledby="blog__container-title-h2"

@@ -1,11 +1,41 @@
-.animated {
-  @include animation-base;
+.fade-in-left-effects-initial {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.fade-in-right-effects-initial {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.fade-in-up-effects-initial {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in-left-effects {
   opacity: 1;
-  transform: translate(0);
+  transform: translateX(0);
+  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  will-change: transform, opacity;
+}
+
+.fade-in-right-effects {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  will-change: transform, opacity;
+}
+
+.fade-in-up-effects {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s $ease-out-back, transform 0.8s $ease-out-back;
+  will-change: transform, opacity;
 }
 
 .pressed {
-  @include animation-pressed(0.9, 0.25s);
+  @include animation-pressed(0.9);
 }
 
 .link-effects {
@@ -38,69 +68,10 @@
   }
 }
 
-.fade-in-left-effects {
-  @include animation-fadeInLeft(0.6s, 20px);
-
-  &-initial {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-
-  @include respond-to('breakpoint-1200') {
-    @include animation-fadeInLeft(0.6s, 35px);
-  }
-}
-
-.fade-in-right-effects {
-  @include animation-fadeInRight(0.6s, 20px);
-
-  &-initial {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-
-  @include respond-to('breakpoint-1200') {
-    @include animation-fadeInRight(0.6s, 35px);
-  }
-}
-
-.fade-in-up-effects {
-  @include animation-fadeInUp(0.6s, 20px);
-
-  &-initial {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  @include respond-to('breakpoint-768') {
-    @include animation-fadeInUp(0.6s, 35px);
-  }
-
-  @include respond-to('breakpoint-1200') {
-    @include animation-fadeInUp(0.6s, 50px);
-  }
-}
-
-.scale-effects {
-  &:hover {
-    animation: none;
-    transform: scale(1.10);
-    opacity: 0.8;
-  }
-}
-
 .rotate-up-effects {
   @include animation-rotateUp();
 }
 
 .rotate-down-effects {
   @include animation-rotateDown();
-}
-
-.popup-open-effects {
-  @include animation-popupOpen();
-}
-
-.popup-close-effects {
-  @include animation-popupClose();
 }
