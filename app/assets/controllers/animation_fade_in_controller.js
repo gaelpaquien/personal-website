@@ -16,6 +16,9 @@ export default class extends Controller {
         });
 
         this.fadeInTargets.forEach(element => {
+            const animationClass = element.dataset.animation || this.defaultAnimationValue;
+            element.classList.add(`${animationClass}-initial`);
+
             this.observer.observe(element);
         });
     }
@@ -30,15 +33,9 @@ export default class extends Controller {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const animationClass = entry.target.dataset.animation || this.defaultAnimationValue;
-
-                entry.target.classList.add(animationClass, 'animated');
-
-                const cleanup = () => {
-                    entry.target.classList.remove(animationClass, 'animated');
-                    this.observer.unobserve(entry.target);
-                };
-
-                entry.target.addEventListener('animationend', cleanup, { once: true });
+                entry.target.classList.remove(`${animationClass}-initial`);
+                entry.target.classList.add(animationClass);
+                this.observer.unobserve(entry.target);
             }
         });
     }
