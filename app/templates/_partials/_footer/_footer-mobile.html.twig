@@ -12,15 +12,15 @@
                 {% endembed %}
                 <h2 id="footer-mobile__container-contact-title-h2">{{ 'footer.contact_title' | trans }}</h2>
             </div>
-            <div class="link-effects footer-mobile__container-contact-meeting">
-                <a href="https://calendly.com/contact-s6as" target="_blank" rel="noopener" aria-label="{{ 'actions.schedule_meeting' | trans }}">
-                    {{ 'actions.schedule_meeting' | trans }}
-                </a>
-            </div>
             <ul class="footer-mobile__container-contact-list">
                 <li class="link-effects footer-mobile__container-contact-list-item">
                     <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {{ 'info.author.email' | trans }}
+                    </a>
+                </li>
+                <li class="link-effects footer-mobile__container-contact-list-item">
+                    <a href="https://calendly.com/contact-s6as" target="_blank" rel="noopener" aria-label="{{ 'actions.schedule_meeting' | trans }}">
+                        {{ 'actions.schedule_meeting' | trans }}
                     </a>
                 </li>
             </ul>
