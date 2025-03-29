@@ -20,6 +20,36 @@
             }
         }
 
+        .custom-file-input-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+            background-color: var(--color-primary);
+            border: solid 0.2rem var(--color-tertiary);
+
+            .btn {
+                border: none;
+                border-radius: 0;
+                text-transform: none;
+
+                &:hover {
+                    transform: none;
+                }
+
+                &:active {
+                    animation: none;
+                }
+            }
+
+            .custom-file-button {
+                display: inline-block;
+                background-color: var(--color-primary);
+                border-right: solid 0.15rem var(--color-text) !important;
+                cursor: pointer;
+            }
+        }
+
         button {
             background-color: var(--color-primary);
         }

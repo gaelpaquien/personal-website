@@ -90,7 +90,7 @@
     }
   }
 
-  @include respond-to('breakpoint-mobile') {
+  @include respond-to('breakpoint-576') {
     &-form {
       width: 80%;
 

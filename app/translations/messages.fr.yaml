@@ -95,9 +95,20 @@ home:
       publication_info: "Publié le %date% sur %source%"
     contact:
       title: "Discutons ensemble"
-      receive_copy: "Recevoir une copie du message"
-      send: "Envoyer le message"
-      privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
+      form:
+        identity: "Identité*"
+        first_name: "Prénom"
+        last_name: "Nom"
+        email: "Email*"
+        phone: "Téléphone (facultatif)"
+        subject: "Sujet du message*"
+        message: "Message*"
+        files: "Fichiers (facultatif)"
+        choose_file: "Choisir un fichier"
+        no_file_chosen: "Aucun fichier choisi"
+        receive_copy: "Recevoir une copie de ce message"
+        submit_button: "Envoyer le message"
+        privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
 
 blog:
   title: "Mon blog"

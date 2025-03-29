@@ -22,46 +22,53 @@
           data-animation="fade-in-up-effects"
     >
         <div class="form-identity-group">
-            <span>{{ 'privacy_policy.content.contact_form.name' | trans }}*</span>
+            <span>{{ 'home.sections.contact.form.identity' | trans }}</span>
             <div>
-                <label for="form-contact-firstname" hidden>{{ 'privacy_policy.content.contact_form.first_name' | trans }}</label>
-                <input type="text" id="form-contact-firstname" name="form-contact-firstname" placeholder="{{ 'privacy_policy.content.contact_form.first_name' | trans }}" required>
-                <label for="form-contact-name" hidden>{{ 'privacy_policy.content.contact_form.name' | trans }}</label>
-                <input type="text" id="form-contact-name" name="form-contact-name" placeholder="{{ 'privacy_policy.content.contact_form.name' | trans }}" required>
+                <label for="form-contact-firstname" hidden>{{ 'home.sections.contact.form.first_name' | trans }}</label>
+                <input type="text" id="form-contact-firstname" name="form-contact-firstname" placeholder="{{ 'home.sections.contact.form.first_name' | trans }}" required>
+                <label for="form-contact-name" hidden>{{ 'home.sections.contact.form.last_name' | trans }}</label>
+                <input type="text" id="form-contact-name" name="form-contact-name" placeholder="{{ 'home.sections.contact.form.last_name' | trans }}" required>
             </div>
         </div>
         <div class="form-group">
-            <label for="form-contact-email">{{ 'privacy_policy.content.contact_form.email' | trans }}*</label>
-            <input type="email" id="form-contact-email" name="form-contact-email" placeholder="{{ 'privacy_policy.content.contact_form.email' | trans }}" required>
+            <label for="form-contact-email">{{ 'home.sections.contact.form.email' | trans }}*</label>
+            <input type="email" id="form-contact-email" name="form-contact-email" placeholder="{{ 'home.sections.contact.form.email' | trans }}" required>
         </div>
         <div class="form-group">
-            <label for="form-contact-phone">{{ 'privacy_policy.content.contact_form.phone' | trans }}</label>
-            <input type="tel" id="form-contact-phone" name="form-contact-phone" placeholder="{{ 'privacy_policy.content.contact_form.phone' | trans }}">
+            <label for="form-contact-phone">{{ 'home.sections.contact.form.phone' | trans }}</label>
+            <input type="tel" id="form-contact-phone" name="form-contact-phone" placeholder="{{ 'home.sections.contact.form.phone' | trans }}">
         </div>
         <div class="form-group">
-            <label for="form-contact-subject">{{ 'privacy_policy.content.contact_form.subject' | trans }}*</label>
-            <input type="text" id="form-contact-subject" name="form-contact-subject" placeholder="{{ 'privacy_policy.content.contact_form.subject' | trans }}" required>
+            <label for="form-contact-subject">{{ 'home.sections.contact.form.subject' | trans }}</label>
+            <input type="text" id="form-contact-subject" name="form-contact-subject" placeholder="{{ 'home.sections.contact.form.subject' | trans }}" required>
         </div>
         <div class="form-group">
-            <label for="form-contact-message">{{ 'privacy_policy.content.contact_form.message' | trans }}*</label>
-            <textarea id="form-contact-message" name="form-contact-message" placeholder="{{ 'privacy_policy.content.contact_form.message' | trans }}" required></textarea>
+            <label for="form-contact-message">{{ 'home.sections.contact.form.message' | trans }}</label>
+            <textarea id="form-contact-message" name="form-contact-message" placeholder="{{ 'home.sections.contact.form.message' | trans }}" required></textarea>
         </div>
-        <div class="form-group">
-            <label for="form-contact-attachment">{{ 'privacy_policy.content.contact_form.files' | trans }}</label>
-            <input type="file" id="form-contact-attachment" name="form-contact-attachment" aria-label="{{ 'privacy_policy.content.contact_form.files' | trans }}">
+        <div class="form-group"
+             data-controller="input-file"
+             data-input-file-choose-file-value="{{ 'home.sections.contact.form.choose_file' | trans }}"
+             data-input-file-no-file-chosen-value="{{ 'home.sections.contact.form.no_file_chosen' | trans }}">
+            <label for="form-contact-attachment">{{ 'home.sections.contact.form.files' | trans }}</label>
+            <input type="file"
+                   id="form-contact-attachment"
+                   name="form-contact-attachment"
+                   aria-label="{{ 'home.sections.contact.form.files' | trans }}"
+                   data-input-file-target="input">
         </div>
         <div class="form-switch">
-            <span class="form-switch-text">{{ 'home.sections.contact.receive_copy' | trans }}</span>
+            <span class="form-switch-text">{{ 'home.sections.contact.form.receive_copy' | trans }}</span>
             <label for="form-switch-message" class="form-switch-toggle">
-                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'home.sections.contact.receive_copy' | trans }}">
+                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'home.sections.contact.form.receive_copy' | trans }}">
                 <span class="form-switch-toggle-slider"></span>
             </label>
         </div>
-        <button class="btn" type="submit" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-            {{ 'home.sections.contact.send' | trans }}
+        <button class="btn" type="submit" aria-label="{{ 'home.sections.contact.form.submit_button' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+            {{ 'home.sections.contact.form.submit_button' | trans }}
         </button>
         <div class="form-infos">
-            <p>*{{ 'home.sections.contact.privacy_notice' | trans }}</p>
+            <p>*{{ 'home.sections.contact.form.privacy_notice' | trans }}</p>
         </div>
     </form>
 
