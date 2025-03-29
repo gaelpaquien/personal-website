@@ -3,11 +3,12 @@
 {% set image = image|default('images/portfolio/portfolio-default.webp') %}
 {% set tags = tags|default([]) %}
 
-<div class="fade-in-effects-initial home-portfolio__container-projects-card scale-effects"
+<div class="fade-in-effects-initial blog__container-posts-card scale-effects"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
-     data-portfolio-card-target="card"
-     data-action="click->portfolio-card#pressCard"
+     data-card-target="card"
+     data-action="click->card#pressCard"
+     data-url="{{ path('app_blog_show', {'slug': related_blog_post_slug}) }}"
 >
     <div class="home-portfolio__container-projects-card-image">
         <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
