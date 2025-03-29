@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'blog.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+
+{% block content %}
+    {%  include "components/blog/show/breadcrumb.html.twig" with {
+        'title': post.title,
+    } %}
+{% endblock %}
