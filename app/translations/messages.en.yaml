@@ -95,9 +95,20 @@ home:
       publication_info: "Published on %date% on %source%"
     contact:
       title: "Let's talk"
-      receive_copy: "Receive a copy of the message"
-      send: "Send the message"
-      privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
+      form:
+        identity: "Identity*"
+        first_name: "First Name"
+        last_name: "Last Name*"
+        email: "Email*"
+        phone: "Phone (optional)"
+        subject: "Subject of the message*"
+        message: "Message*"
+        files: "Files (optional)"
+        choose_file: "Choose a file"
+        no_file_chosen: "No file chosen"
+        receive_copy: "Receive a copy of the message"
+        submit_button: "Send the message"
+        privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
 
 blog:
   title: "My blog"
