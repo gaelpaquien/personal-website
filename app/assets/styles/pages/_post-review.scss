@@ -79,27 +79,4 @@
     margin-top: 1.5rem;
     align-self: center;
   }
-
-  @include respond-to('breakpoint-768') {
-    &-form {
-      .form-identity-group {
-        input {
-          width: 47.5%;
-        }
-      }
-    }
-  }
-
-  @include respond-to('breakpoint-576') {
-    &-form {
-      width: 80%;
-
-      .form-identity-group {
-        > div {
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-      }
-    }
-  }
 }
