@@ -2,47 +2,54 @@
     <div data-navigation-target="menuContent" class="navigation__content-wrapper">
         <div class="navigation__main-links">
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.return_home' | trans }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_main_index') }}">
+                aria-label="{{ 'navigation.return_home' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-hero"
+            >
                 {{ 'navigation.home' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_main_index') }}"
-                    data-url-anchor="home-portfolio">
+                aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-portfolio"
+            >
                 {{ 'navigation.portfolio' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_main_index') }}"
-                    data-url-anchor="home-reviews">
+                aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-reviews"
+            >
                 {{ 'navigation.reviews' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_main_index') }}"
-                    data-url-anchor="home-contact">
+                aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-contact"
+            >
                 {{ 'navigation.contact' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.reviews_post_aria' | trans }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_review_create') }}">
+                aria-label="{{ 'navigation.reviews_post_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_review_create') }}"
+            >
                 {{ 'navigation.reviews_post' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                    aria-label="{{ 'navigation.blog_aria' | trans }}"
-                    data-action="click->navigation#redirect"
-                    data-url="{{ path('app_blog_index') }}">
+                aria-label="{{ 'navigation.blog_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_blog_index') }}"
+            >
                 {{ 'navigation.blog' | trans }}
             </button>
         </div>

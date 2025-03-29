@@ -4,7 +4,7 @@ export default class extends Controller {
     static targets = ["overlay", "menu", "openButton", "closeButton", "dropdown", "arrow", "menuContent"]
     static values = {
         transitionDuration: { type: Number, default: 250 },
-        headerHeight: { type: Number, default: 20 },
+        headerHeight: { type: Number, default: 30 },
         breakpoints: {
             type: Object,
             default: {
@@ -142,7 +142,17 @@ export default class extends Controller {
 
         if (url) {
             this.close();
-            setTimeout(() => this.handleRedirect(url, urlAnchor), 250);
+
+            setTimeout(() => {
+                const currentUrl = window.location.pathname;
+                const isSamePage = currentUrl === url;
+
+                if (isSamePage && urlAnchor) {
+                    this.scrollToAnchor(urlAnchor);
+                } else {
+                    this.handleRedirect(url, urlAnchor);
+                }
+            }, 250);
         }
     }
 
@@ -162,13 +172,23 @@ export default class extends Controller {
     scrollToAnchor(anchor) {
         const targetElement = document.querySelector(`#${anchor}`);
         if (targetElement) {
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+            const header = document.querySelector('.header');
+            let headerHeight = 0;
+
+            if (header) {
+                const headerStyles = window.getComputedStyle(header);
+                const headerMarginBottom = parseFloat(headerStyles.marginBottom);
+                headerHeight = header.getBoundingClientRect().height + headerMarginBottom;
+            }
+
             const targetPosition = targetElement.getBoundingClientRect().top +
                 window.scrollY -
-                headerHeight +
-                this.headerHeightValue;
+                headerHeight;
 
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 
