@@ -3,42 +3,62 @@
 >
     <div data-navigation-target="menuContent" class="navigation__content-wrapper">
         <ul class="navigation__container-list">
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.return_home' | trans }}"
-                data-action="click->navigation#redirect"
-                data-url="{{ path('app_main_index') }}"
-            >
-                {{ 'navigation.home' | trans }}
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.return_home' | trans }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_main_index') }}"
+                >
+                    {{ 'navigation.home' | trans }}
+                </button>
             </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                data-action="click->navigation#redirect"
-                data-url="{{ path('app_main_index') }}"
-                data-url-anchor="home-portfolio"
-            >
-                {{ 'navigation.portfolio' | trans }}
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_main_index') }}"
+                        data-url-anchor="home-portfolio"
+                >
+                    {{ 'navigation.portfolio' | trans }}
+                </button>
             </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                data-action="click->navigation#redirect"
-                data-url="{{ path('app_main_index') }}"
-                data-url-anchor="home-reviews"
-            >
-                {{ 'navigation.reviews' | trans }}
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_main_index') }}"
+                        data-url-anchor="home-reviews"
+                >
+                    {{ 'navigation.reviews' | trans }}
+                </button>
             </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
-                data-action="click->navigation#redirect"
-                data-url="{{ path('app_main_index') }}"
-                data-url-anchor="home-contact"
-            >
-                {{ 'navigation.contact' | trans }}
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_main_index') }}"
+                        data-url-anchor="home-contact"
+                >
+                    {{ 'navigation.contact' | trans }}
+                </button>
             </li>
-            <li class="link-effects navigation__container-list-item">
-                <a href="{{ path('app_review_create') }}" aria-label="{{ 'navigation.reviews_post_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.reviews_post_aria' | trans }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_review_create') }}"
+                >
                     {{ 'navigation.reviews_post' | trans }}
-                </a>
+                </button>
             </li>
-            <li class="link-effects navigation__container-list-item">
-                <a href="{{ path('app_blog_index') }}" aria-label="{{ 'navigation.blog_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+            <li class="navigation__container-list-item">
+                <button class="link-effects navigation__container-list-item-button" type="button"
+                        aria-label="{{ 'navigation.blog_aria' | trans }}"
+                        data-action="click->navigation#redirect"
+                        data-url="{{ path('app_blog_index') }}"
+                >
                     {{ 'navigation.blog' | trans }}
-                </a>
+                </button>
             </li>
             <li class="navigation__container-list-item navigation__container-list-item-about">
                 <div class="link-effects navigation__container-list-item-about-title"
@@ -134,8 +154,6 @@
                 </ul>
             </li>
         </ul>
-
-        <hr>
 
         <div class="navigation__container-settings">
             <div class="navigation__container-settings-item">
