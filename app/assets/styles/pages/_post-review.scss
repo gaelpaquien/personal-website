@@ -17,7 +17,6 @@
 
     .form-identity-group {
       margin-bottom: 1.5rem;
-      width: 100%;
 
       span {
         display: block;
@@ -29,9 +28,13 @@
         display: flex;
         justify-content: space-between;
         gap: 1rem;
+      }
+    }
 
+    @include respond-to('breakpoint-768') {
+      .form-identity-group {
         input {
-          width: 100%;
+          width: 47.5%;
         }
       }
     }
