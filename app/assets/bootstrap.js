@@ -10,6 +10,7 @@ import RedirectController from './controllers/redirect_controller.js';
 import ScrollController from './controllers/scroll_controller.js';
 import CardController from './controllers/card_controller.js';
 import ReviewsCarouselController from './controllers/reviews_carousel_controller.js';
+import InputFileController from './controllers/input_file.controller.js';
 
 app.register('themes', ThemesController);
 app.register('animation-fade-in-up', AnimationFadeIn);
@@ -19,3 +20,4 @@ app.register('redirect', RedirectController);
 app.register('scroll', ScrollController);
 app.register('card', CardController);
 app.register('reviews-carousel', ReviewsCarouselController);
+app.register('input-file', InputFileController);
