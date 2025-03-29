@@ -115,6 +115,7 @@ home:
 blog:
   title: "Mon blog"
   last_update: "Dernière modification réalisée le"
+  related_resources: "Ressources associées"
 
 post_review:
   title: "Publier un avis"

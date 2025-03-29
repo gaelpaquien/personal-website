@@ -22,11 +22,13 @@ export default class extends Controller {
 
     pressCard(event) {
         const card = event.currentTarget;
+        const url = card.dataset.url;
+
         card.style.animation = `pressed ${this.durationValue}s ease forwards`;
 
-        if (this.hasUrlValue) {
+        if (url) {
             setTimeout(() => {
-                window.location.href = this.urlValue;
+                window.location.href = url;
             }, this.durationValue * 1000);
         }
     }

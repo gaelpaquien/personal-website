@@ -36,7 +36,7 @@ class BlogController extends AbstractController
     ], name: 'show', options: ['sitemap' => false])]
     public function show(string $slug, StaticData $staticData): Response
     {
-        return $this->render('main/blog/show.html.twig', [
+        return $this->render('pages/blog/show.html.twig', [
             'post' => $staticData->getBlogPostDetails($slug)
         ]);
     }

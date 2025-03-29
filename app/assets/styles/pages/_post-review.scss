@@ -17,7 +17,6 @@
 
     .form-identity-group {
       margin-bottom: 1.5rem;
-      width: 100%;
 
       span {
         display: block;
@@ -29,9 +28,13 @@
         display: flex;
         justify-content: space-between;
         gap: 1rem;
+      }
+    }
 
+    @include respond-to('breakpoint-768') {
+      .form-identity-group {
         input {
-          width: 100%;
+          width: 47.5%;
         }
       }
     }
@@ -78,28 +81,5 @@
   .btn-return-to-home {
     margin-top: 1.5rem;
     align-self: center;
-  }
-
-  @include respond-to('breakpoint-768') {
-    &-form {
-      .form-identity-group {
-        input {
-          width: 47.5%;
-        }
-      }
-    }
-  }
-
-  @include respond-to('breakpoint-576') {
-    &-form {
-      width: 80%;
-
-      .form-identity-group {
-        > div {
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-      }
-    }
   }
 }

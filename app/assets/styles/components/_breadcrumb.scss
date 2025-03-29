@@ -42,10 +42,11 @@
     align-items: center;
 
     &--last {
-      max-width: 350px;
+      width: 500px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      display: block;
     }
   }
 

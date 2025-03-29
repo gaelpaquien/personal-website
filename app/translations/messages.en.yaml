@@ -115,6 +115,7 @@ home:
 blog:
   title: "My blog"
   last_update: "Last update made on"
+  related_resources: "Related resources"
 
 post_review:
   title: "Post a review"

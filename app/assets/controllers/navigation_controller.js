@@ -4,7 +4,7 @@ export default class extends Controller {
     static targets = ["overlay", "menu", "openButton", "closeButton", "dropdown", "arrow", "menuContent"]
     static values = {
         transitionDuration: { type: Number, default: 250 },
-        headerHeight: { type: Number, default: 20 },
+        headerHeight: { type: Number, default: 30 },
         breakpoints: {
             type: Object,
             default: {
@@ -115,23 +115,25 @@ export default class extends Controller {
     }
 
     toggleDropdown(event) {
-        const listItem = event.currentTarget.closest('.navigation__container-list-item');
-        const dropdown = listItem.querySelector('.navigation__container-list-item-about-dropdown');
-        const arrow = listItem.querySelector('svg');
-        const isActive = !dropdown.classList.contains('active');
+        const dropdown = event.currentTarget.closest('.navigation__dropdown');
+        const content = dropdown.querySelector('.navigation__dropdown-content');
+        const arrow = dropdown.querySelector('svg');
+        const isActive = !content.classList.contains('active');
 
         this.closeAllDropdowns();
 
-        dropdown.classList.toggle('active', isActive);
+        content.classList.toggle('active', isActive);
         arrow.classList.toggle('rotate-down-effects', isActive);
     }
 
     closeAllDropdowns() {
         this.dropdownTargets.forEach(dropdown => {
             dropdown.classList.remove('active');
-            dropdown.closest('.navigation__container-list-item')
-                .querySelector('svg')
-                .classList.remove('rotate-down-effects');
+            const parentDropdown = dropdown.closest('.navigation__dropdown');
+            if (parentDropdown) {
+                const arrow = parentDropdown.querySelector('svg');
+                if (arrow) arrow.classList.remove('rotate-down-effects');
+            }
         });
     }
 
@@ -140,7 +142,17 @@ export default class extends Controller {
 
         if (url) {
             this.close();
-            setTimeout(() => this.handleRedirect(url, urlAnchor), 250);
+
+            setTimeout(() => {
+                const currentUrl = window.location.pathname;
+                const isSamePage = currentUrl === url;
+
+                if (isSamePage && urlAnchor) {
+                    this.scrollToAnchor(urlAnchor);
+                } else {
+                    this.handleRedirect(url, urlAnchor);
+                }
+            }, 250);
         }
     }
 
@@ -160,13 +172,23 @@ export default class extends Controller {
     scrollToAnchor(anchor) {
         const targetElement = document.querySelector(`#${anchor}`);
         if (targetElement) {
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+            const header = document.querySelector('.header');
+            let headerHeight = 0;
+
+            if (header) {
+                const headerStyles = window.getComputedStyle(header);
+                const headerMarginBottom = parseFloat(headerStyles.marginBottom);
+                headerHeight = header.getBoundingClientRect().height + headerMarginBottom;
+            }
+
             const targetPosition = targetElement.getBoundingClientRect().top +
                 window.scrollY -
-                headerHeight +
-                this.headerHeightValue;
+                headerHeight;
 
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 

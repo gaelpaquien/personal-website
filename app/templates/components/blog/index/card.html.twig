@@ -8,9 +8,9 @@
 <div class="fade-in-effects-initial blog__container-posts-card scale-effects"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
-     data-blog-card-target="card"
-     data-action="click->blog-card#pressCard"
-     data-blog-card-url-value="{{ path('app_blog_show', {'slug': slug}) }}"
+     data-card-target="card"
+     data-action="click->card#pressCard"
+     data-url="{{ path('app_blog_show', {'slug': slug}) }}"
 >
     <img src="{{ asset(image) }}" alt="{{ title }}">
     <div class="blog__container-posts-card-content">
