@@ -1,49 +1,63 @@
-<nav id="navigation" class="navigation__container"
-     data-navigation-target="menu"
->
+<nav id="navigation" class="navigation__container" data-navigation-target="menu">
     <div data-navigation-target="menuContent" class="navigation__content-wrapper">
-        <ul class="navigation__container-list">
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.return_home' | trans }}"
+        <div class="navigation__main-links">
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.return_home' | trans }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
+                data-url-anchor="home-hero"
             >
                 {{ 'navigation.home' | trans }}
-            </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
                 data-url-anchor="home-portfolio"
             >
                 {{ 'navigation.portfolio' | trans }}
-            </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
                 data-url-anchor="home-reviews"
             >
                 {{ 'navigation.reviews' | trans }}
-            </li>
-            <li class="link-effects navigation__container-list-item" aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.contact_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
                 data-url-anchor="home-contact"
             >
                 {{ 'navigation.contact' | trans }}
-            </li>
-            <li class="link-effects navigation__container-list-item">
-                <a href="{{ path('app_review_create') }}" aria-label="{{ 'navigation.reviews_post_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                    {{ 'navigation.reviews_post' | trans }}
-                </a>
-            </li>
-            <li class="link-effects navigation__container-list-item">
-                <a href="{{ path('app_blog_index') }}" aria-label="{{ 'navigation.blog_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                    {{ 'navigation.blog' | trans }}
-                </a>
-            </li>
-            <li class="navigation__container-list-item navigation__container-list-item-about">
-                <div class="link-effects navigation__container-list-item-about-title"
-                     data-action="click->navigation#toggleDropdown"
-                >
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.reviews_post_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_review_create') }}"
+            >
+                {{ 'navigation.reviews_post' | trans }}
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
+                aria-label="{{ 'navigation.blog_aria' | trans }}"
+                data-action="click->navigation#redirect"
+                data-url="{{ path('app_blog_index') }}"
+            >
+                {{ 'navigation.blog' | trans }}
+            </button>
+        </div>
+
+        <div class="navigation__dropdown-sections">
+            <div class="navigation__dropdown">
+                <button class="link-effects navigation__dropdown-title" type="button"
+                        data-action="click->navigation#toggleDropdown">
                     <span>{{ 'footer.about.me' | trans }}</span>
                     {% embed 'assets/svg/arrow-right.html.twig' %}
                         {% block attributes %}
@@ -51,50 +65,49 @@
                             data-navigation-target="arrow"
                         {% endblock %}
                     {% endembed %}
+                </button>
+
+                <div class="navigation__dropdown-content" data-navigation-target="dropdown">
+                    <a class="navigation__dropdown-link" href="mailto:{{ 'info.author.email' | trans }}"
+                       aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {% embed 'assets/svg/mail.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'info.author.email' | trans }}
+                    </a>
+
+                    <a class="navigation__dropdown-link" href="https://www.linkedin.com/in/gaelpaquien/"
+                       target="_blank" rel="noopener"
+                       aria-label="{{ 'navigation.linkedin_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {% embed 'assets/svg/linkedin.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.linkedin' | trans }}
+                    </a>
+
+                    <a class="navigation__dropdown-link" href="https://github.com/gaelpaquien"
+                       target="_blank" rel="noopener"
+                       aria-label="{{ 'navigation.github_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {% embed 'assets/svg/github.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.github' | trans }}
+                    </a>
+
+                    <a class="navigation__dropdown-link" href="{{ asset('docs/CV_Gael_Paquien.pdf') }}"
+                       target="_blank"
+                       aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                        {% embed 'assets/svg/resume.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.resume' | trans }}
+                    </a>
                 </div>
+            </div>
 
-                <ul class="navigation__container-list-item-about-dropdown"
-                    data-navigation-target="dropdown"
-                >
-                    <li>
-                        <a href="mailto:{{ 'info.author.email' | trans }}" aria-label="{{ 'actions.send_mail' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                            {% embed 'assets/svg/mail.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'info.author.email' | trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/gaelpaquien/" target="_blank" rel="noopener" aria-label="{{ 'navigation.linkedin_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                            {% embed 'assets/svg/linkedin.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.linkedin' | trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/gaelpaquien" target="_blank" rel="noopener" aria-label="{{ 'navigation.github_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                            {% embed 'assets/svg/github.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.github' | trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
-                            {% embed 'assets/svg/resume.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.resume' | trans }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="navigation__container-list-item navigation__container-list-item-about">
-                <div class="link-effects navigation__container-list-item-about-title"
-                     data-action="click->navigation#toggleDropdown"
-                >
+            <div class="navigation__dropdown">
+                <button class="link-effects navigation__dropdown-title" type="button"
+                        data-action="click->navigation#toggleDropdown">
                     <span>{{ 'footer.about.site' | trans }}</span>
                     {% embed 'assets/svg/arrow-right.html.twig' %}
                         {% block attributes %}
@@ -102,40 +115,35 @@
                             data-navigation-target="arrow"
                         {% endblock %}
                     {% endembed %}
+                </button>
+
+                <div class="navigation__dropdown-content" data-navigation-target="dropdown">
+                    <a class="navigation__dropdown-link" href="{{ path('app_main_legal_notice') }}"
+                       aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
+                        {% embed 'assets/svg/hammer.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.legal_notice' | trans }}
+                    </a>
+
+                    <a class="navigation__dropdown-link" href="{{ path('app_main_privacy_policy') }}"
+                       aria-label="{{ 'navigation.privacy_policy_aria' | trans }}">
+                        {% embed 'assets/svg/shield.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.privacy_policy' | trans }}
+                    </a>
+
+                    <a class="navigation__dropdown-link" href="{{ path('app_main_sitemap') }}"
+                       aria-label="{{ 'navigation.sitemap_aria' | trans }}">
+                        {% embed 'assets/svg/sitemap.html.twig' %}
+                            {% block attributes %}aria-hidden="true"{% endblock %}
+                        {% endembed %}
+                        {{ 'navigation.sitemap' | trans }}
+                    </a>
                 </div>
-
-                <ul class="navigation__container-list-item-about-dropdown"
-                    data-navigation-target="dropdown"
-                >
-                    <li>
-                        <a href="{{ path('app_main_legal_notice') }}" aria-label="{{ 'navigation.legal_notice_aria' | trans }}">
-                            {% embed 'assets/svg/hammer.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.legal_notice' | trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('app_main_privacy_policy') }}" aria-label="{{ 'navigation.privacy_policy_aria' | trans }}">
-                            {% embed 'assets/svg/shield.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.privacy_policy' | trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('app_main_sitemap') }}" aria-label="{{ 'navigation.sitemap_aria' | trans }}">
-                            {% embed 'assets/svg/sitemap.html.twig' %}
-                                {% block attributes %}aria-hidden="true"{% endblock %}
-                            {% endembed %}
-                            {{ 'navigation.sitemap' | trans }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <hr>
+            </div>
+        </div>
 
         <div class="navigation__container-settings">
             <div class="navigation__container-settings-item">
@@ -204,8 +212,7 @@
         </div>
 
         <button type="button" class="btn" aria-label="{{ 'actions.close_menu' | trans }}"
-                data-action="click->navigation#close"
-        >
+                data-action="click->navigation#close">
             {{ 'actions.close_menu' | trans }}
         </button>
     </div>
