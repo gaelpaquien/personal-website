@@ -1,5 +1,5 @@
 body {
-    font-family: $font-family-text;
+    font-family: $font-family-poppins;
     font-weight: 500;
     line-height: 1.6;
     font-size: $font-size-text;
@@ -7,29 +7,26 @@ body {
 }
 
 h1 {
-    font-family: $font-family-primary;
+    font-family: $font-family-chivo;
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
     font-size: $font-size-h1;
 }
 
-h2 {
-    font-family: $font-family-primary;
-    font-size: $font-size-h2;
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-montserrat;
     font-weight: 600;
     line-height: 1.3;
     text-transform: uppercase;
 }
 
-h3,
-h4,
-h5,
-h6 {
-    font-family: $font-family-secondary;
-    font-weight: 600;
-    line-height: 1.3;
-    text-transform: uppercase;
+h2 {
+    font-size: $font-size-h2;
 }
 
 h3 {
