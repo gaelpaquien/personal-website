@@ -4,6 +4,7 @@ const app = startStimulusApp();
 
 import ThemesController from './controllers/themes_controller.js';
 import AnimationFadeIn from './controllers/animation_fade_in_controller.js';
+import AnimationText from './controllers/animation_text_controller.js';
 import NavigationController from './controllers/navigation_controller.js';
 import LanguageController from './controllers/language_controller.js';
 import RedirectController from './controllers/redirect_controller.js';
@@ -14,6 +15,7 @@ import InputFileController from './controllers/input_file.controller.js';
 
 app.register('themes', ThemesController);
 app.register('animation-fade-in-up', AnimationFadeIn);
+app.register('animation-text', AnimationText);
 app.register('navigation', NavigationController);
 app.register('language', LanguageController);
 app.register('redirect', RedirectController);
