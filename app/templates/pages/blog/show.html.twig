@@ -7,28 +7,26 @@
         'title': post.title,
     } %}
 
-    <section id="blog-post" class="blog-post__container">
+    <section id="blog-post" class="blog-post">
         <div class="fade-in-effects-initial"
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-
             <div class="blog-post__header fade-in-effects-initial"
                  data-animation-fade-in-target="fadeIn"
                  data-animation="fade-in-up-effects"
             >
+                <h2 class="blog-post__header-title">{{ post.title }}</h2>
+
                 <div class="blog-post__header-image">
                     <img src="{{ asset(post.image) }}" alt="{{ post.title }}" />
                 </div>
-                <div class="blog-post__header-meta">
-                    <p>{{ 'blog.last_update' | trans }} {{ post.created_at|split(' ')[0] }}</p>
-                    <div class="blog-post__header-tags">
-                        {% for tag in post.tags %}
-                            <span class="blog-post__tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
+
+                <div class="blog-post__header-tags">
+                    {% for tag in post.tags %}
+                        <span class="blog-post__tag">{{ tag }}</span>
+                    {% endfor %}
                 </div>
-                <h2 class="blog-post__title">{{ post.title }}</h2>
             </div>
 
             <article class="blog-post__content">
@@ -37,11 +35,11 @@
 
             {% if post.links|length > 0 %}
                 <div class="blog-post__links">
-                    <h3>{{ 'blog.related_resources'|trans }}</h3>
-                    <ul>
+                    <h3 class="blog-post__links-title">{{ 'blog.related_resources'|trans }}</h3>
+                    <ul class="blog-post__links-list">
                         {% for link in post.links %}
-                            <li>
-                                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                            <li class="blog-post__links-item">
+                                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" class="blog-post__links-link">
                                     {{ link.title }}
                                 </a>
                             </li>
@@ -49,6 +47,10 @@
                     </ul>
                 </div>
             {% endif %}
+
+            <div class="blog-post__footer">
+                <p class="blog-post__footer-date">{{ 'blog.last_update' | trans }} {{ post.created_at|split(' ')[0] }}</p>
+            </div>
 
             {% include "components/buttons/btn-return-to-home.html.twig" %}
         </div>

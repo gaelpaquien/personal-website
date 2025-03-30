@@ -84,9 +84,8 @@ home:
     title_secondary: "Développeur Backend"
     image_alt: "Illustration et présentation de %info.author.name%, %info.site.title%."
     presentation:
-      text1: "Je suis passionné et spécialisé en développement PHP, Symfony et Laravel, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, WordPress, et bien plus encore."
-      text2: "En tant que développeur, j'ai renforcé mes aptitudes en gestion de projets, en veillant particulièrement à la qualité du code, à l'optimisation des performances des applications, et à l'implémentation de tests automatisés."
-      text3: "Je suis enthousiaste à l'idée d'échanger avec vous pour découvrir comment mes compétences pourraient s'aligner sur vos besoins et contribuer à vos succès futurs."
+      text1: "Passionné par la création d'applications web performantes et robustes, je développe des solutions sur mesure avec une expertise en PHP, Symfony et Laravel. Mon savoir-faire inclut également MySQL, Docker, JavaScript, WordPress et bien plus encore."
+      text2: "Je serais ravi d'échanger avec vous sur la manière dont je peux répondre efficacement à vos besoins et contribuer à vos succès futurs."
   sections:
     portfolio:
       title: "Mon portfolio"

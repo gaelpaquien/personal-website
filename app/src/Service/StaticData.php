@@ -180,12 +180,16 @@ class StaticData
                     'links' => match($slug) {
                         'developpeur-backend-chez-plany-logiciel-saas-dans-le-secteur-de-l-evenementiel' => [
                             [
-                                'title' => 'Site vitrine plany.jobs',
+                                'title' => 'plany.jobs - Le site vitrine de Plany',
                                 'url' => 'https://www.plany.jobs/'
                             ],
                             [
-                                'title' => 'Application pour les candidats app.plany.jobs',
+                                'title' => 'app.plany.jobs - L\'application déiée aux candidats en recherche d\'un emploi',
                                 'url' => 'https://app.plany.jobs//'
+                            ],
+                            [
+                                'title' => 'board.plany.app - La nouvelle version de la CVthèque Plany',
+                                'url' => 'https://board.plany.app/'
                             ]
                         ],
                         'conception-et-developpement-de-mon-site-personnel-avec-php-et-symfony' => [
