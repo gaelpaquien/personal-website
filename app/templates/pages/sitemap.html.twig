@@ -30,8 +30,8 @@
                      data-animation="fade-in-up-effects"
                 >
                     <button class="btn" aria-label="{{ 'navigation.go_to_page' | trans }} {{ url }}"
-                        data-redirect-url-value="{{ url }}"
-                        data-action="click->redirect#redirectToUrl"
+                        data-url="{{ url }}"
+                        data-action="click->navigation#redirect"
                     >
                         {{ url }}
                     </button>
