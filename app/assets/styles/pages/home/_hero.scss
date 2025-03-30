@@ -22,12 +22,32 @@
             width: 60%;
 
             &-title {
+                h2, h3 {
+                    opacity: 0;
+                }
+
+                span {
+                    will-change: transform, opacity;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+
                 &-main {
                     font-size: calc(3.75 * $font-size-h2);
+
+                    span span {
+                        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+                    }
                 }
 
                 &-secondary {
                     font-size: calc(1.75 * $font-size-h3);
+
+                    span span {
+                        transition-timing-function: ease-out !important;
+                    }
                 }
             }
 
