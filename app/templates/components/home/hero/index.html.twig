@@ -7,25 +7,39 @@
             <img src="{{ asset('images/home-hero-illustration.webp') }}" alt="{{ 'home.hero.image_alt' | trans({'%info.author.name%': 'info.author.name' | trans, '%info.site.title%': 'info.site.title' | trans}) }}">
         </div>
 
-        <div class="fade-in-effects-initial home-hero__container-content-presentation"
-             data-animation-fade-in-target="fadeIn"
-             data-animation="fade-in-up-effects"
-        >
-            <div class="home-hero__container-content-presentation-title">
-                <h2 class="home-hero__container-content-presentation-title-main">
+        <div class="home-hero__container-content-presentation">
+            <div class="home-hero__container-content-presentation-title"
+                 data-controller="animation-text"
+                 data-animation-text-initial-delay-value="100"
+                 data-animation-text-delay-value="25"
+                 data-animation-text-stagger-delay-value="150"
+            >
+                <h2 class="home-hero__container-content-presentation-title-main"
+                    data-animation-text-target="text">
                     {{ 'info.author.name' | trans }}
                 </h2>
-                <h3 class="home-hero__container-content-presentation-title-secondary">
+                <h3 class="home-hero__container-content-presentation-title-secondary"
+                    data-animation-text-target="text">
                     {{ 'home.hero.title_secondary' | trans }}
                 </h3>
             </div>
 
             <div class="home-hero__container-content-presentation-description">
-                <p>{{ 'home.hero.presentation.text1' | trans }}</p>
-                <p>{{ 'home.hero.presentation.text2' | trans }}</p>
+                <p class="fade-in-effects-initial"
+                   data-animation-fade-in-target="fadeIn"
+                   data-animation="fade-in-up-effects">
+                    {{ 'home.hero.presentation.text1' | trans }}
+                </p>
+                <p class="fade-in-effects-initial"
+                   data-animation-fade-in-target="fadeIn"
+                   data-animation="fade-in-up-effects">
+                    {{ 'home.hero.presentation.text2' | trans }}
+                </p>
             </div>
 
-            <div class="home-hero__container-content-presentation-cta">
+            <div class="home-hero__container-content-presentation-cta fade-in-effects-initial"
+                 data-animation-fade-in-target="fadeIn"
+                 data-animation="fade-in-up-effects">
                 <button class="btn-hero-cta-primary btn" type="button" aria-label="">
                     Découvrez mes projets
                 </button>
