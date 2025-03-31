@@ -84,9 +84,13 @@ home:
     title_secondary: "Backend Developer"
     image_alt: "Illustration and presentation of %info.author.name%, %info.site.title%."
     presentation:
-      text1: "I am passionate and specialized in PHP, Symfony and Laravel development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
-      text2: "As a developer, I have strengthened my project management skills, paying particular attention to code quality, application performance optimization, and the implementation of automated tests."
-      text3: "I am excited to discuss how my skills can align with your needs and contribute to your future successes."
+      text1: "Passionate about creating performant and robust web applications, I develop custom solutions with expertise in PHP, Symfony and Laravel. My know-how also includes MySQL, Docker, JavaScript, WordPress and much more."
+      text2: "I would be delighted to discuss how I can effectively address your needs and contribute to your future success."
+    buttons:
+      discover_projects: "Discover my projects"
+      discover_projects_aria: "Discover %info.author.name%'s projects"
+      lets_talk: "Let's talk"
+      lets_talk_aria: "Contact %info.author.name%"
   sections:
     portfolio:
       title: "My Portfolio"
