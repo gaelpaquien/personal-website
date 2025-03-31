@@ -3,23 +3,34 @@
     background-color: var(--color-secondary);
 
     &-content {
-        @include flex-container(row, center);
-        gap: 2.5rem;
+        @include flex-container(column, center);
+        @include respond-to('breakpoint-1500') {
+            @include flex-container(row, center);
+            gap: 2.5rem;
+        }
 
         &-image {
-            width: 35%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: none;
+        }
 
-            img {
-                height: auto;
-                max-width: 500px;
+        @include respond-to('breakpoint-1500') {
+            &-image {
+                width: 35%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    height: auto;
+                    max-width: 500px;
+                }
             }
         }
 
         &-presentation {
-            width: 60%;
+            @include respond-to('breakpoint-1500') {
+                width: 60%;
+            }
 
             &-title {
                 h2, h3 {
@@ -35,7 +46,24 @@
                 }
 
                 &-main {
-                    font-size: calc(3.75 * $font-size-h2);
+                    text-align: center;
+                    font-size: calc(1.5 * $font-size-h2);
+
+                    @include respond-to('breakpoint-375') {
+                        font-size: calc(1.7 * $font-size-h2);
+                    }
+
+                    @include respond-to('breakpoint-576') {
+                        font-size: calc(3 * $font-size-h2);
+                    }
+
+                    @include respond-to('breakpoint-992') {
+                        font-size: calc(3.75 * $font-size-h2);
+                    }
+
+                    @include respond-to('breakpoint-1500') {
+                        text-align: initial;
+                    }
 
                     span span {
                         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
@@ -43,7 +71,24 @@
                 }
 
                 &-secondary {
-                    font-size: calc(1.75 * $font-size-h3);
+                    text-align: center;
+                    font-size: calc(0.9 * $font-size-h3);
+
+                    @include respond-to('breakpoint-375') {
+                        font-size: $font-size-h3;
+                    }
+
+                    @include respond-to('breakpoint-576') {
+                        font-size: calc(1.5 * $font-size-h3);
+                    }
+
+                    @include respond-to('breakpoint-992') {
+                        font-size: calc(1.75 * $font-size-h3);
+                    }
+
+                    @include respond-to('breakpoint-1500') {
+                        text-align: initial;
+                    }
 
                     span span {
                         transition-timing-function: ease-out !important;
@@ -53,7 +98,15 @@
 
             &-description {
                 margin-top: 2rem;
-                font-size: calc(1.35 * $font-size-text);
+                font-size: calc(0.9 * $font-size-text);
+
+                @include respond-to('breakpoint-576') {
+                    font-size: calc(1.1 * $font-size-text);
+                }
+
+                @include respond-to('breakpoint-992') {
+                    font-size: calc(1.35 * $font-size-text);
+                }
 
                 p {
                     margin-bottom: 1rem;
@@ -61,9 +114,30 @@
             }
 
             &-cta {
-                @include flex-container(row, start);
-                gap: 2.5rem;
+                @include flex-container(column, center);
+                gap: 2rem;
                 margin-top: 2rem;
+
+                @include respond-to('breakpoint-576') {
+                    @include flex-container(row, center);
+                }
+
+                @include respond-to('breakpoint-992') {
+                    gap: 4rem;
+                }
+
+                @include respond-to('breakpoint-1500') {
+                    @include flex-container(row, start);
+                    gap: 2.5rem;
+                }
+
+                .btn {
+                    width: 14rem;
+
+                    @include respond-to('breakpoint-992') {
+                        width: 16rem;
+                    }
+                }
             }
         }
     }
