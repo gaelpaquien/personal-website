@@ -40,11 +40,24 @@
             <div class="home-hero__container-content-presentation-cta fade-in-effects-initial"
                  data-animation-fade-in-target="fadeIn"
                  data-animation="fade-in-up-effects">
-                <button class="btn-hero-cta-primary btn" type="button" aria-label="">
-                    Découvrez mes projets
+                <button class="btn-hero-cta-primary btn"
+                    type="button"
+                    aria-label="{{ 'home.hero.buttons.discover_projects_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                    data-controller="scroll"
+                    data-action="click->scroll#scrollToSection"
+                    data-target="#home-portfolio"
+                >
+                    {{ 'home.hero.buttons.discover_projects' | trans }}
                 </button>
-                <button class="btn-hero-cta-secondary btn" type="button" aria-label="">
-                    Discutons ensemble
+
+                <button class="btn-hero-cta-secondary btn"
+                    type="button"
+                    aria-label="{{ 'home.hero.buttons.lets_talk_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                    data-controller="scroll"
+                    data-action="click->scroll#scrollToSection"
+                    data-target="#home-contact"
+                >
+                    {{ 'home.hero.buttons.lets_talk' | trans }}
                 </button>
             </div>
         </div>
