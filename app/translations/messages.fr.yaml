@@ -86,6 +86,11 @@ home:
     presentation:
       text1: "Passionné par la création d'applications web performantes et robustes, je développe des solutions sur mesure avec une expertise en PHP, Symfony et Laravel. Mon savoir-faire inclut également MySQL, Docker, JavaScript, WordPress et bien plus encore."
       text2: "Je serais ravi d'échanger avec vous sur la manière dont je peux répondre efficacement à vos besoins et contribuer à vos succès futurs."
+    buttons:
+      discover_projects: "Découvrir mes projets"
+      discover_projects_aria: "Découvrir les projets de %info.author.name%"
+      lets_talk: "Discutons ensemble"
+      lets_talk_aria: "Prenez contact avec %info.author.name%"
   sections:
     portfolio:
       title: "Mon portfolio"
