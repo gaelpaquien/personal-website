@@ -14,10 +14,12 @@ $font-size-h6: 1.05rem;
 
 // Breakpoints
 $breakpoints: (
+    'breakpoint-375': 375px,
     'breakpoint-576': 576px,
     'breakpoint-768': 768px,
     'breakpoint-992': 992px,
     'breakpoint-1200': 1200px,
     'breakpoint-1400': 1400px,
+    'breakpoint-1500': 1500px,
     'breakpoint-1600': 1600px,
 );
