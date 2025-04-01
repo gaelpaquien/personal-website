@@ -1,6 +1,9 @@
 .home-hero__container {
-    @include flex-container(column, space-between);
+    @include flex-container(column, center);
     background-color: var(--color-secondary);
+    @include respond-to('breakpoint-1500') {
+        @include flex-container(column, space-between);
+    }
 
     &-content {
         @include flex-container(column, center);
