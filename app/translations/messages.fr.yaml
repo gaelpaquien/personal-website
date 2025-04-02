@@ -41,6 +41,7 @@ actions:
   next: "Suivant"
   previous: "Précédent"
   publish: "Publier"
+  optional: "Facultatif"
 
 navigation:
   return_home: "Retour à l'accueil"
@@ -100,14 +101,14 @@ home:
     contact:
       title: "Discutons ensemble"
       form:
-        identity: "Identité*"
+        identity: "Identité"
         first_name: "Prénom"
         last_name: "Nom"
-        email: "Email*"
-        phone: "Téléphone (facultatif)"
-        subject: "Sujet du message*"
-        message: "Message*"
-        files: "Fichiers (facultatif)"
+        email: "Email"
+        phone: "Téléphone"
+        subject: "Sujet du message"
+        message: "Message"
+        files: "Fichiers"
         choose_file: "Choisir des fichiers"
         no_file_chosen: "Aucun fichier choisi"
         one_file_selected: "fichier sélectionné"
@@ -124,13 +125,13 @@ blog:
 post_review:
   title: "Publier un avis"
   form:
-    identity: "Identité*"
+    identity: "Identité"
     first_name: "Prénom"
     last_name: "Nom"
-    email: "Email*"
-    company: "Société/Entité (facultatif)"
-    role: "Poste/Rôle (facultatif)"
-    message: "Message/Citation*"
+    email: "Email"
+    company: "Société/Entité"
+    role: "Poste/Rôle"
+    message: "Message/Citation"
     privacy_notice1: "Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site."
     privacy_notice2: "Votre email ne sera pas visible et votre identité sera affichée sous forme d'initial (exemple : John D.)."
 
