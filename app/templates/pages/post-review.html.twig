@@ -29,7 +29,7 @@
               data-animation="fade-in-up-effects"
         >
             <div class="form-identity-group">
-                <span>{{ 'post_review.form.identity' | trans }}</span>
+                <span>{{ 'post_review.form.identity' | trans }}*</span>
                 <div>
                     <label for="form-review-firstname" hidden>{{ 'post_review.form.first_name' | trans }}</label>
                     <input type="text" id="form-review-firstname" name="form-review-firstname" placeholder="{{ 'post_review.form.first_name' | trans }}" required>
@@ -38,19 +38,19 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="form-review-email">{{ 'post_review.form.email' | trans }}</label>
+                <label for="form-review-email">{{ 'post_review.form.email' | trans }}*</label>
                 <input type="email" id="form-review-email" name="form-review-email" placeholder="{{ 'post_review.form.email' | trans }}" required>
             </div>
             <div class="form-group">
-                <label for="form-review-company">{{ 'post_review.form.company' | trans }}</label>
+                <label for="form-review-company">{{ 'post_review.form.company' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
                 <input type="text" id="form-review-company" name="form-review-company" placeholder="{{ 'post_review.form.company' | trans }}">
             </div>
             <div class="form-group">
-                <label for="form-review-role">{{ 'post_review.form.role' | trans }}</label>
+                <label for="form-review-role">{{ 'post_review.form.role' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
                 <input type="text" id="form-review-role" name="form-review-role" placeholder="{{ 'post_review.form.role' | trans }}">
             </div>
             <div class="form-group">
-                <label for="form-review-message">{{ 'post_review.form.message' | trans }}</label>
+                <label for="form-review-message">{{ 'post_review.form.message' | trans }}*</label>
                 <textarea id="form-review-message" name="form-review-message" placeholder="{{ 'post_review.form.message' | trans }}" required></textarea>
             </div>
             <button class="btn" type="submit" aria-label="{{ 'navigation.reviews_post' | trans }}">

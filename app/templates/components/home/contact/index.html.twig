@@ -22,7 +22,7 @@
           data-animation="fade-in-up-effects"
     >
         <div class="form-identity-group">
-            <span>{{ 'home.sections.contact.form.identity' | trans }}</span>
+            <span>{{ 'home.sections.contact.form.identity' | trans }}*</span>
             <div>
                 <label for="form-contact-firstname" hidden>{{ 'home.sections.contact.form.first_name' | trans }}</label>
                 <input type="text" id="form-contact-firstname" name="form-contact-firstname" placeholder="{{ 'home.sections.contact.form.first_name' | trans }}" required>
@@ -35,25 +35,25 @@
             <input type="email" id="form-contact-email" name="form-contact-email" placeholder="{{ 'home.sections.contact.form.email' | trans }}" required>
         </div>
         <div class="form-group">
-            <label for="form-contact-phone">{{ 'home.sections.contact.form.phone' | trans }}</label>
+            <label for="form-contact-phone">{{ 'home.sections.contact.form.phone' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
             <input type="tel" id="form-contact-phone" name="form-contact-phone" placeholder="{{ 'home.sections.contact.form.phone' | trans }}">
         </div>
         <div class="form-group">
-            <label for="form-contact-subject">{{ 'home.sections.contact.form.subject' | trans }}</label>
+            <label for="form-contact-subject">{{ 'home.sections.contact.form.subject' | trans }}*</label>
             <input type="text" id="form-contact-subject" name="form-contact-subject" placeholder="{{ 'home.sections.contact.form.subject' | trans }}" required>
         </div>
         <div class="form-group">
-            <label for="form-contact-message">{{ 'home.sections.contact.form.message' | trans }}</label>
+            <label for="form-contact-message">{{ 'home.sections.contact.form.message' | trans }}*</label>
             <textarea id="form-contact-message" name="form-contact-message" placeholder="{{ 'home.sections.contact.form.message' | trans }}" required></textarea>
         </div>
         <div class="form-group"
              data-controller="input-file"
-             data-input-file-choose-file-value="{{ 'home.sections.contact.form.choose_file' | trans }}"
+             data-input-file-choose-file-value="{{ 'home.sections.contact.form.choose_file' | trans }} "
              data-input-file-no-file-chosen-value="{{ 'home.sections.contact.form.no_file_chosen' | trans }}"
              data-input-file-one-file-selected-value="{{ 'home.sections.contact.form.one_file_selected' | trans }}"
              data-input-file-multiple-files-selected-value="{{ 'home.sections.contact.form.multiple_files_selected' | trans }}"
         >
-            <label for="form-contact-attachment">{{ 'home.sections.contact.form.files' | trans }}</label>
+            <label for="form-contact-attachment">{{ 'home.sections.contact.form.files' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
             <input type="file"
                    id="form-contact-attachment"
                    name="form-contact-attachment"

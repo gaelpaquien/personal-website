@@ -41,6 +41,7 @@ actions:
   next: "Next"
   previous: "Previous"
   publish: "Publish"
+  optional: "Optional"
 
 navigation:
   return_home: "Return to home"
@@ -100,14 +101,14 @@ home:
     contact:
       title: "Let's talk"
       form:
-        identity: "Identity*"
+        identity: "Identity"
         first_name: "First Name"
-        last_name: "Last Name*"
-        email: "Email*"
-        phone: "Phone (optional)"
-        subject: "Subject of the message*"
-        message: "Message*"
-        files: "Files (optional)"
+        last_name: "Last Name"
+        email: "Email"
+        phone: "Phone"
+        subject: "Subject of the message"
+        message: "Message"
+        files: "Files"
         choose_file: "Choose files"
         no_file_chosen: "No file chosen"
         one_file_selected: "file selected"
@@ -124,13 +125,13 @@ blog:
 post_review:
   title: "Post a review"
   form:
-    identity: "Identity*"
-    first_name: "First Name*"
-    last_name: "Last Name*"
-    email: "Email*"
-    company: "Company/Entity (optional)"
-    role: "Role/Position (optional)"
-    message: "Message/Quote*"
+    identity: "Identity"
+    first_name: "First Name"
+    last_name: "Last Name"
+    email: "Email"
+    company: "Company/Entity"
+    role: "Role/Position"
+    message: "Message/Quote"
     privacy_notice1: "The data entered in this form is stored and used solely to display reviews on this site."
     privacy_notice2: "The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D)."
 

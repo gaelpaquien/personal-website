@@ -40,18 +40,23 @@
 
 #btn-scroll-to-top {
     button {
-        position: fixed;
-        right: 0.25rem;
-        background-color: transparent;
-        padding: 0;
-        border: none;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        display: none;
 
-        &.visible {
-            opacity: 1;
-            visibility: visible;
+        @include respond-to('breakpoint-768') {
+            display: block;
+            position: fixed;
+            right: 0.25rem;
+            background-color: transparent;
+            padding: 0;
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+            &.visible {
+                opacity: 1;
+                visibility: visible;
+            }
         }
     }
 
