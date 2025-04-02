@@ -37,7 +37,11 @@ section {
     }
 
     h2 {
-        font-size: calc(0.95 * $font-size-h2);
+        font-size: calc(0.9 * $font-size-h2);
+
+        @include respond-to('breakpoint-375') {
+            font-size: $font-size-h2;
+        }
 
         @include respond-to('breakpoint-576') {
             font-size: calc(1.25 * $font-size-h2);
