@@ -5,30 +5,38 @@
             data-animation="fade-in-left-effects"
         >
             <li class="header__headband-left-list-item">
+                {% if app.request.locale != 'fr' %}
                 <a href="{{ path('app_change_locale', { 'locale': 'fr' }) }}" aria-label="{{ 'language.to_french' | trans }}">
+                    {% endif %}
                     {% embed 'assets/svg/flag-fr.html.twig' %}
                         {% block attributes %}
-                            class="scale-effects"
+                            class="scale-effects{% if app.request.locale == 'fr' %} active{% endif %}"
                             aria-hidden="true"
                             data-language-target="frenchButton"
                             data-action="click->language#toggleLanguage"
                             data-language="fr"
                         {% endblock %}
                     {% endembed %}
+                    {% if app.request.locale != 'fr' %}
                 </a>
+                {% endif %}
             </li>
             <li class="header__headband-left-list-item">
+                {% if app.request.locale != 'en' %}
                 <a href="{{ path('app_change_locale', { 'locale': 'en' }) }}" aria-label="{{ 'language.to_english' | trans }}">
+                    {% endif %}
                     {% embed 'assets/svg/flag-en.html.twig' %}
                         {% block attributes %}
-                            class="scale-effects"
+                            class="scale-effects{% if app.request.locale == 'en' %} active{% endif %}"
                             aria-hidden="true"
                             data-language-target="englishButton"
                             data-action="click->language#toggleLanguage"
                             data-language="en"
                         {% endblock %}
                     {% endembed %}
+                    {% if app.request.locale != 'en' %}
                 </a>
+                {% endif %}
             </li>
             <span>
                 {% embed 'assets/svg/separator.html.twig' %}
