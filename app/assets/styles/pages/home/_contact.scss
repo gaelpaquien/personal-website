@@ -105,20 +105,4 @@
             background-color: var(--color-primary);
         }
     }
-
-    @include respond-to('breakpoint-768') {
-        form {
-            .form-switch {
-                &-text {
-                    font-size: $font-size-text;
-                }
-            }
-
-            .form-identity-group {
-                input {
-                    width: 47.5%;
-                }
-            }
-        }
-    }
 }
