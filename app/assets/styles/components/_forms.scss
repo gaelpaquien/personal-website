@@ -33,6 +33,10 @@ textarea {
 
 input {
     width: 100%;
+
+    @include respond-to('breakpoint-768') {
+        width: 47.5%;
+    }
 }
 
 textarea {
@@ -55,20 +59,14 @@ textarea {
         :not(:last-child) {
             margin-bottom: 0.75rem;
         }
-    }
 
-    @include respond-to('breakpoint-768') {
-        div {
+        @include respond-to('breakpoint-768') {
             flex-direction: row;
             justify-content: space-between;
 
             :not(:last-child) {
                 margin-bottom: 0;
             }
-        }
-
-        input {
-            width: 47.5%;
         }
     }
 }
