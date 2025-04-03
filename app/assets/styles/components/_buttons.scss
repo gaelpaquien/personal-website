@@ -88,6 +88,10 @@
         @include animation-bounce(1.5s, infinite);
         transition: transform 0.5s ease-in-out;
 
+        @include respond-to('breakpoint-768') {
+            height: 6.5rem;
+        }
+
         &.scale-effects {
             &:hover {
                 animation: none;
@@ -107,12 +111,6 @@
             &:hover {
                 transform: rotate(180deg) scale(1.15);
             }
-        }
-    }
-
-    @include respond-to('breakpoint-768') {
-        svg {
-            height: 6.5rem;
         }
     }
 }

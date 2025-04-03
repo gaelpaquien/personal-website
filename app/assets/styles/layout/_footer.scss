@@ -1,13 +1,9 @@
-.footer__container,
-.footer-mobile__container {
-    background-color: var(--color-tertiary);
-}
-
 .footer__container {
     display: none;
 
     @include respond-to('breakpoint-1400') {
         display: flex;
+        background-color: var(--color-tertiary);
         flex-direction: row;
         justify-content: space-between;
         padding: 2.5rem;
@@ -82,14 +78,40 @@
 
 .footer-mobile__container {
     font-size: calc(0.9 * $font-size-text);
+    background-color: var(--color-tertiary);
+
+    @include respond-to('breakpoint-768') {
+        font-size: calc(1 * $font-size-text);
+    }
+
+    @include respond-to('breakpoint-1400') {
+        display: none;
+    }
+
+    &-header {
+        @include respond-to('breakpoint-768') {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+        }
+    }
 
     hr {
         border: 0.1rem solid var(--color-text);
         margin: 0 1.5rem;
+
+        @include respond-to('breakpoint-768') {
+            margin: 0 2.5rem;
+        }
     }
 
     &-contact {
         padding-top: 2rem;
+
+        @include respond-to('breakpoint-768') {
+            padding: 2rem 0;
+        }
 
         &-meeting {
             text-align: center;
@@ -107,6 +129,10 @@
     &-company {
         padding-bottom: 2rem;
         padding-top: 2rem;
+
+        @include respond-to('breakpoint-768') {
+            padding: 2rem 0;
+        }
     }
 
     &-about,
@@ -158,16 +184,27 @@
         @extend %flex-row;
         justify-content: space-between;
         align-items: center;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding: 0 1.5rem;
+
+        @include respond-to('breakpoint-768') {
+            padding: 0 2.5rem;
+        }
 
         &-social-item {
             padding: 0 0.4rem;
+
+            @include respond-to('breakpoint-768') {
+                padding: 0 0.75rem;
+            }
 
             svg {
                 height: 1.25rem;
                 width: auto;
                 opacity: 0.6;
+
+                @include respond-to('breakpoint-768') {
+                    height: 1.6rem;
+                }
 
                 &:hover {
                     opacity: 1;
@@ -188,42 +225,5 @@
                 }
             }
         }
-    }
-
-    @include respond-to('breakpoint-768') {
-        font-size: calc(1 * $font-size-text);
-
-        hr {
-            margin: 0 2.5rem;
-        }
-
-        &-header {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0 2.5rem;
-        }
-
-        &-contact,
-        &-company {
-            padding: 2rem 0;
-        }
-
-        &-links {
-            padding-left: 2.5rem;
-            padding-right: 2.5rem;
-
-            &-social-item {
-                padding: 0 0.75rem;
-
-                svg {
-                    height: 1.6rem;
-                }
-            }
-        }
-    }
-
-    @include respond-to('breakpoint-1400') {
-        display: none;
     }
 }
