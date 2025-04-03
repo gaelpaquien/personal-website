@@ -75,6 +75,10 @@ nav {
     cursor: pointer;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
+
+    @include respond-to('breakpoint-768') {
+        font-size: calc(0.8 * $font-size-h2);
+    }
 }
 
 .navigation__dropdown-sections {
@@ -114,6 +118,10 @@ nav {
         justify-content: space-between;
         align-items: center;
 
+        @include respond-to('breakpoint-768') {
+            font-size: calc(0.8 * $font-size-h2);
+        }
+
         svg {
             height: 1.6rem;
             width: auto;
@@ -146,6 +154,10 @@ nav {
         align-items: center;
         gap: 0.5rem;
 
+        @include respond-to('breakpoint-768') {
+            font-size: calc(0.6 * $font-size-h2);
+        }
+
         &:first-child {
             border-top: solid 0.01rem var(--color-text);
         }
@@ -170,31 +182,13 @@ nav {
         margin-bottom: 1.25rem;
         @include flex-container(row, space-between, center);
 
+        @include respond-to('breakpoint-768') {
+            font-size: calc(0.8 * $font-size-h2);
+        }
+
         svg {
             height: 1.35rem;
             width: 1.35rem;
-        }
-    }
-}
-
-@include respond-to('breakpoint-768') {
-    .navigation__link {
-        font-size: calc(0.8 * $font-size-h2);
-    }
-
-    .navigation__dropdown {
-        &-title {
-            font-size: calc(0.8 * $font-size-h2);
-        }
-
-        &-link {
-            font-size: calc(0.6 * $font-size-h2);
-        }
-    }
-
-    .navigation__container-settings {
-        &-item {
-            font-size: calc(0.8 * $font-size-h2);
         }
     }
 }

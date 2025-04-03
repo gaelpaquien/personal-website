@@ -4,6 +4,22 @@ body {
     line-height: 1.6;
     font-size: $font-size-text;
     color: var(--color-text);
+
+    @include respond-to('breakpoint-576') {
+        font-size: 1rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 1.05rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 1.1rem;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 1.15rem;
+    }
 }
 
 h1 {
@@ -12,6 +28,24 @@ h1 {
     line-height: 1.2;
     text-transform: uppercase;
     font-size: $font-size-h1;
+
+    @include respond-to('breakpoint-576') {
+        font-size: 2.25rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 2.5rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 3rem;
+        line-height: 1.15;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
 }
 
 h2,
@@ -27,142 +61,100 @@ h6 {
 
 h2 {
     font-size: $font-size-h2;
+
+    @include respond-to('breakpoint-576') {
+        font-size: 2rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 2.25rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 2.75rem;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 3rem;
+    }
 }
 
 h3 {
     font-size: $font-size-h3;
+
+    @include respond-to('breakpoint-576') {
+        font-size: 1.75rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 2rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 2.5rem;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 2.75rem;
+    }
 }
 
 h4 {
     font-size: $font-size-h4;
+
+    @include respond-to('breakpoint-576') {
+        font-size: 1.5rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 1.75rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 2.1rem;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 2.25rem;
+    }
 }
 
 h5 {
     font-size: $font-size-h5;
+
+    @include respond-to('breakpoint-576') {
+        font-size: 1.25rem;
+    }
+
+    @include respond-to('breakpoint-768') {
+        font-size: 1.5rem;
+    }
+
+    @include respond-to('breakpoint-992') {
+        font-size: 1.8rem;
+    }
+
+    @include respond-to('breakpoint-1200') {
+        font-size: 2rem;
+    }
 }
 
 h6 {
     font-size: $font-size-h6;
-}
 
-@include respond-to('breakpoint-576') {
-    body {
-        font-size: 1rem;
-    }
-
-    h1 {
-        font-size: 2.25rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    h3 {
-        font-size: 1.75rem;
-    }
-
-    h4 {
-        font-size: 1.5rem;
-    }
-
-    h5 {
-        font-size: 1.25rem;
-    }
-
-    h6 {
-        font-size: 1.1rem;
-    }
-}
-
-@include respond-to('breakpoint-768') {
-    body {
-        font-size: 1.05rem;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2.25rem;
-    }
-
-    h3 {
-        font-size: 2rem;
-    }
-
-    h4 {
-        font-size: 1.75rem;
-    }
-
-    h5 {
-        font-size: 1.5rem;
-    }
-
-    h6 {
-        font-size: 1.25rem;
-    }
-}
-
-@include respond-to('breakpoint-992') {
-    body {
+    @include respond-to('breakpoint-576') {
         font-size: 1.1rem;
     }
 
-    h1 {
-        font-size: 3rem;
-        line-height: 1.15;
+    @include respond-to('breakpoint-768') {
+        font-size: 1.25rem;
     }
 
-    h2 {
-        font-size: 2.75rem;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-    }
-
-    h4 {
-        font-size: 2.1rem;
-    }
-
-    h5 {
-        font-size: 1.8rem;
-    }
-
-    h6 {
+    @include respond-to('breakpoint-992') {
         font-size: 1.6rem;
     }
-}
 
-@include respond-to('breakpoint-1200') {
-    body {
-        font-size: 1.15rem;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-        line-height: 1.1;
-    }
-
-    h2 {
-        font-size: 3rem;
-    }
-
-    h3 {
-        font-size: 2.5rem;
-    }
-
-    h4 {
-        font-size: 2.1rem;
-    }
-
-    h5 {
+    @include respond-to('breakpoint-1200') {
         font-size: 1.75rem;
-    }
-
-    h6 {
-        font-size: 1.5rem;
     }
 }
