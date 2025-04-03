@@ -2,46 +2,10 @@
     background-color: var(--color-secondary);
     @include flex-container(column, space-around, center);
 
-    .section-title {
-        h2 {
-            font-size: 1rem;
-        }
-
-        svg {
-            height: 1rem;
-        }
-    }
-
     &-content {
         font-size: calc(1.1 * $font-size-text);
-    }
 
-    @include respond-to('breakpoint-576') {
-        .section-title {
-            h2 {
-                font-size: calc(1.3 * $font-size-h2);
-            }
-
-            svg {
-                height: calc(1.3 * $font-size-h2);
-            }
-        }
-    }
-
-    @include respond-to('breakpoint-992') {
-        .section-title {
-            h2 {
-                font-size: calc(1.75 * $font-size-h2);
-            }
-
-            svg {
-                height: calc(1.75 * $font-size-h2);
-            }
-        }
-    }
-
-    @include respond-to('breakpoint-1200') {
-        &-content {
+        @include respond-to('breakpoint-1200') {
             width: 80%;
             font-size: calc(1.3 * $font-size-text);
         }

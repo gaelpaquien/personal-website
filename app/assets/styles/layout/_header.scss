@@ -76,6 +76,10 @@ header {
     min-height: 5.5rem;
     padding: 1rem 1.5rem;
 
+    @include respond-to('breakpoint-768') {
+        padding: 1rem 5rem;
+    }
+
     &-title {
         a {
             display: flex;
@@ -102,25 +106,6 @@ header {
         svg {
             height: 3rem;
             width: auto;
-        }
-
-        &.rotate-up {
-            @include animation-rotateUp;
-        }
-
-        &.rotate-down {
-            @include animation-rotateDown;
-        }
-    }
-
-    @include respond-to('breakpoint-768') {
-        padding: 1rem 5rem;
-
-        &-menu-open,
-        &-menu-close {
-            svg {
-                height: 3rem;
-            }
         }
     }
 }

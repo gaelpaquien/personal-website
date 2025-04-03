@@ -31,14 +31,6 @@
       }
     }
 
-    @include respond-to('breakpoint-768') {
-      .form-identity-group {
-        input {
-          width: 47.5%;
-        }
-      }
-    }
-
     .form-group {
       margin-bottom: 1.5rem;
       width: 100%;

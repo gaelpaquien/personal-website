@@ -47,6 +47,13 @@ section {
             font-size: calc(1.25 * $font-size-h2);
         }
 
+        @include respond-to('breakpoint-992') {
+            font-size: calc(1.75 * $font-size-h2);
+        }
+
+        @include respond-to('breakpoint-1200') {
+            font-size: calc(2 * $font-size-h2);
+        }
     }
 
     svg {
@@ -56,34 +63,12 @@ section {
         @include respond-to('breakpoint-576') {
             height: calc(0.95 * $font-size-h2);;
         }
-    }
 
-    @include respond-to('breakpoint-576') {
-        h2 {
-            font-size: calc(1.5 * $font-size-h2);
-        }
-
-        svg {
-            height: calc(1.5 * $font-size-h2);
-        }
-    }
-
-    @include respond-to('breakpoint-992') {
-        h2 {
-            font-size: calc(1.75 * $font-size-h2);
-        }
-
-        svg {
+        @include respond-to('breakpoint-992') {
             height: calc(1.75 * $font-size-h2);
         }
-    }
 
-    @include respond-to('breakpoint-1200') {
-        h2 {
-            font-size: calc(2 * $font-size-h2);
-        }
-
-        svg {
+        @include respond-to('breakpoint-1200') {
             height: calc(2 * $font-size-h2);
         }
     }
