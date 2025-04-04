@@ -4,74 +4,15 @@
 
   &-form {
     background-color: var(--color-primary);
-    padding: 1.5rem;
-    width: 50%;
-    margin-bottom: 2.5rem;
 
     input,
     textarea {
       background-color: var(--color-secondary);
       color: var(--color-text);
-      width: 100%;
-    }
-
-    .form-identity-group {
-      margin-bottom: 1.5rem;
-
-      span {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-      }
-
-      > div {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-      }
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-      width: 100%;
-
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-      }
-
-      input, textarea {
-        width: 100%;
-        background-color: var(--color-secondary);
-        color: var(--color-text);
-        border-radius: 0.25rem;
-        font-size: $font-size-text;
-      }
-
-      textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-    }
-
-    .form-infos {
-      margin-top: 1.5rem;
-      font-size: calc(0.8 * $font-size-text);
-      color: var(--color-text-secondary);
-
-      p {
-        margin-bottom: 0.5rem;
-      }
     }
 
     button {
       background-color: var(--color-secondary);
     }
-  }
-
-  .btn-return-to-home {
-    margin-top: 1.5rem;
-    align-self: center;
   }
 }
