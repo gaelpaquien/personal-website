@@ -244,6 +244,6 @@ sitemap:
 
 errors:
   general: "An error occurred"
-  404: "Error 404 - Page not found"
-  403: "Error 403 - Access denied"
+  404: "Page not found"
+  403: "Access denied"
   text: "Oops... It seems an error occurred. If the problem persists, please contact the site administrator."
