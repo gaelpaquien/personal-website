@@ -134,46 +134,10 @@
     background-color: var(--color-tertiary);
 }
 
-/* Effet scintillement sur les bordures des boutons CTA */
 .btn-hero-cta-primary,
 .btn-hero-cta-secondary {
     position: relative;
-    /* Bordure de base avec une légère transparence */
     border: solid 0.15rem rgba(255, 255, 255, 0.6);
-    /* Animation de pulsation constante et légère */
-    animation: continuousPulse 3s infinite ease-in-out;
-    /* Assurer que la transition soit fluide */
+    @include animation-continuousPulse(2.5s);
     transition: transform 0.5s, border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Animation de pulsation douce et continue */
-@keyframes continuousPulse {
-    0%, 100% {
-        box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.35), 0 0 9px 1px rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.55);
-    }
-    50% {
-        box-shadow: 0 0 7px 2px rgba(255, 255, 255, 0.45), 0 0 11px 3px rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.65);
-    }
-}
-
-/* Amélioration de l'effet au survol */
-.btn-hero-cta-primary:hover,
-.btn-hero-cta-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.65), 0 0 15px 4px rgba(255, 255, 255, 0.3);
-}
-
-/* Préserver l'effet hover existant */
-.btn::after {
-    /* L'effet hover existant est préservé */
-    z-index: 0;
-}
-
-/* Contenu au-dessus */
-.btn-hero-cta-primary > *,
-.btn-hero-cta-secondary > * {
-    position: relative;
-    z-index: 2;
 }
