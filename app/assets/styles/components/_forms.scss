@@ -20,6 +20,10 @@ form {
 label {
     font-size: calc(0.85 * $font-size-text);
     margin-bottom: 0.5rem;
+
+    @include respond-to('breakpoint-768') {
+        font-size: $font-size-text;
+    }
 }
 
 input,
@@ -29,6 +33,10 @@ textarea {
     padding: 0.5rem;
     font-size: calc(0.85 * $font-size-text);
     color: var(--color-primary);
+
+    @include respond-to('breakpoint-768') {
+        font-size: $font-size-text;
+    }
 
     &:focus {
         outline: none;
@@ -57,6 +65,10 @@ textarea {
 
     span {
         font-size: calc(0.85 * $font-size-text);
+
+        @include respond-to('breakpoint-768') {
+            font-size: $font-size-text;
+        }
     }
 
     input {
@@ -88,20 +100,41 @@ textarea {
 
 .form-switch {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 
+    @include respond-to('breakpoint-576') {
+        justify-content: flex-start;
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+
     &-text {
-        font-size: calc(0.5 * $font-size-text);
-        margin-right: 0.75rem;
+        font-size: calc(0.7 * $font-size-text);
+
+        @include respond-to('breakpoint-576') {
+            font-size: calc(0.85 * $font-size-text);
+            margin-right: 1.5rem;
+        }
+
+        @include respond-to('breakpoint-768') {
+            font-size: $font-size-text;
+        }
     }
 
     &-toggle {
         position: relative;
         display: inline-block;
-        width: 3.25rem;
-        height: auto;
-        margin-top: 0.35rem;
+        width: 2.5rem;
+        height: 1.5rem;
+
+        @include respond-to('breakpoint-576') {
+            width: 3.25rem;
+        }
 
         &:hover {
             opacity: 0.8;
@@ -121,9 +154,15 @@ textarea {
             }
 
             &:checked + .form-switch-toggle-slider:before {
-                -webkit-transform: translateX(1.7rem);
-                -ms-transform: translateX(1.7rem);
-                transform: translateX(1.7rem);
+                -webkit-transform: translate(1rem, -50%);
+                -ms-transform: translate(1rem, -50%);
+                transform: translate(1rem, -50%);
+
+                @include respond-to('breakpoint-576') {
+                    -webkit-transform: translate(1.7rem, -50%);
+                    -ms-transform: translate(1.7rem, -50%);
+                    transform: translate(1.7rem, -50%);
+                }
             }
         }
 
@@ -142,14 +181,20 @@ textarea {
             &::before {
                 position: absolute;
                 content: "";
-                height: 1rem;
-                width: 1rem;
+                height: 0.9rem;
+                width: 0.9rem;
                 left: 0.275rem;
-                bottom: 0.275rem;
+                top: 50%;
+                transform: translateY(-50%);
                 background-color: var(--color-primary);
                 -webkit-transition: .4s;
                 transition: .4s;
                 border-radius: 50%;
+
+                @include respond-to('breakpoint-576') {
+                    height: 1rem;
+                    width: 1rem;
+                }
             }
         }
     }
@@ -157,9 +202,13 @@ textarea {
 
 .form-infos {
     margin-top: 1.5rem;
-    font-size: calc(0.75 * $font-size-text);
+    font-size: calc(0.6 * $font-size-text);
     opacity: 0.8;
     font-style: italic;
+
+    @include respond-to('breakpoint-768') {
+        font-size: calc(0.8 * $font-size-text);
+    }
 }
 
 .custom-file-input-wrapper {
