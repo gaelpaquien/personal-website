@@ -1,7 +1,6 @@
 .blog-post {
   background-color: var(--color-secondary);
-  display: flex;
-  flex-direction: column;
+  @include flex-container(column, space-around, center);
   max-width: 50%;
   margin: 0 auto;
 
@@ -127,8 +126,7 @@
   }
 
   .btn-return-to-home {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
+    margin-top: 2.5rem;
+    @include flex-container(column, center, center);
   }
 }

@@ -4,15 +4,22 @@
 
     &-urls-list {
         @extend %flex-column;
+        gap: 1.5rem;
 
         &-item {
-            button {
+            .btn {
                 width: 100%;
                 background-color: var(--color-primary);
                 font-size: calc(0.75 * $font-size-text);
+                padding: 0.25rem 0.5rem;
 
-                @include respond-to('breakpoint-768') {
-                    font-size: $font-size-text;
+                @include respond-to('breakpoint-576') {
+                    padding: 0.5rem 1rem;
+                    font-size: calc(0.9 * $font-size-text);
+                }
+
+                @include respond-to('breakpoint-992') {
+                    font-size: $font-size-text
                 }
             }
         }

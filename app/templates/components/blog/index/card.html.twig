@@ -16,7 +16,7 @@
     <div class="card-list-item-content">
         <h3 class="card-list-item-content-title">{{ title }}</h3>
         <div class="card-list-item-content-excerpt">
-            <p>{{ content|striptags|slice(0, 150) ~ (content|striptags|length > 150 ? '...' : '') }}</p>
+            <p>{{ content }}</p>
         </div>
         <div class="card-list-item-content-meta">
             <p class="card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at|split(' ')[0] }}</p>
