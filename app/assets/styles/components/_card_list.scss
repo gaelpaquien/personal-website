@@ -116,8 +116,12 @@
       padding: 0.5rem;
 
       &-title {
-        font-size: calc(0.8 * $font-size-h3);
+        font-size: calc(0.7 * $font-size-h3);
         margin: 0 0 0.75rem 0;
+
+        @include respond-to('breakpoint-576') {
+          font-size: calc(0.85 * $font-size-h3);
+        }
 
         @include respond-to('breakpoint-768') {
           font-size: $font-size-h3;
@@ -170,7 +174,20 @@
 
         p {
           margin: 0;
-          line-height: 1.5;
+
+          font-size: calc(0.9 * $font-size-text);
+
+          @include respond-to('breakpoint-576') {
+            font-size: calc(1.1 * $font-size-text);
+          }
+
+          @include respond-to('breakpoint-992') {
+            font-size: calc(0.9 * $font-size-text);
+          }
+
+          @include respond-to('breakpoint-1200') {
+            font-size: calc(1.1 * $font-size-text);
+          }
         }
       }
 
