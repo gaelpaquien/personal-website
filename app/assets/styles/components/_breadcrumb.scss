@@ -7,21 +7,17 @@
     padding: 1.5rem 5rem 0;
 
     &__list {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      @include flex-container(row, start, center);
       gap: 0.5rem;
       color: var(--color-text);
     }
 
     &__item {
-      display: flex;
-      align-items: center;
+      @include flex-container(row, center, center);
     }
 
     &__link {
-      display: flex;
-      align-items: center;
+      @include flex-container(row, center, center);
       gap: 0.5rem;
 
       &:hover {
@@ -30,8 +26,7 @@
     }
 
     &__text {
-      display: flex;
-      align-items: center;
+      @include flex-container(row, center, center);
       gap: 0.5rem;
 
       &--last {
@@ -42,8 +37,7 @@
 
     &__label {
       font-size: 1.2rem;
-      display: flex;
-      align-items: center;
+      @include flex-container(row, center, center);
 
       &--last {
         width: 500px;
@@ -55,16 +49,12 @@
     }
 
     &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-container(row, center, center);
       height: 1.3rem;
     }
 
     &__separator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-container(row, center, center);
     }
 
     svg {
