@@ -3,19 +3,19 @@
 {% set image = image|default('images/portfolio/portfolio-default.webp') %}
 {% set tags = tags|default([]) %}
 
-<div class="fade-in-effects-initial blog__container-posts-card scale-effects"
+<div class="fade-in-effects-initial card-list-item"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
      data-card-target="card"
      data-action="click->card#pressCard"
      data-url="{{ path('app_blog_show', {'slug': related_blog_post_slug}) }}"
 >
-    <div class="home-portfolio__container-projects-card-image">
+    <div class="card-list-item-image">
         <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
-        <div class="home-portfolio__container-projects-card-image-title">
-            <h3 class="home-portfolio__container-projects-card-content-title">{{ title }}</h3>
+        <div class="card-list-item-image-title">
+            <h3 class="card-list-item-content-title">{{ title }}</h3>
         </div>
-        <div class="home-portfolio__container-projects-card-image-tags">
+        <div class="card-list-item-image-tags">
             {% for tag in tags|slice(0, 5) %}
                 <span class="tag">{{ tag }}</span>
             {% endfor %}
@@ -24,7 +24,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="home-portfolio__container-projects-card-content">
-        <p class="home-portfolio__container-projects-card-content-description">{{ description }}</p>
+    <div class="card-list-item-content">
+        <p class="card-list-item-description">{{ description }}</p>
     </div>
 </div>

@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="home-portfolio__container-projects"
+    <div class="card-list"
          data-controller="card"
     >
         {% for project in projects|sort((a, b) => a.order <=> b.order) %}

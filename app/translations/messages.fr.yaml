@@ -113,7 +113,7 @@ home:
         no_file_chosen: "Aucun fichier choisi"
         one_file_selected: "fichier sélectionné"
         multiple_files_selected: "fichiers sélectionnés"
-        receive_copy: "Recevoir une copie de ce message"
+        receive_copy: "Recevoir une copie"
         submit_button: "Envoyer le message"
         privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
 

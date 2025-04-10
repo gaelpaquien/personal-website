@@ -5,7 +5,7 @@
 {% set updated_at = updated_at|default('01/01/2024') %}
 {% set slug = slug|default('') %}
 
-<div class="fade-in-effects-initial blog__container-posts-card scale-effects"
+<div class="fade-in-effects-initial card-list-item scale-effects"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
      data-card-target="card"
@@ -13,13 +13,13 @@
      data-url="{{ path('app_blog_show', {'slug': slug}) }}"
 >
     <img src="{{ asset(image) }}" alt="{{ title }}">
-    <div class="blog__container-posts-card-content">
-        <h3 class="blog__container-posts-card-content-title">{{ title }}</h3>
-        <div class="blog__container-posts-card-content-excerpt">
-            <p>{{ content|striptags|slice(0, 200) ~ (content|striptags|length > 150 ? '...' : '') }}</p>
+    <div class="card-list-item-content">
+        <h3 class="card-list-item-content-title">{{ title }}</h3>
+        <div class="card-list-item-content-excerpt">
+            <p>{{ content|striptags|slice(0, 150) ~ (content|striptags|length > 150 ? '...' : '') }}</p>
         </div>
-        <div class="blog__container-posts-card-content-meta">
-            <p class="blog__container-posts-card-content-date">{{ 'blog.last_update' | trans }} {{ updated_at|split(' ')[0] }}</p>
+        <div class="card-list-item-content-meta">
+            <p class="card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at|split(' ')[0] }}</p>
         </div>
     </div>
 </div>

@@ -113,7 +113,7 @@ home:
         no_file_chosen: "No file chosen"
         one_file_selected: "file selected"
         multiple_files_selected: "files selected"
-        receive_copy: "Receive a copy of the message"
+        receive_copy: "Receive a copy"
         submit_button: "Send the message"
         privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
 
