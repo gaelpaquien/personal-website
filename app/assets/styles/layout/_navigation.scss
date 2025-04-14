@@ -59,7 +59,15 @@ nav {
         font-size: calc(0.65 * $font-size-h2);
 
         @include respond-to('breakpoint-576') {
-            font-size: calc(0.8 * $font-size-h2);
+            width: 50%;
+        }
+
+        @include respond-to('breakpoint-1200') {
+            width: 60%;
+        }
+
+        @include respond-to('breakpoint-1400') {
+            width: 50%;
         }
     }
 }
@@ -178,7 +186,6 @@ nav {
         svg {
             height: 0.9rem;
             width: auto;
-            margin-right: 0.15rem;
 
             @include respond-to('breakpoint-576') {
                 height: 1.15rem;

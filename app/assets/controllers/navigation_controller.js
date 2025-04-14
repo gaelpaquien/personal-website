@@ -93,6 +93,8 @@ export default class extends Controller {
                 }, 300);
             }
         } else {
+            this.closeAllDropdowns();
+
             this.menuTarget.style.borderLeft = 'none';
             this.mainContent.style.width = '100%';
 
@@ -117,22 +119,34 @@ export default class extends Controller {
     toggleDropdown(event) {
         const dropdown = event.currentTarget.closest('.navigation__dropdown');
         const content = dropdown.querySelector('.navigation__dropdown-content');
-        const arrow = dropdown.querySelector('svg');
+        const arrow = dropdown.querySelector('[data-navigation-target="arrow"]');
         const isActive = !content.classList.contains('active');
 
         this.closeAllDropdowns();
 
         content.classList.toggle('active', isActive);
-        arrow.classList.toggle('rotate-down-effects', isActive);
+
+        arrow.classList.remove('rotate-up-90-effects', 'rotate-down-90-effects');
+
+        if (isActive) {
+            arrow.classList.add('rotate-up-90-effects');
+        } else {
+            arrow.classList.add('rotate-down-90-effects');
+        }
     }
 
     closeAllDropdowns() {
         this.dropdownTargets.forEach(dropdown => {
             dropdown.classList.remove('active');
-            const parentDropdown = dropdown.closest('.navigation__dropdown');
-            if (parentDropdown) {
-                const arrow = parentDropdown.querySelector('svg');
-                if (arrow) arrow.classList.remove('rotate-down-effects');
+        });
+
+        this.arrowTargets.forEach(arrow => {
+            arrow.classList.remove('rotate-up-90-effects');
+            const dropdown = arrow.closest('.navigation__dropdown');
+            const content = dropdown.querySelector('.navigation__dropdown-content');
+            if (content.classList.contains('active')) {
+                arrow.classList.remove('rotate-up-90-effects');
+                arrow.classList.add('rotate-down-90-effects');
             }
         });
     }
