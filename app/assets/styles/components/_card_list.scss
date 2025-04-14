@@ -115,8 +115,17 @@
       }
     }
 
+    &-description {
+      line-height: 1.4;
+      font-size: calc(0.8 * $font-size-text);
+
+      @include respond-to('breakpoint-576') {
+        font-size: $font-size-text;
+      }
+    }
+
     &-content {
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem;
       display: flex;
       flex-direction: column;
       flex: 1;

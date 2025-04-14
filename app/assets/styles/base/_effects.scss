@@ -72,6 +72,14 @@
   @include animation-rotateUp();
 }
 
+.rotate-up-90-effects {
+  @include animation-rotateUp90();
+}
+
 .rotate-down-effects {
   @include animation-rotateDown();
+}
+
+.rotate-down-90-effects {
+  @include animation-rotateDown90();
 }

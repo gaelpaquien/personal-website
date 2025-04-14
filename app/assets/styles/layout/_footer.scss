@@ -7,6 +7,7 @@
         flex-direction: row;
         justify-content: space-between;
         padding: 2.5rem;
+        font-size: $font-size-text;
 
         &-about-title,
         &-contact-title,
@@ -64,7 +65,7 @@
             padding-top: 0.35rem;
 
             svg {
-                height: 1.7rem;
+                height: 1.6rem;
                 width: auto;
                 opacity: 0.6;
 
@@ -77,11 +78,11 @@
 }
 
 .footer-mobile__container {
-    font-size: calc(0.9 * $font-size-text);
+    font-size: calc(0.8 * $font-size-text);
     background-color: var(--color-tertiary);
 
-    @include respond-to('breakpoint-768') {
-        font-size: calc(1 * $font-size-text);
+    @include respond-to('breakpoint-576') {
+        font-size: $font-size-text;
     }
 
     @include respond-to('breakpoint-1400') {
@@ -147,13 +148,21 @@
         margin-bottom: 0.3rem;
 
         h2 {
-            font-size: $font-size-h2;
+            font-size: calc(0.8 * $font-size-h2);
             padding: 0 0.3rem;
+
+            @include respond-to('breakpoint-576') {
+                font-size: $font-size-h2;
+            }
         }
 
         svg {
-            height: $font-size-h2;
+            height: calc(0.8 * $font-size-h2);
             width: auto;
+
+            @include respond-to('breakpoint-576') {
+                height: $font-size-h2;
+            }
         }
     }
 
@@ -184,10 +193,10 @@
         @extend %flex-row;
         justify-content: space-between;
         align-items: center;
-        padding: 0 1.5rem;
+        padding: 1.5rem;
 
         @include respond-to('breakpoint-768') {
-            padding: 0 2.5rem;
+            padding: 1.5rem 2.5rem;
         }
 
         &-social-item {
@@ -198,12 +207,12 @@
             }
 
             svg {
-                height: 1.25rem;
+                height: 1.15rem;
                 width: auto;
                 opacity: 0.6;
 
-                @include respond-to('breakpoint-768') {
-                    height: 1.6rem;
+                @include respond-to('breakpoint-576') {
+                    height: 1.5rem;
                 }
 
                 &:hover {

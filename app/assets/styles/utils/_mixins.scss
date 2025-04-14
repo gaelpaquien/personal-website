@@ -53,6 +53,19 @@ $ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
     animation: rotateUp $duration $ease-out-back forwards;
 }
 
+@mixin animation-rotateUp90($duration: 0.5s) {
+    @keyframes rotateUp90 {
+        from {
+            transform: rotate(0deg) scale(1);
+        }
+        to {
+            transform: rotate(90deg) scale(1.05);
+        }
+    }
+    will-change: transform;
+    animation: rotateUp90 $duration $ease-out-back forwards;
+}
+
 @mixin animation-rotateDown($duration: 0.5s) {
     @keyframes rotateDown {
         from {
@@ -64,6 +77,19 @@ $ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     will-change: transform;
     animation: rotateDown $duration $ease-out-back forwards;
+}
+
+@mixin animation-rotateDown90($duration: 0.5s) {
+    @keyframes rotateDown90 {
+        from {
+            transform: rotate(90deg) scale(1.05);
+        }
+        to {
+            transform: rotate(0deg) scale(1);
+        }
+    }
+    will-change: transform;
+    animation: rotateDown90 $duration $ease-out-back forwards;
 }
 
 @mixin animation-fadeInLeft($duration: 0.8s, $px: 50px) {
