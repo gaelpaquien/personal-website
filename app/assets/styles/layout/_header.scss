@@ -100,7 +100,7 @@ header {
         }
 
         svg {
-            height: 2.75rem;
+            height: 2.5rem;
             width: auto;
         }
 
@@ -113,12 +113,6 @@ header {
         @include respond-to('breakpoint-768') {
             svg {
                 height: 3.5rem;
-            }
-        }
-
-        @include respond-to('breakpoint-992') {
-            svg {
-                height: 3.75rem;
             }
         }
     }
@@ -134,7 +128,7 @@ header {
         border: none;
 
         svg {
-            height: 2.75rem;
+            height: 2.5rem;
             width: auto;
         }
 
@@ -147,12 +141,6 @@ header {
         @include respond-to('breakpoint-768') {
             svg {
                 height: 3.5rem;
-            }
-        }
-
-        @include respond-to('breakpoint-992') {
-            svg {
-                height: 3.75rem;
             }
         }
     }
