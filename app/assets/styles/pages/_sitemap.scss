@@ -2,6 +2,10 @@
     background-color: var(--color-secondary);
     @include flex-container(column, space-around, center);
 
+    .section-title {
+        margin: 0;
+    }
+
     &-urls-list {
         @extend %flex-column;
         gap: 1.5rem;

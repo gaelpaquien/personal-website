@@ -3,6 +3,10 @@
     @include flex-container(column, center, center);
     gap: 2.5rem;
 
+    .section-title {
+        margin: 0;
+    }
+
     &-block {
         background-color: var(--color-primary);
         border: solid 0.1rem var(--color-text);
