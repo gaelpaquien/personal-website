@@ -72,7 +72,8 @@ class StaticData
     {
         return [
             [
-                'author' => 'Thomas Gérault',
+                'author_firstname' => 'Thomas',
+                'author_lastname' => 'Gérault',
                 'author_job' => 'Mentor',
                 'author_company' => 'OpenClassrooms',
                 'content' => 'En reconversion professionnelle pour se spécialiser dans le développement web full stack, Gaël a suivi la formation d\'openclassrooms. Le point fort de Gaël est sa détermination : ne rien lâcher et aller toujours au bout des choses. Sérieux, appliqué et rigoureux, il a su monter en compétence rapidement et réussir ses projets avec brio.',
@@ -81,7 +82,8 @@ class StaticData
                 'order' => 1
             ],
             [
-                'author' => 'Jérôme Gaviot',
+                'author_firstname' => 'Jérôme',
+                'author_lastname' => 'Gaviot',
                 'author_job' => 'Cofondateur',
                 'author_company' => 'RG Clean Car',
                 'content' => 'Gaël a réalisé notre site web "www.rgcleancar.fr" exactement comme nous l\'avions souhaité, communication claire et professionnelle, je recommande !',
@@ -90,7 +92,8 @@ class StaticData
                 'order' => 2
             ],
             [
-                'author' => 'John Doe',
+                'author_firstname' => 'John',
+                'author_lastname' => 'Doe',
                 'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                 'source' => 'Google',
                 'created_at' => '01/01/2024',
