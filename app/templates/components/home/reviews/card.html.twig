@@ -8,12 +8,12 @@
             {% embed 'assets/svg/quote.html.twig' %}
                 {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
             {% endembed %}
-            {{ content }}
+            {{ content|first|upper ~ content|slice(1) }}
         </blockquote>
 
         <div class="home-reviews__container-carousel-item-infos">
             <div class="home-reviews__container-carousel-item-infos-author">
-                {{ author }}
+                {{ author_firstname|title }} {{ author_lastname|first|upper }}.
                 {% if author_job is defined and author_job %}
                     - {{ author_job }}
                 {% endif %}
@@ -22,7 +22,7 @@
                 {% endif %}
             </div>
             <div class="home-reviews__container-carousel-item-infos-source">
-                {{ created_at }} - {{ source}}
+                {{ 'home.sections.reviews.published_on'|trans({'%date%': created_at, '%source%': source}) }}
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ RUN addgroup -g 1000 appgroup && adduser -D -G appgroup -u 1000 appuser
 
 RUN apk add --no-cache \
         zlib-dev icu-dev zip libzip-dev curl bash autoconf make gcc libc-dev && \
-    docker-php-ext-install intl pdo pdo_mysql zip && \
+    docker-php-ext-install intl pdo pdo_mysql zip opcache && \
     apk del autoconf make gcc libc-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
@@ -15,7 +15,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --version=${COMPOSER_VERSION}
 
-RUN curl -sSL -o symfony.tar.gz https://github.com/symfony-cli/symfony-cli/releases/download/v${SYMFONY_CLI_VERSION}/symfony-cli_linux_arm64.tar.gz && \
+RUN ARCH=$(uname -m) && \
+    if [ "$ARCH" = "aarch64" ]; then ARCH="arm64"; else ARCH="amd64"; fi && \
+    curl -sSL -o symfony.tar.gz \
+    https://github.com/symfony-cli/symfony-cli/releases/download/v${SYMFONY_CLI_VERSION}/symfony-cli_linux_${ARCH}.tar.gz && \
     tar xzf symfony.tar.gz && \
     mv symfony /usr/local/bin/symfony && \
     rm symfony.tar.gz
