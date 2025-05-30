@@ -97,7 +97,7 @@ home:
       title: "My Portfolio"
     reviews:
       title: "Your feedback matters"
-      publication_info: "Published on %date% on %source%"
+      published_on: "Published on %date% on %source%"
     contact:
       title: "Let's talk"
       form:
