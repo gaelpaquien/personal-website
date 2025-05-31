@@ -29,9 +29,6 @@ jobs:
           
           cd /var/www/sites/gaelpaquien.com
           
-          echo "🔧 Fixing git permissions..."
-          git config --global --add safe.directory /var/www/sites/gaelpaquien.com
-          
           echo "📥 Pulling latest changes..."
           git pull origin master
           
