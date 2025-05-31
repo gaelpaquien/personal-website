@@ -27,7 +27,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     env_file:
-      - app/.env.prod
+      - app/.env.local
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}

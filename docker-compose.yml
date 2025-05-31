@@ -41,6 +41,8 @@ services:
     image: phpmyadmin/phpmyadmin
     ports:
       - "8899:80"
+    env_file:
+      - app/.env.local
     environment:
       - PMA_HOST=mysql
       - PMA_USER=${MYSQL_USER}
