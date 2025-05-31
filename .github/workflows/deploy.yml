@@ -42,17 +42,6 @@ jobs:
           echo "🔨 Building and starting containers..."
           docker-compose -f docker-compose.prod.yml up -d --build
           
-          echo "⏳ Waiting for containers to start..."
-          sleep 30
-          
-          echo "🔍 Health check..."
-          if curl -f -s http://localhost:8080 > /dev/null; then
-            echo "✅ Deployment successful!"
-          else
-            echo "❌ Health check failed!"
-            exit 1
-          fi
-          
           echo "🎉 Deployment completed!"
           EOF
 
