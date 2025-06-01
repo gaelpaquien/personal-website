@@ -34,12 +34,6 @@ jobs:
           echo "🛑 Stopping containers..."
           docker-compose -f docker-compose.prod.yml down --remove-orphans
           
-          echo "🧹 Cleaning problematic files..."
-          rm -rf app/vendor/ app/var/cache/ app/var/log/ || true
-          
-          echo "📁 Creating directories with correct permissions..."
-          mkdir -p app/vendor/ app/var/cache/ app/var/log/
-          
           echo "🔨 Building and starting containers..."
           docker-compose -f docker-compose.prod.yml up -d --build
           
