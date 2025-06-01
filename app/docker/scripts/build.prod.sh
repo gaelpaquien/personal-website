@@ -4,9 +4,9 @@ cd /var/www
 
 echo "Starting building app..."
 
-if [ ! -f ./app/.env.local ]; then
+if [ ! -f .env.local ]; then
   echo "Creating .env.local from .env..."
-  cp ./app/.env ./app/.env.local
+  cp .env .env.local
 fi
 
 echo "Installing dependencies..."
