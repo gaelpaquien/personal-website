@@ -12,14 +12,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --version=${COMPOSER_VERSION}
 
-RUN addgroup -g 1000 appgroup && adduser -D -G appgroup -u 1000 appuser
+RUN addgroup -g 1002 appgroup && adduser -D -G appgroup -u 1002 appuser
 
 COPY /app/docker/scripts/build.prod.sh /usr/local/bin/scripts/
 RUN chmod +x /usr/local/bin/scripts/build.prod.sh
 
 WORKDIR /var/www
-
-RUN chown -R appuser:appgroup /var/www
 
 USER appuser
 
