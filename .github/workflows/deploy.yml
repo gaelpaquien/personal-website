@@ -32,10 +32,10 @@ jobs:
           git pull origin master
           
           echo "Stopping containers..."
-          docker-compose -f docker-compose.prod.yml down
+          docker-compose -f docker-compose.prod.yml down --remove-orphans
           
           echo "Cleaning problematic files..."
-          sudo rm -rf app/vendor/ app/var/cache/ || true
+          rm -rf app/vendor/ app/var/cache/ || true
           
           echo "Building and starting containers..."
           docker-compose -f docker-compose.prod.yml up -d --build
