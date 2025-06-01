@@ -25,30 +25,24 @@ jobs:
           ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
           set -e
           
-          echo "🚀 Starting deployment..."
-          
+          echo "Starting deployment..."
           cd /var/www/sites/gaelpaquien.com
           
-          echo "📥 Pulling latest changes..."
+          echo "Pulling latest changes..."
           git pull origin master
           
-          echo "🛑 Stopping containers..."
+          echo "Stopping containers..."
           docker-compose -f docker-compose.prod.yml down
           
-          echo "🧹 Cleaning up old images..."
-          docker image prune -f
-          docker container prune -f
-          
-          echo "🔨 Building and starting containers..."
+          echo "Building and starting containers..."
           docker-compose -f docker-compose.prod.yml up -d --build
           
-          echo "🎉 Deployment completed!"
           EOF
 
       - name: Notify success
         if: success()
-        run: echo "✅ Deployment to production successful!"
+        run: echo "Deployment to production successful!"
 
       - name: Notify failure
         if: failure()
-        run: echo "❌ Deployment failed!"
+        run: echo "Deployment failed!"
