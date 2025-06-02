@@ -29,11 +29,11 @@ jobs:
           
           git pull origin master
           
-          docker compose -f docker-compose.prod.yml build app --no-cache --progress=plain
+          docker compose -f docker-compose.prod.yml build app
           
           docker compose -f docker-compose.prod.yml up -d --no-deps app nginx --wait
           
-          docker compose -f docker-compose.prod.yml ps --filter "status=running"
+          docker image prune -f
 
           EOF
 
