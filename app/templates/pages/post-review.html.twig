@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'post_review.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ 'post_review.title' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/post-review/breadcrumb.html.twig" %}
@@ -20,7 +20,7 @@
                         aria-labelledby="post-review__container-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="post-review__container-title-h2">{{ 'post_review.title' | trans }}</h2>
+                <h1 id="post-review__container-title-h2">{{ 'post_review.title' | trans }}</h1>
             </div>
         </div>
 
