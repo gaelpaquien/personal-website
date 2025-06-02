@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'blog.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ 'blog.title' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/blog/index/breadcrumb.html.twig" %}
@@ -19,7 +19,7 @@
                         aria-labelledby="blog__container-title-h2"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="blog__container-title-h2">{{ 'blog.title' | trans }}</h2>
+                <h1 id="blog__container-title-h2">{{ 'blog.title' | trans }}</h1>
             </div>
         </div>
 

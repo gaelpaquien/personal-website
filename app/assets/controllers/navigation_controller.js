@@ -74,7 +74,7 @@ export default class extends Controller {
         document.body.style.overflow = isOpen ? 'hidden' : 'auto';
         this.overlayTarget.style.display = isOpen ? 'block' : 'none';
         this.overlayTarget.style.top = isOpen ? '0' : '';
-        this.overlayTarget.style.height = isOpen ? '100vh' : '';
+        this.overlayTarget.style.height = isOpen ? '100svh' : '';
 
         if (isOpen) {
             if (this.hasMenuContentTarget) {
