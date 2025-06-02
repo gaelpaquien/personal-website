@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ 'navigation.sitemap' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ 'navigation.sitemap' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/sitemap/breadcrumb.html.twig" %}
@@ -19,7 +19,7 @@
                         aria-labelledby="sitemap-page-title"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="sitemap-page-title">{{ 'sitemap.title' | trans }}</h2>
+                <h1 id="sitemap-page-title">{{ 'sitemap.title' | trans }}</h1>
             </div>
         </div>
 

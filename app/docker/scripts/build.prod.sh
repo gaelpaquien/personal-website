@@ -2,7 +2,7 @@
 
 cd /var/www
 
-echo "Starting building app..."
+echo "Starting building app in PROD environment..."
 
 if [ ! -f .env.local ]; then
   echo "Creating .env.local from .env..."

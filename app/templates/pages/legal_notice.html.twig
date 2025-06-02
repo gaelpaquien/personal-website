@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block robots %}noindex, follow{% endblock %}
-{% block title %}{{ 'legal_notice.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ 'legal_notice.title' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/legal-notice/breadcrumb.html.twig" %}
@@ -20,7 +20,7 @@
                         aria-labelledby="legal-notice-title"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="legal-notice-title">{{ 'legal_notice.title' | trans }}</h2>
+                <h1 id="legal-notice-title">{{ 'legal_notice.title' | trans }}</h1>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.acceptance' | trans }}</p>
             </div>
@@ -38,7 +38,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.modifications.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.modifications.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.modifications.text' | trans }}</p>
             </div>
@@ -48,7 +48,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.publisher.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.publisher.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <ul>
                     <li>{{ 'legal_notice.content.publisher.name' | trans({'%info.author.name%': 'info.author.name' | trans}) }}</li>
@@ -79,7 +79,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.host.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.host.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <ul>
                     <li>{{ 'legal_notice.content.host.name' | trans({'%info.host.name%': 'info.host.name' | trans}) }}</li>
@@ -98,7 +98,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.media.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.media.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.media.text' | trans }}</p>
             </div>
@@ -108,7 +108,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.intellectual_property.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.intellectual_property.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.intellectual_property.source_code' | trans }}</p>
                 <br>
@@ -136,7 +136,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.external_links.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.external_links.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.external_links.text' | trans }}</p>
             </div>
@@ -146,7 +146,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.site_use.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.site_use.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.site_use.text' | trans }}</p>
             </div>
@@ -156,7 +156,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.user_responsibility.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.user_responsibility.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.user_responsibility.text' | trans }}</p>
             </div>
@@ -166,7 +166,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.liability_limitation.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.liability_limitation.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.liability_limitation.intro' | trans }}</p>
                 <ul>
@@ -182,7 +182,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.applicable_law.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.applicable_law.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'legal_notice.content.applicable_law.text' | trans }}</p>
             </div>
@@ -192,7 +192,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'legal_notice.content.privacy_policy.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'legal_notice.content.privacy_policy.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>
                     {{ 'legal_notice.content.privacy_policy.text' | trans }}

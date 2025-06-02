@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block robots %}noindex, follow{% endblock %}
-{% block title %}{{ 'privacy_policy.title' | trans }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ 'privacy_policy.title' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/privacy-policy/breadcrumb.html.twig" %}
@@ -20,7 +20,7 @@
                         aria-labelledby="privacy-policy-title"
                     {% endblock %}
                 {% endembed %}
-                <h2 id="privacy-policy-title">{{ 'privacy_policy.title' | trans }}</h2>
+                <h1 id="privacy-policy-title">{{ 'privacy_policy.title' | trans }}</h1>
             </div>
         </div>
 
@@ -121,7 +121,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_breach.title' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'privacy_policy.content.data_breach.title' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>{{ 'privacy_policy.content.data_breach.text' | trans }}</p>
             </div>
@@ -131,7 +131,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-up-effects"
         >
-            <h3 class="legal-pages__container-block-title">{{ 'navigation.legal_notice' | trans }}</h3>
+            <h2 class="legal-pages__container-block-title">{{ 'navigation.legal_notice' | trans }}</h2>
             <div class="legal-pages__container-block-content">
                 <p>
                     {{ 'privacy_policy.content.legal_notice.text' | trans }}

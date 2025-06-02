@@ -11,7 +11,7 @@
      data-url="{{ path('app_blog_show', {'slug': related_blog_post_slug}) }}"
 >
     <div class="card-list-item-image">
-        <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}">
+        <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}" width="800" height="450" loading="lazy">
         <div class="card-list-item-image-title">
             <h3 class="card-list-item-content-title">{{ title }}</h3>
         </div>

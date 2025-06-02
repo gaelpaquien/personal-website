@@ -119,16 +119,14 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-left-effects"
         >
-            <h1>
-                <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.return_home_aria' | trans }}">
-                    {% embed 'assets/svg/logo.html.twig' %}
-                        {% block attributes %}
-                            class="scale-effects"
-                            aria-hidden="true"
-                        {% endblock %}
-                    {% endembed %}
-                </a>
-            </h1>
+            <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.return_home_aria' | trans }}">
+                {% embed 'assets/svg/logo.html.twig' %}
+                    {% block attributes %}
+                        class="scale-effects"
+                        aria-hidden="true"
+                    {% endblock %}
+                {% endembed %}
+            </a>
         </div>
 
         <button class="fade-in-effects-initial header__container-menu-open" type="button" aria-label="{{ 'actions.open_menu' | trans }}" aria-expanded="false"
