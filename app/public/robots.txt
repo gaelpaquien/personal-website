@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: /example/
-Sitemap: https://www.gaelpaquien.com/sitemap.xml
+Sitemap: https://gaelpaquien.com/sitemap.xml

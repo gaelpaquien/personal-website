@@ -11,7 +11,14 @@
         <meta charset="UTF-8">
 
         <!-- Canonical -->
-        <link rel="canonical" href="{{ app.request.uri }}">
+        <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+
+        <!-- Hreflang -->
+        {% if app.request.attributes.get('_route') %}
+            <link rel="alternate" hreflang="fr" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
+            <link rel="alternate" hreflang="en" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}">
+            <link rel="alternate" hreflang="x-default" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
+        {% endif %}
 
         <!-- Robots -->
         <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
@@ -37,11 +44,12 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@600&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Chivo:wght@600&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link href="https://fonts.googleapis.com/css2?family=Chivo:wght@600&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap" rel="stylesheet"></noscript>
 
         <!-- Open Graph -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
         <meta property="og:locale" content="{{ locale }}">
         <meta property="og:title" content="{% block og_title %}{{ 'info.site.title' | trans }}{% endblock %}">
         <meta property="og:description" content="{% block og_description %}{{ 'info.site.description' | trans }}{% endblock %}">
@@ -56,6 +64,21 @@
         {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
         <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
 
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "{{ 'info.author.name' | trans }}",
+              "jobTitle": "{{ 'info.author.job_title' | trans }}",
+              "url": "https://gaelpaquien.com",
+              "sameAs": [
+                "https://github.com/gaelpaquien",
+                "https://linkedin.com/in/gaelpaquien"
+              ]
+            }
+        </script>
+    
         <!-- AssetMapper -->
         {% block mapper %}{{ importmap('app') }}{% endblock %}
     </head>

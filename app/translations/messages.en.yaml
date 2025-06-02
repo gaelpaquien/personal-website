@@ -1,9 +1,9 @@
 info:
   site:
     name: "gaelpaquien.com"
-    url: "https://www.gaelpaquien.com"
-    title: "Gaël Paquien, PHP, Symfony, Laravel, and WordPress developer"
-    description: "My name is Gaël, passionate and specialized in PHP, Symfony, Laravel and WordPress development, with extensive skills in MySQL, JavaScript, Docker, Git, Sass, WordPress, and much more."
+    url: "https://gaelpaquien.com"
+    title: "Gaël Paquien - PHP Backend Developer | Symfony, Laravel"
+    description: "Passionate about creating performant and robust web applications, I develop custom solutions with expertise in PHP, Symfony and Laravel. My know-how also includes MySQL, Docker, JavaScript, WordPress and much more."
   host:
     name: "Infomaniak"
     url: "https://www.infomaniak.com/"
@@ -11,6 +11,7 @@ info:
   author:
     name: "Gaël Paquien"
     email: "contact@gaelpaquien.com"
+    job_title: "Backend Developer"
   company:
     business_type: "French entrepreneur individual (EI)"
     ape_code: "APE Code 6201Z"
