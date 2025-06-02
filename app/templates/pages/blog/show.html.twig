@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ post.title }} - {{ 'info.site.title' | trans }} - {{ 'info.site.name' | trans }}{% endblock %}
+{% block title %}{{ post.title }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
     {%  include "components/blog/show/breadcrumb.html.twig" with {
@@ -16,7 +16,7 @@
                  data-animation-fade-in-target="fadeIn"
                  data-animation="fade-in-up-effects"
             >
-                <h2 class="blog-post__header-title">{{ post.title }}</h2>
+                <h1 class="blog-post__header-title">{{ post.title }}</h1>
 
                 <div class="blog-post__header-image">
                     <img src="{{ asset(post.image) }}" alt="{{ post.title }}" />
@@ -35,7 +35,7 @@
 
             {% if post.links|length > 0 %}
                 <div class="blog-post__links">
-                    <h3 class="blog-post__links-title">{{ 'blog.related_resources'|trans }}</h3>
+                    <h2 class="blog-post__links-title">{{ 'blog.related_resources'|trans }}</h2>
                     <ul class="blog-post__links-list">
                         {% for link in post.links %}
                             <li class="blog-post__links-item">
