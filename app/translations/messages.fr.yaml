@@ -1,9 +1,9 @@
 info:
   site:
     name: "gaelpaquien.com"
-    url: "https://www.gaelpaquien.com"
-    title: "Gaël Paquien, Développeur PHP, Symfony, Laravel et WordPress"
-    description: "Je m'appelle Gaël, passionné et spécialisé en développement PHP, Symfony, Laravel et WordPress, avec un savoir-faire étendu à MySQL, JavaScript, Docker, Git, Sass, et bien plus encore."
+    url: "https://gaelpaquien.com"
+    title: "Gaël Paquien - Développeur Backend PHP | Symfony, Laravel"
+    description: "Passionné par la création d'applications web performantes et robustes, je développe des solutions sur mesure avec une expertise en PHP, Symfony et Laravel. Mon savoir-faire inclut également MySQL, Docker, JavaScript, WordPress et bien plus encore."
   host:
     name: "Infomaniak"
     url: "https://www.infomaniak.com/"
@@ -11,6 +11,7 @@ info:
   author:
     name: "Gaël Paquien"
     email: "contact@gaelpaquien.com"
+    job_title: "Développeur Backend"
   company:
     business_type: "Entrepreneur individuel (EI)"
     ape_code: "Code APE 6201Z"
