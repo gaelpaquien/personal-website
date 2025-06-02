@@ -2,7 +2,7 @@ name: Deploy to Production
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -25,22 +25,16 @@ jobs:
           ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
           set -e
           
-          echo "🚀 Starting deployment..."
           cd /var/www/sites/gaelpaquien.com
           
-          echo "📥 Pulling latest changes..."
           git pull origin master
           
-          echo "🛑 Stopping containers..."
-          docker-compose -f docker-compose.prod.yml down --remove-orphans
+          docker compose -f docker-compose.prod.yml build app
           
-          echo "🔨 Building and starting containers..."
-          docker-compose -f docker-compose.prod.yml up -d --build
+          docker compose -f docker-compose.prod.yml up -d --no-deps app nginx --wait
           
-          echo "✅ Checking container status..."
-          docker-compose -f docker-compose.prod.yml ps
-          
-          echo "🎉 Deployment completed!"
+          docker compose -f docker-compose.prod.yml ps --filter "status=running"
+
           EOF
 
       - name: Notify success
