@@ -12,7 +12,9 @@
      data-action="click->card#pressCard"
      data-url="{{ path('app_blog_show', {'slug': slug}) }}"
 >
-    <img src="{{ asset(image) }}" alt="{{ title }}" >
+    <div class="card-list-item-image">
+        <img src="{{ asset(image) }}" alt="{{ title }}" >
+    </div>
     <div class="card-list-item-content">
         <h2 class="card-list-item-content-title">{{ title }}</h2>
         <div class="card-list-item-content-excerpt">
