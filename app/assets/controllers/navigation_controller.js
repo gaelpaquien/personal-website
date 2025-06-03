@@ -83,11 +83,13 @@ export default class extends Controller {
             }
 
             this.menuTarget.style.top = '0';
-            this.menuTarget.style.paddingTop = '2.5rem';
+            this.menuTarget.style.paddingTop = '1.5rem';
             this.menuTarget.style.borderLeft = 'solid 0.1rem var(--color-text)';
             this.menuTarget.style.width = `${breakpoint.menuWidth}%`;
 
             if (window.innerWidth >= 768) {
+                this.menuTarget.style.paddingTop = '2.5rem';
+
                 setTimeout(() => {
                     this.mainContent.style.width = `${100 - breakpoint.menuWidth}%`;
                 }, 300);
