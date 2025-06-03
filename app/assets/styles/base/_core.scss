@@ -3,19 +3,22 @@ html {
     width: 100%;
     scrollbar-width: auto;
     scrollbar-color: var(--color-text) var(--color-primary);
-    background-color: var(--color-secondary);
+    overflow-x: hidden;
+    background-color: red;
 }
 
 body {
     width: 100%;
     min-height: 100svh;
     overflow-x: hidden;
-    background-color: var(--color-secondary);
+    background-color: red;
     @extend %flex-column;
 }
 
 main {
     flex: 1;
+    min-height: 100vh;
+    overflow-x: hidden;
     background-color: var(--color-secondary);
 }
 
