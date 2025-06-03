@@ -7,20 +7,12 @@
         </script>
 
         {% set locale = app.request.locale %}
+        {% set current_url = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'), true) ?: ('info.site.url' | trans) %}
 
         <meta charset="UTF-8">
 
         <!-- Canonical -->
-        {% if app.request.attributes.get('_route') %}
-            <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
-        {% endif %}
-
-        <!-- Hreflang -->
-        {% if app.request.attributes.get('_route') %}
-            <link rel="alternate" hreflang="fr" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
-            <link rel="alternate" hreflang="en" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}">
-            <link rel="alternate" hreflang="x-default" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}">
-        {% endif %}
+        <link rel="canonical" href="{{ current_url }}">
 
         <!-- Robots -->
         <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
@@ -51,15 +43,13 @@
 
         <!-- Open Graph -->
         <meta property="og:type" content="website">
-        {% if app.request.attributes.get('_route') %}
-            <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
-        {% endif %}
+        <meta property="og:url" content="{{ current_url }}">
         <meta property="og:locale" content="{{ locale }}">
         <meta property="og:title" content="{% block og_title %}{{ 'info.site.title' | trans }}{% endblock %}">
         <meta property="og:description" content="{% block og_description %}{{ 'info.site.description' | trans }}{% endblock %}">
         <meta property="og:locale:alternate" content="{{ locale == 'fr' ? 'en' : 'fr' }}">
         {% set og_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
-        <meta property="og:image" content="{% block og_image %}{{ asset(og_image) }}{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{{ asset(og_image, null, true) }}{% endblock %}">
         <meta property="og:image:alt" content="{{ 'info.site.description' | trans }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
@@ -70,7 +60,7 @@
         <meta name="twitter:title" content="{% block twitter_title %}{{ 'info.site.title' | trans }}{% endblock %}">
         <meta name="twitter:description" content="{% block twitter_description %}{{ 'info.site.description' | trans }}{% endblock %}">
         {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
-        <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image) }}{% endblock %}">
+        <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image, null, true) }}{% endblock %}">
         <meta name="twitter:image:alt" content="{{ 'info.site.description' | trans }}">
         <meta name="twitter:image:width" content="1200">
         <meta name="twitter:image:height" content="630">
@@ -82,10 +72,11 @@
               "@type": "Person",
               "name": "{{ 'info.author.name' | trans }}",
               "jobTitle": "{{ 'info.author.job_title' | trans }}",
-              "url": "https://gaelpaquien.com",
+              "url": "{{ current_url }}",
               "sameAs": [
                 "https://github.com/gaelpaquien",
-                "https://linkedin.com/in/gaelpaquien"
+                "https://linkedin.com/in/gaelpaquien",
+                "https://x.com/gaelpaquien"
               ]
             }
         </script>
