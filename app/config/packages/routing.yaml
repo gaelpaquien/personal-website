@@ -7,4 +7,5 @@ framework:
 when@prod:
     framework:
         router:
+            default_uri: 'https://gaelpaquien.com'
             strict_requirements: null
