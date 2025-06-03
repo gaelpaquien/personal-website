@@ -48,18 +48,17 @@
 
       img {
         width: 100%;
-        height: auto;
+        height: 600px;
         object-fit: cover;
         display: block;
-        aspect-ratio: 16/9;
 
-        @supports not (aspect-ratio: 16/9) {
+/*        @supports not (aspect-ratio: 16/9) {
           height: 600px;
 
           @include respond-to('breakpoint-768') {
             height: 650px;
           }
-        }
+        }*/
       }
 
       &-title {
