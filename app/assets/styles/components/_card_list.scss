@@ -32,7 +32,8 @@
       opacity: 0.8;
     }
 
-    > img {
+    &-image {
+      position: relative;
       width: 100%;
       height: auto;
       object-fit: cover;
@@ -40,16 +41,12 @@
       aspect-ratio: 16/9;
 
       @supports not (aspect-ratio: 16/9) {
-        height: 200px;
+        height: 600px;
 
         @include respond-to('breakpoint-768') {
-          height: 250px;
+          height: 650px;
         }
       }
-    }
-
-    &-image {
-      position: relative;
 
       &::before {
         content: '';
