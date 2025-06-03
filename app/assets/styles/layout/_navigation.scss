@@ -39,7 +39,11 @@ nav {
     hr {
         align-items: center;
         border: 0.1rem solid var(--color-text);
-        margin: 0 1.5rem;
+        margin: 0 1rem;
+
+        @include respond-to('breakpoint-768') {
+            margin: 0 1.5rem;
+        }
     }
 
     .language-icons {
@@ -79,7 +83,7 @@ nav {
 }
 
 .navigation__link {
-    font-size: calc(0.65 * $font-size-h2);
+    font-size: calc(0.6 * $font-size-h2);
     text-align: left;
     background: none;
     border: none;
@@ -87,10 +91,14 @@ nav {
     padding: 0;
     cursor: pointer;
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
 
     @include respond-to('breakpoint-576') {
         font-size: calc(0.8 * $font-size-h2);
+    }
+
+    @include respond-to('breakpoint-768') {
+        margin-bottom: 1.25rem;
     }
 }
 
@@ -98,7 +106,11 @@ nav {
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
+
+    @include respond-to('breakpoint-768') {
+        margin-bottom: 1.25rem;
+    }
 
     &::after {
         content: '';
@@ -115,7 +127,11 @@ nav {
 
 .navigation__dropdown {
     padding: 0 1.5rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
+
+    @include respond-to('breakpoint-768') {
+        margin-bottom: 1.25rem;
+    }
 
     &-title {
         width: 100%;
@@ -199,11 +215,15 @@ nav {
 
     &-item {
         font-size: calc(0.65 * $font-size-h2);
-        margin-bottom: 1.25rem;
+        margin-bottom: 0.75rem;
         @include flex-container(row, space-between, center);
 
         @include respond-to('breakpoint-576') {
             font-size: calc(0.8 * $font-size-h2);
+        }
+
+        @include respond-to('breakpoint-768') {
+            margin-bottom: 1.25rem;
         }
 
         svg {
