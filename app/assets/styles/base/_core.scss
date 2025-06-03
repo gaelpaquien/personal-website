@@ -1,30 +1,38 @@
+* {
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
     width: 100%;
     scrollbar-width: auto;
     scrollbar-color: var(--color-text) var(--color-primary);
     overflow-x: hidden;
-    background-color: red;
 }
 
 body {
-    width: 100%;
+    top: 0 !important;
+    width: 100vw;
     min-height: 100svh;
     overflow-x: hidden;
-    background-color: red;
+    position: relative;
     @extend %flex-column;
 }
 
 main {
     flex: 1;
+    width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
     background-color: var(--color-secondary);
 }
 
 section {
+    width: 100%;
     min-height: calc(100svh - 8.1rem);
     padding: 2rem 1.5rem;
+    overflow-x: hidden;
 
     @include respond-to('breakpoint-768') {
         padding: 3.5rem 5rem;
@@ -108,5 +116,11 @@ svg {
 }
 
 .sf-minitoolbar {
+    display: none !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+.skiptranslate {
     display: none !important;
 }
