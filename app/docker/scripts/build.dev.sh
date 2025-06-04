@@ -12,4 +12,4 @@ symfony console cache:clear --env=dev || exit 1
 
 echo "Building app completed successfully!"
 
-exec "$@" || exit 1
+exec "$@"
