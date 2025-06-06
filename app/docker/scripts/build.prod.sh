@@ -24,6 +24,7 @@ php bin/console cache:clear --env=prod --no-interaction || exit 1
 
 echo "Building assets..."
 php bin/console importmap:install --no-interaction || exit 1
+php bin/console sass:build -v || exit 1
 php bin/console asset-map:compile --env=prod || exit 1
 
 echo "Warming up cache..."
@@ -31,9 +32,6 @@ php bin/console cache:warmup --env=prod --no-interaction || exit 1
 
 echo "Generating sitemaps..."
 php bin/console presta:sitemaps:dump public --env=prod --no-interaction || exit 1
-
-echo "Building Sass..."
-php bin/console sass:build -v || exit 1
 
 echo "Building app completed successfully!"
 
