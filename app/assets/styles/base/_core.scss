@@ -24,7 +24,7 @@ main {
 }
 
 section {
-    min-height: auto;
+    min-height: calc(100svh - 8.1rem);
     padding: 2rem 1.5rem;
     overflow-x: hidden;
 
