@@ -35,9 +35,16 @@
     &-image {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
+      height: 200px;
       overflow: hidden;
+
+      @include respond-to('breakpoint-576') {
+        height: 250px;
+      }
+
+      @include respond-to('breakpoint-768') {
+        height: 300px;
+      }
 
       &::before {
         content: '';
