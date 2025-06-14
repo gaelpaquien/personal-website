@@ -12,17 +12,26 @@ export default class extends Controller {
     initialize() {
         this.handleScroll = this.handleScroll.bind(this);
         this.debouncedScroll = this.debounce(this.handleScroll.bind(this), 5);
+        this.preventHorizontalScroll = this.preventHorizontalScroll.bind(this);
     }
 
     connect() {
         this.header = document.querySelector(this.headerSelectorValue);
         this.footer = document.querySelector('footer');
         window.addEventListener('scroll', this.debouncedScroll);
+        window.addEventListener('scroll', this.preventHorizontalScroll);
         this.handleScroll();
     }
 
     disconnect() {
         window.removeEventListener('scroll', this.debouncedScroll);
+        window.removeEventListener('scroll', this.preventHorizontalScroll);
+    }
+
+    preventHorizontalScroll() {
+        if (window.scrollX !== 0) {
+            window.scrollTo(0, window.scrollY);
+        }
     }
 
     debounce(func, wait) {
@@ -91,10 +100,17 @@ export default class extends Controller {
 
     scrollToTop(event) {
         if (event) event.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+
+        const targetY = 0;
+        const currentY = window.scrollY;
+
+        if (currentY > 0) {
+            window.scrollTo({
+                top: targetY,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
     }
 
     scrollToSection(event) {
@@ -133,6 +149,7 @@ export default class extends Controller {
 
         window.scrollTo({
             top: offsetPosition,
+            left: 0,
             behavior: 'smooth'
         });
     }
