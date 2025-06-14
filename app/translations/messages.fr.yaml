@@ -45,12 +45,12 @@ actions:
   optional: "Facultatif"
 
 navigation:
-  return_home: "Retour à l'accueil"
+  go_to_home: "Retour à l'accueil"
   go_to_page: "Allez vers la page"
   home: "Accueil"
   home_aria: "Découvrir la page d'accueil"
-  portfolio: "Portfolio"
-  portfolio_aria: "Découvrir le portfolio de %info.author.name%"
+  projects: "Projets en vedette"
+  projects_aria: "Découvrir le projects de %info.author.name%"
   reviews: "Avis"
   reviews_aria: "Découvrir les avis de %info.author.name%"
   reviews_post: "Publier un avis"
@@ -86,7 +86,7 @@ home:
     title_secondary: "Développeur Backend"
     image_alt: "Illustration et présentation de %info.author.name%, %info.site.title%."
     presentation:
-      text1: "Passionné par la création d'applications web performantes et robustes, je développe des solutions sur mesure avec une expertise en PHP, Symfony et Laravel. Mon savoir-faire inclut également MySQL, Docker, JavaScript, WordPress et bien plus encore."
+      text1: "Passionné par la création d'applications web performantes et robustes, je développe des solutions sur mesure avec une expertise en PHP, Symfony et Laravel. Mon savoir-faire inclut également MySQL, Docker, WordPress et bien plus encore."
       text2: "Je serais ravi d'échanger avec vous sur la manière dont je peux répondre efficacement à vos besoins et contribuer à vos succès futurs."
     buttons:
       discover_projects: "Découvrir mes projets"
@@ -94,11 +94,17 @@ home:
       lets_talk: "Discutons ensemble"
       lets_talk_aria: "Prenez contact avec %info.author.name%"
   sections:
-    portfolio:
-      title: "Mon portfolio"
+    projects:
+      title: "Projets en vedette"
+      buttons:
+        discover_blog: "Découvrir mon blog"
+        discover_blog_aria: "Découvrir le blog de %info.author.name%"
+        discuss: "Discutons ensemble"
+        discuss_aria: "Contactez %info.author.name% pour discuter de vos projets"
     reviews:
-      title: "Vos avis comptent"
+      title: "Vos avis"
       published_on: "Publié le %date% sur %source%"
+      go_to_this_review: "Voir cet avis"
     contact:
       title: "Discutons ensemble"
       form:
@@ -119,12 +125,15 @@ home:
         privacy_notice: "Les données saisies dans ce formulaire ne sont pas stockées et ne sont utilisées que pour vous répondre."
 
 blog:
-  title: "Mon blog"
+  title: "Blog"
   last_update: "Dernière modification réalisée le"
   related_resources: "Ressources associées"
+  discover_more: "Découvrir plus d'articles"
+  discover_more_aria: "Découvrir plus d'articles du blog de %info.author.name%"
 
 post_review:
   title: "Publier un avis"
+  publish_review: "Publier l'avis"
   form:
     identity: "Identité"
     first_name: "Prénom"

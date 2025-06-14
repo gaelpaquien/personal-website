@@ -45,12 +45,12 @@ actions:
   optional: "Optional"
 
 navigation:
-  return_home: "Return to home"
+  go_to_home: "Return to home"
   go_to_page: "Go to the page"
   home: "Home"
   home_aria: "Discover home page"
-  portfolio: "Portfolio"
-  portfolio_aria: "Discover %info.author.name%'s portfolio"
+  projects: "Featured Projects"
+  projects_aria: "Discover %info.author.name%'s projects"
   reviews: "Reviews"
   reviews_aria: "Read reviews about %info.author.name%"
   reviews_post: "Post a review"
@@ -86,7 +86,7 @@ home:
     title_secondary: "Backend Developer"
     image_alt: "Illustration and presentation of %info.author.name%, %info.site.title%."
     presentation:
-      text1: "Passionate about creating performant and robust web applications, I develop custom solutions with expertise in PHP, Symfony and Laravel. My know-how also includes MySQL, Docker, JavaScript, WordPress and much more."
+      text1: "Passionate about creating performant and robust web applications, I develop custom solutions with expertise in PHP, Symfony and Laravel. My know-how also includes MySQL, Docker, WordPress and much more."
       text2: "I would be delighted to discuss how I can effectively address your needs and contribute to your future success."
     buttons:
       discover_projects: "Discover my projects"
@@ -94,11 +94,17 @@ home:
       lets_talk: "Let's talk"
       lets_talk_aria: "Contact %info.author.name%"
   sections:
-    portfolio:
-      title: "My Portfolio"
+    projects:
+      title: "Featured Projects"
+      buttons:
+        discover_blog: "Discover my blog"
+        discover_blog_aria: "Discover %info.author.name%'s blog"
+        discuss: "Let's talk"
+        discuss_aria: "Contact %info.author.name% to discuss your project"
     reviews:
-      title: "Your feedback matters"
+      title: "Your feedback"
       published_on: "Published on %date% on %source%"
+      go_to_this_review: "Go to this review"
     contact:
       title: "Let's talk"
       form:
@@ -119,12 +125,15 @@ home:
         privacy_notice: "The data entered in this form is not stored and is only used to respond to you."
 
 blog:
-  title: "My blog"
+  title: "Blog"
   last_update: "Last update made on"
   related_resources: "Related resources"
+  discover_more: "Discover more articles"
+  discover_more_aria: "Discover more articles on the blog of %info.author.name%"
 
 post_review:
   title: "Post a review"
+  publish_review: "Publish your review"
   form:
     identity: "Identity"
     first_name: "First Name"
@@ -134,7 +143,7 @@ post_review:
     role: "Role/Position"
     message: "Message/Quote"
     privacy_notice1: "The data entered in this form is stored and used solely to display reviews on this site."
-    privacy_notice2: "The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D)."
+    privacy_notice2: "Your email won't be visible on the site and your name will appear as initials (John D.)."
 
 legal_notice:
   title: "Legal Notice"

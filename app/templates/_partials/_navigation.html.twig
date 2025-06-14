@@ -2,7 +2,7 @@
     <div data-navigation-target="menuContent" class="navigation__content-wrapper">
         <div class="navigation__main-links">
             <button class="link-effects navigation__link" type="button"
-                aria-label="{{ 'navigation.return_home' | trans }}"
+                aria-label="{{ 'navigation.go_to_home' | trans }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
                 data-url-anchor="home-hero"
@@ -11,12 +11,12 @@
             </button>
 
             <button class="link-effects navigation__link" type="button"
-                aria-label="{{ 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
+                aria-label="{{ 'navigation.projects_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_main_index') }}"
-                data-url-anchor="home-portfolio"
+                data-url-anchor="home-projects"
             >
-                {{ 'navigation.portfolio' | trans }}
+                {{ 'navigation.projects' | trans }}
             </button>
 
             <button class="link-effects navigation__link" type="button"
@@ -38,19 +38,19 @@
             </button>
 
             <button class="link-effects navigation__link" type="button"
+                    aria-label="{{ 'navigation.blog_aria' | trans }}"
+                    data-action="click->navigation#redirect"
+                    data-url="{{ path('app_blog_index') }}"
+            >
+                {{ 'navigation.blog' | trans }}
+            </button>
+
+            <button class="link-effects navigation__link" type="button"
                 aria-label="{{ 'navigation.reviews_post_aria' | trans }}"
                 data-action="click->navigation#redirect"
                 data-url="{{ path('app_review_create') }}"
             >
                 {{ 'navigation.reviews_post' | trans }}
-            </button>
-
-            <button class="link-effects navigation__link" type="button"
-                aria-label="{{ 'navigation.blog_aria' | trans }}"
-                data-action="click->navigation#redirect"
-                data-url="{{ path('app_blog_index') }}"
-            >
-                {{ 'navigation.blog' | trans }}
             </button>
         </div>
 

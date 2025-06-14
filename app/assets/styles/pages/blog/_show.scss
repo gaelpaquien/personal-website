@@ -1,4 +1,4 @@
-.blog-post {
+.blog-article {
   background-color: var(--color-secondary);
   @include flex-container(column, space-around, center);
   margin: 0 auto;
@@ -8,31 +8,19 @@
   }
 
   @include respond-to('breakpoint-1200') {
-      max-width: 65%;
-  }
-
-  @include respond-to('breakpoint-1600') {
-      max-width: 50%;
+      max-width: 60%;
   }
 
   &__header {
     &-title {
-      font-size: calc(0.9 * $font-size-h2);
+      font-size: $font-size-h1;
       text-transform: none;
       line-height: 1.2;
-      margin-bottom: 1rem;
-
-      @include respond-to('breakpoint-576') {
-        font-size: $font-size-h2;
-      }
-
-      @include respond-to('breakpoint-768') {
-          font-size: calc(1.2 * $font-size-h2);
-      }
+      margin-bottom: 1.5rem;
     }
 
     &-image {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
 
       img {
         width: 100%;
@@ -49,7 +37,7 @@
       flex-wrap: wrap;
       gap: 0.25rem;
       cursor: default;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
     }
   }
 
@@ -72,24 +60,46 @@
   }
 
   &__content {
-    font-size: calc(0.9 * $font-size-text);
+    font-size: $font-size-text;
+
+    h2 {
+      font-size: calc(1.1 * $font-size-h2);
+
+      &:not(:first-child) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    p {
+      opacity: 0.85;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 
     @include respond-to('breakpoint-576') {
       font-size: $font-size-text;
     }
 
-    &::after {
+
+  }
+
+  &__links {
+    margin-bottom: 1.5rem;
+
+    &::before {
       content: '';
       display: block;
       width: 100%;
       height: 1px;
       background: linear-gradient(to right, transparent, var(--color-text) 50%, transparent);
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
-  }
-
-  &__links {
-    margin-bottom: 1rem;
 
     &-title {
       font-size: calc(0.9 * $font-size-h3);
@@ -179,8 +189,11 @@
     }
   }
 
-  .btn-return-to-home {
-    margin-top: 2.5rem;
+  &__btn {
     @include flex-container(column, center, center);
+
+    .btn {
+      background-color: var(--color-primary);
+    }
   }
 }

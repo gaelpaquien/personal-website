@@ -1,0 +1,14 @@
+.home-projects__container {
+    background-color: var(--color-primary);
+    @include flex-container(column, center, space-between);
+
+    &-btn {
+        display: none;
+
+        @include respond-to('breakpoint-1500') {
+            @include flex-container(row, center, center);
+            margin-top: 5rem;
+            gap: 4rem;
+        }
+    }
+}

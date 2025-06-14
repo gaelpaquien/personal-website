@@ -1,17 +1,12 @@
-{% set title = title|default('Titre du projet') %}
-{% set description = description|default('Description du projet') %}
-{% set image = image|default('images/portfolio/portfolio-default.webp') %}
-{% set tags = tags|default([]) %}
-
 <div class="fade-in-effects-initial card-list-item"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
      data-card-target="card"
      data-action="click->card#pressCard"
-     data-url="{{ path('app_blog_show', {'slug': related_blog_post_slug}) }}"
+     data-url="{{ path('app_blog_show', {'slug': related_article_slug}) }}"
 >
     <div class="card-list-item-image">
-        <img src="{{ asset(image) }}" alt="{{ title }} - {{ description }}" width="800" height="450" loading="lazy">
+        <img src="{{ asset('images/pages/blog/articles/' ~ (image ?: 'default.webp')) }}" alt="{{ image_alt }}" width="800" height="450" loading="lazy">
         <div class="card-list-item-image-title">
             <h3 class="card-list-item-content-title">{{ title }}</h3>
         </div>

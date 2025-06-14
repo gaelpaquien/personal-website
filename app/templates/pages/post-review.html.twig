@@ -54,7 +54,7 @@
                 <textarea id="form-review-message" name="form-review-message" placeholder="{{ 'post_review.form.message' | trans }}" required></textarea>
             </div>
             <button class="btn" type="submit" aria-label="{{ 'navigation.reviews_post' | trans }}">
-                {{ 'actions.publish' | trans }}
+                {{ 'post_review.publish_review' | trans }}
             </button>
             <div class="form-infos">
                 <p>*{{ 'post_review.form.privacy_notice1' | trans }}</p>
@@ -62,6 +62,6 @@
             </div>
         </form>
 
-        {% include "components/buttons/btn-return-to-home.html.twig" %}
+        {% include "components/buttons/btn-go-to-home.html.twig" %}
     </section>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% set title = title|default('Titre de l\'article') %}
 {% set content = content|default('Contenu de l\'article') %}
-{% set image = image|default('images/blog/blog-default.webp') %}
+{% set image = image|default('images/pages/blog/articles/blog-default.webp') %}
 {% set tags = tags|default([]) %}
 {% set updated_at = updated_at|default('01/01/2024') %}
 {% set slug = slug|default('') %}
@@ -13,15 +13,15 @@
      data-url="{{ path('app_blog_show', {'slug': slug}) }}"
 >
     <div class="card-list-item-image">
-        <img src="{{ asset(image) }}" alt="{{ title }}" >
+        <img src="{{ asset('images/pages/blog/articles/' ~ (image ?: 'default.webp')) }}" alt="{{ image_alt }}">
     </div>
     <div class="card-list-item-content">
         <h2 class="card-list-item-content-title">{{ title }}</h2>
         <div class="card-list-item-content-excerpt">
-            <p>{{ content }}</p>
+            <p>{{ short_description }}</p>
         </div>
         <div class="card-list-item-content-meta">
-            <p class="card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at|split(' ')[0] }}</p>
+            <p class="card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at }}</p>
         </div>
     </div>
 </div>

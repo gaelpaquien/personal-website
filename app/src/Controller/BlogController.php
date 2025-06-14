@@ -2,42 +2,46 @@
 
 namespace App\Controller;
 
-use App\Service\StaticData;
+use App\Exception\RedirectArticleException;
+use App\Service\ContentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[\Symfony\Component\Routing\Annotation\Route('/', name: 'app_blog_')]
 class BlogController extends AbstractController
 {
+    public function __construct(private readonly ContentService $contentService)
+    {}
+
     #[Route([
         'fr' => '/fr/blog',
         'en' => '/en/blog',
     ], name: 'index', options: ['sitemap' => ['priority' => 0.9, 'changefreq' => 'daily']])]
-    public function index(StaticData $staticData): Response
+    public function index(Request $request): Response
     {
-        $posts = $staticData->getBlogPosts();
+        $locale = $request->getSession()->get('_locale', 'fr');
 
-        usort($posts, function($a, $b) {
-            $dateA = $a['updated_at'] ?? $a['created_at'];
-            $dateB = $b['updated_at'] ?? $b['created_at'];
+        $articles = $this->contentService->getAllArticles($locale);
 
-            return strtotime($dateB) - strtotime($dateA);
-        });
-
-        return $this->render('pages/blog/index.html.twig', [
-            'posts' => $posts
-        ]);
+        return $this->render('pages/blog/index.html.twig', compact('articles'));
     }
 
     #[Route([
         'fr' => '/fr/blog/{slug}',
         'en' => '/en/blog/{slug}',
     ], name: 'show', options: ['sitemap' => false])]
-    public function show(string $slug, StaticData $staticData): Response
+    public function show(string $slug, Request $request): Response
     {
-        return $this->render('pages/blog/show.html.twig', [
-            'post' => $staticData->getBlogPostDetails($slug)
-        ]);
+        $locale = $request->getSession()->get('_locale', 'fr');
+
+        try {
+            $article = $this->contentService->getArticleBySlug($slug, $locale);
+        } catch (RedirectArticleException $e) {
+            return $this->redirectToRoute('app_blog_show', ['slug' => $e->slug], 301);
+        }
+
+        return $this->render('pages/blog/show.html.twig', compact('article'));
     }
 }

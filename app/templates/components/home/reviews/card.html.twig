@@ -8,16 +8,16 @@
             {% embed 'assets/svg/quote.html.twig' %}
                 {% block attributes %}aria-hidden="true" class="quote-icon"{% endblock %}
             {% endembed %}
-            {{ content|first|upper ~ content|slice(1) }}
+            {{ content }}
         </blockquote>
 
         <div class="home-reviews__container-carousel-item-infos">
             <div class="home-reviews__container-carousel-item-infos-author">
-                {{ author_firstname|title }} {{ author_lastname|first|upper }}.
-                {% if author_job is defined and author_job %}
+                {{ author_firstname|title }} {{ author_lastname }}
+                {% if author_job %}
                     - {{ author_job }}
                 {% endif %}
-                {% if author_company is defined and author_company %}
+                {% if author_company %}
                     {{ author_company }}
                 {% endif %}
             </div>

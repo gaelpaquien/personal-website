@@ -8,10 +8,12 @@
     transition: color 0.5s, background-color 0.5s, transform 0.5s;
     font-size: calc(0.9 * $font-size-text);
     padding: 0.5rem 1rem;
+    width: 14rem;
 
     @include respond-to('breakpoint-992') {
         font-size: $font-size-text;
         padding: 0.75rem 1.25rem;
+        width: 18rem;
     }
 
     &::after {
@@ -120,22 +122,31 @@
     opacity: 1;
 }
 
-.btn-return-to-home {
+.btn-go-to-home {
     .btn {
         background-color: var(--color-primary);
     }
 }
 
-.btn-hero-cta-primary {
+.btn-cta {
+    display: none;
+
+    @include respond-to('breakpoint-1500') {
+        @include flex-container(row, start);
+        gap: 2.5rem;
+    }
+}
+
+.btn-cta-primary {
     background-color: var(--color-primary);
 }
 
-.btn-hero-cta-secondary {
+.btn-cta-secondary {
     background-color: var(--color-tertiary);
 }
 
-.btn-hero-cta-primary,
-.btn-hero-cta-secondary {
+.btn-cta-primary,
+.btn-cta-secondary {
     position: relative;
     border: solid 0.15rem rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.6);
     @include animation-continuousPulse(2.5s);
