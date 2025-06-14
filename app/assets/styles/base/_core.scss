@@ -3,29 +3,26 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 html {
     height: 100%;
     width: 100%;
     scrollbar-width: auto;
     scrollbar-color: var(--color-text) var(--color-primary);
-    overflow-x: hidden !important;
 }
 
 body {
     width: 100%;
     min-height: 100svh;
     @extend %flex-column;
-    position: relative;
-}
-
-.page-wrapper {
-    overflow-x: hidden;
-    width: 100%;
-    flex: 1;
 }
 
 main {
     background-color: var(--color-secondary);
+    margin-top: 8.1rem;
 }
 
 section {
