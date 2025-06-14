@@ -1,27 +1,20 @@
-{% set title = title|default('Titre de l\'article') %}
-{% set content = content|default('Contenu de l\'article') %}
-{% set image = image|default('images/pages/blog/articles/blog-default.webp') %}
-{% set tags = tags|default([]) %}
-{% set updated_at = updated_at|default('01/01/2024') %}
-{% set slug = slug|default('') %}
-
-<div class="fade-in-effects-initial card-list-item scale-effects"
+<div class="fade-in-effects-initial blog__container-card-list-item scale-effects"
      data-animation-fade-in-target="fadeIn"
      data-animation="fade-in-up-effects"
      data-card-target="card"
      data-action="click->card#pressCard"
      data-url="{{ path('app_blog_show', {'slug': slug}) }}"
 >
-    <div class="card-list-item-image">
+    <div class="blog__container-card-list-item-image">
         <img src="{{ asset('images/pages/blog/articles/' ~ (image ?: 'default.webp')) }}" alt="{{ image_alt }}">
     </div>
-    <div class="card-list-item-content">
-        <h2 class="card-list-item-content-title">{{ title }}</h2>
-        <div class="card-list-item-content-excerpt">
+    <div class="blog__container-card-list-item-content">
+        <h2 class="blog__container-card-list-item-content-title">{{ title }}</h2>
+        <div class="blog__container-card-list-item-content-excerpt">
             <p>{{ short_description }}</p>
         </div>
-        <div class="card-list-item-content-meta">
-            <p class="card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at }}</p>
+        <div class="blog__container-card-list-item-content-meta">
+            <p class="blog__container-card-list-item-content-meta-date">{{ 'blog.last_update' | trans }} {{ updated_at }}</p>
         </div>
     </div>
 </div>
