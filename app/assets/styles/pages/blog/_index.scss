@@ -56,7 +56,11 @@
           margin-bottom: 1rem;
           font-size: calc(0.65 * $font-size-h3);
 
-          @include respond-to('breakpoint-992') {
+          @include respond-to('breakpoint-576') {
+            font-size: calc(0.8 * $font-size-h3);
+          }
+
+          @include respond-to('breakpoint-1200') {
             font-size: $font-size-h3;
           }
         }
@@ -68,7 +72,11 @@
             margin: 0;
             font-size: calc(0.75 * $font-size-text);
 
-            @include respond-to('breakpoint-992') {
+            @include respond-to('breakpoint-576') {
+              font-size: calc(0.9 * $font-size-text);
+            }
+
+            @include respond-to('breakpoint-1200') {
               font-size: $font-size-text;
             }
           }
@@ -89,11 +97,15 @@
           }
 
           &-date {
-            font-size: 0.65rem;
+            font-size: calc(0.75 * $font-size-text);
             text-align: center;
             opacity: 0.7;
 
-            @include respond-to('breakpoint-992') {
+            @include respond-to('breakpoint-576') {
+              font-size: calc(0.9 * $font-size-text);
+            }
+
+            @include respond-to('breakpoint-1200') {
               font-size: $font-size-text;
               text-align: right;
             }
