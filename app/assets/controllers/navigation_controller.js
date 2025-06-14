@@ -71,7 +71,7 @@ export default class extends Controller {
     toggleMenu(isOpen) {
         const breakpoint = this.getCurrentBreakpoint();
 
-        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        document.body.style.overflow = isOpen ? 'hidden' : '';
         this.overlayTarget.style.display = isOpen ? 'block' : 'none';
         this.overlayTarget.style.top = isOpen ? '0' : '';
         this.overlayTarget.style.height = isOpen ? '100svh' : '';
