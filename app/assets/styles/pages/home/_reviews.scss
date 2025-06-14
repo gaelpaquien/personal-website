@@ -6,6 +6,7 @@
     &-carousel {
         position: relative;
         width: 100%;
+        overflow: hidden;
 
         &-track {
             display: flex;
@@ -87,13 +88,13 @@
 
                 @include respond-to('breakpoint-1400') {
                     display: block;
-                    transform: translateX(-110%) scale(0.85);
+                    transform: translateX(-100%) scale(0.85);
                     opacity: 0.6;
                     pointer-events: auto;
 
                     &:hover {
                         opacity: 0.8;
-                        transform: translateX(-105%) scale(0.9);
+                        transform: translateX(-95%) scale(0.9);
                     }
                 }
             }
@@ -103,13 +104,13 @@
 
                 @include respond-to('breakpoint-1400') {
                     display: block;
-                    transform: translateX(10%) scale(0.85);
+                    transform: translateX(0%) scale(0.85);
                     opacity: 0.6;
                     pointer-events: auto;
 
                     &:hover {
                         opacity: 0.8;
-                        transform: translateX(5%) scale(0.9);
+                        transform: translateX(-5%) scale(0.9);
                     }
                 }
             }
