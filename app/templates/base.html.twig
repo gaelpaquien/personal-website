@@ -103,11 +103,9 @@
             {% include "_partials/_header.html.twig" %}
         </header>
 
-        <div class="page-wrapper">
-            <main>
-                {% block content %}{% endblock %}
-            </main>
-        </div>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
         {% include "components/buttons/btn-scroll-to-top.html.twig" %}
 
