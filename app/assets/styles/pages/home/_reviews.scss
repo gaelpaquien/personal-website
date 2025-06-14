@@ -1,7 +1,6 @@
 .home-reviews__container {
     @include flex-container(column, space-between, center);
     background-color: var(--color-secondary);
-    overflow-x: hidden;
 
     &-carousel {
         position: relative;
@@ -14,6 +13,7 @@
             width: 100%;
             margin: 0 auto;
             height: 26rem;
+            overflow: hidden;
 
             @include respond-to('breakpoint-576') {
                 height: 24rem;
