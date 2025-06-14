@@ -23,9 +23,16 @@
       margin-bottom: 1.5rem;
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
+      height: 250px;
       overflow: hidden;
+
+      @include respond-to('breakpoint-576') {
+        height: 300px;
+      }
+
+      @include respond-to('breakpoint-768') {
+        height: 350px;
+      }
 
       img {
         position: absolute;
