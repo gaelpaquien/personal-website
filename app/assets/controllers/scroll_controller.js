@@ -19,10 +19,6 @@ export default class extends Controller {
         this.footer = document.querySelector('footer');
         window.addEventListener('scroll', this.debouncedScroll);
         this.handleScroll();
-
-        if (window.innerWidth <= 768) {
-            this.fixMobileViewport();
-        }
     }
 
     disconnect() {
@@ -139,12 +135,5 @@ export default class extends Controller {
             top: offsetPosition,
             behavior: 'smooth'
         });
-    }
-
-    fixMobileViewport() {
-        setTimeout(() => {
-            window.scrollTo(0, 1);
-            window.scrollTo(0, 0);
-        }, 300);
     }
 }
