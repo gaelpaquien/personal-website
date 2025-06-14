@@ -14,20 +14,17 @@ html {
 body {
     width: 100%;
     min-height: 100svh;
-    overflow-x: hidden;
     @extend %flex-column;
 }
 
 main {
     flex: 1;
     background-color: var(--color-secondary);
-    overflow-x: hidden;
 }
 
 section {
     min-height: calc(100svh - 8.1rem);
     padding: 2rem 1.5rem;
-    overflow-x: hidden;
 
     @include respond-to('breakpoint-768') {
         padding: 2.5rem 5rem;
