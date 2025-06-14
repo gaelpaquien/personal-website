@@ -38,6 +38,7 @@
 
         &-links {
             min-width: 10rem;
+            max-width: 100%; // Ajoute contrainte max
         }
 
         &-links-various {
@@ -80,6 +81,7 @@
 .footer-mobile__container {
     font-size: calc(0.8 * $font-size-text);
     background-color: var(--color-tertiary);
+    overflow-x: hidden; // Contient le débordement
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
@@ -190,47 +192,71 @@
     }
 
     &-links {
-        @extend %flex-row;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column; // Change en colonne sur mobile
+        justify-content: center;
         align-items: center;
         padding: 1.5rem;
+        gap: 1.5rem; // Espacement entre social et various
+        max-width: 100%; // Force contrainte
 
         @include respond-to('breakpoint-768') {
+            flex-direction: row; // Revient en row sur tablet+
+            justify-content: space-between;
             padding: 1.5rem 2.5rem;
         }
 
-        &-social-item {
-            padding: 0 0.4rem;
+        &-social {
+            @extend %flex-row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; // Permet le wrap si nécessaire
+            gap: 0.5rem;
 
-            @include respond-to('breakpoint-768') {
-                padding: 0 0.75rem;
-            }
+            &-item {
+                padding: 0 0.4rem;
 
-            svg {
-                height: 1.15rem;
-                width: auto;
-                opacity: 0.6;
-
-                @include respond-to('breakpoint-576') {
-                    height: 1.5rem;
+                @include respond-to('breakpoint-768') {
+                    padding: 0 0.75rem;
                 }
 
-                &:hover {
-                    opacity: 1;
+                svg {
+                    height: 1.15rem;
+                    width: auto;
+                    opacity: 0.6;
+
+                    @include respond-to('breakpoint-576') {
+                        height: 1.5rem;
+                    }
+
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
             }
         }
 
-        &-various-item {
+        &-various {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center; // Centre sur mobile
+            gap: 0.25rem;
 
-            a {
-                opacity: 0.6;
+            @include respond-to('breakpoint-768') {
+                align-items: flex-end; // Revient à droite sur tablet+
+            }
 
-                &:hover {
-                    opacity: 1;
+            &-item {
+                display: flex;
+                flex-direction: column;
+                align-items: inherit;
+
+                a {
+                    opacity: 0.6;
+
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
             }
         }
