@@ -19,6 +19,16 @@ export default class extends Controller {
         this.footer = document.querySelector('footer');
         window.addEventListener('scroll', this.debouncedScroll);
         this.handleScroll();
+
+        setTimeout(() => {
+            this.forceReflow();
+        }, 100);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                this.forceReflow();
+            }, 200);
+        });
     }
 
     disconnect() {
@@ -135,5 +145,15 @@ export default class extends Controller {
             top: offsetPosition,
             behavior: 'smooth'
         });
+    }
+
+    forceReflow() {
+        document.body.style.display = 'none';
+        document.body.offsetHeight;
+        document.body.style.display = '';
+
+        const currentScroll = window.scrollY;
+        window.scrollTo(0, currentScroll + 1);
+        window.scrollTo(0, currentScroll);
     }
 }
