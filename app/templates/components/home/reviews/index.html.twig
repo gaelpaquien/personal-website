@@ -21,14 +21,14 @@
          data-animation="fade-in-up-effects"
     >
         <div class="home-reviews__container-carousel-track" data-reviews-carousel-target="wrapper">
-            {% for review in reviews|sort((a, b) => a.order <=> b.order) %}
+            {% for review in reviews %}
                 {% include "components/home/reviews/card.html.twig" with {
-                    'author_firstname': review.author_firstname,
-                    'author_lastname': review.author_lastname,
-                    'author_job': review.author_job ?? null,
-                    'author_company': review.author_company ?? null,
+                    'author_firstname': review.authorFirstName,
+                    'author_lastname': review.authorLastName,
+                    'author_job': review.authorJobTitle,
+                    'author_company': review.authorCompany,
                     'content': review.content,
-                    'created_at': review.created_at,
+                    'created_at': review.createdAt,
                     'source': review.source
                 } %}
             {% endfor %}
@@ -37,7 +37,7 @@
         <div class="home-reviews__container-carousel-navigation">
             <button class="home-reviews__container-carousel-navigation-btn scale-effects"
                     data-action="click->reviews-carousel#previous"
-                    aria-label="{{ 'actions.previous_review' | trans }}">
+                    aria-label="{{ 'actions.previous' | trans }}">
                 {% embed 'assets/svg/arrow-left.html.twig' %}
                     {% block attributes %}aria-hidden="true"{% endblock %}
                 {% endembed %}
@@ -49,19 +49,39 @@
                             data-reviews-carousel-target="indicator"
                             data-action="click->reviews-carousel#goToSlide"
                             data-index="{{ i }}"
-                            aria-label="{{ 'actions.go_to_page' | trans }} {{ i+1 }}"
+                            aria-label="{{ 'home.sections.reviews.go_to_this_review' | trans }} {{ i+1 }}"
                     ></button>
                 {% endfor %}
             </div>
 
             <button class="home-reviews__container-carousel-navigation-btn scale-effects"
                     data-action="click->reviews-carousel#next"
-                    aria-label="{{ 'actions.next_review' | trans }}">
+                    aria-label="{{ 'actions.next' | trans }}">
                 {% embed 'assets/svg/arrow-right.html.twig' %}
                     {% block attributes %}aria-hidden="true"{% endblock %}
                 {% endembed %}
             </button>
         </div>
+    </div>
+
+    <div class="home-reviews__container-btn btn-cta fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <a href="{{ path('app_review_create') }}" aria-label="{{ 'navigation.reviews_post_aria' | trans }}">
+            <button class="btn btn-cta-primary" type="button">
+                {{ 'navigation.reviews_post' | trans }}
+            </button>
+        </a>
+        <button class="btn btn-cta-secondary"
+                type="button"
+                aria-label="{{ 'home.sections.projects.buttons.discuss_aria' | trans }}"
+                data-controller="scroll"
+                data-action="click->scroll#scrollToSection"
+                data-target="#home-contact"
+        >
+            {{ 'home.hero.buttons.lets_talk' | trans }}
+        </button>
     </div>
 
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {

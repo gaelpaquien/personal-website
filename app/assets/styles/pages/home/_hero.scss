@@ -113,33 +113,6 @@
                     margin-bottom: 1rem;
                 }
             }
-
-            &-cta {
-                @include flex-container(column, center);
-                gap: 2rem;
-                margin-top: 2rem;
-
-                @include respond-to('breakpoint-576') {
-                    @include flex-container(row, center);
-                }
-
-                @include respond-to('breakpoint-992') {
-                    gap: 4rem;
-                }
-
-                @include respond-to('breakpoint-1500') {
-                    @include flex-container(row, start);
-                    gap: 2.5rem;
-                }
-
-                .btn {
-                    width: 14rem;
-
-                    @include respond-to('breakpoint-992') {
-                        width: 16rem;
-                    }
-                }
-            }
         }
     }
 }

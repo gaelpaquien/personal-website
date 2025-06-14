@@ -4,7 +4,7 @@
              data-animation-fade-in-target="fadeIn"
              data-animation="fade-in-left-effects"
         >
-            <img src="{{ asset('images/home-hero-illustration.webp') }}" alt="{{ 'home.hero.image_alt' | trans({'%info.author.name%': 'info.author.name' | trans, '%info.site.title%': 'info.site.title' | trans}) }}">
+            <img src="{{ asset('images/pages/home/hero-illustration.webp') }}" alt="{{ 'home.hero.image_alt' | trans({'%info.author.name%': 'info.author.name' | trans, '%info.site.title%': 'info.site.title' | trans}) }}">
         </div>
 
         <div class="home-hero__container-content-presentation">
@@ -39,20 +39,21 @@
                 </p>
             </div>
 
-            <div class="home-hero__container-content-presentation-cta fade-in-effects-initial"
+            <div class="home-hero__container-content-presentation-cta btn-cta fade-in-effects-initial"
                  data-animation-fade-in-target="fadeIn"
-                 data-animation="fade-in-up-effects">
-                <button class="btn-hero-cta-primary btn"
+                 data-animation="fade-in-up-effects"
+            >
+                <button class="btn-cta-primary btn"
                     type="button"
                     aria-label="{{ 'home.hero.buttons.discover_projects_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                     data-controller="scroll"
                     data-action="click->scroll#scrollToSection"
-                    data-target="#home-portfolio"
+                    data-target="#home-projects"
                 >
                     {{ 'home.hero.buttons.discover_projects' | trans }}
                 </button>
 
-                <button class="btn-hero-cta-secondary btn"
+                <button class="btn-cta-secondary btn"
                     type="button"
                     aria-label="{{ 'home.hero.buttons.lets_talk_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}"
                     data-controller="scroll"
@@ -66,7 +67,7 @@
     </div>
 
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
-        'data_target': '#home-portfolio',
-        'aria_label': 'navigation.portfolio_aria' | trans({'%info.author.name%': 'info.author.name' | trans})
+        'data_target': '#home-projects',
+        'aria_label': 'navigation.projects_aria' | trans({'%info.author.name%': 'info.author.name' | trans})
     } %}
 </section>

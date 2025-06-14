@@ -14,7 +14,7 @@
                  data-target="blog"
                  data-action="click->scroll#scrollToSection"
             >
-                {% embed 'assets/svg/blog-post.html.twig' %}
+                {% embed 'assets/svg/blog-article.html.twig' %}
                     {% block attributes %}
                         aria-labelledby="blog__container-title-h2"
                     {% endblock %}
@@ -26,18 +26,18 @@
         <div class="card-list"
              data-controller="card"
         >
-            {% for post in posts %}
+            {% for article in articles %}
                 {% include "components/blog/index/card.html.twig" with {
-                    'title': post.title,
-                    'content': post.content,
-                    'image': post.image,
-                    'tags': post.tags,
-                    'updated_at': post.updated_at,
-                    'slug': post.slug
+                    'title': article.title,
+                    'slug': article.slug,
+                    'short_description': article.shortDescription,
+                    'updated_at': article.updatedAt,
+                    'image': article.coverImage,
+                    'image_alt': article.coverImageAltText,
                 } %}
             {% endfor %}
         </div>
 
-        {% include "components/buttons/btn-return-to-home.html.twig" %}
+        {% include "components/buttons/btn-go-to-home.html.twig" %}
     </section>
 {% endblock %}

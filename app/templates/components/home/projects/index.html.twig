@@ -1,0 +1,58 @@
+<section id="home-projects" class="home-projects__container">
+    <div class="fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <div class="section-title link-effects home-projects__container-title"
+             data-action="click->scroll#scrollToSection"
+             data-target="home-projects"
+        >
+            {% embed 'assets/svg/folder.html.twig' %}
+                {% block attributes %}
+                    aria-labelledby="home-projects__container-title-h2"
+                {% endblock %}
+            {% endembed %}
+            <h2 id="home-projects__container-title-h2">{{ 'home.sections.projects.title' | trans }}</h2>
+        </div>
+    </div>
+
+    <div class="card-list"
+         data-controller="card"
+    >
+        {% for project in projects %}
+            {% include "components/home/projects/card.html.twig" with {
+                'title': project.title,
+                'description': project.description,
+                'tags': project.tags,
+                'image': project.coverImage,
+                'image_alt': project.coverImageAltText,
+                'related_article_slug': project.relatedArticleSlug,
+            } %}
+        {% endfor %}
+    </div>
+
+    <div class="home-projects__container-btn btn-cta fade-in-effects-initial"
+         data-animation-fade-in-target="fadeIn"
+         data-animation="fade-in-up-effects"
+    >
+        <a href="{{ path('app_blog_index') }}" aria-label="{{ 'home.sections.projects.buttons.discover_blog_aria' | trans }}">
+            <button class="btn btn-cta-primary" type="button">
+                {{ 'home.sections.projects.buttons.discover_blog' | trans }}
+            </button>
+        </a>
+        <button class="btn btn-cta-secondary"
+                type="button"
+                aria-label="{{ 'home.sections.projects.buttons.discuss_aria' | trans }}"
+                data-controller="scroll"
+                data-action="click->scroll#scrollToSection"
+                data-target="#home-contact"
+        >
+            {{ 'home.hero.buttons.lets_talk' | trans }}
+        </button>
+    </div>
+
+    {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
+        'data_target': '#home-reviews',
+        'aria_label': 'navigation.reviews_aria' | trans({'%info.author.name%': 'info.author.name' | trans})
+    } %}
+</section>

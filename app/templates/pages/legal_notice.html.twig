@@ -66,7 +66,7 @@
                     </li>
                     <li>
                         {{ 'legal_notice.content.publisher.website' | trans({'%info.site.url%': 'info.site.url' | trans}) }}
-                        <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.return_home' | trans }}">
+                        <a href="{{ path('app_main_index') }}" aria-label="{{ 'navigation.go_to_home' | trans }}">
                             {{ 'info.site.url' | trans }}
                         </a>
                     </li>
@@ -203,6 +203,6 @@
             </div>
         </div>
 
-        {% include "components/buttons/btn-return-to-home.html.twig" %}
+        {% include "components/buttons/btn-go-to-home.html.twig" %}
     </section>
 {% endblock %}

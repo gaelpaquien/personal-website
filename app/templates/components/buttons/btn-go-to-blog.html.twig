@@ -1,0 +1,11 @@
+<div class="btn-go-to-home fade-in-effects-initial"
+     data-animation-fade-in-target="fadeIn"
+     data-animation="fade-in-up-effects">
+    <button class="btn" type="button" aria-label="{{ 'navigation.go_to_home' | trans }}"
+            data-controller="redirect"
+            data-action="click->redirect#redirectToUrl"
+            data-redirect-url-value="{{ path('app_blog_index') }}"
+    >
+        {{ 'navigation.go_to_blog' | trans }}
+    </button>
+</div>

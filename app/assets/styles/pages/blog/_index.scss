@@ -2,7 +2,7 @@
   background-color: var(--color-secondary);
   @include flex-container(column, space-around, center);
 
-  .btn-return-to-home {
+  .btn-go-to-home {
     margin-top: 2.5rem;
   }
 }

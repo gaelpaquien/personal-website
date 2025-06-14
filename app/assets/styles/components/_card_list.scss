@@ -197,15 +197,9 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
-          -webkit-line-clamp: 2;
 
           @include respond-to('breakpoint-576') {
             font-size: $font-size-text;
-            -webkit-line-clamp: 3;
-          }
-
-          @include respond-to('breakpoint-992') {
-            -webkit-line-clamp: 2;
           }
         }
       }
