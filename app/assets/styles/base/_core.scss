@@ -8,7 +8,6 @@ html, body {
 }
 
 html {
-    height: 100%;
     width: 100%;
     scrollbar-width: auto;
     scrollbar-color: var(--color-text) var(--color-primary);
@@ -21,17 +20,22 @@ body {
 }
 
 main {
+    flex: 1;
     background-color: var(--color-secondary);
     margin-top: 8.1rem;
 }
 
 section {
-    min-height: calc(100svh - 8.1rem);
     padding: 2rem 1.5rem;
-    overflow-x: hidden;
 
     @include respond-to('breakpoint-768') {
+        min-height: calc(100vh - 8.1rem);
         padding: 2.5rem 5rem;
+    }
+
+    @media (max-width: 767px) {
+        min-height: auto;
+        padding-bottom: 4rem;
     }
 }
 

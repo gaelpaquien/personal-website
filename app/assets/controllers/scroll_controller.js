@@ -20,15 +20,9 @@ export default class extends Controller {
         window.addEventListener('scroll', this.debouncedScroll);
         this.handleScroll();
 
-        setTimeout(() => {
-            this.forceReflow();
-        }, 100);
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                this.forceReflow();
-            }, 200);
-        });
+        if (window.innerWidth <= 768) {
+            this.fixMobileViewport();
+        }
     }
 
     disconnect() {
@@ -147,13 +141,10 @@ export default class extends Controller {
         });
     }
 
-    forceReflow() {
-        document.body.style.display = 'none';
-        document.body.offsetHeight;
-        document.body.style.display = '';
-
-        const currentScroll = window.scrollY;
-        window.scrollTo(0, currentScroll + 1);
-        window.scrollTo(0, currentScroll);
+    fixMobileViewport() {
+        setTimeout(() => {
+            window.scrollTo(0, 1);
+            window.scrollTo(0, 0);
+        }, 300);
     }
 }
