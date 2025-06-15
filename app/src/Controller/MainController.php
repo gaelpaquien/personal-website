@@ -16,7 +16,20 @@ class MainController extends AbstractController
     public function __construct(private readonly ContentService $contentService)
     {}
 
-    #[Route('/', name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']])]
+    #[Route('/', name: 'root')]
+    public function root(Request $request): Response
+    {
+        $locale = $request->getSession()->get('_locale') ??
+            $request->getPreferredLanguage(['fr', 'en']) ??
+            'fr';
+
+        return $this->redirectToRoute('app_main_index', ['_locale' => $locale]);
+    }
+
+    #[Route([
+        'fr' => '/fr',
+        'en' => '/en',
+    ], name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']])]
     public function index(Request $request): Response
     {
         $locale = $request->getSession()->get('_locale', 'fr');

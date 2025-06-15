@@ -31,19 +31,15 @@ class LocaleController extends AbstractController
                 $routeInfo = $router->match($refererPath);
 
                 $newRouteParams = array_merge($routeInfo, ['_locale' => $locale]);
-
                 unset($newRouteParams['_controller'], $newRouteParams['_route']);
-
-                if ($routeInfo['_route'] === 'app_main_index') {
-                    return $this->redirectToRoute('app_main_index');
-                }
 
                 $newUrl = $this->generateUrl($routeInfo['_route'], $newRouteParams);
                 return $this->redirect($newUrl);
+
             } catch (ResourceNotFoundException | MethodNotAllowedException $e) {
             }
         }
 
-        return $this->redirectToRoute('app_main_index');
+        return $this->redirectToRoute('app_main_index', ['_locale' => $locale]);
     }
 }

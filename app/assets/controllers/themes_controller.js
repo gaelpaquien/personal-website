@@ -4,19 +4,37 @@ export default class extends Controller {
     static targets = ["darkButton", "lightButton"]
 
     connect() {
+        this.syncThemeFromDOM();
         this.applyTheme();
     }
 
     toggleTheme(event) {
         const theme = event.currentTarget.dataset.theme;
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+
+        if (theme === currentTheme) {
+            return;
+        }
+
         localStorage.setItem('theme', theme);
         this.applyTheme();
+    }
+
+    syncThemeFromDOM() {
+        const root = document.documentElement;
+        const isDark = root.classList.contains('theme-dark');
+        const currentTheme = isDark ? 'dark' : 'light';
+
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme !== currentTheme) {
+            localStorage.setItem('theme', currentTheme);
+        }
     }
 
     applyTheme() {
         const theme = localStorage.getItem('theme') || 'dark';
         this.setRootTheme(theme);
-        this.updateButtonState();
+        this.updateButtonState(theme);
         this.updateThemeColor(theme);
     }
 
@@ -32,18 +50,21 @@ export default class extends Controller {
         }
     }
 
-    updateButtonState() {
-        const theme = localStorage.getItem('theme') || 'light';
-        const darkButtons = document.querySelectorAll('[data-themes-target="darkButton"]');
-        const lightButtons = document.querySelectorAll('[data-themes-target="lightButton"]');
+    updateButtonState(theme) {
+        requestAnimationFrame(() => {
+            const darkButtons = document.querySelectorAll('[data-themes-target="darkButton"]');
+            const lightButtons = document.querySelectorAll('[data-themes-target="lightButton"]');
 
-        if (theme === 'dark') {
-            darkButtons.forEach(button => button.classList.add('inactive'));
-            lightButtons.forEach(button => button.classList.remove('inactive'));
-        } else {
-            lightButtons.forEach(button => button.classList.add('inactive'));
-            darkButtons.forEach(button => button.classList.remove('inactive'));
-        }
+            [...darkButtons, ...lightButtons].forEach(button => {
+                button.classList.remove('inactive');
+            });
+
+            if (theme === 'dark') {
+                darkButtons.forEach(button => button.classList.add('inactive'));
+            } else {
+                lightButtons.forEach(button => button.classList.add('inactive'));
+            }
+        });
     }
 
     updateThemeColor(theme) {
@@ -53,7 +74,6 @@ export default class extends Controller {
         };
 
         const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
-
         if (themeColorMetaTag) {
             themeColorMetaTag.setAttribute('content', themeColors[theme]);
         }
