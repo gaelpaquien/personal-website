@@ -49,13 +49,25 @@ class MainController extends AbstractController
         'fr' => '/fr/plan-du-site',
         'en' => '/en/sitemap',
     ], name: 'sitemap', options: ['sitemap' => ['priority' => 0.6, 'changefreq' => 'monthly']])]
-    public function sitemap(): Response
+    public function sitemap(Request $request): Response
     {
         $xml = \simplexml_load_file($this->getParameter('kernel.project_dir') . '/public/sitemap.default.xml');
+        $locale = $request->getSession()->get('_locale', 'fr');
 
         $urls = [];
         foreach ($xml->url as $urlElement) {
-            $urls[] = (string) $urlElement->loc;
+            $url = (string) $urlElement->loc;
+
+            if (isset($urlElement->children('xhtml', true)->link)) {
+                foreach ($urlElement->children('xhtml', true)->link as $link) {
+                    if ((string) $link->attributes()['hreflang'] === $locale) {
+                        $url = (string) $link->attributes()['href'];
+                        break;
+                    }
+                }
+            }
+
+            $urls[] = $url;
         }
 
         return $this->render('pages/sitemap.html.twig', [
