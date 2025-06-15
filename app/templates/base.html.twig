@@ -9,7 +9,7 @@
         {% set locale = app.request.locale %}
 
         <!-- Determine current URL -->
-        {% set current_url = route_name ? url(route_name, app.request.attributes.get('_route_params'), true) : ('info.site.url' | trans) %}
+        {% set current_url = app.request.attributes.get('_route') ? url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'), true) : ('info.site.url' | trans) %}
         {% if current_url starts with '//' %}
             {% set current_url = 'https:' ~ current_url %}
         {% endif %}
