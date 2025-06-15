@@ -15,29 +15,6 @@ body {
     @extend %flex-column;
 }
 
-@supports (-webkit-appearance: none) {
-    @media screen and (orientation: landscape) and (max-device-width: 896px) {
-        html {
-            width: 100vw !important;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-        }
-
-        body {
-            width: 100vw !important;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            box-sizing: border-box;
-        }
-    }
-}
-
 main {
     background-color: var(--color-secondary);
 }

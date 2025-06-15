@@ -1,3 +1,23 @@
+footer {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.footer__container,
+.footer-mobile__container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.footer-mobile__container-links-social,
+.footer__container-links-social {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .footer__container {
     display: none;
 
@@ -38,7 +58,7 @@
 
         &-links {
             min-width: 10rem;
-            max-width: 100%; // Ajoute contrainte max
+            max-width: 100%;
         }
 
         &-links-various {
@@ -81,7 +101,7 @@
 .footer-mobile__container {
     font-size: calc(0.8 * $font-size-text);
     background-color: var(--color-tertiary);
-    overflow-x: hidden; // Contient le débordement
+    overflow-x: hidden;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
@@ -193,15 +213,15 @@
 
     &-links {
         display: flex;
-        flex-direction: column; // Change en colonne sur mobile
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1.5rem;
-        gap: 1.5rem; // Espacement entre social et various
-        max-width: 100%; // Force contrainte
+        gap: 1.5rem;
+        max-width: 100%;
 
         @include respond-to('breakpoint-768') {
-            flex-direction: row; // Revient en row sur tablet+
+            flex-direction: row;
             justify-content: space-between;
             padding: 1.5rem 2.5rem;
         }
@@ -210,7 +230,7 @@
             @extend %flex-row;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap; // Permet le wrap si nécessaire
+            flex-wrap: wrap;
             gap: 0.5rem;
 
             &-item {
@@ -239,11 +259,11 @@
         &-various {
             display: flex;
             flex-direction: column;
-            align-items: center; // Centre sur mobile
+            align-items: center;
             gap: 0.25rem;
 
             @include respond-to('breakpoint-768') {
-                align-items: flex-end; // Revient à droite sur tablet+
+                align-items: flex-end;
             }
 
             &-item {
