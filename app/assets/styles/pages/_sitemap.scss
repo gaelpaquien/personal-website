@@ -1,13 +1,9 @@
 .sitemap-page__container {
     background-color: var(--color-secondary);
-    @include flex-container(column, space-around, center);
-
-    .section-title {
-        margin: 0;
-    }
+    min-height: initial;
 
     &-urls-list {
-        @extend %flex-column;
+        @include flex-container(column, center, center);
         gap: 1.5rem;
 
         &-item {
@@ -27,5 +23,10 @@
                 }
             }
         }
+    }
+
+    .btn-go-to-home {
+        @include flex-container(row, center, center);
+        margin-top: 2.5rem;
     }
 }
