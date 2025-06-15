@@ -1,37 +1,61 @@
 .fade-in-left-effects-initial {
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateX(-8px);
   will-change: transform, opacity;
+
+  @include respond-to('breakpoint-768') {
+    transform: translateX(-20px);
+  }
 }
 
 .fade-in-right-effects-initial {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(8px);
   will-change: transform, opacity;
+
+  @include respond-to('breakpoint-768') {
+    transform: translateX(20px);
+  }
 }
 
 .fade-in-up-effects-initial {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(8px);
   will-change: transform, opacity;
+
+  @include respond-to('breakpoint-768') {
+    transform: translateY(20px);
+  }
 }
 
 .fade-in-left-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+
+  @include respond-to('breakpoint-768') {
+    transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  }
 }
 
 .fade-in-right-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+
+  @include respond-to('breakpoint-768') {
+    transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  }
 }
 
 .fade-in-up-effects {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  transition: opacity 0.3s ease-out, transform 0.4s ease-out;
+
+  @include respond-to('breakpoint-768') {
+    transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+  }
 }
 
 .fade-in-left-effects,

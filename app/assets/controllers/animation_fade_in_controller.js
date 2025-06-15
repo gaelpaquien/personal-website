@@ -9,10 +9,16 @@ export default class extends Controller {
     }
 
     connect() {
+        this.isMobile = window.innerWidth < 768;
+
         this.fadeInTargets.forEach(element => {
             const animationClass = element.dataset.animation || this.defaultAnimationValue;
             element.classList.add(`${animationClass}-initial`);
             element.style.visibility = 'hidden';
+
+            if (this.isMobile) {
+                element.style.transitionDelay = '0ms';
+            }
         });
 
         this.setupObserver();
