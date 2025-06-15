@@ -15,38 +15,26 @@ body {
     @extend %flex-column;
 }
 
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-}
+@supports (-webkit-appearance: none) {
+    @media screen and (orientation: landscape) and (max-device-width: 896px) {
+        html {
+            width: 100vw !important;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
 
-@media screen and (orientation: landscape) and (max-height: 500px) {
-    html {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    body {
-        width: 100% !important;
-        min-width: 100% !important;
-        max-width: 100% !important;
-        transform: translateX(0) !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .overlay,
-    header,
-    main,
-    footer,
-    section {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
+        body {
+            width: 100vw !important;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            box-sizing: border-box;
+        }
     }
 }
 
