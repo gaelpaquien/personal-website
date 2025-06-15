@@ -31,47 +31,39 @@ section {
 .section-title {
     cursor: pointer;
     @extend %flex-center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     gap: 0.75rem;
 
     @include respond-to('breakpoint-576') {
         gap: 1rem;
     }
 
-    h2 {
-        font-size: calc(0.9 * $font-size-h2);
+    @include respond-to('breakpoint-768') {
+        margin-bottom: 2.5rem;
+    }
 
-        @include respond-to('breakpoint-375') {
-            font-size: $font-size-h2;
-        }
+    h1, h2 {
+        font-size: calc(0.65 * $font-size-h1);
 
         @include respond-to('breakpoint-576') {
-            font-size: calc(1.25 * $font-size-h2);
+            font-size: calc(0.9 * $font-size-h1);
         }
 
         @include respond-to('breakpoint-992') {
-            font-size: calc(1.75 * $font-size-h2);
-        }
-
-        @include respond-to('breakpoint-1200') {
-            font-size: calc(2 * $font-size-h2);
+            font-size: $font-size-h1;
         }
     }
 
     svg {
-        height: $font-size-h2;
+        font-size: calc(0.65 * $font-size-h1);
         width: auto;
 
         @include respond-to('breakpoint-576') {
-            height: calc(0.95 * $font-size-h2);;
+            height: calc(0.9 * $font-size-h1);
         }
 
         @include respond-to('breakpoint-992') {
-            height: calc(1.75 * $font-size-h2);
-        }
-
-        @include respond-to('breakpoint-1200') {
-            height: calc(2 * $font-size-h2);
+            height: $font-size-h1;
         }
     }
 }

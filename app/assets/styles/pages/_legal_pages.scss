@@ -5,6 +5,31 @@
 
     .section-title {
         margin: 0;
+
+        h1 {
+            font-size: calc(0.5 * $font-size-h1);
+
+            @include respond-to('breakpoint-576') {
+                font-size: calc(0.9 * $font-size-h1);
+            }
+
+            @include respond-to('breakpoint-992') {
+                font-size: $font-size-h1;
+            }
+        }
+
+        svg {
+            font-size: calc(0.5 * $font-size-h1);
+            width: auto;
+
+            @include respond-to('breakpoint-576') {
+                height: calc(0.9 * $font-size-h1);
+            }
+
+            @include respond-to('breakpoint-992') {
+                height: $font-size-h1;
+            }
+        }
     }
 
     &-block {
