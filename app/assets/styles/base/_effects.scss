@@ -1,6 +1,6 @@
 .fade-in-left-effects-initial {
   opacity: 0;
-  transform: translateX(-8px);
+  transform: translateX(-15px);
   will-change: transform, opacity;
 
   @include respond-to('breakpoint-768') {
@@ -10,7 +10,7 @@
 
 .fade-in-right-effects-initial {
   opacity: 0;
-  transform: translateX(8px);
+  transform: translateX(15px);
   will-change: transform, opacity;
 
   @include respond-to('breakpoint-768') {
@@ -20,7 +20,7 @@
 
 .fade-in-up-effects-initial {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(15px);
   will-change: transform, opacity;
 
   @include respond-to('breakpoint-768') {

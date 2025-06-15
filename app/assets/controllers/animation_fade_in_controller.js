@@ -9,16 +9,10 @@ export default class extends Controller {
     }
 
     connect() {
-        this.isMobile = window.innerWidth < 768;
-
         this.fadeInTargets.forEach(element => {
             const animationClass = element.dataset.animation || this.defaultAnimationValue;
             element.classList.add(`${animationClass}-initial`);
             element.style.visibility = 'hidden';
-
-            if (this.isMobile) {
-                element.style.transitionDelay = '0ms';
-            }
         });
 
         this.setupObserver();
@@ -32,10 +26,16 @@ export default class extends Controller {
     }
 
     setupObserver() {
-        const ROOT_MARGIN = this.marginValue || '0px 0px -10px 0px';
+        const isMobile = window.innerWidth < 768;
+
+        const ROOT_MARGIN = isMobile
+            ? this.marginValue || '0px 0px 100px 0px'
+            : this.marginValue || '0px 0px -10px 0px';
+
+        const threshold = isMobile ? 0.05 : this.thresholdValue;
 
         this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
-            threshold: this.thresholdValue,
+            threshold: threshold,
             rootMargin: ROOT_MARGIN
         });
     }
