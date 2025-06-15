@@ -15,17 +15,22 @@ body {
     @extend %flex-column;
 }
 
-@media screen and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-    html, body {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
+@supports (-webkit-touch-callout: none) {
+    @media screen and (orientation: landscape) {
+        html {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-    body {
-        position: relative;
-        left: 0;
-        right: 0;
+        body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
     }
 }
 
