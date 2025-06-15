@@ -38,6 +38,8 @@
             &-title {
                 span {
                     will-change: transform, opacity;
+                    backface-visibility: hidden;
+                    transform: translateZ(0);
 
                     &:first-child {
                         margin-left: 0;
