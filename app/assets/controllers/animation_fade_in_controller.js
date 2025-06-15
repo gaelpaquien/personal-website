@@ -4,22 +4,33 @@ export default class extends Controller {
     static targets = ['fadeIn']
     static values = {
         margin: String,
-        defaultAnimation: {type: String, default: 'fade-in-up-effects'}
+        defaultAnimation: { type: String, default: 'fade-in-up-effects' },
+        threshold: { type: Number, default: 0.15 }
     }
 
     connect() {
-        const ROOT_MARGIN = this.marginValue || '0px 0px -20px 0px';
-
-        this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
-            threshold: 0.1,
-            rootMargin: ROOT_MARGIN
-        });
-
         this.fadeInTargets.forEach(element => {
             const animationClass = element.dataset.animation || this.defaultAnimationValue;
             element.classList.add(`${animationClass}-initial`);
+            element.style.visibility = 'hidden';
+        });
 
-            this.observer.observe(element);
+        this.setupObserver();
+
+        requestAnimationFrame(() => {
+            this.fadeInTargets.forEach(element => {
+                element.style.visibility = 'visible';
+                this.observer.observe(element);
+            });
+        });
+    }
+
+    setupObserver() {
+        const ROOT_MARGIN = this.marginValue || '0px 0px -10px 0px';
+
+        this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
+            threshold: this.thresholdValue,
+            rootMargin: ROOT_MARGIN
         });
     }
 
@@ -30,13 +41,23 @@ export default class extends Controller {
     }
 
     handleIntersection(entries) {
+        const toAnimate = [];
+
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const animationClass = entry.target.dataset.animation || this.defaultAnimationValue;
-                entry.target.classList.remove(`${animationClass}-initial`);
-                entry.target.classList.add(animationClass);
+                toAnimate.push(entry.target);
                 this.observer.unobserve(entry.target);
             }
         });
+
+        if (toAnimate.length > 0) {
+            requestAnimationFrame(() => {
+                toAnimate.forEach(element => {
+                    const animationClass = element.dataset.animation || this.defaultAnimationValue;
+                    element.classList.remove(`${animationClass}-initial`);
+                    element.classList.add(animationClass);
+                });
+            });
+        }
     }
 }

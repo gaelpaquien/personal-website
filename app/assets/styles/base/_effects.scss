@@ -1,37 +1,49 @@
 .fade-in-left-effects-initial {
   opacity: 0;
-  transform: translateX(-40px);
+  transform: translateX(-20px);
+  will-change: transform, opacity;
 }
 
 .fade-in-right-effects-initial {
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateX(20px);
+  will-change: transform, opacity;
 }
 
 .fade-in-up-effects-initial {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(20px);
+  will-change: transform, opacity;
 }
 
 .fade-in-left-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
-  will-change: transform, opacity;
+  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
 }
 
 .fade-in-right-effects {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
-  will-change: transform, opacity;
+  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
 }
 
 .fade-in-up-effects {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s $ease-out-back, transform 1.25s $ease-out-back;
-  will-change: transform, opacity;
+  transition: opacity 0.5s ease-out, transform 0.7s $ease-out-back;
+}
+
+.fade-in-left-effects,
+.fade-in-right-effects,
+.fade-in-up-effects {
+  animation: cleanup-will-change 0.8s ease-out 0.7s forwards;
+}
+
+@keyframes cleanup-will-change {
+  to {
+    will-change: auto;
+  }
 }
 
 .pressed {
@@ -40,12 +52,11 @@
 
 .link-effects {
   cursor: pointer;
-  transition: transform 0.5s ease-in-out;
-  will-change: transform, opacity;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 
   &:hover {
     opacity: 0.8;
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   &:active {
@@ -55,12 +66,11 @@
 
 .scale-effects {
   cursor: pointer;
-  transition: transform 0.5s ease-in-out;
-  will-change: transform, opacity;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 
   &:hover {
     opacity: 0.8;
-    transform: scale(1.15);
+    transform: scale(1.08);
   }
 
   &:active {
