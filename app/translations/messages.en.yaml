@@ -257,3 +257,28 @@ errors:
   404: "Page not found"
   403: "Access denied"
   text: "Oops... It seems an error occurred. If the problem persists, please contact the site administrator."
+
+form:
+  sending: "Sending your message..."
+  error: "An error occurred while sending your message."
+  validation_error: "Please correct the errors in the form."
+  success: "Your message has been sent successfully!"
+  contact:
+    file:
+      duplicate: "File already exists."
+      limit_reached: "You have reached the maximum number of files allowed."
+      rules: "Maximum 3 files, 8 MB per file"
+      formats: "Accepted formats: PDF, Word, Excel, JPG, PNG"
+    email:
+      title: "New contact message"
+      language: "Language of user"
+      attachment_count: "Number of attachments"
+      identity: "Identity (First Name, Last Name)"
+      email: "Email"
+      phone: "Phone"
+      phone_not_specified: "Phone not specified"
+      subject: "Subject"
+      message: "Message"
+      copy_subject: "Copy of your contact message"
+      copy_title: "Copy of your message on"
+      copy_intro: "Here is a copy of the contact message you sent on"

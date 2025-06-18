@@ -257,3 +257,28 @@ errors:
   404: "Page non trouvée"
   403: "Accès interdit"
   text: "Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site."
+
+form:
+  sending: "Envoi en cours..."
+  error: "Une erreur est survenue lors de l'envoi du message."
+  validation_error: "Veuillez corriger les erreurs du formulaire."
+  success: "Votre message a été envoyé avec succès !"
+  contact:
+    file:
+      duplicate: "Ce fichier a déjà été ajouté."
+      limit_reached: "Limite de 3 fichiers atteinte."
+      rules: "3 fichiers maximum, 8 Mo par fichier"
+      formats: "Formats acceptés : PDF, Word, Excel, JPG, PNG"
+    email:
+      title: "Nouveau message de contact"
+      language: "Langue de l'utilisateur"
+      attachment_count: "Nombre de pièces jointes"
+      identity: "Identité (Prénom/Nom)"
+      email: "Email"
+      phone: "Téléphone"
+      phone_not_specified: "Téléphone non renseigné"
+      subject: "Sujet"
+      message: "Message"
+      copy_subject: "Copie de votre message de contact"
+      copy_title: "Copie de votre message de contact sur"
+      copy_intro: "Voici une copie du message de contact que vous avez envoyé sur"

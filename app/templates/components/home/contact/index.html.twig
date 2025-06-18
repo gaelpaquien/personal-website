@@ -1,12 +1,12 @@
+
+
 <section id="home-contact" class="home-contact__container">
     <div class="fade-in-effects-initial"
          data-animation-fade-in-target="fadeIn"
-         data-animation="fade-in-up-effects"
-    >
+         data-animation="fade-in-up-effects">
         <div class="section-title link-effects home-contact__container-title"
              data-action="click->scroll#scrollToSection"
-             data-target="home-contact"
-        >
+             data-target="home-contact">
             {% embed 'assets/svg/discussion.html.twig' %}
                 {% block attributes %}
                     role="button"
@@ -17,63 +17,124 @@
         </div>
     </div>
 
-    <form class="fade-in-effects-initial home-contact__container-form" action="#" method="post"
-          data-animation-fade-in-target="fadeIn"
-          data-animation="fade-in-up-effects"
+    <div class="form-container"
+         data-controller="contact-form"
+         data-contact-form-sending-value="{{ 'form.sending'|trans }}"
+         data-contact-form-error-value="{{ 'form.error'|trans }}"
+         data-contact-form-validation-error-value="{{ 'form.validation_error'|trans }}"
     >
-        <div class="form-identity-group">
+        {{ form_start(contactForm, {
+            'attr': {
+                'class': 'fade-in-effects-initial home-contact__container-form',
+                'data-animation-fade-in-target': 'fadeIn',
+                'data-animation': 'fade-in-up-effects',
+                'data-contact-form-target': 'form',
+                'data-action': 'submit->contact-form#submitForm'
+            }
+        }) }}
+
+        <div class="form-identity">
             <span>{{ 'home.sections.contact.form.identity' | trans }}*</span>
-            <div>
-                <label for="form-contact-firstname" hidden>{{ 'home.sections.contact.form.first_name' | trans }}</label>
-                <input type="text" id="form-contact-firstname" name="form-contact-firstname" placeholder="{{ 'home.sections.contact.form.first_name' | trans }}" required>
-                <label for="form-contact-name" hidden>{{ 'home.sections.contact.form.last_name' | trans }}</label>
-                <input type="text" id="form-contact-name" name="form-contact-name" placeholder="{{ 'home.sections.contact.form.last_name' | trans }}" required>
+            <div class="form-identity-group">
+                <div>
+                    {{ form_widget(contactForm.firstName) }}
+                    {{ form_errors(contactForm.firstName) }}
+                </div>
+                <div>
+                    {{ form_widget(contactForm.lastName) }}
+                    {{ form_errors(contactForm.lastName) }}
+                </div>
             </div>
         </div>
+
         <div class="form-group">
-            <label for="form-contact-email">{{ 'home.sections.contact.form.email' | trans }}*</label>
-            <input type="email" id="form-contact-email" name="form-contact-email" placeholder="{{ 'home.sections.contact.form.email' | trans }}" required>
+            <span>{{ form_label(contactForm.email) }}*</span>
+            {{ form_widget(contactForm.email) }}
+            {{ form_errors(contactForm.email) }}
         </div>
+
         <div class="form-group">
-            <label for="form-contact-phone">{{ 'home.sections.contact.form.phone' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
-            <input type="tel" id="form-contact-phone" name="form-contact-phone" placeholder="{{ 'home.sections.contact.form.phone' | trans }}">
+        <span>{{ form_label(contactForm.phone) }} ({{ 'actions.optional' | trans | lower }})</span>
+            {{ form_widget(contactForm.phone) }}
+            {{ form_errors(contactForm.phone) }}
         </div>
+
         <div class="form-group">
-            <label for="form-contact-subject">{{ 'home.sections.contact.form.subject' | trans }}*</label>
-            <input type="text" id="form-contact-subject" name="form-contact-subject" placeholder="{{ 'home.sections.contact.form.subject' | trans }}" required>
+            <span>{{ form_label(contactForm.subject) }}*</span>
+            {{ form_widget(contactForm.subject) }}
+            {{ form_errors(contactForm.subject) }}
         </div>
+
         <div class="form-group">
-            <label for="form-contact-message">{{ 'home.sections.contact.form.message' | trans }}*</label>
-            <textarea id="form-contact-message" name="form-contact-message" placeholder="{{ 'home.sections.contact.form.message' | trans }}" required></textarea>
+            <span>{{ form_label(contactForm.message) }}*</span>
+            {{ form_widget(contactForm.message) }}
+            {{ form_errors(contactForm.message) }}
         </div>
-        <div class="form-group"
-             data-controller="input-file"
-             data-input-file-choose-file-value="{{ 'home.sections.contact.form.choose_file' | trans }} "
-             data-input-file-no-file-chosen-value="{{ 'home.sections.contact.form.no_file_chosen' | trans }}"
-             data-input-file-one-file-selected-value="{{ 'home.sections.contact.form.one_file_selected' | trans }}"
-             data-input-file-multiple-files-selected-value="{{ 'home.sections.contact.form.multiple_files_selected' | trans }}"
-        >
-            <label for="form-contact-attachment">{{ 'home.sections.contact.form.files' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
-            <input type="file"
-                   id="form-contact-attachment"
-                   name="form-contact-attachment"
-                   aria-label="{{ 'home.sections.contact.form.files' | trans }}"
-                   data-input-file-target="input">
+
+        <div class="form-group">
+            <label for="contact_attachment">{{ 'home.sections.contact.form.files' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
+
+            <div data-controller="input-file"
+                 data-input-file-choose-file-value="{{ 'home.sections.contact.form.choose_file'|trans }}"
+                 data-input-file-no-file-chosen-value="{{ 'home.sections.contact.form.no_file_chosen'|trans }}"
+                 data-input-file-one-file-selected-value="{{ 'home.sections.contact.form.one_file_selected'|trans }}"
+                 data-input-file-multiple-files-selected-value="{{ 'home.sections.contact.form.multiple_files_selected'|trans }}"
+                 data-input-file-duplicate-message-value="{{ 'form.contact.file.duplicate'|trans }}"
+                 data-input-file-limit-message-value="{{ 'form.contact.file.limit_reached'|trans }}">
+
+                <div class="custom-file-input-wrapper">
+                    <label class="btn custom-file-button" for="contact_attachment">
+                        {{ 'home.sections.contact.form.choose_file'|trans }}
+                    </label>
+
+                    {{ form_widget(contactForm.attachment, {
+                        'attr': {
+                            'data-input-file-target': 'input',
+                            'style': 'display: none;'
+                        }
+                    }) }}
+
+                    <span data-input-file-target="display">
+                        {{ 'home.sections.contact.form.no_file_chosen'|trans }}
+                    </span>
+                </div>
+
+                <div class="file-rules">
+                    <span class="file-rules-text">
+                        {{ 'form.contact.file.rules'|trans }}
+                    </span>
+                    <span class="file-rules-text">
+                        {{ 'form.contact.file.formats'|trans }}
+                    </span>
+                </div>
+
+                <div class="files-container" data-input-file-target="filesContainer"></div>
+            </div>
+
+            {{ form_errors(contactForm.attachment) }}
         </div>
+
         <div class="form-switch">
-            <span class="form-switch-text">{{ 'home.sections.contact.form.receive_copy' | trans }}</span>
-            <label for="form-switch-message" class="form-switch-toggle">
-                <input type="checkbox" id="form-switch-message" name="form-switch-message" aria-label="{{ 'home.sections.contact.form.receive_copy' | trans }}">
+            <span class="form-switch-text">{{ form_label(contactForm.receiveCopy) }}</span>
+            <label for="{{ contactForm.receiveCopy.vars.id }}" class="form-switch-toggle">
+                {{ form_widget(contactForm.receiveCopy) }}
                 <span class="form-switch-toggle-slider"></span>
             </label>
         </div>
-        <button class="btn" type="submit" aria-label="{{ 'home.sections.contact.form.submit_button' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+
+        <button class="btn"
+                type="submit"
+                data-contact-form-target="submit"
+                aria-label="{{ 'home.sections.contact.form.submit_button' | trans }}">
             {{ 'home.sections.contact.form.submit_button' | trans }}
         </button>
+
         <div class="form-infos">
             <p>*{{ 'home.sections.contact.form.privacy_notice' | trans }}</p>
         </div>
-    </form>
+
+        {{ form_end(contactForm) }}
+    </div>
 
     {% include "components/buttons/btn-scroll-to-next-section.html.twig" with {
         'data_target': '#footer',
