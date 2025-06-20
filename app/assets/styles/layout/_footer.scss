@@ -113,9 +113,10 @@ footer {
     min-height: auto;
     flex-shrink: 0;
     position: relative;
-    z-index: inherit;
+    z-index: 900;
     contain: layout style;
     transform: translateZ(0);
+    will-change: auto;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
@@ -123,6 +124,12 @@ footer {
 
     @include respond-to('breakpoint-1400') {
         display: none;
+    }
+
+    .fade-in-effects-initial {
+        z-index: inherit;
+        position: relative;
+        transform: translateZ(0);
     }
 
     &-header {
