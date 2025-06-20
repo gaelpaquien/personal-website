@@ -13,6 +13,7 @@ export default class extends Controller {
         this.handleScroll = this.handleScroll.bind(this);
         this.debouncedScroll = this.debounce(this.handleScroll.bind(this), 5);
         this.preventHorizontalScroll = this.preventHorizontalScroll.bind(this);
+        this.handleResize = this.handleResize.bind(this);
     }
 
     connect() {
@@ -20,12 +21,56 @@ export default class extends Controller {
         this.footer = document.querySelector('footer');
         window.addEventListener('scroll', this.debouncedScroll);
         window.addEventListener('scroll', this.preventHorizontalScroll);
+        window.addEventListener('resize', this.handleResize);
         this.handleScroll();
+
+        if (this.hasScrollTopButtonTarget) {
+            this.setupBodyObserver();
+        }
     }
 
     disconnect() {
         window.removeEventListener('scroll', this.debouncedScroll);
         window.removeEventListener('scroll', this.preventHorizontalScroll);
+        window.removeEventListener('resize', this.handleResize);
+
+        if (this.bodyObserver) {
+            this.bodyObserver.disconnect();
+        }
+    }
+
+    setupBodyObserver() {
+        const mainElement = document.querySelector('main');
+        if (mainElement) {
+            this.bodyObserver = new MutationObserver(() => {
+                if (this.hasScrollTopButtonTarget) {
+                    const wasVisible = this.scrollTopButtonTarget.classList.contains(this.showClassValue);
+                    if (wasVisible) {
+                        this.scrollTopButtonTarget.style.transition = 'none';
+                        this.scrollTopButtonTarget.style.opacity = '0';
+                    }
+
+                    setTimeout(() => {
+                        this.handleScroll();
+                        if (wasVisible) {
+                            requestAnimationFrame(() => {
+                                this.scrollTopButtonTarget.style.transition = '';
+                                this.scrollTopButtonTarget.style.opacity = '';
+                            });
+                        }
+                    }, 300);
+                }
+            });
+
+            this.bodyObserver.observe(mainElement, {
+                attributes: true,
+                attributeFilter: ['style']
+            });
+        }
+    }
+
+    handleResize() {
+        this.handleScroll();
     }
 
     preventHorizontalScroll() {
