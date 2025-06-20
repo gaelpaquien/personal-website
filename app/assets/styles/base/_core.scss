@@ -10,21 +10,29 @@ html {
 
 body {
     width: 100%;
-    min-height: 100svh;
+    min-height: 100vh;
     overflow-x: hidden;
     @extend %flex-column;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
     background-color: var(--color-secondary);
+    flex: 1 0 auto;
 }
 
 section {
     padding: 2rem 1.5rem;
-    min-height: calc(100svh - 8.1rem);
+    min-height: calc(100vh - 8.1rem);
 
     @include respond-to('breakpoint-768') {
         padding: 2.5rem 5rem;
+    }
+
+    @media (max-width: 1399px) {
+        min-height: calc(100vh - 8.1rem);
+        height: auto;
     }
 }
 
