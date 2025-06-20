@@ -2,6 +2,8 @@ footer {
     width: 100%;
     overflow-x: hidden;
     flex-shrink: 0;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .footer__container,
@@ -137,10 +139,10 @@ footer {
     }
 
     &-contact {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
 
         @include respond-to('breakpoint-768') {
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
 
         &-meeting {
@@ -157,17 +159,17 @@ footer {
     }
 
     &-company {
-        padding-bottom: 2rem;
-        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+        padding-top: 1.5rem;
 
         @include respond-to('breakpoint-768') {
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
     }
 
     &-about,
     &-links {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
     }
 
     &-contact-title,
@@ -223,14 +225,14 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 1.25rem;
-        gap: 1.25rem;
+        padding: 1rem;
+        gap: 1rem;
         max-width: 100%;
 
         @include respond-to('breakpoint-768') {
             flex-direction: row;
             justify-content: space-between;
-            padding: 1.25rem 2.5rem;
+            padding: 1rem 2.5rem;
         }
 
         &-social {
