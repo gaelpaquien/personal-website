@@ -101,11 +101,6 @@ footer {
 .footer-mobile__container {
     font-size: calc(0.8 * $font-size-text);
     background-color: var(--color-tertiary);
-    overflow-x: hidden;
-    overflow-y: visible;
-    height: auto;
-    min-height: auto;
-    flex-shrink: 0;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
