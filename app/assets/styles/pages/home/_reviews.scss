@@ -29,7 +29,6 @@
             width: 100%;
             max-width: 500px;
             height: 100%;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             transform-origin: center center;
             cursor: pointer;
             padding: 0 0.5rem;
@@ -81,6 +80,7 @@
                 transform: translateX(-50%) scale(1);
                 opacity: 1;
                 pointer-events: auto;
+                transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             }
 
             &.prev {
@@ -91,6 +91,7 @@
                     transform: translateX(-110%) scale(0.85);
                     opacity: 0.6;
                     pointer-events: auto;
+                    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 
                     &:hover {
                         opacity: 0.8;
@@ -107,6 +108,7 @@
                     transform: translateX(10%) scale(0.85);
                     opacity: 0.6;
                     pointer-events: auto;
+                    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 
                     &:hover {
                         opacity: 0.8;
@@ -116,7 +118,11 @@
             }
 
             &.transition-active {
-                transition-duration: 0.25s;
+                transition-duration: 0.25s !important;
+            }
+
+            &:not(.active):not(.prev):not(.next) {
+                display: none;
             }
 
             &-quote {

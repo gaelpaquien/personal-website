@@ -44,7 +44,7 @@ export default class extends Controller {
 
     updateSlidePositions() {
         this.itemTargets.forEach((item, idx) => {
-            item.classList.remove('active', 'prev', 'next', 'transition-active');
+            item.classList.remove('active', 'prev', 'next');
 
             const position = this.getItemPosition(idx);
             if (position) {
@@ -128,8 +128,11 @@ export default class extends Controller {
         this.isAnimating = true;
         this.stopAutoScroll();
 
-        this.itemTargets.forEach(item => {
-            item.classList.add('transition-active');
+        this.itemTargets.forEach((item, idx) => {
+            const position = this.getItemPosition(idx);
+            if (position) {
+                item.classList.add('transition-active');
+            }
         });
 
         const oldIndex = this.currentIndex;
@@ -144,7 +147,7 @@ export default class extends Controller {
 
             this.isAnimating = false;
             this.startAutoScroll();
-        }, 600);
+        }, 250);
     }
 
     updateIndicators() {
