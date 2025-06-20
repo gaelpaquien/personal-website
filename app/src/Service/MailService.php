@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -14,35 +17,21 @@ readonly class MailService
     public function __construct(
         private MailerInterface $mailer,
         private TranslatorInterface $translator,
+        private LoggerInterface $logger,
         private string $contactEmail
     ) {}
 
     public function sendContactEmail(array $formData, string $locale): bool
     {
         try {
-            $subject = $this->translator->trans('info.site.name', [], null, $locale) . ' - ' .
-                $this->translator->trans('form.contact.email.title') .
-                ' - ' . $formData['subject'];
-
             $email = (new Email())
                 ->from($this->contactEmail)
                 ->replyTo($formData['email'])
                 ->to($this->contactEmail)
-                ->subject($subject)
+                ->subject($this->buildContactSubject($formData, $locale))
                 ->html($this->buildContactEmailContent($formData, $locale));
 
-            if (!empty($formData['attachment'])) {
-                foreach ($formData['attachment'] as $file) {
-                    if ($file instanceof UploadedFile) {
-                        $email->attachFromPath(
-                            $file->getPathname(),
-                            $file->getClientOriginalName(),
-                            $file->getClientMimeType() ?: 'application/octet-stream'
-                        );
-                    }
-                }
-            }
-
+            $this->attachFiles($email, $formData['attachment'] ?? []);
             $this->mailer->send($email);
 
             if ($formData['receiveCopy'] ?? false) {
@@ -50,49 +39,123 @@ readonly class MailService
             }
 
             return true;
-        } catch (\Exception $e) {
+
+        } catch (TransportExceptionInterface $e) {
+            $this->logger->error('Transport error sending contact email', [
+                'recipient' => $formData['email'],
+                'error' => $e->getMessage()
+            ]);
+            return false;
+        } catch (Exception $e) {
+            $this->logger->error('Unexpected error sending contact email', [
+                'recipient' => $formData['email'],
+                'error' => $e->getMessage()
+            ]);
             return false;
         }
     }
 
-    public function sendReviewNotificationEmail(array $formData, string $locale): bool
+    /**
+     * @throws TransportExceptionInterface
+     * @throws Exception
+     */
+    public function sendReviewNotificationEmail(array $formData, string $locale): void
     {
         try {
-            $subject = $this->translator->trans('info.site.name', [], null, $locale) . ' - ' .
-                $this->translator->trans('form.review.email.title', [], null, $locale);
-
             $email = (new Email())
                 ->from($this->contactEmail)
                 ->to($this->contactEmail)
-                ->subject($subject)
+                ->subject($this->buildReviewSubject($locale))
                 ->html($this->buildReviewEmailContent($formData, $locale));
 
             $this->mailer->send($email);
-
-            return true;
-        } catch (\Exception $e) {
-            return false;
+        } catch (TransportExceptionInterface $e) {
+            $this->logger->error('Transport error sending review notification', [
+                'reviewId' => $formData['reviewId'] ?? 'unknown',
+                'error' => $e->getMessage()
+            ]);
+            throw $e;
+        } catch (Exception $e) {
+            $this->logger->error('Unexpected error sending review notification', [
+                'reviewId' => $formData['reviewId'] ?? 'unknown',
+                'error' => $e->getMessage()
+            ]);
+            throw $e;
         }
     }
 
     private function sendContactCopyToSender(array $formData, string $locale): void
     {
-        $subject = $this->translator->trans('info.site.name', [], null, $locale) . ' - ' .
-            $this->translator->trans('form.contact.email.copy_subject', [], null, $locale) .
-            ' - ' . $formData['subject'];
+        try {
+            $copyEmail = (new Email())
+                ->from($this->contactEmail)
+                ->to($formData['email'])
+                ->subject($this->buildContactCopySubject($formData, $locale))
+                ->html($this->buildContactCopyEmailContent($formData, $locale));
 
-        $copyEmail = (new Email())
-            ->from($this->contactEmail)
-            ->to($formData['email'])
-            ->subject($subject)
-            ->html($this->buildContactCopyEmailContent($formData, $locale));
+            $this->mailer->send($copyEmail);
+        } catch (TransportExceptionInterface $e) {
+            $this->logger->warning('Transport error sending copy to sender', [
+                'recipient' => $formData['email'],
+                'error' => $e->getMessage()
+            ]);
+        } catch (Exception $e) {
+            $this->logger->warning('Failed to send copy to sender', [
+                'recipient' => $formData['email'],
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
 
-        $this->mailer->send($copyEmail);
+    private function attachFiles(Email $email, array $files): void
+    {
+        foreach ($files as $file) {
+            if ($file instanceof UploadedFile && $file->isValid()) {
+                try {
+                    $email->attachFromPath(
+                        $file->getPathname(),
+                        $file->getClientOriginalName(),
+                        $file->getClientMimeType() ?: 'application/octet-stream'
+                    );
+                } catch (Exception $e) {
+                    $this->logger->warning('Failed to attach file', [
+                        'filename' => $file->getClientOriginalName(),
+                        'error' => $e->getMessage()
+                    ]);
+                }
+            }
+        }
+    }
+
+    private function buildContactSubject(array $formData, string $locale): string
+    {
+        return sprintf('%s - %s - %s',
+            $this->translator->trans('info.site.name', [], null, $locale),
+            $this->translator->trans('form.contact.email.title', [], null, $locale),
+            $formData['subject']
+        );
+    }
+
+    private function buildContactCopySubject(array $formData, string $locale): string
+    {
+        return sprintf('%s - %s - %s',
+            $this->translator->trans('info.site.name', [], null, $locale),
+            $this->translator->trans('form.contact.email.copy_subject', [], null, $locale),
+            $formData['subject']
+        );
+    }
+
+    private function buildReviewSubject(string $locale): string
+    {
+        return sprintf('%s - %s',
+            $this->translator->trans('info.site.name', [], null, $locale),
+            $this->translator->trans('form.review.email.title', [], null, $locale)
+        );
     }
 
     private function buildContactEmailContent(array $formData, string $locale): string
     {
-        $attachmentCount = !empty($formData['attachment']) ? count($formData['attachment']) : 0;
+        $attachmentCount = count($formData['attachment'] ?? []);
 
         return sprintf(
             '<h2>%s</h2>
@@ -125,12 +188,14 @@ readonly class MailService
     private function buildContactCopyEmailContent(array $formData, string $locale): string
     {
         return sprintf(
-            '<h2>%s</h2>
-            <p>%s</p>
-            <div>%s</div>
-            <hr>',
-            $this->translator->trans('form.contact.email.copy_title', [], null, $locale) . ' ' . $this->translator->trans('info.site.name', [], null, $locale),
-            $this->translator->trans('form.contact.email.copy_intro', [], null, $locale) . ' ' . $this->translator->trans('info.site.name', [], null, $locale),
+            '<h2>%s %s</h2>
+            <p>%s %s</p>
+            <hr>
+            <div>%s</div>',
+            $this->translator->trans('form.contact.email.copy_title', [], null, $locale),
+            $this->translator->trans('info.site.name', [], null, $locale),
+            $this->translator->trans('form.contact.email.copy_intro', [], null, $locale),
+            $this->translator->trans('info.site.name', [], null, $locale),
             $this->buildContactEmailContent($formData, $locale)
         );
     }
@@ -144,9 +209,11 @@ readonly class MailService
             <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s</p>
             <div><strong>%s:</strong><br>%s</div>
+            <br>
             <hr>
             <p><strong>ID:</strong> %s</p>
-            <p><strong>Date:</strong> %s</p>',
+            <p><strong>Date:</strong> %s</p>
+            <p><strong>Status:</strong> %s</p>',
             $this->translator->trans('form.review.email.title', [], null, $locale),
             $this->translator->trans('form.review.email.language', [], null, $locale),
             htmlspecialchars($locale),
@@ -160,7 +227,8 @@ readonly class MailService
             $this->translator->trans('form.review.email.content', [], null, $locale),
             nl2br(htmlspecialchars($formData['content'] ?? '')),
             $formData['reviewId'] ?? 'N/A',
-            $formData['createdAt'] ?? 'N/A'
+            $formData['createdAt'] ?? 'N/A',
+            $formData['status'] ?? 'N/A'
         );
     }
 }
