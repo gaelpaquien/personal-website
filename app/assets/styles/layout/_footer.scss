@@ -4,6 +4,8 @@ footer {
     flex-shrink: 0;
     max-height: 80vh;
     overflow-y: auto;
+    position: relative;
+    contain: layout;
 }
 
 .footer__container,
@@ -111,6 +113,9 @@ footer {
     min-height: auto;
     flex-shrink: 0;
     position: relative;
+    z-index: inherit;
+    contain: layout style;
+    transform: translateZ(0);
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
