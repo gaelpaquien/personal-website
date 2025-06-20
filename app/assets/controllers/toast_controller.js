@@ -3,15 +3,19 @@ import { Controller } from '@hotwired/stimulus'
 class Toast {
     static show(message, type = 'success') {
         const container = Toast.getOrCreateContainer()
-        const toast = Toast.createToast(message, type)
 
+        Toast.hideExistingToasts()
+
+        const toast = Toast.createToast(message, type)
         container.appendChild(toast)
 
         requestAnimationFrame(() => {
             toast.classList.add('toast--show')
+            Toast.startProgressBar(toast)
         })
 
-        setTimeout(() => Toast.hide(toast), 4000)
+        const timeoutId = setTimeout(() => Toast.hide(toast), 4000)
+        toast.dataset.timeoutId = timeoutId
     }
 
     static success(message) {
@@ -20,6 +24,17 @@ class Toast {
 
     static error(message) {
         Toast.show(message, 'error')
+    }
+
+    static hideExistingToasts() {
+        const existingToasts = document.querySelectorAll('.toast.toast--show')
+        existingToasts.forEach((toast, index) => {
+            if (toast.dataset.timeoutId) {
+                clearTimeout(parseInt(toast.dataset.timeoutId))
+            }
+
+            setTimeout(() => Toast.hide(toast), index * 100)
+        })
     }
 
     static getOrCreateContainer() {
@@ -40,13 +55,25 @@ class Toast {
         toast.innerHTML = `
             <span class="toast-message">${message}</span>
             <button class="toast-close">×</button>
+            <div class="toast-progress"></div>
         `
 
         toast.querySelector('.toast-close').addEventListener('click', () => {
+            if (toast.dataset.timeoutId) {
+                clearTimeout(parseInt(toast.dataset.timeoutId))
+            }
             Toast.hide(toast)
         })
 
         return toast
+    }
+
+    static startProgressBar(toast) {
+        const progressBar = toast.querySelector('.toast-progress')
+        progressBar.style.width = '100%'
+        requestAnimationFrame(() => {
+            progressBar.style.width = '0%'
+        })
     }
 
     static hide(toast) {

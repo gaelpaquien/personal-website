@@ -24,6 +24,8 @@
   transform: translateX(calc(100% + 2rem));
   opacity: 0;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 
   &.toast--show {
     transform: translateX(0);
@@ -34,12 +36,20 @@
     border-color: #28a745;
     background: #d4edda;
     color: #155724;
+
+    .toast-progress {
+      background: #28a745;
+    }
   }
 
   &--error {
     border-color: #dc3545;
     background: #f8d7da;
     color: #721c24;
+
+    .toast-progress {
+      background: #dc3545;
+    }
   }
 
   &-message {
@@ -58,5 +68,14 @@
     &:hover {
       opacity: 1;
     }
+  }
+
+  &-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transition: width 4s linear;
   }
 }
