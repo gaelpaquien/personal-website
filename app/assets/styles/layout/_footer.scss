@@ -106,7 +106,6 @@ footer {
     height: auto;
     min-height: auto;
     flex-shrink: 0;
-    position: relative;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
