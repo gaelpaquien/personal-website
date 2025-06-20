@@ -124,7 +124,9 @@ export default class extends Controller {
         const arrow = dropdown.querySelector('[data-navigation-target="arrow"]');
         const isActive = !content.classList.contains('active');
 
-        this.closeAllDropdowns();
+        if (isActive) {
+            this.closeAllDropdowns(true, content);
+        }
 
         content.classList.toggle('active', isActive);
 
@@ -137,9 +139,22 @@ export default class extends Controller {
         }
     }
 
-    closeAllDropdowns() {
+    closeAllDropdowns(instant = false, excludeContent = null) {
         this.dropdownTargets.forEach(dropdown => {
-            dropdown.classList.remove('active');
+            if (excludeContent && dropdown === excludeContent) {
+                return;
+            }
+
+            if (instant) {
+                dropdown.style.transition = 'none';
+                dropdown.classList.remove('active');
+
+                requestAnimationFrame(() => {
+                    dropdown.style.transition = '';
+                });
+            } else {
+                dropdown.classList.remove('active');
+            }
         });
 
         this.arrowTargets.forEach(arrow => {
