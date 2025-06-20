@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\Traits\FormHandlerTrait;
 use App\Form\ContactType;
-use App\Service\MailService;
 use App\Service\ContentService;
+use App\Service\MailService;
+use Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +19,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/', name: 'app_main_')]
 class MainController extends AbstractController
 {
+    use FormHandlerTrait;
+
     public function __construct(
         private readonly ContentService $contentService,
         private readonly MailService $mailService,
-        private readonly TranslatorInterface $translator
+        private readonly TranslatorInterface $translator,
+        private readonly LoggerInterface $logger
     ) {}
 
     #[Route('/', name: 'root')]
@@ -42,48 +48,30 @@ class MainController extends AbstractController
         $contactForm = $this->createForm(ContactType::class);
         $contactForm->handleRequest($request);
 
-        if ($request->isXmlHttpRequest()) {
-            if ($contactForm->isSubmitted()) {
-                if ($contactForm->isValid()) {
-                    $formData = $contactForm->getData();
+        $ajaxResponse = $this->handleForm(
+            $request,
+            $contactForm,
+            fn($formData) => $this->processContact($formData, $locale),
+            $locale,
+            'form.contact.success',
+            'form.contact.error'
+        );
 
-                    if ($this->mailService->sendContactEmail($formData, $locale)) {
-                        return $this->json([
-                            'success' => true,
-                            'message' => $this->translator->trans('form.contact.success', [], null, $locale)
-                        ]);
-                    } else {
-                        return $this->json([
-                            'success' => false,
-                            'message' => $this->translator->trans('form.contact.error', [], null, $locale)
-                        ]);
-                    }
-                } else {
-                    $errors = [];
-                    foreach ($contactForm->getErrors(true) as $error) {
-                        $field = $error->getOrigin()->getName();
-                        $errors[$field][] = $error->getMessage();
-                    }
-
-                    return $this->json([
-                        'success' => false,
-                        'errors' => $errors
-                    ]);
-                }
-            }
+        if ($ajaxResponse) {
+            return $ajaxResponse;
         }
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $formData = $contactForm->getData();
-
-            if ($this->mailService->sendContactEmail($formData, $locale)) {
+            try {
+                $this->processContact($contactForm->getData(), $locale);
                 $this->addFlash('success', $this->translator->trans('form.contact.success', [], null, $locale));
 
                 return $this->redirectToRoute('app_main_index', [
                     '_locale' => $locale,
                     '_fragment' => 'home-contact'
                 ]);
-            } else {
+            } catch (Exception) {
+                $this->logger->error('Classic form contact submission failed');
                 $this->addFlash('error', $this->translator->trans('form.contact.error', [], null, $locale));
             }
         }
@@ -93,6 +81,20 @@ class MainController extends AbstractController
             'reviews' => $this->contentService->getAllReviews($locale),
             'contactForm' => $contactForm->createView(),
         ]);
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function processContact(array $formData, string $locale): array
+    {
+        $success = $this->mailService->sendContactEmail($formData, $locale);
+
+        if (!$success) {
+            throw new Exception('Contact email sending failed');
+        }
+
+        return ['success' => true];
     }
 
     #[Route([

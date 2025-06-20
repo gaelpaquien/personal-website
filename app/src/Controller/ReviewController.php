@@ -4,22 +4,28 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\Traits\FormHandlerTrait;
 use App\Form\ReviewType;
-use App\Service\MailService;
 use App\Service\ReviewService;
+use Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Throwable;
 
 #[Route('/', name: 'app_review_')]
 class ReviewController extends AbstractController
 {
+    use FormHandlerTrait;
+
     public function __construct(
         private readonly ReviewService $reviewService,
         private readonly TranslatorInterface $translator,
-        private readonly MailService $mailService
+        private readonly LoggerInterface $logger
     ) {}
 
     #[Route([
@@ -32,47 +38,33 @@ class ReviewController extends AbstractController
         $reviewForm = $this->createForm(ReviewType::class);
         $reviewForm->handleRequest($request);
 
-        if ($request->isXmlHttpRequest()) {
-            if ($reviewForm->isSubmitted()) {
-                if ($reviewForm->isValid()) {
-                    $formData = $reviewForm->getData();
+        $ajaxResponse = $this->handleForm(
+            $request,
+            $reviewForm,
+            fn($formData) => $this->processReview($formData, $locale),
+            $locale,
+            'form.review.success',
+            'form.review.error'
+        );
 
-                    if ($this->reviewService->createReview($formData, $locale) && $this->mailService->sendReviewNotificationEmail($formData, $locale)) {
-                        return $this->json([
-                            'success' => true,
-                            'message' => $this->translator->trans('form.review.success', [], null, $locale)
-                        ]);
-                    } else {
-                        return $this->json([
-                            'success' => false,
-                            'message' => $this->translator->trans('form.review.error', [], null, $locale)
-                        ]);
-                    }
-                } else {
-                    $errors = [];
-                    foreach ($reviewForm->getErrors(true) as $error) {
-                        $field = $error->getOrigin()->getName();
-                        $errors[$field][] = $error->getMessage();
-                    }
-
-                    return $this->json([
-                        'success' => false,
-                        'errors' => $errors
-                    ]);
-                }
-            }
+        if ($ajaxResponse) {
+            return $ajaxResponse;
         }
 
         if ($reviewForm->isSubmitted() && $reviewForm->isValid()) {
-            $formData = $reviewForm->getData();
-
-            if ($this->reviewService->createReview($formData, $locale) && $this->mailService->sendReviewNotificationEmail($formData, $locale)) {
+            try {
+                $this->processReview($reviewForm->getData(), $locale);
                 $this->addFlash('success', $this->translator->trans('form.review.success', [], null, $locale));
 
-                return $this->redirectToRoute('app_review_create', [
-                    '_locale' => $locale
-                ]);
-            } else {
+                return $this->redirectToRoute('app_review_create', ['_locale' => $locale]);
+            } catch (TransportExceptionInterface) {
+                $this->logger->error('Transport error during review submission');
+                $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
+            } catch (Exception) {
+                $this->logger->error('Form review submission failed');
+                $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
+            } catch (Throwable) {
+                $this->logger->error('Unexpected error during review submission');
                 $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
             }
         }
@@ -80,5 +72,15 @@ class ReviewController extends AbstractController
         return $this->render('pages/post-review.html.twig', [
             'reviewForm' => $reviewForm->createView(),
         ]);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws Exception
+     * @throws Throwable
+     */
+    private function processReview(array $formData, string $locale): array
+    {
+        return $this->reviewService->createReviewWithNotification($formData, $locale);
     }
 }

@@ -8,7 +8,7 @@
                 {% for element in elements %}
                     <li class="breadcrumb__item {% if not loop.last %}link-effects{% endif %}">
                         {% if element.url is defined and not loop.last %}
-                            <a href="{{ element.url }}" class="breadcrumb__link" aria-label="{{ 'go_to_page'|trans }} {{ element.label }}">
+                            <a href="{{ element.url }}" class="breadcrumb__link" aria-label="{{ 'navigation.go_to_page'|trans }} {{ element.label }}">
                                 {% if element.icon is defined %}
                                     {% include 'assets/svg/' ~ element.icon ~ '.html.twig' with {class: 'breadcrumb__icon'} %}
                                 {% endif %}
