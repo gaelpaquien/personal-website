@@ -1,6 +1,7 @@
 footer {
     width: 100%;
     overflow-x: hidden;
+    flex-shrink: 0;
 }
 
 .footer__container,
@@ -9,6 +10,7 @@ footer {
     max-width: 100%;
     overflow-x: hidden;
     box-sizing: border-box;
+    max-height: none;
 }
 
 .footer-mobile__container-links-social,
@@ -102,6 +104,11 @@ footer {
     font-size: calc(0.8 * $font-size-text);
     background-color: var(--color-tertiary);
     overflow-x: hidden;
+    overflow-y: visible;
+    height: auto;
+    min-height: auto;
+    flex-shrink: 0;
+    position: relative;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
@@ -160,7 +167,7 @@ footer {
 
     &-about,
     &-links {
-        padding: 2rem 0;
+        padding: 1.5rem 0;
     }
 
     &-contact-title,
@@ -216,14 +223,14 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 1.5rem;
-        gap: 1.5rem;
+        padding: 1.25rem;
+        gap: 1.25rem;
         max-width: 100%;
 
         @include respond-to('breakpoint-768') {
             flex-direction: row;
             justify-content: space-between;
-            padding: 1.5rem 2.5rem;
+            padding: 1.25rem 2.5rem;
         }
 
         &-social {
