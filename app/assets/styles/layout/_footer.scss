@@ -2,10 +2,6 @@ footer {
     width: 100%;
     overflow-x: hidden;
     flex-shrink: 0;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    contain: layout;
 }
 
 .footer__container,
@@ -113,10 +109,6 @@ footer {
     min-height: auto;
     flex-shrink: 0;
     position: relative;
-    z-index: 900;
-    contain: layout style;
-    transform: translateZ(0);
-    will-change: auto;
 
     @include respond-to('breakpoint-576') {
         font-size: $font-size-text;
@@ -124,12 +116,6 @@ footer {
 
     @include respond-to('breakpoint-1400') {
         display: none;
-    }
-
-    .fade-in-effects-initial {
-        z-index: inherit;
-        position: relative;
-        transform: translateZ(0);
     }
 
     &-header {
@@ -151,10 +137,10 @@ footer {
     }
 
     &-contact {
-        padding-top: 1.5rem;
+        padding-top: 2rem;
 
         @include respond-to('breakpoint-768') {
-            padding: 1.5rem 0;
+            padding: 2rem 0;
         }
 
         &-meeting {
@@ -171,17 +157,17 @@ footer {
     }
 
     &-company {
-        padding-bottom: 1.5rem;
-        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
 
         @include respond-to('breakpoint-768') {
-            padding: 1.5rem 0;
+            padding: 2rem 0;
         }
     }
 
     &-about,
     &-links {
-        padding: 1rem 0;
+        padding: 1.5rem 0;
     }
 
     &-contact-title,
@@ -237,14 +223,14 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 1rem;
-        gap: 1rem;
+        padding: 1.25rem;
+        gap: 1.25rem;
         max-width: 100%;
 
         @include respond-to('breakpoint-768') {
             flex-direction: row;
             justify-content: space-between;
-            padding: 1rem 2.5rem;
+            padding: 1.25rem 2.5rem;
         }
 
         &-social {
