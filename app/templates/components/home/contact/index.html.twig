@@ -1,5 +1,3 @@
-
-
 <section id="home-contact" class="home-contact__container">
     <div class="fade-in-effects-initial"
          data-animation-fade-in-target="fadeIn"
@@ -18,18 +16,19 @@
     </div>
 
     <div class="form-container"
-         data-controller="contact-form"
-         data-contact-form-sending-value="{{ 'form.sending'|trans }}"
-         data-contact-form-error-value="{{ 'form.error'|trans }}"
-         data-contact-form-validation-error-value="{{ 'form.validation_error'|trans }}"
+         data-controller="form"
+         data-form-sending-value="{{ 'form.submission'|trans }}"
+         data-form-error-value="{{ 'form.contact.error'|trans }}"
+         data-form-validation-error-value="{{ 'form.validation_error'|trans }}"
     >
         {{ form_start(contactForm, {
             'attr': {
                 'class': 'fade-in-effects-initial home-contact__container-form',
                 'data-animation-fade-in-target': 'fadeIn',
                 'data-animation': 'fade-in-up-effects',
-                'data-contact-form-target': 'form',
-                'data-action': 'submit->contact-form#submitForm'
+                'data-form-target': 'form',
+                'data-action': 'submit->form#submitForm',
+                'data-turbo': 'false'
             }
         }) }}
 
@@ -124,7 +123,7 @@
 
         <button class="btn"
                 type="submit"
-                data-contact-form-target="submit"
+                data-form-target="submit"
                 aria-label="{{ 'home.sections.contact.form.submit_button' | trans }}">
             {{ 'home.sections.contact.form.submit_button' | trans }}
         </button>

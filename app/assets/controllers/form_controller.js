@@ -5,7 +5,8 @@ export default class extends Controller {
     static values = {
         sending: String,
         error: String,
-        validationError: String
+        validationError: String,
+        successRedirect: { type: String, default: "" }
     }
 
     async submitForm(event) {
@@ -17,9 +18,10 @@ export default class extends Controller {
         if (inputFileController) {
             const controller = this.application.getControllerForElementAndIdentifier(inputFileController, 'input-file')
             if (controller) {
-                formData.delete('contact[attachment][]')
+                const fieldName = this.formTarget.querySelector('input[type="file"]').name
+                formData.delete(fieldName)
                 Array.from(controller.getFiles()).forEach(file => {
-                    formData.append('contact[attachment][]', file)
+                    formData.append(fieldName, file)
                 })
             }
         }
@@ -46,12 +48,18 @@ export default class extends Controller {
             if (data.success) {
                 window.Toast.success(data.message)
                 this.formTarget.reset()
-                const inputFileController = this.element.querySelector('[data-controller*="input-file"]')
+
                 if (inputFileController) {
                     const controller = this.application.getControllerForElementAndIdentifier(inputFileController, 'input-file')
                     if (controller) {
                         controller.reset()
                     }
+                }
+
+                if (this.successRedirectValue) {
+                    setTimeout(() => {
+                        window.location.href = this.successRedirectValue
+                    }, 2000)
                 }
             } else {
                 if (data.errors) {

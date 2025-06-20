@@ -44,7 +44,7 @@ class Review
     private ?string $source = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $order = null;
+    private ?int $sortOrder = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $status = self::STATUS_PENDING;
@@ -150,14 +150,14 @@ class Review
         return $this;
     }
 
-    public function getOrder(): ?int
+    public function getSortOrder(): ?int
     {
-        return $this->order;
+        return $this->sortOrder;
     }
 
-    public function setOrder(int $order): static
+    public function setSortOrder(?int $sortOrder): static
     {
-        $this->order = $order;
+        $this->sortOrder = $sortOrder;
         return $this;
     }
 

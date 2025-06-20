@@ -62,7 +62,7 @@ final class Version20250606182139 extends AbstractMigration
             article_id INT NOT NULL, 
             title_fr VARCHAR(255) NOT NULL, 
             title_en VARCHAR(255) NOT NULL, 
-            `order` SMALLINT NOT NULL, 
+            sort_order SMALLINT NOT NULL, 
             UNIQUE INDEX UNIQ_5C93B3A47294869C (article_id), 
             PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -77,7 +77,7 @@ final class Version20250606182139 extends AbstractMigration
             content_fr LONGTEXT NOT NULL, 
             content_en LONGTEXT NOT NULL, 
             source VARCHAR(255) NOT NULL, 
-            `order` SMALLINT NOT NULL, 
+            sort_order SMALLINT DEFAULT NULL, 
             status SMALLINT NOT NULL, 
             created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', 
             PRIMARY KEY(id)

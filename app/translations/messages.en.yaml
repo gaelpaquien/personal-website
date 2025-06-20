@@ -209,8 +209,8 @@ privacy_policy:
     intro: "The site collects personal data, including:"
     contact_form:
       title: "Contact form:"
-      name: "Name"
       first_name: "First name"
+      name: "Name"
       email: "Email"
       phone: "Phone (optional)"
       subject: "Subject of the message"
@@ -220,14 +220,13 @@ privacy_policy:
       copy_notice: "Only a copy of the content in the form of an automatic email is available to the site publisher to respond to you"
     review_form:
       title: "Review submission form:"
-      name: "Name"
       first_name: "First name"
-      email: "Email"
+      name: "Name"
       company: "Company/Entity (optional)"
       position: "Position/Role (optional)"
       message: "Message/Quote"
       storage_notice: "The data entered in this form are stored and used solely to display reviews on this site"
-      display_notice: "The email entered in this form will not be visible on the site and the identity will be displayed in the form of initials (John D)."
+      display_notice: "Your identity will appear in reviews as initials (e.g., John D.)."
     data_officer:
       title: "Data Processing Officer"
       text: "The data processing officer for data collected on the site is the site publisher."
@@ -259,11 +258,11 @@ errors:
   text: "Oops... It seems an error occurred. If the problem persists, please contact the site administrator."
 
 form:
-  sending: "Sending your message..."
-  error: "An error occurred while sending your message."
+  submission: "Submission in progress..."
   validation_error: "Please correct the errors in the form."
-  success: "Your message has been sent successfully!"
   contact:
+    success: "Your message has been sent successfully!"
+    error: "An error occurred while sending your message."
     file:
       duplicate: "File already exists."
       limit_reached: "You have reached the maximum number of files allowed."
@@ -282,3 +281,16 @@ form:
       copy_subject: "Copy of your contact message"
       copy_title: "Copy of your message on"
       copy_intro: "Here is a copy of the contact message you sent on"
+  review:
+    success: "Your review has been saved successfully!"
+    error: "An error occurred while publishing your review."
+    email:
+      title: "New review received"
+      language: "Language of user"
+      identity: "Identity (First Name, Last Name)"
+      email: "Email"
+      company: "Company/Entity"
+      company_not_specified: "Company not specified"
+      role: "Role/Position"
+      role_not_specified: "Role not specified"
+      content: "Content of the review"

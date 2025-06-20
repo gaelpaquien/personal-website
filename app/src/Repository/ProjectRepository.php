@@ -19,7 +19,7 @@ class ProjectRepository extends ServiceEntityRepository
     public function findAllOrdered(): array
     {
         return $this->createQueryBuilder('p')
-            ->orderBy('p.order', 'ASC')
+            ->orderBy('p.sortOrder', 'ASC')
             ->getQuery()
             ->getResult();
     }

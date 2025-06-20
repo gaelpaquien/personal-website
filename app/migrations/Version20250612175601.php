@@ -16,7 +16,7 @@ final class Version20250612175601 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql("INSERT INTO projects (id, article_id, title_fr, title_en, `order`) VALUES
+        $this->addSql("INSERT INTO projects (id, article_id, title_fr, title_en, sort_order) VALUES
         (1, 11, 'Plany', 'Plany', 1),
         (2, 9, 'gaelpaquien.com', 'gaelpaquien.com', 2),
         (3, 10, 'VPS Auto-géré', 'Self-Managed VPS', 3),

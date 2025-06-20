@@ -25,7 +25,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, priority: 20 }
 
-    App\Service\ContactService:
+    App\Service\MailService:
         arguments:
             $contactEmail: '%env(CONTACT_EMAIL)%'
 
