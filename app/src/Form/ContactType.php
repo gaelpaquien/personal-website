@@ -70,10 +70,8 @@ class ContactType extends AbstractType
                 'constraints' => [
                     new Assert\Length(
                         min: 8,
-                        minMessage: 'form.contact.validation.phone.min_length'
-                    ),
-                    new Assert\Length(
                         max: 20,
+                        minMessage: 'form.contact.validation.phone.min_length',
                         maxMessage: 'form.contact.validation.phone.max_length'
                     ),
                     new Assert\Regex(

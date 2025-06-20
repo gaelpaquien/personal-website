@@ -209,8 +209,8 @@ privacy_policy:
     intro: "Le site collecte des données personnelles, y compris :"
     contact_form:
       title: "Formulaire de contact :"
-      name: "Nom"
       first_name: "Prénom"
+      name: "Nom"
       email: "Email"
       phone: "Téléphone (facultatif)"
       subject: "Sujet du message"
@@ -220,14 +220,13 @@ privacy_policy:
       copy_notice: "Seule une copie du contenu sous forme de mail automatique est à disposition de l'éditeur du site afin de vous répondre"
     review_form:
       title: "Formulaire ajout d'avis :"
-      name: "Nom"
       first_name: "Prénom"
-      email: "Email"
+      name: "Nom"
       company: "Société/Entité (facultatif)"
       position: "Poste/Rôle (facultatif)"
       message: "Message/Citation"
       storage_notice: "Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site"
-      display_notice: "L'email saisie dans ce formulaire ne sera pas visible sur le site et l'identité sera affichée sous forme d'initial (John D)."
+      display_notice: "Votre identité apparaîtra dans les avis sous forme d'initiales (ex. : John D.)."
     data_officer:
       title: "Responsable du traitement des données"
       text: "Le responsable du traitement des données collectées sur le site est l'éditeur du site."
@@ -259,11 +258,11 @@ errors:
   text: "Oups... Il semblerait qu'une erreur soit survenue, si le problème persiste veuillez contacter l'administrateur du site."
 
 form:
-  sending: "Envoi en cours..."
-  error: "Une erreur est survenue lors de l'envoi du message."
+  submission: "Soumission en cours..."
   validation_error: "Veuillez corriger les erreurs du formulaire."
-  success: "Votre message a été envoyé avec succès !"
   contact:
+    success: "Votre message a été envoyé avec succès !"
+    error: "Une erreur est survenue lors de l'envoi du message."
     file:
       duplicate: "Ce fichier a déjà été ajouté."
       limit_reached: "Limite de 3 fichiers atteinte."
@@ -273,7 +272,7 @@ form:
       title: "Nouveau message de contact"
       language: "Langue de l'utilisateur"
       attachment_count: "Nombre de pièces jointes"
-      identity: "Identité (Prénom/Nom)"
+      identity: "Identité (Prénom, Nom)"
       email: "Email"
       phone: "Téléphone"
       phone_not_specified: "Téléphone non renseigné"
@@ -282,3 +281,16 @@ form:
       copy_subject: "Copie de votre message de contact"
       copy_title: "Copie de votre message de contact sur"
       copy_intro: "Voici une copie du message de contact que vous avez envoyé sur"
+  review:
+    success: "Votre avis a été enregistré avec succès !"
+    error: "Une erreur est survenue lors de la publication de l'avis."
+    email:
+      title: "Nouvel avis reçu"
+      language: "Langue de l'utilisateur"
+      identity: "Identité (Prénom, Nom)"
+      email: "Email"
+      company: "Société/Entité"
+      company_not_specified: "Société non renseignée"
+      role: "Poste/Rôle"
+      role_not_specified: "Poste/Rôle non renseigné"
+      content: "Contenu de l'avis"

@@ -26,7 +26,7 @@ class Project
     private ?string $titleEn = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $order = null;
+    private ?int $sortOrder = null;
 
     public function getId(): ?int
     {
@@ -66,14 +66,14 @@ class Project
         return $this;
     }
 
-    public function getOrder(): ?int
+    public function getSortOrder(): ?int
     {
-        return $this->order;
+        return $this->sortOrder;
     }
 
-    public function setOrder(int $order): static
+    public function setOrder(int $sortOrder): static
     {
-        $this->order = $order;
+        $this->sortOrder = $sortOrder;
         return $this;
     }
 

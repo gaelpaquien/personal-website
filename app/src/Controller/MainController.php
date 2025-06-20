@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\ContactType;
-use App\Service\ContactService;
+use App\Service\MailService;
 use App\Service\ContentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ class MainController extends AbstractController
 {
     public function __construct(
         private readonly ContentService $contentService,
-        private readonly ContactService $contactService,
+        private readonly MailService $mailService,
         private readonly TranslatorInterface $translator
     ) {}
 
@@ -47,15 +47,15 @@ class MainController extends AbstractController
                 if ($contactForm->isValid()) {
                     $formData = $contactForm->getData();
 
-                    if ($this->contactService->sendContactEmail($formData, $locale)) {
+                    if ($this->mailService->sendContactEmail($formData, $locale)) {
                         return $this->json([
                             'success' => true,
-                            'message' => $this->translator->trans('form.success', [], null, $locale)
+                            'message' => $this->translator->trans('form.contact.success', [], null, $locale)
                         ]);
                     } else {
                         return $this->json([
                             'success' => false,
-                            'message' => $this->translator->trans('form.error', [], null, $locale)
+                            'message' => $this->translator->trans('form.contact.error', [], null, $locale)
                         ]);
                     }
                 } else {
@@ -76,15 +76,15 @@ class MainController extends AbstractController
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $formData = $contactForm->getData();
 
-            if ($this->contactService->sendContactEmail($formData, $locale)) {
-                $this->addFlash('success', $this->translator->trans('form.success', [], null, $locale));
+            if ($this->mailService->sendContactEmail($formData, $locale)) {
+                $this->addFlash('success', $this->translator->trans('form.contact.success', [], null, $locale));
 
                 return $this->redirectToRoute('app_main_index', [
                     '_locale' => $locale,
                     '_fragment' => 'home-contact'
                 ]);
             } else {
-                $this->addFlash('error', $this->translator->trans('form.error', [], null, $locale));
+                $this->addFlash('error', $this->translator->trans('form.contact.error', [], null, $locale));
             }
         }
 

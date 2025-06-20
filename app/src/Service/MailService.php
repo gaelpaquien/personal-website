@@ -9,7 +9,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-readonly class ContactService
+readonly class MailService
 {
     public function __construct(
         private MailerInterface $mailer,
@@ -29,7 +29,7 @@ readonly class ContactService
                 ->replyTo($formData['email'])
                 ->to($this->contactEmail)
                 ->subject($subject)
-                ->html($this->buildEmailContent($formData, $locale));
+                ->html($this->buildContactEmailContent($formData, $locale));
 
             if (!empty($formData['attachment'])) {
                 foreach ($formData['attachment'] as $file) {
@@ -46,7 +46,7 @@ readonly class ContactService
             $this->mailer->send($email);
 
             if ($formData['receiveCopy'] ?? false) {
-                $this->sendCopyToSender($formData, $locale);
+                $this->sendContactCopyToSender($formData, $locale);
             }
 
             return true;
@@ -55,7 +55,27 @@ readonly class ContactService
         }
     }
 
-    private function sendCopyToSender(array $formData, string $locale): void
+    public function sendReviewNotificationEmail(array $formData, string $locale): bool
+    {
+        try {
+            $subject = $this->translator->trans('info.site.name', [], null, $locale) . ' - ' .
+                $this->translator->trans('form.review.email.title', [], null, $locale);
+
+            $email = (new Email())
+                ->from($this->contactEmail)
+                ->to($this->contactEmail)
+                ->subject($subject)
+                ->html($this->buildReviewEmailContent($formData, $locale));
+
+            $this->mailer->send($email);
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    private function sendContactCopyToSender(array $formData, string $locale): void
     {
         $subject = $this->translator->trans('info.site.name', [], null, $locale) . ' - ' .
             $this->translator->trans('form.contact.email.copy_subject', [], null, $locale) .
@@ -65,12 +85,12 @@ readonly class ContactService
             ->from($this->contactEmail)
             ->to($formData['email'])
             ->subject($subject)
-            ->html($this->buildCopyEmailContent($formData, $locale));
+            ->html($this->buildContactCopyEmailContent($formData, $locale));
 
         $this->mailer->send($copyEmail);
     }
 
-    private function buildEmailContent(array $formData, string $locale): string
+    private function buildContactEmailContent(array $formData, string $locale): string
     {
         $attachmentCount = !empty($formData['attachment']) ? count($formData['attachment']) : 0;
 
@@ -102,15 +122,45 @@ readonly class ContactService
         );
     }
 
-    private function buildCopyEmailContent(array $formData, string $locale): string
+    private function buildContactCopyEmailContent(array $formData, string $locale): string
     {
         return sprintf(
             '<h2>%s</h2>
             <p>%s</p>
-            <div>%s</div>',
+            <div>%s</div>
+            <hr>',
             $this->translator->trans('form.contact.email.copy_title', [], null, $locale) . ' ' . $this->translator->trans('info.site.name', [], null, $locale),
             $this->translator->trans('form.contact.email.copy_intro', [], null, $locale) . ' ' . $this->translator->trans('info.site.name', [], null, $locale),
-            $this->buildEmailContent($formData, $locale)
+            $this->buildContactEmailContent($formData, $locale)
+        );
+    }
+
+    private function buildReviewEmailContent(array $formData, string $locale): string
+    {
+        return sprintf(
+            '<h2>%s</h2>
+            <p><strong>%s:</strong> %s</p>
+            <p><strong>%s:</strong> %s %s</p>
+            <p><strong>%s:</strong> %s</p>
+            <p><strong>%s:</strong> %s</p>
+            <div><strong>%s:</strong><br>%s</div>
+            <hr>
+            <p><strong>ID:</strong> %s</p>
+            <p><strong>Date:</strong> %s</p>',
+            $this->translator->trans('form.review.email.title', [], null, $locale),
+            $this->translator->trans('form.review.email.language', [], null, $locale),
+            htmlspecialchars($locale),
+            $this->translator->trans('form.review.email.identity', [], null, $locale),
+            htmlspecialchars($formData['authorFirstname'] ?? ''),
+            htmlspecialchars($formData['authorLastname'] ?? ''),
+            $this->translator->trans('form.review.email.company', [], null, $locale),
+            htmlspecialchars($formData['authorCompany'] ?? $this->translator->trans('form.review.email.company_not_specified', [], null, $locale)),
+            $this->translator->trans('form.review.email.role', [], null, $locale),
+            htmlspecialchars($formData['authorJob'] ?? $this->translator->trans('form.review.email.role_not_specified', [], null, $locale)),
+            $this->translator->trans('form.review.email.content', [], null, $locale),
+            nl2br(htmlspecialchars($formData['content'] ?? '')),
+            $formData['reviewId'] ?? 'N/A',
+            $formData['createdAt'] ?? 'N/A'
         );
     }
 }

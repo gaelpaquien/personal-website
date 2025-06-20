@@ -20,6 +20,19 @@ form.contact.validation.message.max_length: "Le message ne peut pas dépasser 20
 form.contact.validation.attachment.max_size: "Le fichier ne peut pas dépasser 8MB"
 form.contact.validation.attachment.mime_types: "Format de fichier non autorisé"
 form.contact.validation.attachment.max_count: "Vous ne pouvez pas joindre plus de 3 fichiers"
+form.review.validation.first_name.not_blank: "Le prénom est obligatoire"
+form.review.validation.first_name.min_length: "Le prénom doit contenir au moins 2 caractères"
+form.review.validation.first_name.max_length: "Le prénom ne peut pas dépasser 50 caractères"
+form.review.validation.last_name.not_blank: "Le nom est obligatoire"
+form.review.validation.last_name.min_length: "Le nom doit contenir au moins 2 caractères"
+form.review.validation.last_name.max_length: "Le nom ne peut pas dépasser 50 caractères"
+form.review.validation.company.min_length: "Le nom de l'entreprise doit contenir au moins 2 caractères"
+form.review.validation.company.max_length: "Le nom de l'entreprise ne peut pas dépasser 100 caractères"
+form.review.validation.role.min_length: "Le poste doit contenir au moins 2 caractères"
+form.review.validation.role.max_length: "Le poste ne peut pas dépasser 50 caractères"
+form.review.validation.message.not_blank: "L'avis est obligatoire"
+form.review.validation.message.min_length: "L'avis doit contenir au moins 20 caractères"
+form.review.validation.message.max_length: "L'avis ne peut pas dépasser 1000 caractères"
 # Default Symfony validation messages
 'This value should be false.': 'Cette valeur doit être fausse.'
 'This value should be true.': 'Cette valeur doit être vraie.'

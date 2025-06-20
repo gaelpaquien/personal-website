@@ -20,7 +20,7 @@ class ReviewRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('r')
             ->where('r.status = 1')
-            ->orderBy('r.order', 'ASC')
+            ->orderBy('r.sortOrder', 'ASC')
             ->getQuery()
             ->getResult();
     }

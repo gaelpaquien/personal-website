@@ -3,7 +3,7 @@
 {% block title %}{{ 'post_review.title' | trans }} - {{ 'info.site.title' | trans }}{% endblock %}
 
 {% block content %}
-    {%  include "components/post-review/breadcrumb.html.twig" %}
+    {% include "components/post-review/breadcrumb.html.twig" %}
 
     <section id="post-review" class="post-review__container">
         <div class="fade-in-effects-initial"
@@ -24,43 +24,69 @@
             </div>
         </div>
 
-        <form class="fade-in-effects-initial post-review__container-form" action="#" method="post"
-              data-animation-fade-in-target="fadeIn"
-              data-animation="fade-in-up-effects"
+        <div class="form-container"
+             data-controller="form"
+             data-form-sending-value="{{ 'form.submission'|trans }}"
+             data-form-error-value="{{ 'form.review.error'|trans }}"
+             data-form-validation-error-value="{{ 'form.validation_error'|trans }}"
         >
-            <div class="form-identity-group">
+            {{ form_start(reviewForm, {
+                'attr': {
+                    'class': 'fade-in-effects-initial post-review__container-form',
+                    'data-animation-fade-in-target': 'fadeIn',
+                    'data-animation': 'fade-in-up-effects',
+                    'data-turbo': 'false',
+                    'data-form-target': 'form',
+                    'data-action': 'submit->form#submitForm'
+                }
+            }) }}
+
+            <div class="form-identity">
                 <span>{{ 'post_review.form.identity' | trans }}*</span>
-                <div>
-                    <label for="form-review-firstname" hidden>{{ 'post_review.form.first_name' | trans }}</label>
-                    <input type="text" id="form-review-firstname" name="form-review-firstname" placeholder="{{ 'post_review.form.first_name' | trans }}" required>
-                    <label for="form-review-name" hidden>{{ 'post_review.form.last_name' | trans }}</label>
-                    <input type="text" id="form-review-name" name="form-review-name" placeholder="{{ 'post_review.form.last_name' | trans }}" required>
+                <div class="form-identity-group">
+                    <div>
+                        {{ form_widget(reviewForm.authorFirstname) }}
+                        {{ form_errors(reviewForm.authorFirstname) }}
+                    </div>
+                    <div>
+                        {{ form_widget(reviewForm.authorLastname) }}
+                        {{ form_errors(reviewForm.authorLastname) }}
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="form-review-email">{{ 'post_review.form.email' | trans }}*</label>
-                <input type="email" id="form-review-email" name="form-review-email" placeholder="{{ 'post_review.form.email' | trans }}" required>
+                <span>{{ form_label(reviewForm.authorCompany) }} ({{ 'actions.optional' | trans | lower }})</span>
+                {{ form_widget(reviewForm.authorCompany) }}
+                {{ form_errors(reviewForm.authorCompany) }}
             </div>
+
             <div class="form-group">
-                <label for="form-review-company">{{ 'post_review.form.company' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
-                <input type="text" id="form-review-company" name="form-review-company" placeholder="{{ 'post_review.form.company' | trans }}">
+                <span>{{ form_label(reviewForm.authorJob) }} ({{ 'actions.optional' | trans | lower }})</span>
+                {{ form_widget(reviewForm.authorJob) }}
+                {{ form_errors(reviewForm.authorJob) }}
             </div>
+
             <div class="form-group">
-                <label for="form-review-role">{{ 'post_review.form.role' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
-                <input type="text" id="form-review-role" name="form-review-role" placeholder="{{ 'post_review.form.role' | trans }}">
+                <span>{{ form_label(reviewForm.content) }}*</span>
+                {{ form_widget(reviewForm.content) }}
+                {{ form_errors(reviewForm.content) }}
             </div>
-            <div class="form-group">
-                <label for="form-review-message">{{ 'post_review.form.message' | trans }}*</label>
-                <textarea id="form-review-message" name="form-review-message" placeholder="{{ 'post_review.form.message' | trans }}" required></textarea>
-            </div>
-            <button class="btn" type="submit" aria-label="{{ 'navigation.reviews_post' | trans }}">
+
+            <button class="btn"
+                    type="submit"
+                    data-form-target="submit"
+                    aria-label="{{ 'post_review.publish_review' | trans }}">
                 {{ 'post_review.publish_review' | trans }}
             </button>
+
             <div class="form-infos">
                 <p>*{{ 'post_review.form.privacy_notice1' | trans }}</p>
                 <p>*{{ 'post_review.form.privacy_notice2' | trans }}</p>
             </div>
-        </form>
+
+            {{ form_end(reviewForm) }}
+        </div>
 
         {% include "components/buttons/btn-go-to-home.html.twig" %}
     </section>

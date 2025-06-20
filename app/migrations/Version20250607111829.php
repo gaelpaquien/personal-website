@@ -25,7 +25,7 @@ final class Version20250607111829 extends AbstractMigration
             content_fr, 
             content_en, 
             source, 
-            `order`, 
+            sort_order, 
             status, 
             created_at
         ) VALUES (
@@ -51,7 +51,7 @@ final class Version20250607111829 extends AbstractMigration
             content_fr, 
             content_en, 
             source, 
-            `order`, 
+            sort_order, 
             status, 
             created_at
         ) VALUES (
@@ -77,7 +77,7 @@ final class Version20250607111829 extends AbstractMigration
            content_fr, 
            content_en, 
            source, 
-           `order`, 
+           sort_order, 
            status, 
            created_at
         ) VALUES (
