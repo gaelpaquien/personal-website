@@ -8,6 +8,15 @@ framework:
     error_controller: App\Controller\ErrorController::show
     php_errors:
         log: true
+    rate_limiter:
+        contact_form:
+            policy: 'fixed_window'
+            limit: 2
+            interval: '5 minutes'
+        review_form:
+            policy: 'fixed_window'
+            limit: 2
+            interval: '5 minutes'
 
 when@test:
     framework:

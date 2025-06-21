@@ -9,6 +9,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 trait FormHandlerTrait
 {
@@ -18,13 +19,31 @@ trait FormHandlerTrait
         callable $onSuccess,
         string $locale,
         string $successKey,
-        string $errorKey
+        string $errorKey,
+        ?RateLimiterFactory $rateLimiterFactory = null,
+        string $rateLimiterKey = 'default'
     ): ?JsonResponse {
         if (!$request->isXmlHttpRequest() || !$form->isSubmitted()) {
             return null;
         }
 
         if ($form->isValid()) {
+            if ($rateLimiterFactory) {
+                $limiter = $rateLimiterFactory->create($this->getRateLimiterIdentifier($request, $rateLimiterKey));
+                $status = $limiter->consume();
+
+                if (!$status->isAccepted()) {
+                    $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() : time() + 300;
+                    $request->getSession()->set("rate_limit_{$rateLimiterKey}", $retryAfter);
+
+                    return $this->json([
+                        'success' => false,
+                        'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
+                        'rate_limited' => true
+                    ]);
+                }
+            }
+
             try {
                 $result = $onSuccess($form->getData());
 
@@ -50,6 +69,60 @@ trait FormHandlerTrait
             'success' => false,
             'errors' => $this->formatFormErrors($form)
         ]);
+    }
+
+    protected function checkRateLimit(
+        Request $request,
+        RateLimiterFactory $rateLimiterFactory,
+        string $rateLimiterKey,
+        string $locale
+    ): ?JsonResponse {
+        $limiter = $rateLimiterFactory->create($this->getRateLimiterIdentifier($request, $rateLimiterKey));
+        $status = $limiter->consume();
+
+        if (!$status->isAccepted()) {
+            $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() : time() + 300;
+            $request->getSession()->set("rate_limit_{$rateLimiterKey}", $retryAfter);
+
+            if ($request->isXmlHttpRequest()) {
+                return $this->json([
+                    'success' => false,
+                    'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
+                    'rate_limited' => true
+                ]);
+            }
+
+            $this->addFlash('error', $this->translator->trans('form.rate_limit_exceeded', [], null, $locale));
+        }
+
+        return null;
+    }
+
+    protected function getRateLimiterStatus(Request $request, RateLimiterFactory $rateLimiterFactory, string $rateLimiterKey): array
+    {
+        $sessionKey = "rate_limit_{$rateLimiterKey}";
+        $retryAfterTimestamp = $request->getSession()->get($sessionKey, 0);
+
+        if ($retryAfterTimestamp > time()) {
+            return [
+                'is_limited' => true,
+                'retry_after' => $retryAfterTimestamp - time()
+            ];
+        }
+
+        if ($retryAfterTimestamp > 0) {
+            $request->getSession()->remove($sessionKey);
+        }
+
+        return [
+            'is_limited' => false,
+            'retry_after' => 0
+        ];
+    }
+
+    private function getRateLimiterIdentifier(Request $request, string $key): string
+    {
+        return $key . '_' . md5($request->getClientIp() . $request->headers->get('User-Agent', ''));
     }
 
     private function formatFormErrors(FormInterface $form): array
