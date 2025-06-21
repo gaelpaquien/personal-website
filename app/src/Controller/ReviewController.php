@@ -6,13 +6,13 @@ namespace App\Controller;
 
 use App\Controller\Traits\FormHandlerTrait;
 use App\Form\ReviewType;
+use App\Service\RecaptchaService;
 use App\Service\ReviewService;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -27,7 +27,8 @@ class ReviewController extends AbstractController
         private readonly ReviewService $reviewService,
         private readonly TranslatorInterface $translator,
         private readonly LoggerInterface $logger,
-        private readonly RateLimiterFactory $reviewFormLimiter
+        private readonly RateLimiterFactory $reviewFormLimiter,
+        private readonly RecaptchaService $recaptchaService
     ) {}
 
     #[Route([
@@ -50,7 +51,7 @@ class ReviewController extends AbstractController
             'form.review.success',
             'form.review.error',
             $this->reviewFormLimiter,
-            'review'
+            'review',
         );
 
         if ($ajaxResponse) {
@@ -81,6 +82,7 @@ class ReviewController extends AbstractController
             'reviewForm' => $reviewForm->createView(),
             'rateLimited' => $rateLimitStatus['is_limited'],
             'retryAfter' => max(0, $rateLimitStatus['retry_after']),
+            'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')
         ]);
     }
 

@@ -66,6 +66,16 @@ textarea {
             font-size: $font-size-text;
         }
     }
+
+    .g-recaptcha {
+        &:has(.form-error) {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-error {
+            margin-top: -7px;
+        }
+    }
 }
 
 .form-identity {

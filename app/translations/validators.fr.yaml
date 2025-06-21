@@ -1,4 +1,5 @@
 # Custom validation messages
+form.captcha_invalid: "Le captcha n'est pas valide."
 form.contact.validation.first_name.not_blank: "Le prénom est obligatoire"
 form.contact.validation.first_name.min_length: "Le prénom doit contenir au moins 2 caractères"
 form.contact.validation.first_name.max_length: "Le prénom ne peut pas dépasser 50 caractères"

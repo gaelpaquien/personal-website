@@ -1,3 +1,4 @@
+form.captcha_invalid: "Invalid CAPTCHA."
 form.contact.validation.first_name.not_blank: "First name is required"
 form.contact.validation.first_name.min_length: "First name must be at least 2 characters long"
 form.contact.validation.first_name.max_length: "First name cannot exceed 50 characters"

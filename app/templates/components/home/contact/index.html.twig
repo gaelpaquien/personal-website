@@ -16,13 +16,15 @@
     </div>
 
     <div class="form-container"
-         data-controller="form"
+         data-controller="form recaptcha"
          data-form-sending-value="{{ 'form.submission'|trans }}"
          data-form-error-value="{{ 'form.contact.error'|trans }}"
          data-form-validation-error-value="{{ 'form.validation_error'|trans }}"
          data-form-rate-limited-value="{{ rateLimited ? 'true' : 'false' }}"
          data-form-retry-after-value="{{ retryAfter }}"
          data-form-blocked-text-value="{{ 'form.rate_limit_blocked'|trans }}"
+         data-recaptcha-sitekey-value="{{ google_recaptcha_site_key }}"
+         data-recaptcha-locale-value="{{ app.request.locale }}"
     >
         {{ form_start(contactForm, {
             'attr': {
@@ -82,7 +84,8 @@
                  data-input-file-one-file-selected-value="{{ 'home.sections.contact.form.one_file_selected'|trans }}"
                  data-input-file-multiple-files-selected-value="{{ 'home.sections.contact.form.multiple_files_selected'|trans }}"
                  data-input-file-duplicate-message-value="{{ 'form.contact.file.duplicate'|trans }}"
-                 data-input-file-limit-message-value="{{ 'form.contact.file.limit_reached'|trans }}">
+                 data-input-file-limit-message-value="{{ 'form.contact.file.limit_reached'|trans }}"
+            >
 
                 <div class="custom-file-input-wrapper">
                     <label class="btn custom-file-button" for="contact_attachment">
@@ -122,6 +125,11 @@
                 {{ form_widget(contactForm.receiveCopy) }}
                 <span class="form-switch-toggle-slider"></span>
             </label>
+        </div>
+
+        <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+            {{ form_errors(contactForm.recaptcha) }}
         </div>
 
         <button class="btn"

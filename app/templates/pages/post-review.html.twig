@@ -76,6 +76,11 @@
                 {{ form_errors(reviewForm.content) }}
             </div>
 
+            <div class="form-group">
+                <div class="g-recaptcha{{ reviewForm.recaptcha.vars.errors|length > 0 ? ' has-error' : '' }}" data-sitekey="{{ google_recaptcha_site_key }}"></div>
+                {{ form_errors(reviewForm.recaptcha) }}
+            </div>
+
             <button class="btn"
                     type="submit"
                     data-form-target="submit"
