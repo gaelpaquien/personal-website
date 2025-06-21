@@ -16,6 +16,37 @@ export default class extends Controller {
         if (this.rateLimitedValue && this.retryAfterValue > 0) {
             this.disableFormTemporarily(this.retryAfterValue)
         }
+
+        this.recaptchaObserver = this.observeRecaptcha()
+    }
+
+    disconnect() {
+        if (this.recaptchaObserver) {
+            this.recaptchaObserver.disconnect()
+        }
+    }
+
+    observeRecaptcha() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1 && node.querySelector && node.querySelector('iframe[src*="recaptcha"]')) {
+                        const recaptchaElement = this.element.querySelector('.g-recaptcha')
+                        if (recaptchaElement && !recaptchaElement.dataset.widgetId) {
+                            const widgetId = 0
+                            recaptchaElement.dataset.widgetId = widgetId
+                        }
+                    }
+                })
+            })
+        })
+
+        observer.observe(this.element, {
+            childList: true,
+            subtree: true
+        })
+
+        return observer
     }
 
     async submitForm(event) {
@@ -57,6 +88,7 @@ export default class extends Controller {
             if (data.success) {
                 window.Toast.success(data.message)
                 this.formTarget.reset()
+                this.resetRecaptcha()
 
                 if (inputFileController) {
                     const controller = this.application.getControllerForElementAndIdentifier(inputFileController, 'input-file')
@@ -71,6 +103,8 @@ export default class extends Controller {
                     }, 2000)
                 }
             } else {
+                this.resetRecaptcha()
+
                 if (data.rate_limited) {
                     window.Toast.error(data.message)
                     this.disableFormTemporarily(300)
@@ -86,6 +120,7 @@ export default class extends Controller {
                 }
             }
         } catch (error) {
+            this.resetRecaptcha()
             window.Toast.error(this.errorValue)
         } finally {
             if (!this.submitTarget.classList.contains('rate-limited')) {
@@ -93,6 +128,49 @@ export default class extends Controller {
                 submitBtn.textContent = originalText
             }
         }
+    }
+
+    resetRecaptcha() {
+        if (window.grecaptcha?.reset) {
+            try {
+                const recaptchaElement = this.element.querySelector('.g-recaptcha')
+                if (recaptchaElement && recaptchaElement.dataset.widgetId !== undefined) {
+                    const widgetId = parseInt(recaptchaElement.dataset.widgetId)
+                    window.grecaptcha.reset(widgetId)
+                    return
+                }
+                window.grecaptcha.reset(0)
+            } catch (error) {
+                this.forceRecaptchaReload()
+            }
+        } else {
+            this.forceRecaptchaReload()
+        }
+    }
+
+    forceRecaptchaReload() {
+        const recaptchaElement = this.element.querySelector('.g-recaptcha')
+        if (!recaptchaElement) return
+
+        recaptchaElement.innerHTML = ''
+        recaptchaElement.removeAttribute('data-widget-id')
+
+        setTimeout(() => {
+            if (window.grecaptcha?.render) {
+                const sitekey = recaptchaElement.dataset.sitekey
+                if (sitekey) {
+                    try {
+                        const newWidgetId = window.grecaptcha.render(recaptchaElement, {
+                            'sitekey': sitekey,
+                            'theme': 'light'
+                        })
+                        recaptchaElement.dataset.widgetId = newWidgetId
+                    } catch (error) {
+                        console.warn('Failed to reload reCAPTCHA:', error)
+                    }
+                }
+            }
+        }, 100)
     }
 
     disableFormTemporarily(seconds) {

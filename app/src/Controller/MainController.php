@@ -8,6 +8,7 @@ use App\Controller\Traits\FormHandlerTrait;
 use App\Form\ContactType;
 use App\Service\ContentService;
 use App\Service\MailService;
+use App\Service\RecaptchaService;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,7 +28,8 @@ class MainController extends AbstractController
         private readonly MailService $mailService,
         private readonly TranslatorInterface $translator,
         private readonly LoggerInterface $logger,
-        private readonly RateLimiterFactory $contactFormLimiter
+        private readonly RateLimiterFactory $contactFormLimiter,
+        private readonly RecaptchaService $recaptchaService
     ) {}
 
     #[Route('/', name: 'root')]
@@ -96,6 +98,7 @@ class MainController extends AbstractController
             'contactForm' => $contactForm->createView(),
             'rateLimited' => $rateLimitStatus['is_limited'],
             'retryAfter' => max(0, $rateLimitStatus['retry_after']),
+            'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')
         ]);
     }
 
