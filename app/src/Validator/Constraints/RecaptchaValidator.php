@@ -29,6 +29,7 @@ class RecaptchaValidator extends ConstraintValidator
 
         if (!$recaptchaResponse || !$this->recaptchaService->verify($recaptchaResponse, $request->getClientIp())) {
             $this->context->buildViolation($constraint->message)
+                ->setTranslationDomain('validators')
                 ->addViolation();
         }
     }
