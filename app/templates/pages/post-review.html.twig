@@ -29,6 +29,9 @@
              data-form-sending-value="{{ 'form.submission'|trans }}"
              data-form-error-value="{{ 'form.review.error'|trans }}"
              data-form-validation-error-value="{{ 'form.validation_error'|trans }}"
+             data-form-rate-limited-value="{{ rateLimited ? 'true' : 'false' }}"
+             data-form-retry-after-value="{{ retryAfter }}"
+             data-form-blocked-text-value="{{ 'form.rate_limit_blocked'|trans }}"
         >
             {{ form_start(reviewForm, {
                 'attr': {

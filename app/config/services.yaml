@@ -29,5 +29,13 @@ services:
         arguments:
             $contactEmail: '%env(CONTACT_EMAIL)%'
 
+    App\Controller\MainController:
+        arguments:
+            $contactFormLimiter: '@limiter.contact_form'
+
+    App\Controller\ReviewController:
+        arguments:
+            $reviewFormLimiter: '@limiter.review_form'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

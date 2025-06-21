@@ -38,6 +38,19 @@
     &:active {
         @include animation-pressed(0.9);
     }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        &::after {
+            display: none;
+        }
+
+        &:hover {
+            transform: none;
+        }
+    }
 }
 
 #btn-scroll-to-top {

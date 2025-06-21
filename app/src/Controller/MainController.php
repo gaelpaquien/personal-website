@@ -13,6 +13,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -25,7 +26,8 @@ class MainController extends AbstractController
         private readonly ContentService $contentService,
         private readonly MailService $mailService,
         private readonly TranslatorInterface $translator,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $logger,
+        private readonly RateLimiterFactory $contactFormLimiter
     ) {}
 
     #[Route('/', name: 'root')]
@@ -48,13 +50,17 @@ class MainController extends AbstractController
         $contactForm = $this->createForm(ContactType::class);
         $contactForm->handleRequest($request);
 
+        $rateLimitStatus = $this->getRateLimiterStatus($request, $this->contactFormLimiter, 'contact');
+
         $ajaxResponse = $this->handleForm(
             $request,
             $contactForm,
             fn($formData) => $this->processContact($formData, $locale),
             $locale,
             'form.contact.success',
-            'form.contact.error'
+            'form.contact.error',
+            $this->contactFormLimiter,
+            'contact'
         );
 
         if ($ajaxResponse) {
@@ -62,6 +68,14 @@ class MainController extends AbstractController
         }
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $rateLimitResponse = $this->checkRateLimit($request, $this->contactFormLimiter, 'contact', $locale);
+            if ($rateLimitResponse) {
+                return $this->redirectToRoute('app_main_index', [
+                    '_locale' => $locale,
+                    '_fragment' => 'home-contact'
+                ]);
+            }
+
             try {
                 $this->processContact($contactForm->getData(), $locale);
                 $this->addFlash('success', $this->translator->trans('form.contact.success', [], null, $locale));
@@ -80,12 +94,11 @@ class MainController extends AbstractController
             'projects' => $this->contentService->getAllProjects($locale),
             'reviews' => $this->contentService->getAllReviews($locale),
             'contactForm' => $contactForm->createView(),
+            'rateLimited' => $rateLimitStatus['is_limited'],
+            'retryAfter' => max(0, $rateLimitStatus['retry_after']),
         ]);
     }
 
-    /**
-     * @throws Exception
-     */
     private function processContact(array $formData, string $locale): array
     {
         $success = $this->mailService->sendContactEmail($formData, $locale);

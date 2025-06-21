@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Throwable;
@@ -25,7 +26,8 @@ class ReviewController extends AbstractController
     public function __construct(
         private readonly ReviewService $reviewService,
         private readonly TranslatorInterface $translator,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $logger,
+        private readonly RateLimiterFactory $reviewFormLimiter
     ) {}
 
     #[Route([
@@ -38,13 +40,17 @@ class ReviewController extends AbstractController
         $reviewForm = $this->createForm(ReviewType::class);
         $reviewForm->handleRequest($request);
 
+        $rateLimitStatus = $this->getRateLimiterStatus($request, $this->reviewFormLimiter, 'review');
+
         $ajaxResponse = $this->handleForm(
             $request,
             $reviewForm,
             fn($formData) => $this->processReview($formData, $locale),
             $locale,
             'form.review.success',
-            'form.review.error'
+            'form.review.error',
+            $this->reviewFormLimiter,
+            'review'
         );
 
         if ($ajaxResponse) {
@@ -52,14 +58,16 @@ class ReviewController extends AbstractController
         }
 
         if ($reviewForm->isSubmitted() && $reviewForm->isValid()) {
+            $rateLimitResponse = $this->checkRateLimit($request, $this->reviewFormLimiter, 'review', $locale);
+            if ($rateLimitResponse) {
+                return $this->redirectToRoute('app_review_create', ['_locale' => $locale]);
+            }
+
             try {
                 $this->processReview($reviewForm->getData(), $locale);
                 $this->addFlash('success', $this->translator->trans('form.review.success', [], null, $locale));
 
                 return $this->redirectToRoute('app_review_create', ['_locale' => $locale]);
-            } catch (TransportExceptionInterface) {
-                $this->logger->error('Transport error during review submission');
-                $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
             } catch (Exception) {
                 $this->logger->error('Form review submission failed');
                 $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
@@ -71,14 +79,11 @@ class ReviewController extends AbstractController
 
         return $this->render('pages/post-review.html.twig', [
             'reviewForm' => $reviewForm->createView(),
+            'rateLimited' => $rateLimitStatus['is_limited'],
+            'retryAfter' => max(0, $rateLimitStatus['retry_after']),
         ]);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws Exception
-     * @throws Throwable
-     */
     private function processReview(array $formData, string $locale): array
     {
         return $this->reviewService->createReviewWithNotification($formData, $locale);

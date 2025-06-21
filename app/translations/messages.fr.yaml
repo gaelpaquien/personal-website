@@ -260,6 +260,8 @@ errors:
 form:
   submission: "Soumission en cours..."
   validation_error: "Veuillez corriger les erreurs du formulaire."
+  rate_limit_exceeded: "Trop de tentatives. Veuillez patienter avant de soumettre à nouveau le formulaire."
+  rate_limit_blocked: "Bloqué"
   contact:
     success: "Votre message a été envoyé avec succès !"
     error: "Une erreur est survenue lors de l'envoi du message."
