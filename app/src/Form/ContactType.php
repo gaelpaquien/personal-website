@@ -149,13 +149,13 @@ class ContactType extends AbstractType
                 'label' => 'home.sections.contact.form.receive_copy',
                 'required' => false,
             ])
-            ->add('recaptcha', HiddenType::class, [
+            /*->add('recaptcha', HiddenType::class, [
                 'mapped' => false,
                 'data' => '',
                 'constraints' => [
                     new Recaptcha()
                 ],
-            ]);
+            ])*/;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

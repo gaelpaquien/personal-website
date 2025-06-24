@@ -90,13 +90,13 @@ class ReviewType extends AbstractType
                     'rows' => 5,
                 ],
             ])
-            ->add('recaptcha', HiddenType::class, [
+            /*->add('recaptcha', HiddenType::class, [
                 'mapped' => false,
                 'data' => '',
                 'constraints' => [
                     new Recaptcha()
                 ],
-            ]);
+            ])*/;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
