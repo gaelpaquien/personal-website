@@ -302,3 +302,7 @@ form:
       role: "Poste/Rôle"
       role_not_specified: "Poste/Rôle non renseigné"
       content: "Contenu de l'avis"
+      title2: "Informations sur l'avis"
+      review_id: "ID de l'avis"
+      review_date: "Date de création de l'avis"
+      review_status: "Statut de l'avis"

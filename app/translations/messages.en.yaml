@@ -302,3 +302,7 @@ form:
       role: "Role/Position"
       role_not_specified: "Role not specified"
       content: "Content of the review"
+      title2: "Review information"
+      review_id: "Review ID"
+      review_date: "Review creation date"
+      review_status: "Review status"

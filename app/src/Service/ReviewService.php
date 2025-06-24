@@ -35,7 +35,7 @@ readonly class ReviewService
                     $review = $this->createReview($formData, $locale);
                     $this->entityManager->flush();
 
-                    $emailData = $this->prepareEmailData($formData, $review, $locale);
+                    $emailData = $this->prepareEmailData($formData, $review);
                     $this->mailService->sendReviewNotificationEmail($emailData, $locale);
 
                     return [
@@ -80,12 +80,11 @@ readonly class ReviewService
         return $review;
     }
 
-    private function prepareEmailData(array $formData, Review $review, string $locale): array
+    private function prepareEmailData(array $formData, Review $review): array
     {
         return [...$formData,
             'reviewId' => $review->getId(),
-            'createdAt' => $review->getCreatedAt()?->format('d-m-Y H:i:s'),
-            'status' => $review->getStatus()
+            'createdAt' => $review->getCreatedAt()?->format('d-m-Y H:i:s')
         ];
     }
 }
