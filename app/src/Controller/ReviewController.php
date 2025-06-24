@@ -28,7 +28,7 @@ class ReviewController extends AbstractController
         private readonly TranslatorInterface $translator,
         private readonly LoggerInterface $logger,
         private readonly RateLimiterFactory $reviewFormLimiter,
-        private readonly RecaptchaService $recaptchaService
+        /*private readonly RecaptchaService $recaptchaService*/
     ) {}
 
     #[Route([
@@ -82,7 +82,7 @@ class ReviewController extends AbstractController
             'reviewForm' => $reviewForm->createView(),
             'rateLimited' => $rateLimitStatus['is_limited'],
             'retryAfter' => max(0, $rateLimitStatus['retry_after']),
-            'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')
+            /*'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')*/
         ]);
     }
 
