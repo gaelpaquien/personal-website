@@ -266,7 +266,7 @@ errors:
 form:
   submission: "Submission in progress..."
   validation_error: "Please correct the errors in the form."
-  rate_limit_exceeded: "Too many attempts. Please wait before submitting the form again."
+  rate_limit_exceeded: "Too many attempts, please wait."
   rate_limit_blocked: "Blocked"
   contact:
     success: "Your message has been sent successfully!"
