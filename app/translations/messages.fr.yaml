@@ -168,6 +168,9 @@ legal_notice:
       website: "Site :"
       website_aria: "Consulter le site de %info.host.name%"
       address: "Adresse : %info.host.address%"
+    third_party_services:
+      title: "Services tiers"
+      text: "Ce site utilise Google reCAPTCHA pour se protéger contre le spam et les abus automatisés. Ce service peut collecter des informations transmises à Google pour analyse. En utilisant ce site, vous acceptez la politique de confidentialité de Google."
     media:
       title: "Stockage et utilisation des médias"
       text: "Les images utilisées peuvent être stockées directement sur notre site ou intégrées par des sources tierces. Nous prenons toutes les mesures nécessaires pour nous assurer que les images utilisées respectent les droits d'auteur et sont utilisées conformément aux lois en vigueur."
@@ -227,6 +230,9 @@ privacy_policy:
       message: "Message/Citation"
       storage_notice: "Les données saisies dans ce formulaire sont stockées et utilisées uniquement pour afficher les avis sur ce site"
       display_notice: "Votre identité apparaîtra dans les avis sous forme d'initiales (ex. : John D.)."
+    recaptcha:
+      title: "Google reCAPTCHA :"
+      text: "Ce site utilise Google reCAPTCHA pour protéger les formulaires contre le spam et les soumissions automatisées. Google reCAPTCHA collecte des informations sur votre comportement de navigation, qui sont transmises à Google pour analyse. Ces données sont traitées sur la base de notre intérêt légitime à protéger notre site contre les abus. Pour plus d'informations, consultez la politique de confidentialité de Google et les conditions d'utilisation de reCAPTCHA."
     data_officer:
       title: "Responsable du traitement des données"
       text: "Le responsable du traitement des données collectées sur le site est l'éditeur du site."
@@ -238,7 +244,7 @@ privacy_policy:
       text: "Aucune information collectée n'est revendue ni utilisée à des fins commerciales ou non commerciales. Les données sont exclusivement utilisées pour le bon fonctionnement du site."
     cookies:
       title: "Cookies et traçage"
-      text: "Ce site ne fait usage d'aucun cookie et ne procède à aucun traçage des utilisateurs. Nous respectons la confidentialité de nos visiteurs et ne recueillons pas de données de navigation ou personnelles à des fins de suivi ou de publicité."
+      text: "Ce site utilise Google reCAPTCHA qui peut déposer des cookies à des fins de sécurité et d'analyse. Aucun autre cookie de traçage ou de publicité n'est utilisé sur ce site."
     privacy_contact:
       title: "Contact pour les questions de confidentialité"
       text: "Pour toute question concernant la confidentialité et la protection de vos données, ou pour exercer vos droits relatifs à vos données personnelles, veuillez contacter l'éditeur"
