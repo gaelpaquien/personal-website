@@ -211,9 +211,9 @@ readonly class MailService
             <div><strong>%s:</strong><br>%s</div>
             <br>
             <hr>
-            <p><strong>ID:</strong> %s</p>
-            <p><strong>Date:</strong> %s</p>
-            <p><strong>Status:</strong> %s</p>',
+            <h2>%s</h2>
+            <p><strong>%s:</strong> %s</p>
+            <p><strong>%s:</strong> %s</p>',
             $this->translator->trans('form.review.email.title', [], null, $locale),
             $this->translator->trans('form.review.email.language', [], null, $locale),
             htmlspecialchars($locale),
@@ -226,9 +226,11 @@ readonly class MailService
             htmlspecialchars($formData['authorJob'] ?? $this->translator->trans('form.review.email.role_not_specified', [], null, $locale)),
             $this->translator->trans('form.review.email.content', [], null, $locale),
             nl2br(htmlspecialchars($formData['content'] ?? '')),
+            $this->translator->trans('form.review.email.title2', [], null, $locale),
+            $this->translator->trans('form.review.email.review_id', [], null, $locale),
             $formData['reviewId'] ?? 'N/A',
+            $this->translator->trans('form.review.email.review_date', [], null, $locale),
             $formData['createdAt'] ?? 'N/A',
-            $formData['status'] ?? 'N/A'
         );
     }
 }
