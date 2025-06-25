@@ -94,7 +94,7 @@
                         {{ 'navigation.github' | trans }}
                     </a>
 
-                    <a class="navigation__dropdown-link" href="{{ asset('docs/CV_Gael_Paquien.pdf') }}"
+                    <a class="navigation__dropdown-link" href="{{ asset('docs/' ~ resume_file) }}"
                        target="_blank"
                        aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                         {% embed 'assets/svg/resume.html.twig' %}

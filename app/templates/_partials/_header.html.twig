@@ -102,7 +102,7 @@
                 </a>
             </li>
             <li class="header__headband-right-list-item">
-                <a href="{{ asset('docs/CV_Gael_Paquien.pdf') }}" target="_blank" aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
+                <a href="{{ asset('docs/' ~ resume_file) }}" target="_blank" aria-label="{{ 'navigation.resume_aria' | trans({'%info.author.name%': 'info.author.name' | trans}) }}">
                     {% embed 'assets/svg/resume.html.twig' %}
                         {% block attributes %}
                             class="scale-effects"
