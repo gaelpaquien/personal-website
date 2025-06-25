@@ -14,6 +14,9 @@
             {% set current_url = 'https:' ~ current_url %}
         {% endif %}
 
+        <!-- Determine resume file -->
+        {% set resume_file = locale == 'fr' ? 'CV_Gael_Paquien_Developpeur_Backend_PHP.pdf' : 'RESUME_Gael_Paquien_Backend_PHP_Developer.pdf' %}
+
         <meta charset="UTF-8">
 
         <!-- Canonical -->
