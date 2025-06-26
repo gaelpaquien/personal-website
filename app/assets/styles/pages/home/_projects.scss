@@ -33,14 +33,15 @@
         &-item {
             background-color: var(--color-secondary);
             cursor: pointer;
-            border: 0.15rem solid var(--color-text);
+            border: 0.0625rem solid rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.1);
+            box-shadow: 0 0 0 0.0625rem rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.1);
             border-radius: 1rem;
             overflow: hidden;
             display: block;
 
             &:hover {
-                transform: scale(1.035);
-                opacity: 0.8;
+                transform: scale(1.03);
+                box-shadow: 0 0 0 0.1rem rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.2);
             }
 
             &-image {

@@ -34,7 +34,8 @@
 
     &-block {
         background-color: var(--color-primary);
-        border: solid 0.1rem var(--color-text);
+        border: 0.0625rem solid rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.1);
+        box-shadow: 0 0 0 0.0625rem rgba(var(--color-text-r), var(--color-text-g), var(--color-text-b), 0.1);
         border-radius: 0.5rem;
         padding: 1rem;
         width: 100%;
