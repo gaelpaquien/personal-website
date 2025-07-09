@@ -28,47 +28,15 @@ trait FormHandlerTrait
             return null;
         }
 
+        if ($rateLimiterFactory) {
+            $rateLimitResponse = $this->checkRateLimit($request, $rateLimiterFactory, $rateLimiterKey, $locale);
+            if ($rateLimitResponse) {
+                return $rateLimitResponse;
+            }
+        }
+
         if ($this->isBot($request)) {
-            $allData = $request->request->all();
-            $websiteValue = '';
-
-            foreach ($allData as $key => $value) {
-                if (is_array($value) && isset($value['website'])) {
-                    $websiteValue = $value['website'];
-                    break;
-                }
-            }
-
-            $formData = [];
-            foreach ($form->all() as $child) {
-                if (!$child->getConfig()->getOption('mapped', true)) {
-                    continue;
-                }
-                $formData[$child->getName()] = $child->getData();
-            }
-
-            $botData = [
-                'ip' => $request->getClientIp(),
-                'user_agent' => $request->headers->get('User-Agent'),
-                'form' => $form->getName(),
-                'honeypot_filled' => !empty($websiteValue),
-                'too_fast' => ($request->request->get('form_loaded_at') && (time() - (int)$request->request->get('form_loaded_at')) < 3),
-                'no_js' => empty($request->request->get('js_enabled')),
-                'form_data' => $formData,
-                'timestamp' => date('d-m-Y H:i:s')
-            ];
-
-            $this->getLogger()?->warning('Bot detected on form submission', $botData);
-
-            if (property_exists($this, 'mailService') && $this->mailService instanceof MailService) {
-                try {
-                    $this->mailService->sendBotDetectionEmail($botData, $locale);
-                } catch (\Exception $e) {
-                    $this->getLogger()?->error('Failed to send bot detection email', [
-                        'error' => $e->getMessage()
-                    ]);
-                }
-            }
+            $this->handleBotDetection($request, $form, $locale);
 
             return $this->json([
                 'success' => true,
@@ -77,22 +45,6 @@ trait FormHandlerTrait
         }
 
         if ($form->isValid()) {
-            if ($rateLimiterFactory) {
-                $limiter = $rateLimiterFactory->create($this->getRateLimiterIdentifier($request, $rateLimiterKey));
-                $status = $limiter->consume();
-
-                if (!$status->isAccepted()) {
-                    $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() : time() + 300;
-                    $request->getSession()->set("rate_limit_{$rateLimiterKey}", $retryAfter);
-
-                    return $this->json([
-                        'success' => false,
-                        'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
-                        'rate_limited' => true
-                    ]);
-                }
-            }
-
             try {
                 $result = $onSuccess($form->getData());
 
@@ -103,7 +55,8 @@ trait FormHandlerTrait
                 ]);
             } catch (Exception $e) {
                 $this->getLogger()?->error('AJAX form processing failed', [
-                    'form' => $form->getName(),    'error' => $e->getMessage()
+                    'form' => $form->getName(),
+                    'error' => $e->getMessage()
                 ]);
 
                 return $this->json([
@@ -121,29 +74,124 @@ trait FormHandlerTrait
 
     protected function isBot(Request $request): bool
     {
+        if ($this->isHoneypotFilled($request)) {
+            return true;
+        }
+
+        if ($this->isSubmittedTooFast($request)) {
+            return true;
+        }
+
+        if ($this->isJavaScriptDisabled($request)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function handleBotDetection(Request $request, FormInterface $form, string $locale): void
+    {
+        $botData = $this->prepareBotData($request, $form);
+
+        $this->getLogger()?->warning('Bot detected on form submission', $botData);
+
+        if (property_exists($this, 'mailService') && $this->mailService instanceof MailService) {
+            try {
+                $this->mailService->sendBotDetectionEmail($botData, $locale);
+            } catch (\Exception $e) {
+                $this->getLogger()?->error('Failed to send bot detection email', [
+                    'error' => $e->getMessage()
+                ]);
+            }
+        }
+    }
+
+    private function prepareBotData(Request $request, FormInterface $form): array
+    {
+        $websiteValue = $this->getHoneypotValue($request);
+
+        $formData = [];
+        foreach ($form->all() as $child) {
+            if (!$child->getConfig()->getOption('mapped', true)) {
+                continue;
+            }
+            $formData[$child->getName()] = $child->getData();
+        }
+
+        return [
+            'ip' => $this->getRealClientIp($request),
+            'user_agent' => $request->headers->get('User-Agent'),
+            'form' => $form->getName(),
+            'honeypot_filled' => !empty($websiteValue),
+            'too_fast' => $this->isSubmittedTooFast($request),
+            'no_js' => $this->isJavaScriptDisabled($request),
+            'form_data' => $formData,
+            'timestamp' => date('d-m-Y H:i:s')
+        ];
+    }
+
+    private function isHoneypotFilled(Request $request): bool
+    {
         $allData = $request->request->all();
 
-        foreach ($allData as $key => $value) {
+        foreach ($allData as $value) {
             if (is_array($value) && !empty($value['website'])) {
                 return true;
             }
         }
 
-        if (!empty($request->request->get('website'))) {
-            return true;
+        return !empty($request->request->get('website'));
+    }
+
+    private function getHoneypotValue(Request $request): string
+    {
+        $allData = $request->request->all();
+
+        foreach ($allData as $value) {
+            if (is_array($value) && isset($value['website'])) {
+                return $value['website'];
+            }
         }
 
+        return $request->request->get('website', '');
+    }
+
+    private function isSubmittedTooFast(Request $request): bool
+    {
         $formLoadedAt = $request->request->get('form_loaded_at');
-        if ($formLoadedAt && (time() - (int)$formLoadedAt) < 3) {
-            return true;
+        return $formLoadedAt && (time() - (int)$formLoadedAt) < 3;
+    }
+
+    private function isJavaScriptDisabled(Request $request): bool
+    {
+        return empty($request->request->get('js_enabled'));
+    }
+
+    private function getRealClientIp(Request $request): string
+    {
+        $ipHeaders = [
+            'HTTP_X_FORWARDED_FOR',
+            'HTTP_X_REAL_IP',
+            'HTTP_CLIENT_IP',
+            'HTTP_X_CLUSTER_CLIENT_IP',
+            'HTTP_CF_CONNECTING_IP',
+            'HTTP_X_FORWARDED',
+            'HTTP_FORWARDED_FOR',
+            'HTTP_FORWARDED'
+        ];
+
+        foreach ($ipHeaders as $header) {
+            if (!empty($_SERVER[$header])) {
+                $ips = explode(',', $_SERVER[$header]);
+                $ip = trim($ips[0]);
+
+                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+                    return $ip;
+                }
+            }
         }
 
-        $jsEnabled = $request->request->get('js_enabled');
-        if (empty($jsEnabled)) {
-            return true;
-        }
-
-        return false;
+        return $request->getClientIp() ?? 'unknown';
     }
 
     protected function checkRateLimit(
@@ -159,15 +207,11 @@ trait FormHandlerTrait
             $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() : time() + 300;
             $request->getSession()->set("rate_limit_{$rateLimiterKey}", $retryAfter);
 
-            if ($request->isXmlHttpRequest()) {
-                return $this->json([
-                    'success' => false,
-                    'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
-                    'rate_limited' => true
-                ]);
-            }
-
-            $this->addFlash('error', $this->translator->trans('form.rate_limit_exceeded', [], null, $locale));
+            return $this->json([
+                'success' => false,
+                'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
+                'rate_limited' => true
+            ]);
         }
 
         return null;
@@ -197,7 +241,7 @@ trait FormHandlerTrait
 
     private function getRateLimiterIdentifier(Request $request, string $key): string
     {
-        return $key . '_' . md5($request->getClientIp() . $request->headers->get('User-Agent', ''));
+        return $key . '_' . md5($this->getRealClientIp($request) . $request->headers->get('User-Agent', ''));
     }
 
     private function formatFormErrors(FormInterface $form): array
