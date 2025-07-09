@@ -8,6 +8,7 @@ use App\Controller\Traits\FormHandlerTrait;
 use App\Form\ReviewType;
 use App\Service\RecaptchaService;
 use App\Service\ReviewService;
+use App\Service\MailService;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,7 @@ class ReviewController extends AbstractController
 
     public function __construct(
         private readonly ReviewService $reviewService,
+        private readonly MailService $mailService,
         private readonly TranslatorInterface $translator,
         private readonly LoggerInterface $logger,
         private readonly RateLimiterFactory $reviewFormLimiter,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Traits;
 
+use App\Service\MailService;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormInterface;
@@ -25,6 +26,54 @@ trait FormHandlerTrait
     ): ?JsonResponse {
         if (!$request->isXmlHttpRequest() || !$form->isSubmitted()) {
             return null;
+        }
+
+        if ($this->isBot($request)) {
+            $allData = $request->request->all();
+            $websiteValue = '';
+
+            foreach ($allData as $key => $value) {
+                if (is_array($value) && isset($value['website'])) {
+                    $websiteValue = $value['website'];
+                    break;
+                }
+            }
+
+            $formData = [];
+            foreach ($form->all() as $child) {
+                if (!$child->getConfig()->getOption('mapped', true)) {
+                    continue;
+                }
+                $formData[$child->getName()] = $child->getData();
+            }
+
+            $botData = [
+                'ip' => $request->getClientIp(),
+                'user_agent' => $request->headers->get('User-Agent'),
+                'form' => $form->getName(),
+                'honeypot_filled' => !empty($websiteValue),
+                'too_fast' => ($request->request->get('form_loaded_at') && (time() - (int)$request->request->get('form_loaded_at')) < 3),
+                'no_js' => empty($request->request->get('js_enabled')),
+                'form_data' => $formData,
+                'timestamp' => date('d-m-Y H:i:s')
+            ];
+
+            $this->getLogger()?->warning('Bot detected on form submission', $botData);
+
+            if (property_exists($this, 'mailService') && $this->mailService instanceof MailService) {
+                try {
+                    $this->mailService->sendBotDetectionEmail($botData, $locale);
+                } catch (\Exception $e) {
+                    $this->getLogger()?->error('Failed to send bot detection email', [
+                        'error' => $e->getMessage()
+                    ]);
+                }
+            }
+
+            return $this->json([
+                'success' => true,
+                'message' => $this->translator->trans($successKey, [], null, $locale)
+            ]);
         }
 
         if ($form->isValid()) {
@@ -54,8 +103,7 @@ trait FormHandlerTrait
                 ]);
             } catch (Exception $e) {
                 $this->getLogger()?->error('AJAX form processing failed', [
-                    'form' => $form->getName(),
-                    'error' => $e->getMessage()
+                    'form' => $form->getName(),    'error' => $e->getMessage()
                 ]);
 
                 return $this->json([
@@ -69,6 +117,33 @@ trait FormHandlerTrait
             'success' => false,
             'errors' => $this->formatFormErrors($form)
         ]);
+    }
+
+    protected function isBot(Request $request): bool
+    {
+        $allData = $request->request->all();
+
+        foreach ($allData as $key => $value) {
+            if (is_array($value) && !empty($value['website'])) {
+                return true;
+            }
+        }
+
+        if (!empty($request->request->get('website'))) {
+            return true;
+        }
+
+        $formLoadedAt = $request->request->get('form_loaded_at');
+        if ($formLoadedAt && (time() - (int)$formLoadedAt) < 3) {
+            return true;
+        }
+
+        $jsEnabled = $request->request->get('js_enabled');
+        if (empty($jsEnabled)) {
+            return true;
+        }
+
+        return false;
     }
 
     protected function checkRateLimit(

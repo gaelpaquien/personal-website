@@ -17,16 +17,18 @@ export default class extends Controller {
             this.disableFormTemporarily(this.retryAfterValue)
         }
 
-/*        this.recaptchaObserver = this.observeRecaptcha()*/
+        this.addHoneypotProtection()
+
+        // this.recaptchaObserver = this.observeRecaptcha()
     }
 
-/*    disconnect() {
+    /*disconnect() {
         if (this.recaptchaObserver) {
             this.recaptchaObserver.disconnect()
         }
-    }*/
+    }
 
-    /*observeRecaptcha() {
+    observeRecaptcha() {
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
@@ -48,6 +50,20 @@ export default class extends Controller {
 
         return observer
     }*/
+
+    addHoneypotProtection() {
+        const timestampInput = document.createElement('input')
+        timestampInput.type = 'hidden'
+        timestampInput.name = 'form_loaded_at'
+        timestampInput.value = Math.floor(Date.now() / 1000)
+        this.formTarget.appendChild(timestampInput)
+
+        const jsCheck = document.createElement('input')
+        jsCheck.type = 'hidden'
+        jsCheck.name = 'js_enabled'
+        jsCheck.value = '1'
+        this.formTarget.appendChild(jsCheck)
+    }
 
     async submitForm(event) {
         event.preventDefault()
@@ -88,7 +104,7 @@ export default class extends Controller {
             if (data.success) {
                 window.Toast.success(data.message)
                 this.formTarget.reset()
-                /*this.resetRecaptcha()*/
+                // this.resetRecaptcha()
 
                 if (inputFileController) {
                     const controller = this.application.getControllerForElementAndIdentifier(inputFileController, 'input-file')
@@ -103,7 +119,7 @@ export default class extends Controller {
                     }, 2000)
                 }
             } else {
-                /*this.resetRecaptcha()*/
+                // this.resetRecaptcha()
 
                 if (data.rate_limited) {
                     window.Toast.error(data.message)
@@ -120,7 +136,7 @@ export default class extends Controller {
                 }
             }
         } catch (error) {
-            /*this.resetRecaptcha()*/
+            // this.resetRecaptcha()
             window.Toast.error(this.errorValue)
         } finally {
             if (!this.submitTarget.classList.contains('rate-limited')) {
@@ -146,9 +162,9 @@ export default class extends Controller {
         } else {
             this.forceRecaptchaReload()
         }
-    }*/
+    }
 
-    /*forceRecaptchaReload() {
+    forceRecaptchaReload() {
         const recaptchaElement = this.element.querySelector('.g-recaptcha')
         if (!recaptchaElement) return
 

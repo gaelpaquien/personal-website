@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Validator\Recaptcha;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -116,6 +114,18 @@ class ContactType extends AbstractType
                     'rows' => 5,
                 ],
             ])
+            // Honeypot field
+            ->add('website', TextType::class, [
+                'label' => 'form.website.label',
+                'required' => false,
+                'mapped' => false,
+                'attr' => [
+                    'placeholder' => 'form.website.placeholder',
+                    'tabindex' => '-1',
+                    'autocomplete' => 'off',
+                    'aria-hidden' => 'true',
+                ],
+            ])
             ->add('attachment', FileType::class, [
                 'label' => 'home.sections.contact.form.files',
                 'required' => false,
@@ -155,7 +165,8 @@ class ContactType extends AbstractType
                 'constraints' => [
                     new Recaptcha()
                 ],
-            ])*/;
+            ])*/
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

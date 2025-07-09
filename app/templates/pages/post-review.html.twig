@@ -70,6 +70,12 @@
                 {{ form_errors(reviewForm.authorJob) }}
             </div>
 
+            <div class="form-group form-field-website">
+                <span>{{ form_label(reviewForm.website) }}</span>
+                {{ form_widget(reviewForm.website) }}
+                {{ form_errors(reviewForm.website) }}
+            </div>
+
             <div class="form-group">
                 <span>{{ form_label(reviewForm.content) }}*</span>
                 {{ form_widget(reviewForm.content) }}

@@ -75,6 +75,12 @@
             {{ form_errors(contactForm.message) }}
         </div>
 
+        <div class="form-group form-field-website">
+            <span>{{ form_label(contactForm.website) }}</span>
+            {{ form_widget(contactForm.website) }}
+            {{ form_errors(contactForm.website) }}
+        </div>
+
         <div class="form-group">
             <label for="contact_attachment">{{ 'home.sections.contact.form.files' | trans }} ({{ 'actions.optional' | trans | lower }})</label>
 
