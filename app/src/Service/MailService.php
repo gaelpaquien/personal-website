@@ -233,4 +233,67 @@ readonly class MailService
             $formData['createdAt'] ?? 'N/A',
         );
     }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws Exception
+     */
+    public function sendBotDetectionEmail(array $botData, string $locale): void
+    {
+        try {
+            $email = (new Email())
+                ->from($this->contactEmail)
+                ->to($this->contactEmail)
+                ->subject($this->buildBotDetectionSubject($locale))
+                ->html($this->buildBotDetectionEmailContent($botData, $locale));
+
+            $this->mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            $this->logger->error('Transport error sending bot detection email', [
+                'error' => $e->getMessage()
+            ]);
+            throw $e;
+        } catch (Exception $e) {
+            $this->logger->error('Unexpected error sending bot detection email', [
+                'error' => $e->getMessage()
+            ]);
+            throw $e;
+        }
+    }
+
+    private function buildBotDetectionSubject(string $locale): string
+    {
+        return sprintf('%s - %s',
+            $this->translator->trans('info.site.name', [], null, $locale),
+            'Bot détecté'
+        );
+    }
+
+    private function buildBotDetectionEmailContent(array $botData, string $locale): string
+    {
+        $reasons = [];
+        if ($botData['honeypot_filled']) $reasons[] = 'Honeypot rempli';
+        if ($botData['too_fast']) $reasons[] = 'Soumission trop rapide';
+        if ($botData['no_js']) $reasons[] = 'JavaScript désactivé';
+
+        $reasonsText = !empty($reasons) ? implode(', ', $reasons) : 'Aucune raison spécifique détectée';
+
+        return sprintf(
+            '<h2>🤖 Bot détecté</h2>
+            <p><strong>Formulaire:</strong> %s</p>
+            <p><strong>IP:</strong> %s</p>
+            <p><strong>User Agent:</strong> %s</p>
+            <p><strong>Raisons:</strong> %s</p>
+            <p><strong>Date:</strong> %s</p>
+            <hr>
+            <h3>Données soumises:</h3>
+            <pre>%s</pre>',
+            htmlspecialchars($botData['form']),
+            htmlspecialchars($botData['ip']),
+            htmlspecialchars($botData['user_agent']),
+            htmlspecialchars($reasonsText),
+            $botData['timestamp'],
+            htmlspecialchars(json_encode($botData['form_data'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))
+        );
+    }
 }

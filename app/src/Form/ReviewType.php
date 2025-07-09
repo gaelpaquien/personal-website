@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form;
 
-use App\Validator\Recaptcha;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -90,6 +88,18 @@ class ReviewType extends AbstractType
                     'rows' => 5,
                 ],
             ])
+            // Honeypot field
+            ->add('website', TextType::class, [
+                'label' => 'form.website.label',
+                'required' => false,
+                'mapped' => false,
+                'attr' => [
+                    'placeholder' => 'form.website.placeholder',
+                    'tabindex' => '-1',
+                    'autocomplete' => 'off',
+                    'aria-hidden' => 'true',
+                ],
+            ]);
             /*->add('recaptcha', HiddenType::class, [
                 'mapped' => false,
                 'data' => '',
