@@ -168,9 +168,9 @@ legal_notice:
       website: "Website:"
       website_aria: "Visit %info.host.name% website"
       address: "Address: %info.host.address%"
-    #third_party_services:
-    #  title: "Third-party services"
-    #  text: "This site uses Google reCAPTCHA to protect against spam and automated abuse. This service may collect information transmitted to Google for analysis. By using this site, you accept Google's privacy policy."
+    third_party_services:
+      title: "Third-party services"
+      text: "This site uses Google reCAPTCHA to protect against spam and automated abuse. This service may collect information transmitted to Google for analysis. By using this site, you accept Google's privacy policy."
     media:
       title: "Media Storage and Use"
       text: "The images used may be stored directly on our site or integrated by third-party sources. We take all necessary measures to ensure that the images used respect copyright and are used in accordance with applicable laws."
@@ -230,9 +230,9 @@ privacy_policy:
       message: "Message/Quote"
       storage_notice: "The data entered in this form are stored and used solely to display reviews on this site"
       display_notice: "Your identity will appear in reviews as initials (e.g., John D.)."
-    #recaptcha:
-    #  title: "Google reCAPTCHA:"
-    #  text: "This site uses Google reCAPTCHA to protect forms against spam and automated submissions. Google reCAPTCHA collects information about your browsing behavior, which is transmitted to Google for analysis. This data is processed based on our legitimate interest in protecting our site against abuse. For more information, see Google's privacy policy and reCAPTCHA terms of use."
+    recaptcha:
+      title: "Google reCAPTCHA:"
+      text: "This site uses Google reCAPTCHA to protect forms against spam and automated submissions. Google reCAPTCHA collects information about your browsing behavior, which is transmitted to Google for analysis. This data is processed based on our legitimate interest in protecting our site against abuse. For more information, see Google's privacy policy and reCAPTCHA terms of use."
     data_officer:
       title: "Data Processing Officer"
       text: "The data processing officer for data collected on the site is the site publisher."

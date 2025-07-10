@@ -29,7 +29,7 @@ class MainController extends AbstractController
         private readonly TranslatorInterface $translator,
         private readonly LoggerInterface $logger,
         private readonly RateLimiterFactory $contactFormLimiter,
-        /*private readonly RecaptchaService $recaptchaService*/
+        private readonly RecaptchaService $recaptchaService
     ) {}
 
     #[Route('/', name: 'root')]
@@ -98,7 +98,7 @@ class MainController extends AbstractController
             'contactForm' => $contactForm->createView(),
             'rateLimited' => $rateLimitStatus['is_limited'],
             'retryAfter' => max(0, $rateLimitStatus['retry_after']),
-            /*'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')*/
+            'google_recaptcha_site_key' => $this->getParameter('google_recaptcha_site_key')
         ]);
     }
 

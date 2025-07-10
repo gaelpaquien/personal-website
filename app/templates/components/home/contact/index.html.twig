@@ -23,7 +23,7 @@
          data-form-rate-limited-value="{{ rateLimited ? 'true' : 'false' }}"
          data-form-retry-after-value="{{ retryAfter }}"
          data-form-blocked-text-value="{{ 'form.rate_limit_blocked'|trans }}"
-         {#data-recaptcha-sitekey-value="{{ google_recaptcha_site_key }}"#}{#data-recaptcha-sitekey-value="{{ google_recaptcha_site_key }}"#}
+         data-recaptcha-sitekey-value="{{ google_recaptcha_site_key }}"data-recaptcha-sitekey-value="{{ google_recaptcha_site_key }}"
          data-recaptcha-locale-value="{{ app.request.locale }}"
     >
         {{ form_start(contactForm, {
@@ -125,18 +125,10 @@
             {{ form_errors(contactForm.attachment) }}
         </div>
 
-        <div class="form-switch">
-            <span class="form-switch-text">{{ form_label(contactForm.receiveCopy) }}</span>
-            <label for="{{ contactForm.receiveCopy.vars.id }}" class="form-switch-toggle">
-                {{ form_widget(contactForm.receiveCopy) }}
-                <span class="form-switch-toggle-slider"></span>
-            </label>
-        </div>
-
-        {#<div class="form-group">
+        <div class="form-group">
             <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}"></div>
             {{ form_errors(contactForm.recaptcha) }}
-        </div>#}
+        </div>
 
         <button class="btn"
                 type="submit"
