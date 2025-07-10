@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Form;
 
+use App\Validator\Recaptcha;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -155,18 +157,13 @@ class ContactType extends AbstractType
                     'accept' => '.pdf,.doc,.docx,.xlsx,.jpg,.jpeg,.png',
                 ],
             ])
-            ->add('receiveCopy', CheckboxType::class, [
-                'label' => 'home.sections.contact.form.receive_copy',
-                'required' => false,
-            ])
-            /*->add('recaptcha', HiddenType::class, [
+            ->add('recaptcha', HiddenType::class, [
                 'mapped' => false,
                 'data' => '',
                 'constraints' => [
                     new Recaptcha()
                 ],
-            ])*/
-            ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

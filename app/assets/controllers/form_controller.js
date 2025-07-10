@@ -19,10 +19,10 @@ export default class extends Controller {
 
         this.addHoneypotProtection()
 
-        // this.recaptchaObserver = this.observeRecaptcha()
+        this.recaptchaObserver = this.observeRecaptcha()
     }
 
-    /*disconnect() {
+    disconnect() {
         if (this.recaptchaObserver) {
             this.recaptchaObserver.disconnect()
         }
@@ -49,7 +49,7 @@ export default class extends Controller {
         })
 
         return observer
-    }*/
+    }
 
     addHoneypotProtection() {
         const timestampInput = document.createElement('input')
@@ -104,7 +104,7 @@ export default class extends Controller {
             if (data.success) {
                 window.Toast.success(data.message)
                 this.formTarget.reset()
-                // this.resetRecaptcha()
+                this.resetRecaptcha()
 
                 if (inputFileController) {
                     const controller = this.application.getControllerForElementAndIdentifier(inputFileController, 'input-file')
@@ -119,7 +119,7 @@ export default class extends Controller {
                     }, 2000)
                 }
             } else {
-                // this.resetRecaptcha()
+                this.resetRecaptcha()
 
                 if (data.rate_limited) {
                     window.Toast.error(data.message)
@@ -136,7 +136,7 @@ export default class extends Controller {
                 }
             }
         } catch (error) {
-            // this.resetRecaptcha()
+            this.resetRecaptcha()
             window.Toast.error(this.errorValue)
         } finally {
             if (!this.submitTarget.classList.contains('rate-limited')) {
@@ -146,7 +146,7 @@ export default class extends Controller {
         }
     }
 
-    /*resetRecaptcha() {
+    resetRecaptcha() {
         if (window.grecaptcha?.reset) {
             try {
                 const recaptchaElement = this.element.querySelector('.g-recaptcha')
@@ -187,7 +187,7 @@ export default class extends Controller {
                 }
             }
         }, 100)
-    }*/
+    }
 
     disableFormTemporarily(seconds) {
         const submitBtn = this.submitTarget

@@ -34,10 +34,6 @@ readonly class MailService
             $this->attachFiles($email, $formData['attachment'] ?? []);
             $this->mailer->send($email);
 
-            if ($formData['receiveCopy'] ?? false) {
-                $this->sendContactCopyToSender($formData, $locale);
-            }
-
             return true;
 
         } catch (TransportExceptionInterface $e) {
@@ -81,29 +77,6 @@ readonly class MailService
                 'error' => $e->getMessage()
             ]);
             throw $e;
-        }
-    }
-
-    private function sendContactCopyToSender(array $formData, string $locale): void
-    {
-        try {
-            $copyEmail = (new Email())
-                ->from($this->contactEmail)
-                ->to($formData['email'])
-                ->subject($this->buildContactCopySubject($formData, $locale))
-                ->html($this->buildContactCopyEmailContent($formData, $locale));
-
-            $this->mailer->send($copyEmail);
-        } catch (TransportExceptionInterface $e) {
-            $this->logger->warning('Transport error sending copy to sender', [
-                'recipient' => $formData['email'],
-                'error' => $e->getMessage()
-            ]);
-        } catch (Exception $e) {
-            $this->logger->warning('Failed to send copy to sender', [
-                'recipient' => $formData['email'],
-                'error' => $e->getMessage()
-            ]);
         }
     }
 

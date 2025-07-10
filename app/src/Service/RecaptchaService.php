@@ -8,7 +8,7 @@ use ReCaptcha\ReCaptcha;
 
 class RecaptchaService
 {
-    /*private ReCaptcha $recaptcha;
+    private ReCaptcha $recaptcha;
 
     public function __construct(
         string $secretKey,
@@ -25,5 +25,5 @@ class RecaptchaService
         $result = $this->recaptcha->verify($response, $remoteIp);
 
         return $result->isSuccess();
-    }*/
+    }
 }
