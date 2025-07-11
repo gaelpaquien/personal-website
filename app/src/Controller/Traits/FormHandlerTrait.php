@@ -28,6 +28,13 @@ trait FormHandlerTrait
             return null;
         }
 
+        if (!$form->isValid()) {
+            return $this->json([
+                'success' => false,
+                'errors' => $this->formatFormErrors($form)
+            ]);
+        }
+
         if ($rateLimiterFactory) {
             $rateLimitResponse = $this->checkRateLimit($request, $rateLimiterFactory, $rateLimiterKey, $locale);
             if ($rateLimitResponse) {
@@ -44,32 +51,25 @@ trait FormHandlerTrait
             ]);
         }
 
-        if ($form->isValid()) {
-            try {
-                $result = $onSuccess($form->getData());
+        try {
+            $result = $onSuccess($form->getData());
 
-                return $this->json([
-                    'success' => true,
-                    'message' => $this->translator->trans($successKey, [], null, $locale),
-                    'data' => $result['data'] ?? null
-                ]);
-            } catch (Exception $e) {
-                $this->getLogger()?->error('AJAX form processing failed', [
-                    'form' => $form->getName(),
-                    'error' => $e->getMessage()
-                ]);
+            return $this->json([
+                'success' => true,
+                'message' => $this->translator->trans($successKey, [], null, $locale),
+                'data' => $result['data'] ?? null
+            ]);
+        } catch (Exception $e) {
+            $this->getLogger()?->error('AJAX form processing failed', [
+                'form' => $form->getName(),
+                'error' => $e->getMessage()
+            ]);
 
-                return $this->json([
-                    'success' => false,
-                    'message' => $this->translator->trans($errorKey, [], null, $locale)
-                ]);
-            }
+            return $this->json([
+                'success' => false,
+                'message' => $this->translator->trans($errorKey, [], null, $locale)
+            ]);
         }
-
-        return $this->json([
-            'success' => false,
-            'errors' => $this->formatFormErrors($form)
-        ]);
     }
 
     protected function isBot(Request $request): bool
@@ -204,13 +204,14 @@ trait FormHandlerTrait
         $status = $limiter->consume();
 
         if (!$status->isAccepted()) {
-            $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() : time() + 300;
-            $request->getSession()->set("rate_limit_{$rateLimiterKey}", $retryAfter);
+            $retryAfter = $status->getRetryAfter() ? $status->getRetryAfter()->getTimestamp() - time() : 300;
+            $request->getSession()->set("rate_limit_{$rateLimiterKey}", time() + $retryAfter);
 
             return $this->json([
                 'success' => false,
                 'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
-                'rate_limited' => true
+                'rate_limited' => true,
+                'retry_after' => $retryAfter
             ]);
         }
 

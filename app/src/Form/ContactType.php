@@ -6,7 +6,6 @@ namespace App\Form;
 
 use App\Validator\Recaptcha;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -145,7 +144,16 @@ class ContactType extends AbstractType
                                 'image/png',
                             ],
                             maxSizeMessage: 'form.contact.validation.attachment.max_size',
-                            mimeTypesMessage: 'form.contact.validation.attachment.mime_types'
+                            mimeTypesMessage: 'form.contact.validation.attachment.mime_types',
+                            extensions: [
+                                'pdf',
+                                'doc',
+                                'docx',
+                                'xlsx',
+                                'jpg',
+                                'jpeg',
+                                'png',
+                            ],
                         ),
                     ]),
                     new Assert\Count(
