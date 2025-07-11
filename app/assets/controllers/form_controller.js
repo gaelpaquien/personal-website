@@ -18,13 +18,16 @@ export default class extends Controller {
         }
 
         this.addHoneypotProtection()
-
         this.recaptchaObserver = this.observeRecaptcha()
     }
 
     disconnect() {
         if (this.recaptchaObserver) {
             this.recaptchaObserver.disconnect()
+        }
+
+        if (this.rateLimitTimer) {
+            clearInterval(this.rateLimitTimer)
         }
     }
 
@@ -123,7 +126,7 @@ export default class extends Controller {
 
                 if (data.rate_limited) {
                     window.Toast.error(data.message)
-                    this.disableFormTemporarily(300)
+                    this.disableFormTemporarily(data.retry_after || 300)
                     return
                 }
 
@@ -194,7 +197,11 @@ export default class extends Controller {
         submitBtn.classList.add('rate-limited', 'disabled')
         submitBtn.disabled = true
 
-        let countdown = Math.max(1, seconds)
+        if (this.rateLimitTimer) {
+            clearInterval(this.rateLimitTimer)
+        }
+
+        const endTime = Date.now() + (seconds * 1000)
         const originalText = submitBtn.dataset.originalText || submitBtn.textContent
 
         if (!submitBtn.dataset.originalText) {
@@ -202,25 +209,25 @@ export default class extends Controller {
         }
 
         const updateButtonText = () => {
-            const minutes = Math.floor(countdown / 60)
-            const secs = countdown % 60
-            submitBtn.textContent = `${this.blockedTextValue} ${minutes}:${secs.toString().padStart(2, '0')}`
-        }
+            const remainingMs = endTime - Date.now()
+            const remainingSeconds = Math.max(0, Math.ceil(remainingMs / 1000))
 
-        updateButtonText()
-
-        const interval = setInterval(() => {
-            countdown--
-            updateButtonText()
-
-            if (countdown <= 0) {
-                clearInterval(interval)
+            if (remainingSeconds <= 0) {
+                clearInterval(this.rateLimitTimer)
                 submitBtn.disabled = false
                 submitBtn.textContent = originalText
                 submitBtn.classList.remove('rate-limited', 'disabled')
                 delete submitBtn.dataset.originalText
+                return
             }
-        }, 1000)
+
+            const minutes = Math.floor(remainingSeconds / 60)
+            const secs = remainingSeconds % 60
+            submitBtn.textContent = `${this.blockedTextValue} ${minutes}:${secs.toString().padStart(2, '0')}`
+        }
+
+        updateButtonText()
+        this.rateLimitTimer = setInterval(updateButtonText, 1000)
     }
 
     showErrors(errors) {
