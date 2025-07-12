@@ -18,9 +18,9 @@ final class Version20250612175601 extends AbstractMigration
     {
         $this->addSql("INSERT INTO projects (id, article_id, title_fr, title_en, sort_order) VALUES
         (1, 11, 'Plany', 'Plany', 1),
-        (2, 9, 'gaelpaquien.com', 'gaelpaquien.com', 2),
+        (2, 8, 'RG Clean Car', 'RG Clean Car', 2),
         (3, 10, 'VPS Auto-géré', 'Self-Managed VPS', 3),
-        (4, 8, 'RG Clean Car', 'RG Clean Car', 4),
+        (4, 9, 'gaelpaquien.com', 'gaelpaquien.com', 4),
         (5, 7, 'ToDo & Co', 'ToDo & Co', 5),
         (6, 6, 'BileMo API', 'BileMo API', 6)
     ");
