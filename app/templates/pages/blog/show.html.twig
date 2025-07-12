@@ -25,19 +25,13 @@
                 >
                     <h1 class="blog-article__header-title">{{ article.title }}</h1>
 
-                    <div class="blog-article__header-image">
-                        <img src="{{ asset('images/pages/blog/articles/' ~ (article.coverImage ?: 'default.webp')) }}" alt="{{ article.coverImageAltText }}" />
-                    </div>
+
 
                     <div class="blog-article__header-tags">
                         {% for tag in article.tags %}
                             <span class="blog-article__tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
-                </div>
-
-                <div class="blog-article__content">
-                    {{ article.content|raw }}
                 </div>
 
                 {% if article.resourceLinks|length > 0 %}
@@ -54,6 +48,10 @@
                         </ul>
                     </div>
                 {% endif %}
+
+                <div class="blog-article__content">
+                    {{ article.content|raw }}
+                </div>
 
                 <div class="blog-article__footer">
                     <p class="blog-article__footer-date">{{ 'blog.last_update' | trans }} {{ article.updatedAt }}</p>
