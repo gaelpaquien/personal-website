@@ -1,22 +1,20 @@
-# Personal Website
-My personal website.
+# Personal website
 
-### Environment
-- Docker
-- PHP 8.3
-- Symfony 7
-- Composer
-- MySQL 8
-- Dart Sass
+## Description
+My personal website.
 
 ## Setting up
 
-### Required
-1. [Docker](https://www.docker.com/)
-2. [OpenSSL](https://www.openssl.org/)
+1. **Clone the repository on the master branch**
 
-### Installation
-*SOON*
+2. **Create the .env.local file and replace the values of the .env origin file**
 
-## Preview
-*SOON*
+3. **Install your environment**
+```bash
+docker-compose up --build
+```
+
+--- --- ---
+
+### Links
+[Website](https://gaelpaquien.com/) \
