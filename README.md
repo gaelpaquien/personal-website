@@ -17,4 +17,4 @@ docker-compose up --build
 --- --- ---
 
 ### Links
-[Website](https://gaelpaquien.com/) \
+[Website](https://gaelpaquien.com/)
