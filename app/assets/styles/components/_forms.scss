@@ -4,16 +4,14 @@ form {
     border-radius: 10px;
     padding: 1.5rem;
     width: 100%;
+    margin: 0 auto;
 
     @include respond-to('breakpoint-768') {
         padding: 2.5rem;
-    }
-
-    @include respond-to('breakpoint-992') {
         width: 75%;
     }
 
-    @include respond-to('breakpoint-1400') {
+    @include respond-to('breakpoint-1200') {
         width: 50%;
     }
 }

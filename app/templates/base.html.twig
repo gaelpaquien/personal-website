@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html lang="fr">
     <head>
         <script>
             // Fix the FOUC (Flash of Unstyled Content) by adding the theme class to the document element
             document.documentElement.classList.add('theme-' + (localStorage.getItem('theme') || 'dark'));
         </script>
-
-        {% set locale = app.request.locale %}
 
         <!-- Determine current URL -->
         {% set current_url = app.request.attributes.get('_route') ? url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'), true) : ('info.site.url' | trans) %}
@@ -14,8 +12,8 @@
             {% set current_url = 'https:' ~ current_url %}
         {% endif %}
 
-        <!-- Determine resume file -->
-        {% set resume_file = locale == 'fr' ? 'CV_Gael_Paquien_Developpeur_Backend_PHP.pdf' : 'RESUME_Gael_Paquien_Backend_PHP_Developer.pdf' %}
+        <!-- Resume file -->
+        {% set resume_file = 'CV_Gael_Paquien_Developpeur_Backend_PHP.pdf' %}
 
         <meta charset="UTF-8">
 
@@ -52,12 +50,10 @@
         <!-- Open Graph -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ current_url }}">
-        <meta property="og:locale" content="{{ locale }}">
+        <meta property="og:locale" content="fr_FR">
         <meta property="og:title" content="{% block og_title %}{{ 'info.site.title' | trans }}{% endblock %}">
         <meta property="og:description" content="{% block og_description %}{{ 'info.site.description' | trans }}{% endblock %}">
-        <meta property="og:locale:alternate" content="{{ locale == 'fr' ? 'en' : 'fr' }}">
-        {% set og_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
-        <meta property="og:image" content="{% block og_image %}{{ asset(og_image, null, true) }}{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{{ asset('images/seo/default-fr.png', null, true) }}{% endblock %}">
         <meta property="og:image:alt" content="{{ 'info.site.description' | trans }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
@@ -67,8 +63,7 @@
         <meta name="twitter:site" content="@gaelpaquien">
         <meta name="twitter:title" content="{% block twitter_title %}{{ 'info.site.title' | trans }}{% endblock %}">
         <meta name="twitter:description" content="{% block twitter_description %}{{ 'info.site.description' | trans }}{% endblock %}">
-        {% set twitter_image = locale == 'fr' ? 'images/seo/default-fr.png' : 'images/seo/default-en.png' %}
-        <meta name="twitter:image" content="{% block twitter_image %}{{ asset(twitter_image, null, true) }}{% endblock %}">
+        <meta name="twitter:image" content="{% block twitter_image %}{{ asset('images/seo/default-fr.png', null, true) }}{% endblock %}">
         <meta name="twitter:image:alt" content="{{ 'info.site.description' | trans }}">
         <meta name="twitter:image:width" content="1200">
         <meta name="twitter:image:height" content="630">
@@ -82,7 +77,7 @@
               "jobTitle": "{{ 'info.author.job_title' | trans }}",
               "url": "{{ current_url }}",
               "sameAs": [
-                "https://github.com/gaelpaquien",
+                "https://www.malt.fr/profile/gaelpaquien",
                 "https://linkedin.com/in/gaelpaquien",
                 "https://x.com/gaelpaquien"
               ]
@@ -93,7 +88,7 @@
         {% block mapper %}{{ importmap('app') }}{% endblock %}
     </head>
 
-    <body data-controller="navigation language themes animation-fade-in scroll"
+    <body data-controller="navigation themes animation-fade-in scroll"
           data-animation-fade-in-margin-value="0px 0px -20px 0px"
           data-scroll-margin-value="50"
           data-scroll-header-selector-value=".header"
@@ -120,7 +115,7 @@
         </footer>
 
         <!-- Google reCAPTCHA -->
-        <script src="https://www.google.com/recaptcha/api.js?hl={{ app.request.locale }}" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
 
         <!-- Simple Analytics -->
         <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

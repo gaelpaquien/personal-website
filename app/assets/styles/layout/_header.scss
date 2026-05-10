@@ -14,11 +14,6 @@ header {
     background-color: var(--color-primary);
     padding: 0.5rem 1.5rem;
 
-    .language-icons {
-        border: 0.1rem solid var(--color-text);
-        border-radius: 100%;
-    }
-
     &-left-list,
     &-right-list {
         @extend %flex-row;

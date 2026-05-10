@@ -33,13 +33,9 @@ class ReviewController extends AbstractController
         private readonly RecaptchaService $recaptchaService
     ) {}
 
-    #[Route([
-        'fr' => '/fr/avis/creation',
-        'en' => '/en/reviews/create',
-    ], name: 'create', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'monthly']], methods: ['GET', 'POST'])]
+    #[Route('/avis/creation', name: 'create', options: ['sitemap' => ['priority' => 0.8, 'changefreq' => 'monthly']], methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
-        $locale = $request->getSession()->get('_locale', 'fr');
         $reviewForm = $this->createForm(ReviewType::class);
         $reviewForm->handleRequest($request);
 
@@ -48,8 +44,7 @@ class ReviewController extends AbstractController
         $ajaxResponse = $this->handleForm(
             $request,
             $reviewForm,
-            fn($formData) => $this->processReview($formData, $locale),
-            $locale,
+            fn($formData) => $this->processReview($formData),
             'form.review.success',
             'form.review.error',
             $this->reviewFormLimiter,
@@ -61,22 +56,22 @@ class ReviewController extends AbstractController
         }
 
         if ($reviewForm->isSubmitted() && $reviewForm->isValid()) {
-            $rateLimitResponse = $this->checkRateLimit($request, $this->reviewFormLimiter, 'review', $locale);
+            $rateLimitResponse = $this->checkRateLimit($request, $this->reviewFormLimiter, 'review');
             if ($rateLimitResponse) {
-                return $this->redirectToRoute('app_review_create', ['_locale' => $locale]);
+                return $this->redirectToRoute('app_review_create');
             }
 
             try {
-                $this->processReview($reviewForm->getData(), $locale);
-                $this->addFlash('success', $this->translator->trans('form.review.success', [], null, $locale));
+                $this->processReview($reviewForm->getData());
+                $this->addFlash('success', $this->translator->trans('form.review.success'));
 
-                return $this->redirectToRoute('app_review_create', ['_locale' => $locale]);
+                return $this->redirectToRoute('app_review_create');
             } catch (Exception) {
                 $this->logger->error('Form review submission failed');
-                $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
+                $this->addFlash('error', $this->translator->trans('form.review.error'));
             } catch (Throwable) {
                 $this->logger->error('Unexpected error during review submission');
-                $this->addFlash('error', $this->translator->trans('form.review.error', [], null, $locale));
+                $this->addFlash('error', $this->translator->trans('form.review.error'));
             }
         }
 
@@ -88,8 +83,8 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    private function processReview(array $formData, string $locale): array
+    private function processReview(array $formData): array
     {
-        return $this->reviewService->createReviewWithNotification($formData, $locale);
+        return $this->reviewService->createReviewWithNotification($formData);
     }
 }

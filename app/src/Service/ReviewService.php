@@ -27,16 +27,16 @@ readonly class ReviewService
      * @throws TransportExceptionInterface
      * @throws Throwable
      */
-    public function createReviewWithNotification(array $formData, string $locale): array
+    public function createReviewWithNotification(array $formData): array
     {
         return $this->entityManager->getConnection()->transactional(
-            function() use ($formData, $locale) {
+            function() use ($formData) {
                 try {
-                    $review = $this->createReview($formData, $locale);
+                    $review = $this->createReview($formData);
                     $this->entityManager->flush();
 
                     $emailData = $this->prepareEmailData($formData, $review);
-                    $this->mailService->sendReviewNotificationEmail($emailData, $locale);
+                    $this->mailService->sendReviewNotificationEmail($emailData);
 
                     return [
                         'success' => true,
@@ -62,18 +62,16 @@ readonly class ReviewService
         );
     }
 
-    private function createReview(array $formData, string $locale): Review
+    private function createReview(array $formData): Review
     {
         $review = new Review();
         $review
             ->setAuthorFirstname($formData['authorFirstname'])
             ->setAuthorLastname($formData['authorLastname'])
             ->setAuthorCompany($formData['authorCompany'] ?? '')
-            ->setAuthorJobFr($formData['authorJob'] ?? '')
-            ->setAuthorJobEn($formData['authorJob'] ?? '')
-            ->setContentFr($formData['content'])
-            ->setContentEn($formData['content'])
-            ->setSource($this->translator->trans('info.site.name', [], null, $locale))
+            ->setAuthorJob($formData['authorJob'] ?? '')
+            ->setContent($formData['content'])
+            ->setSource($this->translator->trans('info.site.name'))
             ->setStatus(Review::STATUS_PENDING);
 
         $this->entityManager->persist($review);

@@ -20,10 +20,7 @@ class Project
     private ?Article $article = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $titleFr = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $titleEn = null;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $sortOrder = null;
@@ -44,25 +41,14 @@ class Project
         return $this;
     }
 
-    public function getTitleFr(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titleFr;
+        return $this->title;
     }
 
-    public function setTitleFr(string $titleFr): static
+    public function setTitle(string $title): static
     {
-        $this->titleFr = $titleFr;
-        return $this;
-    }
-
-    public function getTitleEn(): ?string
-    {
-        return $this->titleEn;
-    }
-
-    public function setTitleEn(string $titleEn): static
-    {
-        $this->titleEn = $titleEn;
+        $this->title = $title;
         return $this;
     }
 
@@ -71,14 +57,14 @@ class Project
         return $this->sortOrder;
     }
 
-    public function setOrder(int $sortOrder): static
+    public function setSortOrder(int $sortOrder): static
     {
         $this->sortOrder = $sortOrder;
         return $this;
     }
 
-    public function getTitle(string $locale = 'fr'): ?string
+    public function __toString(): string
     {
-        return $locale === 'en' ? $this->titleEn : $this->titleFr;
+        return $this->title ?? '';
     }
 }

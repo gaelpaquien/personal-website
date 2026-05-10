@@ -19,11 +19,6 @@ info:
     vat: "Numéro TVA FR89844466441"
     address: "12 Rue de la Part-Dieu, 69003 Lyon, France"
 
-language:
-  label: "Language"
-  to_french: "Traduire le site en français"
-  to_english: "Traduire le site en anglais"
-
 theme:
   label: "Thème"
   dark: "Activer le thème sombre"
@@ -67,8 +62,8 @@ navigation:
   sitemap_aria: "Visiter le plan du site"
   linkedin: "Mon profil LinkedIn"
   linkedin_aria: "Visiter le profil LinkedIn de %info.author.name%"
-  github: "Mon profil GitHub"
-  github_aria: "Visiter le profil GitHub de %info.author.name%"
+  malt: "Mon profil Malt"
+  malt_aria: "Visiter le profil Malt de %info.author.name%"
   resume: "Mon CV"
   resume_aria: "Voir le CV de %info.author.name%"
 

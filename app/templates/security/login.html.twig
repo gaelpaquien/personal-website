@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}noindex, nofollow{% endblock %}
+{% block title %}Connexion - {{ 'info.site.title' | trans }}{% endblock %}
+
+{% block content %}
+    <section id="login" class="login__container">
+        <div class="fade-in-effects-initial"
+             data-animation-fade-in-target="fadeIn"
+             data-animation="fade-in-up-effects"
+        >
+            <div class="section-title">
+                {% embed 'assets/svg/shield.html.twig' %}
+                    {% block attributes %}aria-labelledby="login-title"{% endblock %}
+                {% endembed %}
+                <h1 id="login-title">Connexion</h1>
+            </div>
+        </div>
+
+        <form method="post" class="login__form fade-in-effects-initial"
+              data-animation-fade-in-target="fadeIn"
+              data-animation="fade-in-up-effects"
+        >
+            {% if error %}
+                <div class="login__form-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn" type="submit">Se connecter</button>
+        </form>
+    </section>
+{% endblock %}

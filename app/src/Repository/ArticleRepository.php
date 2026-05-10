@@ -24,12 +24,10 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findBySlug(string $slug, string $locale): ?Article
+    public function findBySlug(string $slug): ?Article
     {
-        $slugField = $locale === 'fr' ? 'a.slugFr' : 'a.slugEn';
-
         return $this->createQueryBuilder('a')
-            ->where($slugField . ' = :slug OR a.slugFr = :slug OR a.slugEn = :slug')
+            ->where('a.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getOneOrNullResult();

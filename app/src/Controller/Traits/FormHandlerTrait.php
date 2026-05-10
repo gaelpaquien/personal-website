@@ -18,7 +18,6 @@ trait FormHandlerTrait
         Request $request,
         FormInterface $form,
         callable $onSuccess,
-        string $locale,
         string $successKey,
         string $errorKey,
         ?RateLimiterFactory $rateLimiterFactory = null,
@@ -36,18 +35,18 @@ trait FormHandlerTrait
         }
 
         if ($rateLimiterFactory) {
-            $rateLimitResponse = $this->checkRateLimit($request, $rateLimiterFactory, $rateLimiterKey, $locale);
+            $rateLimitResponse = $this->checkRateLimit($request, $rateLimiterFactory, $rateLimiterKey);
             if ($rateLimitResponse) {
                 return $rateLimitResponse;
             }
         }
 
         if ($this->isBot($request)) {
-            $this->handleBotDetection($request, $form, $locale);
+            $this->handleBotDetection($request, $form);
 
             return $this->json([
                 'success' => true,
-                'message' => $this->translator->trans($successKey, [], null, $locale)
+                'message' => $this->translator->trans($successKey)
             ]);
         }
 
@@ -56,7 +55,7 @@ trait FormHandlerTrait
 
             return $this->json([
                 'success' => true,
-                'message' => $this->translator->trans($successKey, [], null, $locale),
+                'message' => $this->translator->trans($successKey),
                 'data' => $result['data'] ?? null
             ]);
         } catch (Exception $e) {
@@ -67,7 +66,7 @@ trait FormHandlerTrait
 
             return $this->json([
                 'success' => false,
-                'message' => $this->translator->trans($errorKey, [], null, $locale)
+                'message' => $this->translator->trans($errorKey)
             ]);
         }
     }
@@ -89,7 +88,7 @@ trait FormHandlerTrait
         return false;
     }
 
-    private function handleBotDetection(Request $request, FormInterface $form, string $locale): void
+    private function handleBotDetection(Request $request, FormInterface $form): void
     {
         $botData = $this->prepareBotData($request, $form);
 
@@ -97,7 +96,7 @@ trait FormHandlerTrait
 
         if (property_exists($this, 'mailService') && $this->mailService instanceof MailService) {
             try {
-                $this->mailService->sendBotDetectionEmail($botData, $locale);
+                $this->mailService->sendBotDetectionEmail($botData);
             } catch (\Exception $e) {
                 $this->getLogger()?->error('Failed to send bot detection email', [
                     'error' => $e->getMessage()
@@ -197,8 +196,7 @@ trait FormHandlerTrait
     protected function checkRateLimit(
         Request $request,
         RateLimiterFactory $rateLimiterFactory,
-        string $rateLimiterKey,
-        string $locale
+        string $rateLimiterKey
     ): ?JsonResponse {
         $limiter = $rateLimiterFactory->create($this->getRateLimiterIdentifier($request, $rateLimiterKey));
         $status = $limiter->consume();
@@ -209,7 +207,7 @@ trait FormHandlerTrait
 
             return $this->json([
                 'success' => false,
-                'message' => $this->translator->trans('form.rate_limit_exceeded', [], null, $locale),
+                'message' => $this->translator->trans('form.rate_limit_exceeded'),
                 'rate_limited' => true,
                 'retry_after' => $retryAfter
             ]);

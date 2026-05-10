@@ -32,23 +32,9 @@ class MainController extends AbstractController
         private readonly RecaptchaService $recaptchaService
     ) {}
 
-    #[Route('/', name: 'root')]
-    public function root(Request $request): Response
-    {
-        $locale = $request->getSession()->get('_locale') ??
-            $request->getPreferredLanguage(['fr', 'en']) ??
-            'fr';
-
-        return $this->redirectToRoute('app_main_index', ['_locale' => $locale]);
-    }
-
-    #[Route([
-        'fr' => '/fr',
-        'en' => '/en',
-    ], name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']], methods: ['GET', 'POST'])]
+    #[Route('/', name: 'index', options: ['sitemap' => ['priority' => 1.0, 'changefreq' => 'daily']], methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
-        $locale = $request->getSession()->get('_locale', 'fr');
         $contactForm = $this->createForm(ContactType::class);
         $contactForm->handleRequest($request);
 
@@ -57,8 +43,7 @@ class MainController extends AbstractController
         $ajaxResponse = $this->handleForm(
             $request,
             $contactForm,
-            fn($formData) => $this->processContact($formData, $locale),
-            $locale,
+            fn($formData) => $this->processContact($formData),
             'form.contact.success',
             'form.contact.error',
             $this->contactFormLimiter,
@@ -70,31 +55,29 @@ class MainController extends AbstractController
         }
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $rateLimitResponse = $this->checkRateLimit($request, $this->contactFormLimiter, 'contact', $locale);
+            $rateLimitResponse = $this->checkRateLimit($request, $this->contactFormLimiter, 'contact');
             if ($rateLimitResponse) {
                 return $this->redirectToRoute('app_main_index', [
-                    '_locale' => $locale,
                     '_fragment' => 'home-contact'
                 ]);
             }
 
             try {
-                $this->processContact($contactForm->getData(), $locale);
-                $this->addFlash('success', $this->translator->trans('form.contact.success', [], null, $locale));
+                $this->processContact($contactForm->getData());
+                $this->addFlash('success', $this->translator->trans('form.contact.success'));
 
                 return $this->redirectToRoute('app_main_index', [
-                    '_locale' => $locale,
                     '_fragment' => 'home-contact'
                 ]);
             } catch (Exception) {
                 $this->logger->error('Classic form contact submission failed');
-                $this->addFlash('error', $this->translator->trans('form.contact.error', [], null, $locale));
+                $this->addFlash('error', $this->translator->trans('form.contact.error'));
             }
         }
 
         return $this->render('pages/index.html.twig', [
-            'projects' => $this->contentService->getAllProjects($locale),
-            'reviews' => $this->contentService->getAllReviews($locale),
+            'projects' => $this->contentService->getAllProjects(),
+            'reviews' => $this->contentService->getAllReviews(),
             'contactForm' => $contactForm->createView(),
             'rateLimited' => $rateLimitStatus['is_limited'],
             'retryAfter' => max(0, $rateLimitStatus['retry_after']),
@@ -102,9 +85,9 @@ class MainController extends AbstractController
         ]);
     }
 
-    private function processContact(array $formData, string $locale): array
+    private function processContact(array $formData): array
     {
-        $success = $this->mailService->sendContactEmail($formData, $locale);
+        $success = $this->mailService->sendContactEmail($formData);
 
         if (!$success) {
             throw new Exception('Contact email sending failed');
@@ -113,47 +96,26 @@ class MainController extends AbstractController
         return ['success' => true];
     }
 
-    #[Route([
-        'fr' => '/fr/mentions-legales',
-        'en' => '/en/legal-notice',
-    ], name: 'legal_notice', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
+    #[Route('/mentions-legales', name: 'legal_notice', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function legalNotice(): Response
     {
         return $this->render('pages/legal_notice.html.twig');
     }
 
-    #[Route([
-        'fr' => '/fr/politique-de-confidentialite',
-        'en' => '/en/privacy-policy',
-    ], name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
+    #[Route('/politique-de-confidentialite', name: 'privacy_policy', options: ['sitemap' => ['priority' => 0.5, 'changefreq' => 'monthly']])]
     public function privacyPolicy(): Response
     {
         return $this->render('pages/privacy_policy.html.twig');
     }
 
-    #[Route([
-        'fr' => '/fr/plan-du-site',
-        'en' => '/en/sitemap',
-    ], name: 'sitemap', options: ['sitemap' => ['priority' => 0.6, 'changefreq' => 'monthly']])]
-    public function sitemap(Request $request): Response
+    #[Route('/plan-du-site', name: 'sitemap', options: ['sitemap' => ['priority' => 0.6, 'changefreq' => 'monthly']])]
+    public function sitemap(): Response
     {
         $xml = \simplexml_load_file($this->getParameter('kernel.project_dir') . '/public/sitemap.default.xml');
-        $locale = $request->getSession()->get('_locale', 'fr');
 
         $urls = [];
         foreach ($xml->url as $urlElement) {
-            $url = (string) $urlElement->loc;
-
-            if (isset($urlElement->children('xhtml', true)->link)) {
-                foreach ($urlElement->children('xhtml', true)->link as $link) {
-                    if ((string) $link->attributes()['hreflang'] === $locale) {
-                        $url = (string) $link->attributes()['href'];
-                        break;
-                    }
-                }
-            }
-
-            $urls[] = $url;
+            $urls[] = (string) $urlElement->loc;
         }
 
         return $this->render('pages/sitemap.html.twig', [

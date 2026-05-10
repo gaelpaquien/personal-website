@@ -21,15 +21,15 @@ readonly class MailService
         private string $contactEmail
     ) {}
 
-    public function sendContactEmail(array $formData, string $locale): bool
+    public function sendContactEmail(array $formData): bool
     {
         try {
             $email = (new Email())
                 ->from($this->contactEmail)
                 ->replyTo($formData['email'])
                 ->to($this->contactEmail)
-                ->subject($this->buildContactSubject($formData, $locale))
-                ->html($this->buildContactEmailContent($formData, $locale));
+                ->subject($this->buildContactSubject($formData))
+                ->html($this->buildContactEmailContent($formData));
 
             $this->attachFiles($email, $formData['attachment'] ?? []);
             $this->mailer->send($email);
@@ -55,14 +55,14 @@ readonly class MailService
      * @throws TransportExceptionInterface
      * @throws Exception
      */
-    public function sendReviewNotificationEmail(array $formData, string $locale): void
+    public function sendReviewNotificationEmail(array $formData): void
     {
         try {
             $email = (new Email())
                 ->from($this->contactEmail)
                 ->to($this->contactEmail)
-                ->subject($this->buildReviewSubject($locale))
-                ->html($this->buildReviewEmailContent($formData, $locale));
+                ->subject($this->buildReviewSubject())
+                ->html($this->buildReviewEmailContent($formData));
 
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
@@ -100,84 +100,56 @@ readonly class MailService
         }
     }
 
-    private function buildContactSubject(array $formData, string $locale): string
+    private function buildContactSubject(array $formData): string
     {
         return sprintf('%s - %s - %s',
-            $this->translator->trans('info.site.name', [], null, $locale),
-            $this->translator->trans('form.contact.email.title', [], null, $locale),
+            $this->translator->trans('info.site.name'),
+            $this->translator->trans('form.contact.email.title'),
             $formData['subject']
         );
     }
 
-    private function buildContactCopySubject(array $formData, string $locale): string
-    {
-        return sprintf('%s - %s - %s',
-            $this->translator->trans('info.site.name', [], null, $locale),
-            $this->translator->trans('form.contact.email.copy_subject', [], null, $locale),
-            $formData['subject']
-        );
-    }
-
-    private function buildReviewSubject(string $locale): string
+    private function buildReviewSubject(): string
     {
         return sprintf('%s - %s',
-            $this->translator->trans('info.site.name', [], null, $locale),
-            $this->translator->trans('form.review.email.title', [], null, $locale)
+            $this->translator->trans('info.site.name'),
+            $this->translator->trans('form.review.email.title')
         );
     }
 
-    private function buildContactEmailContent(array $formData, string $locale): string
+    private function buildContactEmailContent(array $formData): string
     {
         $attachmentCount = count($formData['attachment'] ?? []);
 
         return sprintf(
             '<h2>%s</h2>
-            <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %d</p>
             <p><strong>%s:</strong> %s %s</p>
             <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s</p>
             <div><strong>%s:</strong><br>%s</div>',
-            $this->translator->trans('form.contact.email.title', [], null, $locale),
-            $this->translator->trans('form.contact.email.language', [], null, $locale),
-            htmlspecialchars($locale),
-            $this->translator->trans('form.contact.email.attachment_count', [], null, $locale),
+            $this->translator->trans('form.contact.email.title'),
+            $this->translator->trans('form.contact.email.attachment_count'),
             $attachmentCount,
-            $this->translator->trans('form.contact.email.identity', [], null, $locale),
+            $this->translator->trans('form.contact.email.identity'),
             htmlspecialchars($formData['firstName']),
             htmlspecialchars($formData['lastName']),
-            $this->translator->trans('form.contact.email.email', [], null, $locale),
+            $this->translator->trans('form.contact.email.email'),
             htmlspecialchars($formData['email']),
-            $this->translator->trans('form.contact.email.phone', [], null, $locale),
-            htmlspecialchars($formData['phone'] ?? $this->translator->trans('form.contact.email.phone_not_specified', [], null, $locale)),
-            $this->translator->trans('form.contact.email.subject', [], null, $locale),
+            $this->translator->trans('form.contact.email.phone'),
+            htmlspecialchars($formData['phone'] ?? $this->translator->trans('form.contact.email.phone_not_specified')),
+            $this->translator->trans('form.contact.email.subject'),
             htmlspecialchars($formData['subject']),
-            $this->translator->trans('form.contact.email.message', [], null, $locale),
+            $this->translator->trans('form.contact.email.message'),
             nl2br(htmlspecialchars($formData['message']))
         );
     }
 
-    private function buildContactCopyEmailContent(array $formData, string $locale): string
-    {
-        return sprintf(
-            '<h2>%s %s</h2>
-            <p>%s %s</p>
-            <hr>
-            <div>%s</div>',
-            $this->translator->trans('form.contact.email.copy_title', [], null, $locale),
-            $this->translator->trans('info.site.name', [], null, $locale),
-            $this->translator->trans('form.contact.email.copy_intro', [], null, $locale),
-            $this->translator->trans('info.site.name', [], null, $locale),
-            $this->buildContactEmailContent($formData, $locale)
-        );
-    }
-
-    private function buildReviewEmailContent(array $formData, string $locale): string
+    private function buildReviewEmailContent(array $formData): string
     {
         return sprintf(
             '<h2>%s</h2>
-            <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s %s</p>
             <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s</p>
@@ -187,22 +159,20 @@ readonly class MailService
             <h2>%s</h2>
             <p><strong>%s:</strong> %s</p>
             <p><strong>%s:</strong> %s</p>',
-            $this->translator->trans('form.review.email.title', [], null, $locale),
-            $this->translator->trans('form.review.email.language', [], null, $locale),
-            htmlspecialchars($locale),
-            $this->translator->trans('form.review.email.identity', [], null, $locale),
+            $this->translator->trans('form.review.email.title'),
+            $this->translator->trans('form.review.email.identity'),
             htmlspecialchars($formData['authorFirstname'] ?? ''),
             htmlspecialchars($formData['authorLastname'] ?? ''),
-            $this->translator->trans('form.review.email.company', [], null, $locale),
-            htmlspecialchars($formData['authorCompany'] ?? $this->translator->trans('form.review.email.company_not_specified', [], null, $locale)),
-            $this->translator->trans('form.review.email.role', [], null, $locale),
-            htmlspecialchars($formData['authorJob'] ?? $this->translator->trans('form.review.email.role_not_specified', [], null, $locale)),
-            $this->translator->trans('form.review.email.content', [], null, $locale),
+            $this->translator->trans('form.review.email.company'),
+            htmlspecialchars($formData['authorCompany'] ?? $this->translator->trans('form.review.email.company_not_specified')),
+            $this->translator->trans('form.review.email.role'),
+            htmlspecialchars($formData['authorJob'] ?? $this->translator->trans('form.review.email.role_not_specified')),
+            $this->translator->trans('form.review.email.content'),
             nl2br(htmlspecialchars($formData['content'] ?? '')),
-            $this->translator->trans('form.review.email.title2', [], null, $locale),
-            $this->translator->trans('form.review.email.review_id', [], null, $locale),
+            $this->translator->trans('form.review.email.title2'),
+            $this->translator->trans('form.review.email.review_id'),
             $formData['reviewId'] ?? 'N/A',
-            $this->translator->trans('form.review.email.review_date', [], null, $locale),
+            $this->translator->trans('form.review.email.review_date'),
             $formData['createdAt'] ?? 'N/A',
         );
     }
@@ -211,14 +181,14 @@ readonly class MailService
      * @throws TransportExceptionInterface
      * @throws Exception
      */
-    public function sendBotDetectionEmail(array $botData, string $locale): void
+    public function sendBotDetectionEmail(array $botData): void
     {
         try {
             $email = (new Email())
                 ->from($this->contactEmail)
                 ->to($this->contactEmail)
-                ->subject($this->buildBotDetectionSubject($locale))
-                ->html($this->buildBotDetectionEmailContent($botData, $locale));
+                ->subject($this->buildBotDetectionSubject())
+                ->html($this->buildBotDetectionEmailContent($botData));
 
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
@@ -234,15 +204,15 @@ readonly class MailService
         }
     }
 
-    private function buildBotDetectionSubject(string $locale): string
+    private function buildBotDetectionSubject(): string
     {
         return sprintf('%s - %s',
-            $this->translator->trans('info.site.name', [], null, $locale),
+            $this->translator->trans('info.site.name'),
             'Bot détecté'
         );
     }
 
-    private function buildBotDetectionEmailContent(array $botData, string $locale): string
+    private function buildBotDetectionEmailContent(array $botData): string
     {
         $reasons = [];
         if ($botData['honeypot_filled']) $reasons[] = 'Honeypot rempli';

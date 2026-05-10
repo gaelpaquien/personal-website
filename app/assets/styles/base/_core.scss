@@ -4,6 +4,7 @@
 
 html {
     width: 100%;
+    background-color: var(--color-secondary);
     scrollbar-width: auto;
     scrollbar-color: var(--color-text) var(--color-primary);
 }
@@ -12,19 +13,28 @@ body {
     width: 100%;
     min-height: 100svh;
     overflow-x: hidden;
+    background-color: var(--color-secondary);
     @extend %flex-column;
 }
 
 main {
+    flex: 1;
     background-color: var(--color-secondary);
 }
 
 section {
     padding: 2rem 1.5rem;
     min-height: calc(100svh - 8.1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     @include respond-to('breakpoint-768') {
         padding: 2.5rem 5rem;
+    }
+
+    @include respond-to('breakpoint-1500') {
+        min-height: 60vh;
     }
 }
 

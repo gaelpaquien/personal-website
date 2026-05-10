@@ -15,9 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 readonly class ContentService
 {
-    private const LOCALE_FR = 'fr';
-    private const DATE_FORMAT_FR = 'd/m/Y';
-    private const DATE_FORMAT_EN = 'm/d/Y';
+    private const DATE_FORMAT = 'd/m/Y';
 
     public function __construct(
         private ReviewRepository $reviewRepository,
@@ -25,54 +23,54 @@ readonly class ContentService
         private ProjectRepository $projectRepository,
     ) {}
 
-    public function getAllProjects(string $locale): array
+    public function getAllProjects(): array
     {
         $projects = $this->projectRepository->findAllOrdered();
 
-        return array_map(function($project) use ($locale) {
+        return array_map(function($project) {
             return new Project(
-                title: $project->getTitle($locale),
-                description: $project->getArticle()->getShortDescription($locale),
-                tags: $project->getArticle()->getTags($locale),
+                title: $project->getTitle(),
+                description: $project->getArticle()->getShortDescription(),
+                tags: $project->getArticle()->getTags(),
                 coverImage: $project->getArticle()->getCoverMedia()->getMedia(),
-                coverImageAltText: $project->getArticle()->getCoverMedia()->getAltText($locale),
-                relatedArticleSlug: $project->getArticle()->getSlug($locale),
+                coverImageAltText: $project->getArticle()->getCoverMedia()->getAltText(),
+                relatedArticleSlug: $project->getArticle()->getSlug(),
             );
         }, $projects);
     }
 
-    public function getAllReviews(string $locale): array
+    public function getAllReviews(): array
     {
         $reviews = $this->reviewRepository->findAllOrderedActive();
 
-        return array_map(function($review) use ($locale) {
+        return array_map(function($review) {
             return new Review(
                 authorFirstName: $review->getAuthorFirstname(),
                 authorLastName: $review->getAuthorLastname()[0] . '.',
-                authorJobTitle: $locale === self::LOCALE_FR ? $review->getAuthorJobFr() : $review->getAuthorJobEn(),
+                authorJobTitle: $review->getAuthorJob(),
                 authorCompany: $review->getAuthorCompany(),
-                content: ucfirst($locale === self::LOCALE_FR ? $review->getContentFr() : $review->getContentEn()),
+                content: ucfirst($review->getContent()),
                 source: $review->getSource(),
-                createdAt: $review->getCreatedAt()->format($this->formatDate($review->getCreatedAt(), $locale)),
+                createdAt: $review->getCreatedAt()->format(self::DATE_FORMAT),
             );
         }, $reviews);
     }
 
-    public function getAllArticles(string $locale): array
+    public function getAllArticles(): array
     {
         $articles = $this->articleRepository->findAllOrderedByDate();
 
-        return array_map(function($article) use ($locale) {
+        return array_map(function($article) {
             return new Article(
-                title: $article->getTitle($locale),
-                slug: $article->getSlug($locale),
-                shortDescription: $article->getShortDescription($locale),
-                content: $article->getContent($locale),
-                tags: $article->getTags($locale),
-                resourceLinks: $article->getResourceLinks($locale),
-                updatedAt: $article->getUpdatedAt()->format($this->formatDate($article->getUpdatedAt(), $locale)),
+                title: $article->getTitle(),
+                slug: $article->getSlug(),
+                shortDescription: $article->getShortDescription(),
+                content: $article->getContent(),
+                tags: $article->getTags(),
+                resourceLinks: $article->getResourceLinks(),
+                updatedAt: $article->getUpdatedAt()->format(self::DATE_FORMAT),
                 coverImage: $article->getCoverMedia()->getMedia(),
-                coverImageAltText: $article->getCoverMedia()->getAltText($locale),
+                coverImageAltText: $article->getCoverMedia()->getAltText(),
             );
         }, $articles);
     }
@@ -80,34 +78,29 @@ readonly class ContentService
     /**
      * @throws RedirectArticleException
      */
-    public function getArticleBySlug(string $slug, string $locale): Article
+    public function getArticleBySlug(string $slug): Article
     {
-        $article = $this->articleRepository->findBySlug($slug, $locale);
+        $article = $this->articleRepository->findBySlug($slug);
 
         if (!$article) {
             throw new NotFoundHttpException();
         }
 
-        $correctSlug = $article->getSlug($locale);
+        $correctSlug = $article->getSlug();
         if ($slug !== $correctSlug) {
             throw new RedirectArticleException($correctSlug);
         }
 
         return new Article(
-            $article->getTitle($locale),
-            $article->getSlug($locale),
-            $article->getShortDescription($locale),
-            $article->getContent($locale),
-            $article->getTags($locale),
-            $article->getResourceLinks($locale),
-            $article->getUpdatedAt()->format($this->formatDate($article->getUpdatedAt(), $locale)),
+            $article->getTitle(),
+            $article->getSlug(),
+            $article->getShortDescription(),
+            $article->getContent(),
+            $article->getTags(),
+            $article->getResourceLinks(),
+            $article->getUpdatedAt()->format(self::DATE_FORMAT),
             $article->getCoverMedia()->getMedia(),
-            $article->getCoverMedia()->getAltText($locale)
+            $article->getCoverMedia()->getAltText()
         );
-    }
-
-    private function formatDate(\DateTimeImmutable $date, string $locale): string
-    {
-        return $locale === self::LOCALE_FR ? $date->format(self::DATE_FORMAT_FR) : $date->format(self::DATE_FORMAT_EN);
     }
 }

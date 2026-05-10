@@ -22,10 +22,7 @@ class ArticleMedia
     private ?string $media = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $altTextFr = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $altTextEn = null;
+    private ?string $altText = null;
 
     #[ORM\Column]
     private ?bool $isCover = false;
@@ -57,25 +54,14 @@ class ArticleMedia
         return $this;
     }
 
-    public function getAltTextFr(): ?string
+    public function getAltText(): ?string
     {
-        return $this->altTextFr;
+        return $this->altText;
     }
 
-    public function setAltTextFr(?string $altTextFr): static
+    public function setAltText(?string $altText): static
     {
-        $this->altTextFr = $altTextFr;
-        return $this;
-    }
-
-    public function getAltTextEn(): ?string
-    {
-        return $this->altTextEn;
-    }
-
-    public function setAltTextEn(?string $altTextEn): static
-    {
-        $this->altTextEn = $altTextEn;
+        $this->altText = $altText;
         return $this;
     }
 
@@ -88,10 +74,5 @@ class ArticleMedia
     {
         $this->isCover = $isCover;
         return $this;
-    }
-
-    public function getAltText(string $locale = 'fr'): ?string
-    {
-        return $locale === 'en' ? $this->altTextEn : $this->altTextFr;
     }
 }

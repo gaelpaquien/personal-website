@@ -19,28 +19,16 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $titleFr = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $titleEn = null;
+    private ?string $title = null;
 
     #[ORM\Column(length: 255, unique: true)]
-    private ?string $slugFr = null;
-
-    #[ORM\Column(length: 255, unique: true)]
-    private ?string $slugEn = null;
+    private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $shortDescriptionFr = null;
+    private ?string $shortDescription = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $shortDescriptionEn = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentFr = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentEn = null;
+    private ?string $content = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $tags = [];
@@ -78,99 +66,52 @@ class Article
         return $this->id;
     }
 
-    public function getTitleFr(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titleFr;
+        return $this->title;
     }
 
-    public function setTitleFr(string $titleFr): static
+    public function setTitle(string $title): static
     {
-        $this->titleFr = $titleFr;
+        $this->title = $title;
         return $this;
     }
 
-    public function getTitleEn(): ?string
+    public function getSlug(): ?string
     {
-        return $this->titleEn;
+        return $this->slug;
     }
 
-    public function setTitleEn(string $titleEn): static
+    public function setSlug(string $slug): static
     {
-        $this->titleEn = $titleEn;
+        $this->slug = $slug;
         return $this;
     }
 
-    public function getSlugFr(): ?string
+    public function getShortDescription(): ?string
     {
-        return $this->slugFr;
+        return $this->shortDescription;
     }
 
-    public function setSlugFr(string $slugFr): static
+    public function setShortDescription(string $shortDescription): static
     {
-        $this->slugFr = $slugFr;
+        $this->shortDescription = $shortDescription;
         return $this;
     }
 
-    public function getSlugEn(): ?string
+    public function getContent(): ?string
     {
-        return $this->slugEn;
+        return $this->content;
     }
 
-    public function setSlugEn(string $slugEn): static
+    public function setContent(string $content): static
     {
-        $this->slugEn = $slugEn;
+        $this->content = $content;
         return $this;
     }
 
-    public function getShortDescriptionFr(): ?string
+    public function getTags(): array
     {
-        return $this->shortDescriptionFr;
-    }
-
-    public function setShortDescriptionFr(string $shortDescriptionFr): static
-    {
-        $this->shortDescriptionFr = $shortDescriptionFr;
-        return $this;
-    }
-
-    public function getShortDescriptionEn(): ?string
-    {
-        return $this->shortDescriptionEn;
-    }
-
-    public function setShortDescriptionEn(string $shortDescriptionEn): static
-    {
-        $this->shortDescriptionEn = $shortDescriptionEn;
-        return $this;
-    }
-
-    public function getContentFr(): ?string
-    {
-        return $this->contentFr;
-    }
-
-    public function setContentFr(string $contentFr): static
-    {
-        $this->contentFr = $contentFr;
-        return $this;
-    }
-
-    public function getContentEn(): ?string
-    {
-        return $this->contentEn;
-    }
-
-    public function setContentEn(string $contentEn): static
-    {
-        $this->contentEn = $contentEn;
-        return $this;
-    }
-
-    public function getTags(?string $locale = null): array
-    {
-        if ($locale) {
-            return $this->tags[$locale] ?? [];
-        }
         return $this->tags;
     }
 
@@ -180,38 +121,26 @@ class Article
         return $this;
     }
 
-    public function addTag(string $tag, string $locale): static
+    public function addTag(string $tag): static
     {
-        if (!isset($this->tags[$locale])) {
-            $this->tags[$locale] = [];
-        }
-        if (!in_array($tag, $this->tags[$locale])) {
-            $this->tags[$locale][] = $tag;
+        if (!in_array($tag, $this->tags, true)) {
+            $this->tags[] = $tag;
         }
         return $this;
     }
 
-    public function removeTag(string $tag, string $locale): static
+    public function removeTag(string $tag): static
     {
-        if (isset($this->tags[$locale])) {
-            $this->tags[$locale] = array_values(array_filter($this->tags[$locale], fn($t) => $t !== $tag));
-        }
+        $this->tags = array_values(array_filter($this->tags, fn($t) => $t !== $tag));
         return $this;
     }
 
-    public function getResourceLinks(?string $locale = null): ?array
+    public function getResourceLinks(): ?array
     {
-        if ($this->resourceLinks === null) {
-            return null;
-        }
-
-        if ($locale) {
-            return $this->resourceLinks[$locale] ?? [];
-        }
         return $this->resourceLinks;
     }
 
-    public function setResourceLinks(array $resourceLinks): static
+    public function setResourceLinks(?array $resourceLinks): static
     {
         $this->resourceLinks = $resourceLinks;
         return $this;
@@ -285,26 +214,6 @@ class Article
         return $this;
     }
 
-    public function getTitle(string $locale = 'fr'): ?string
-    {
-        return $locale === 'en' ? $this->titleEn : $this->titleFr;
-    }
-
-    public function getSlug(string $locale = 'fr'): ?string
-    {
-        return $locale === 'en' ? $this->slugEn : $this->slugFr;
-    }
-
-    public function getContent(string $locale = 'fr'): ?string
-    {
-        return $locale === 'en' ? $this->contentEn : $this->contentFr;
-    }
-
-    public function getShortDescription(string $locale = 'fr'): ?string
-    {
-        return $locale === 'en' ? $this->shortDescriptionEn : $this->shortDescriptionFr;
-    }
-
     public function getCoverMedia(): ?ArticleMedia
     {
         foreach ($this->medias as $media) {
@@ -313,5 +222,10 @@ class Article
             }
         }
         return null;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title ?? '';
     }
 }

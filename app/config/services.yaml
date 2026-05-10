@@ -21,11 +21,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # Register the LocaleListener service
-    App\EventListener\LocaleListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, priority: 20 }
-
     App\Service\MailService:
         arguments:
             $contactEmail: '%env(CONTACT_EMAIL)%'

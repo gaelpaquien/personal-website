@@ -26,19 +26,13 @@ class Review
     private ?string $authorLastname = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $authorJobFr = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $authorJobEn = null;
+    private ?string $authorJob = null;
 
     #[ORM\Column(length: 255)]
     private ?string $authorCompany = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentFr = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentEn = null;
+    private ?string $content = null;
 
     #[ORM\Column(length: 255)]
     private ?string $source = null;
@@ -84,25 +78,14 @@ class Review
         return $this;
     }
 
-    public function getAuthorJobFr(): ?string
+    public function getAuthorJob(): ?string
     {
-        return $this->authorJobFr;
+        return $this->authorJob;
     }
 
-    public function setAuthorJobFr(string $authorJobFr): static
+    public function setAuthorJob(string $authorJob): static
     {
-        $this->authorJobFr = $authorJobFr;
-        return $this;
-    }
-
-    public function getAuthorJobEn(): ?string
-    {
-        return $this->authorJobEn;
-    }
-
-    public function setAuthorJobEn(string $authorJobEn): static
-    {
-        $this->authorJobEn = $authorJobEn;
+        $this->authorJob = $authorJob;
         return $this;
     }
 
@@ -117,25 +100,14 @@ class Review
         return $this;
     }
 
-    public function getContentFr(): ?string
+    public function getContent(): ?string
     {
-        return $this->contentFr;
+        return $this->content;
     }
 
-    public function setContentFr(string $contentFr): static
+    public function setContent(string $content): static
     {
-        $this->contentFr = $contentFr;
-        return $this;
-    }
-
-    public function getContentEn(): ?string
-    {
-        return $this->contentEn;
-    }
-
-    public function setContentEn(string $contentEn): static
-    {
-        $this->contentEn = $contentEn;
+        $this->content = $content;
         return $this;
     }
 
