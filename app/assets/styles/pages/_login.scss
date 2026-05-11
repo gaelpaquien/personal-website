@@ -1,0 +1,17 @@
+.login__container {
+  background-color: var(--color-secondary);
+  @include flex-container(column, space-between, center);
+}
+
+.login__form {
+  background-color: var(--color-primary);
+
+  input {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+  }
+
+  button {
+    background-color: var(--color-secondary);
+  }
+}
